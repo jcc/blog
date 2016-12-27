@@ -131,6 +131,8 @@ class AuthController extends Controller
 
         $data['password'] = bcrypt($data['password']);
 
+        $data['status'] = true;
+
         auth()->guard()->login(User::create($data));
 
         session()->forget('oauthData');
