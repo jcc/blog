@@ -1,0 +1,17 @@
+.toast-success {
+    background-color: #1abc9c;
+}
+.toast-error {
+  background-color: #e74c3c;
+}
+.toast-info {
+  background-color: #597289;
+}
+.toast-warning {
+  background-color: #f1c40f;
+}
+#toast-container > div {
+  opacity: 0.9;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  filter: alpha(opacity=90);
+}
