@@ -150,7 +150,10 @@
 
                 this.$http.post('/api/comments', data)
                     .then((response) => {
-                        this.comments.push(response.data.data)
+                        let comment = null
+                        comment = response.data.data
+                        comment.content_html = this.parse(comment.content_raw)
+                        this.comments.push(comment)
                         this.content = ''
                         toastr.success('You publish the comment success!')
                     })
