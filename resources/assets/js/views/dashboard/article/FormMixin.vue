@@ -1,0 +1,52 @@
+<script>
+    export default {
+        data() {
+            return {
+                selected: null,
+                options: [],
+                tags: null,
+                allTag: [],
+                startTime: {
+                    time: ''
+                },
+                option: {
+                    type: 'min',
+                    week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+                    month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    placeholder: 'Published At?',
+                    inputStyle: {
+                        'display': 'inline-block',
+                        'padding': '6px',
+                        'height': '41px',
+                        'line-height': '22px',
+                        'font-size': '16px',
+                        'border': '2px solid #dce4ec',
+                        'border-radius': '6px',
+                        'color': '#5F5F5F'
+                    },
+                    color: {
+                        header: '#52697f',
+                        headerText: '#1abc9c'
+                    },
+                    buttons: {
+                        ok: 'Ok',
+                        cancel: 'Cancel'
+                    },
+                    overlayOpacity: 0.5,
+                    dismissible: true
+                }
+            }
+        },
+        created() {
+            this.$http.get('/api/categories')
+                .then((response) => {
+                    this.options = response.data.data
+                })
+            this.$http.get('/api/tags')
+                .then((response) => {
+                    this.allTag = response.data.data
+                })
+        },
+    }
+</script>

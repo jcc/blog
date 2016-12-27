@@ -1,0 +1,49 @@
+.ibox {
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 0;
+    padding: 0;
+}
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 15px 15px 7px;
+    min-height: 48px;
+}
+.ibox-default {
+    border-color: #e7eaec;
+}
+.ibox-success {
+    border-color: #3498db;
+}
+.ibox-success {
+    border-color: #1abc9c;
+}
+.ibox-warning {
+    border-color: #f1c40f;
+}
+.ibox-danger {
+    border-color: #e74c3c;
+}
+.ibox-content {
+    clear: both;
+    background-color: #ffffff;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+.no-padding {
+    padding: 0;
+}
