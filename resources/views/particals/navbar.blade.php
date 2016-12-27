@@ -39,7 +39,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ Auth::user()->nickname or Auth::user()->name }}
+                            {{ Auth::user()->nickname ?: Auth::user()->name }}
                             <b class="caret"></b>&nbsp;&nbsp;
                             <img class="avatar img-circle" src="{{ Auth::user()->avatar }}">
                         </a>

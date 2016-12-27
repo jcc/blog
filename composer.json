@@ -60,6 +60,6 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "master",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
