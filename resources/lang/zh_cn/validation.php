@@ -125,6 +125,7 @@ return [
         'tag'          => '标签',
         'meta_description' => '主要描述',
         'link'         => '链接',
+        'tags'         => '标签',
     ],
 
 ];
