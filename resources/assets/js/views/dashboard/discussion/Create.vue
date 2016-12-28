@@ -64,7 +64,7 @@
 
 <script>
     import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
-    import Multiselect from 'vue-multiselect/lib/Multiselect.vue'
+    import Multiselect from 'vue-multiselect'
     import { stack_error } from '../../../config/helper.js'
 
     export default {
