@@ -26,7 +26,7 @@ class DiscussionTransformer extends TransformerAbstract
             'title'         => $discussion->title,
             'content_raw'   => $content->raw,
             'content_html'  => $content->html,
-            'status'        => $discussion->status,
+            'status'        => (bool) $discussion->status,
             'comment_count' => $discussion->comments->count(),
             'created_at'    => $discussion->created_at->diffForHumans(),
         ];
