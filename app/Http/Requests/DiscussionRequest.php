@@ -25,7 +25,8 @@ class DiscussionRequest extends FormRequest
     {
         return [
             'title'   => 'required|min:2',
-            'content' => 'required'
+            'content' => 'required',
+            'tags'    => 'required',
         ];
     }
 }

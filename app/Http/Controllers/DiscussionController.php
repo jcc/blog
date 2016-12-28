@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use Illuminate\Http\Request;
+use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
 use App\Repositories\TagRepository;
 
@@ -52,10 +51,10 @@ class DiscussionController extends Controller
     /**
      * Store a new discussion.
      * 
-     * @param  Request $request
+     * @param  DiscussionRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiscussionRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id'      => \Auth::id(),
@@ -103,11 +102,11 @@ class DiscussionController extends Controller
     /**
      * Update the discussion by id.
      * 
-     * @param  Request $request
+     * @param  DiscussionRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DiscussionRequest $request, $id)
     {
         $discussion = $this->discussion->getById($id);
 
