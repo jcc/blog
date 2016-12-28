@@ -4,17 +4,24 @@
     <div class="container">
         <div class="dicussion row">
             <div class="col-md-9 col-md-offset-1">
-                <form class="form-horizontal" action="{{ url('discussion', ['id' => $discussion->id]) }}" method="POST">
+                <form class="form-horizontal" action="/discussion/{{ $discussion->id }}" method="POST">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Title</label>
+
+                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                        <label for="title" class="col-sm-2 control-label">{{ lang('Discuss Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" id="title" name="title" value="{{ $discussion->title }}" class="form-control">
+                            <input type="text" id="title" name="title" class="form-control" value="{{ $discussion->title }}">
+
+                            @if ($errors->has('title'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Tag</label>
+                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                        <label class="col-sm-2 control-label">{{ lang('Discuss Tag') }}</label>
                         <div class="col-sm-10">
                             <select class="select" multiple="multiple" name="tags[]" style="width: 100%">
                                 @foreach($tags as $tag)
@@ -25,14 +32,27 @@
                                     @endif
                                 @endforeach
                             </select>
+
+                            @if ($errors->has('tags'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('tags') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Content</label>
+                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                        <label for="content" class="col-sm-2 control-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="12" name="content">{{ json_decode($discussion->content)->raw }}</textarea>
+                            <textarea class="form-control" id="content" rows="12" name="content">{{ json_decode($discussion->content)->raw }}</textarea>
+
+                            @if ($errors->has('content'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('content') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
+                
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-success pull-right">修改讨论</button>

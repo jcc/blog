@@ -110,6 +110,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'tags'         => '标签',
+    ],
 
 ];
