@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.comments')" :fields="fields" api-url="/api/comment?include=user" show-paginate @table-action="tableActions"></vue-table>
+        <vue-table :title="$t('page.comments')" :fields="fields" api-url="/api/comment" show-paginate @table-action="tableActions"></vue-table>
     </div>
 </template>
 
@@ -16,9 +16,8 @@
                         dataClass: 'text-center'
                     },
                     {
-                        name: 'user',
-                        trans: 'table.username',
-                        callback: 'username'
+                        name: 'username',
+                        trans: 'table.username'
                     },
                     {
                         name: 'type',
