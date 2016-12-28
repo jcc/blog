@@ -85,7 +85,7 @@ php artisan blog:install
 ## Thanks
 
 - [Laravist](https://www.laravist.com/)
-- [Laravel - China](https://laravel-china.com)
+- [Laravel - China](https://laravel-china.org/)
 
 ## License
 
