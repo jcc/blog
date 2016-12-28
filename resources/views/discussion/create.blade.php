@@ -7,26 +7,44 @@
                 <form class="form-horizontal" action="{{ url('discussion') }}" method="POST">
                     {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Title</label>
+                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                        <label for="title" class="col-sm-2 control-label">{{ lang('Discuss Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" id="title" name="title" class="form-control">
+                            <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
+
+                            @if ($errors->has('title'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Tag</label>
+                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                        <label class="col-sm-2 control-label">{{ lang('Discuss Tag') }}</label>
                         <div class="col-sm-10">
                             <select class="select" multiple="multiple" name="tags[]" style="width: 100%">
                                 @foreach($tags as $tag)
                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                 @endforeach
                             </select>
+
+                            @if ($errors->has('tags'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('tags') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Content</label>
+                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                        <label for="content" class="col-sm-2 control-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="12" name="content"></textarea>
+                            <textarea class="form-control" id="content" rows="12" name="content">{{ old('content') }}</textarea>
+
+                            @if ($errors->has('content'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('content') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group">

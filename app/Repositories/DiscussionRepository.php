@@ -75,7 +75,11 @@ class DiscussionRepository
 
         $discussion = $this->model->findOrFail($id);
 
-        $this->syncTag($discussion, json_decode($data['tags']));
+        if (is_array($data['tags'])) {
+            $this->syncTag($discussion, $data['tags']);
+        } else {
+            $this->syncTag($discussion, json_decode($data['tags']));
+        }
 
         return $discussion->update($data);
     }
