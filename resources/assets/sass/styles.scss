@@ -10,9 +10,11 @@ html {
     height: 100%;
 }
 body{
+    height: 100%;
+}
+#app {
     min-height: 100%;
     position: relative;
-    box-sizing: border-box;
     padding-bottom: 140px;
 }
 footer{
