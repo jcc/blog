@@ -20,6 +20,8 @@ class DiscussionController extends Controller
 
     public function __construct(DiscussionRepository $discussion, TagRepository $tag)
     {
+        $this->middleware('auth')->except(['index', 'show']);
+
         $this->discussion = $discussion;
         $this->tag = $tag;
     }
