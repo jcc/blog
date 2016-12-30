@@ -11,7 +11,7 @@ class VisitorTransformer extends TransformerAbstract
     {
         return [
             'id'            => $visitor->id,
-            'article'       => [ 'title' => isset($visitor->article) ? $visitor->article()->title : 'null' ],
+            'article'       => [ 'title' => isset($visitor->article) ? $visitor->article->title : 'null' ],
             'ip'            => $visitor->ip,
             'country'       => $visitor->country,
             'clicks'        => $visitor->clicks,
