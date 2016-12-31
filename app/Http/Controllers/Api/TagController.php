@@ -52,22 +52,6 @@ class TagController extends ApiController
     }
 
     /**
-     * Update Discussion Status By Discussion ID
-     *
-     * @param $id
-     * @param Request $request
-     * @return \App\User
-     */
-    public function status($id, Request $request)
-    {
-        $input = $request->all();
-
-        $this->tag->updateColumn($id, $input);
-
-        return $this->noContent();
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -85,9 +69,9 @@ class TagController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $this->tag->update($id, $request->all());
+        $this->tag->update($id, $request->except('tag'));
 
         return $this->noContent();
     }

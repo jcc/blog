@@ -8,7 +8,7 @@
                 <form class="form col-md-4 col-md-offset-4" role="form" @submit.prevent="edit">
                     <div class="form-group">
                         <label for="tag">{{ $t('form.tag') }}</label>
-                        <input type="text" class="form-control" id="tag" :placeholder="$t('form.tag')" name="tag" v-model="tag.tag">
+                        <input type="text" class="form-control" id="tag" :placeholder="$t('form.tag')" name="tag" v-model="tag.tag" disabled>
                     </div>
                     <div class="form-group">
                         <label for="title">{{ $t('form.title') }}</label>
