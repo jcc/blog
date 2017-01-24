@@ -90,3 +90,5 @@ php artisan blog:install
 ## License
 
 The project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+QQ Group: 272734386
