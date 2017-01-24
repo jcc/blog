@@ -8,6 +8,12 @@ return [
     // Default Icon
     'default_icon' => env('DEFAULT_ICON') ?: '/images/favicon.ico',
 
+    // Meta
+    'meta' => [
+        'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs'
+        'description' => 'Nothing is impossible in PJ Blog'
+    ],
+
     // Social Share
     'social_share' => [
         'article_share'    => env('ARTICLE_SHARE') ?: true,

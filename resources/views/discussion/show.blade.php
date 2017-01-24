@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $discussion->title)
+
 @section('content')
     <jumbotron v-cloak>
         <h4>{{ $discussion->title }}</h4>
