@@ -13,7 +13,7 @@
     <!-- Icon -->
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
 
-    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <style>
         [v-cloak] { display: none; }
@@ -32,7 +32,7 @@
 <body>
     <div id="app"></div>
 
-    <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
     @if(config('blog.google.open'))
     <script>

@@ -79,7 +79,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="scss">
     .avatar {
         width: 50px;
         margin: 0 auto;
