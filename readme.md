@@ -10,7 +10,7 @@
 
 This is a powerful blog, I try to build the blog more beautiful, more convenient. 
 
-Laravel 5.3 and Vuejs 2.0 combined with the establishment of a good response and quickly dashboard, the dashboard made through the Vuejs component development.
+`Laravel 5.*` and `Vuejs 2.*` combined with the establishment of a good response and quickly dashboard, the dashboard made through the `Vuejs` component development.
 
 I believe it will be better and better. If you are interested in this, you can join and enjoy it.
 

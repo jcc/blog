@@ -269,7 +269,7 @@
     }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .none {
         color: #ECF0F1;
         padding-bottom: 20px;

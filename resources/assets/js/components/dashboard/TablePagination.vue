@@ -40,7 +40,7 @@
     }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .active {
       background-color: #3d4e60;
       border-right: none;

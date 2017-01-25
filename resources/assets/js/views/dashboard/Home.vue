@@ -80,7 +80,7 @@
     }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     h1 {
         font-size: 30px;
         font-weight: normal;
