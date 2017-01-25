@@ -16,11 +16,13 @@ return [
     'accepted'             => ':attribute必须接受',
     'active_url'           => ':attribute必须是一个合法的 URL',
     'after'                => ':attribute 必须是 :date 之后的一个日期',
+    'after_or_equal'       => ':attribute 必须是 :date 之后或相同的一个日期',
     'alpha'                => ':attribute只能包含字母',
     'alpha_dash'           => ':attribute只能包含字母、数字、中划线或下划线',
     'alpha_num'            => ':attribute只能包含字母和数字',
     'array'                => ':attribute必须是一个数组',
     'before'               => ':attribute 必须是 :date 之前的一个日期',
+    'before_or_equal'      => ':attribute 必须是 :date 之前或相同的一个日期',
     'between'              => [
         'numeric' => ':attribute 必须在 :min 到 :max 之间',
         'file'    => ':attribute 必须在 :min 到 :max KB 之间',

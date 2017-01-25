@@ -55,7 +55,7 @@
     }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .sidebar-nav {
     position: absolute;
     top: 0;

@@ -10,7 +10,7 @@ return [
 
     // Meta
     'meta' => [
-        'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs'
+        'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs',
         'description' => 'Nothing is impossible in PJ Blog'
     ],
 

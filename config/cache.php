@@ -46,17 +46,17 @@ return [
 
         'file' => [
             'driver' => 'file',
-            'path' => storage_path('framework/cache'),
+            'path' => storage_path('framework/cache/data'),
         ],
 
         'memcached' => [
             'driver' => 'memcached',
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
-            'sasl'       => [
+            'sasl' => [
                 env('MEMCACHED_USERNAME'),
                 env('MEMCACHED_PASSWORD'),
             ],
-            'options'    => [
+            'options' => [
                 // Memcached::OPT_CONNECT_TIMEOUT  => 2000,
             ],
             'servers' => [

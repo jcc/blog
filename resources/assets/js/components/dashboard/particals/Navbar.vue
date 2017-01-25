@@ -34,7 +34,7 @@
     }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 #repbar {
   margin-left: -15px;
 }

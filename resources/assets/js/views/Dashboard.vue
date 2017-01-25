@@ -30,7 +30,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="scss">
     $sidebarSize: 250px;
     $sidebarColor: #828e9a;
     $sidebarBar: darken($sidebarColor, 3%); /* divider */

@@ -187,7 +187,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="scss">
     .editor-toolbar.fullscreen {
         z-index: 1000 !important;
     }
