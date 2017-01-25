@@ -28,11 +28,11 @@ Here is [documents](https://manual.pigjian.com/)
 - Markdown Editor
 - and more...
 
-[PJ Blog](https://github.com/jcc/blog) Laravel 5.3.
+[PJ Blog](https://github.com/jcc/blog) Laravel 5.*
 
 ## Preview
 
-![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
+![New Blog Home](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
 
 ![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog2.jpeg)
 
