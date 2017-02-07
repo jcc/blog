@@ -124,7 +124,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ elixir('js/jcrop.js') }}"></script>
+    <script src="{{ mix('js/jcrop.js') }}"></script>
 
     <script>
         $(document).ready(function () {
