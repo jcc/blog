@@ -187,7 +187,7 @@ class UserController extends Controller
      */
     public function avatar(Request $request)
     {
-        $file = $request->file('avatar');
+        $file = $request->file('files');
         $input = [ 'image' => $file ];
         $rules = [ 'image' => 'image' ];
 
@@ -214,37 +214,13 @@ class UserController extends Controller
 
         $this->manager->saveFile($destinationPath.$filename, $image->__toString());
 
+        $this->user->saveAvatar(Auth::user()->id, $imageWebpath);
+
         return response()->json([
                     'success' => true,
                     'avatar'  => $imageWebpath,
                     'image'   => $destinationPath.$filename
                 ]);
-    }
-
-    /**
-     * Crop the avatar.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function cropAvatar(Request $request)
-    {
-        $photo   = $request->get('photo');
-
-        $width   = (int)$request->get('w');
-        $height  = (int)$request->get('h');
-        $xAlign  = (int)$request->get('x');
-        $yAlign  = (int)$request->get('y');
-
-        $imageWebpath = $this->manager->fileWebPath($photo);
-
-        $image = Image::make($imageWebpath)->crop($width, $height, $xAlign, $yAlign)->stream();
-
-        $this->manager->saveFile($photo, $image->__toString());
-
-        $this->user->saveAvatar(Auth::user()->id, $imageWebpath);
-
-        return redirect('/user/profile');
     }
 
 }

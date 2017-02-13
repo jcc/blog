@@ -37,8 +37,6 @@ Route::group(['prefix' => 'user'], function () {
     });
 });
 
-Route::post('crop/api', 'UserController@cropAvatar')->middleware('auth');
-
 // User Setting
 Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
     Route::get('/', 'SettingController@index')->name('setting.index');
