@@ -1,2 +1,2 @@
-require('./jcrop.min.js')
+require('./Jcrop.min.js')
 require('./jquery.form.min.js')
