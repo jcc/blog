@@ -16,9 +16,3 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .js('resources/assets/js/home.js', 'public/js')
    .sass('resources/assets/sass/home.scss', 'public/css')
    .version();
-
-mix.combine([
-    'vendor/jcrop.min.css'
-], 'public/css/jcrop.css').version();
-
-mix.js('resources/assets/js/vendor/combine.js', 'public/js/jcrop.js').version();
