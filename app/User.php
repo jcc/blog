@@ -90,7 +90,7 @@ class User extends Authenticatable
      */
     public function routeNotificationForMail()
     {
-        if (\Auth::id() != $this->id && $this->email_notify_enabled == 'yes') {
+        if (auth()->id() != $this->id && $this->email_notify_enabled == 'yes' && config('blog.mail_notification')) {
             return $this->email;
         }
     }

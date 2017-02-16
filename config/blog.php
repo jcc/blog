@@ -2,6 +2,9 @@
 
 return [
 
+    // Mail Notification
+    'mail_notification' => env('MAIL_NOTIFICATION') ?: false,
+
     // Default Avatar
     'default_avatar' => env('DEFAULT_AVATAR') ?: '/images/default.png',
 
