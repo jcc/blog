@@ -51,7 +51,6 @@ class ReceivedComment extends Notification implements ShouldQueue
                 : url('discussion', ['id' => $comment->commentable->id]);
         return (new MailMessage)
                     ->greeting('尊敬的' . $notifiable->name)
-                    ->to($notifiable->email)
                     ->subject('您收到了一条新的评论')
                     ->line($message)
                     ->line(json_decode($comment->content)->raw)
