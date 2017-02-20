@@ -159,6 +159,8 @@
             }
         },
         created() {
+            this.currentPage = this.$route.query.page
+
             this.loadData()
         },
         mounted() {
