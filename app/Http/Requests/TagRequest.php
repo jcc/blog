@@ -25,6 +25,7 @@ class TagRequest extends FormRequest
     {
         return [
             'tag' => 'required|unique:tags',
+            'title' => 'required',
             'meta_description' => 'required'
         ];
     }
