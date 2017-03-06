@@ -25,7 +25,9 @@
     "vue-multiselect": "^2.0.0-beta.13",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1",
-    "vuex": "^2.1.1",
-    "vue-core-image-upload": "^2.0.5"
+    "vuex": "^2.1.1"
+  },
+  "dependencies": {
+    "cropperjs": "^1.0.0-beta.2"
   }
 }
