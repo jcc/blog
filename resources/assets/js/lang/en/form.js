@@ -43,6 +43,7 @@ export default {
     'create_discussion': 'Create Discussion',
     'edit_discussion': 'Edit Discussion',
     'edit_comment': 'Edit Comment',
+    'submit_comment': 'Submit',
     'create_tag': 'Create Tag',
     'edit_tag': 'Edit Tag',
     'create_folder': 'Create New Folder',
@@ -52,6 +53,8 @@ export default {
     'create_link': 'Create Link',
     'edit_link': 'Edit Link',
     'create': 'Create',
-    'edit': 'Edit'
+    'edit': 'Edit',
+    'crop_avatar': 'Crop Avatar',
+    'modify_avatar': 'Modify Avatar',
 
 }
