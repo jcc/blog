@@ -43,6 +43,7 @@ export default {
     'create_discussion': '创建讨论',
     'edit_discussion': '修改讨论',
     'edit_comment': '修改评论',
+    'submit_comment': '发布评论',
     'create_tag': '创建标签',
     'edit_tag': '修改标签',
     'create_folder': '创建文件夹',
@@ -52,6 +53,8 @@ export default {
     'create_link': '创建友链',
     'edit_link': '修改友链',
     'create': '创建',
-    'edit': '修改'
+    'edit': '修改',
+    'crop_avatar': '裁剪头像',
+    'modify_avatar': '修改头像',
 
 }

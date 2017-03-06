@@ -178,7 +178,6 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-
     /**
      * Upload the avatar.
      *
@@ -187,40 +186,43 @@ class UserController extends Controller
      */
     public function avatar(Request $request)
     {
-        $file = $request->file('files');
-        $input = [ 'image' => $file ];
-        $rules = [ 'image' => 'image' ];
+        $file = $request->file('file');
 
-        $validator = \Validator::make($input, $rules);
+        $validator = \Validator::make([ 'file' => $file ], [ 'file' => 'image' ]);
 
         if($validator->fails()) {
             return response()->json([
-                        'success' => false,
-                        'errors'  => $validator->getMessageBag()->toArray()
-                    ]);
+                    'success' => false,
+                    'errors'  => $validator->getMessageBag()->toArray()
+                ]);
         }
 
-        $destinationPath = 'avatar/' . Auth::user()->id . '/';
+        $path = 'avatars/' . Auth::user()->id . '/';
 
-        $fileType = $file->getClientOriginalExtension();
+        $result = $this->manager->store($file, $path);
 
-        $filename = Auth::user()->id.'_'.time().'_'.str_random(12). '.' . $fileType;
-
-        $file->storeAs($destinationPath, $filename);
-
-        $imageWebpath = $this->manager->fileWebPath($destinationPath.$filename);
-
-        $image = Image::make($imageWebpath)->fit(400)->stream();
-
-        $this->manager->saveFile($destinationPath.$filename, $image->__toString());
-
-        $this->user->saveAvatar(Auth::user()->id, $imageWebpath);
-
-        return response()->json([
-                    'success' => true,
-                    'avatar'  => $imageWebpath,
-                    'image'   => $destinationPath.$filename
-                ]);
+        return response()->json($result);
     }
 
+    /**
+     * Crop Avatar
+     * 
+     * @param  Request $request
+     * @return array
+     */
+    public function cropAvatar(Request $request)
+    {
+        $currentImage = $request->get('image');
+        $data = $request->get('data');
+
+        $image = Image::make($currentImage['relative_url']);
+
+        $image->crop((int) $data['width'], (int) $data['height'], (int) $data['x'], (int) $data['y']);
+
+        $image->save($currentImage['relative_url']);
+
+        $this->user->saveAvatar(Auth::user()->id, $currentImage['url']);
+
+        return response()->json($currentImage);
+    }
 }
