@@ -283,8 +283,8 @@
                     })
             },
             checkImageType(fileType) {
-                if (fileType != '') {
-                    return fileType.split('/')[0] == 'image'
+                if (fileType != null) {
+                    return fileType.indexOf("image/") != -1
                 }
 
                 return false

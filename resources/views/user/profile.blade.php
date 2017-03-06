@@ -72,14 +72,3 @@
     </div>
 </div>
 @endsection
-
-@section('styles')
-<style>
-    .modal {
-        overflow: hidden !important;
-    }
-    .modal-body {
-        overflow: scroll;
-    }
-</style>
-@endsection

@@ -1,24 +1,24 @@
 <template>
   <div class="cover-avatar text-center">
-    <img :src="image" class="avatar">
-    <vue-core-image-upload  
-      crop-ratio="1:1" 
-      :class="['pure-button','pure-button-primary','js-btn-crop']" 
-      :crop="false" 
-      url="/user/avatar" 
-      :cropBtn="{ok:'保存','cancel':'取消'}"
-      extensions="png,gif,jpeg,jpg"
-      :headers="csrfToken"
-      text="修改头像"
-      @imageuploaded="imageuploaded"></vue-core-image-upload>
+    <img :src="src" class="avatar">
+    <a href="javascript:;" class="btn btn-success file">
+      <span>{{ $t('form.modify_avatar') }}</span>
+      <input type="file" name="avatar" :accept="imageType" @change="upload">
+    </a>
+
+    <modal :show="dialogVisible" @cancel="dialogVisible = false">
+        <div slot="title">{{ $t('form.crop_avatar') }}</div>
+        <cropper :image="cropImage" @canceled="dialogVisible = false" @succeed="succeed"></cropper>
+    </modal>
   </div>
 </template>
 
 <script>
-  import VueCoreImageUpload  from 'vue-core-image-upload';
+  import Cropper from '../components/Cropper'
+  import Modal from '../components/dashboard/Modal'
 
   export default {
-    components: { VueCoreImageUpload },
+    components: { Modal, Cropper },
     props: {
       src: {
         type: String,
@@ -29,26 +29,59 @@
     },
     data() {
       return {
-        image: this.src,
-        csrfToken: {
-            'X-CSRF-TOKEN': Laravel.csrfToken,
-        }
+        cropImage: undefined,
+        dialogVisible: false,
+        imageType: 'image/png,image/gif,image/jpeg,image/jpg,image/tiff'
       }
     },
     methods: {
-      imageuploaded(res) {
-        this.image = res.avatar;
-        window.location = '/user/profile'
-      }
+      upload(e) {
+        let files = e.target.files
+        let formData = new FormData()
+
+        formData.append('file', files[0]);
+
+        this.$http.post('/user/avatar', formData)
+            .then((response) => {
+              this.cropImage = response.data
+
+              this.dialogVisible = true
+            })
+      },
+      succeed() {
+        this.dialogVisible = true
+
+        window.location = '/user/profile';
+      },
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .pure-button {
-    background-color: #1abc9c;
-    color: #fff;
-    padding: 0.5em 1em;
-    border-radius: 5px;
+  .file {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px;
+
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    input {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      width: 100px;
+      height: 30px;
+      opacity: 0;
+    }
   }
 </style>

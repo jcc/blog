@@ -25,6 +25,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('profile', 'UserController@edit');
         Route::post('avatar', 'UserController@avatar');
+        Route::post('crop/avatar', 'UserController@cropAvatar');
         Route::put('profile/{id}', 'UserController@update');
         Route::post('follow/{id}', 'UserController@doFollow');
     });
