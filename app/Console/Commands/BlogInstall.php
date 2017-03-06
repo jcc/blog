@@ -40,6 +40,7 @@ class BlogInstall extends Command
         $this->execShellWithPrettyPrint('php artisan key:generate');
         $this->execShellWithPrettyPrint('php artisan migrate --seed');
         $this->execShellWithPrettyPrint('php artisan passport:install');
+        $this->execShellWithPrettyPrint('php artisan storage:link');
     }
 
     /**
