@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Exceptions\UploadException;
 use Illuminate\Support\Facades\Storage;
 use Dflydev\ApacheMimeTypes\PhpRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BaseManager
 {
@@ -25,7 +26,7 @@ class BaseManager
      */
     public function __construct(PhpRepository $mimeDetect)
     {
-        $this->disk = Storage::disk(config('filesystmes.default'));
+        $this->disk = Storage::disk(config('filesystmes.default', 'public'));
 
         $this->mimeDetect = $mimeDetect;
     }
@@ -284,5 +285,34 @@ class BaseManager
         $this->cleanFolder($path);
 
         return $this->disk->delete($path);
+    }
+
+    /**
+     * Handle the file upload. Returns the response body on success, or false
+     * on failure.
+     *
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @param string                                              $dir
+     * @param Closure                                             $callback
+     *
+     * @return array|bool
+     */
+    public function store(UploadedFile $file, $dir = '', Closure $callback = null)
+    {
+        $hashName = str_ireplace('.jpeg', '.jpg', $file->hashName());
+
+        $mime = $file->getMimeType();
+
+        $realname = $this->disk->putFileAs($dir, $file, $hashName);
+
+        return [
+                'success' => true,
+                'filename' => $hashName,
+                'original_name' => $file->getClientOriginalName(),
+                'mime' => $mime,
+                'size' => $file->getClientSize(),
+                'relative_url' => "storage/$realname",
+                'url' => asset("storage/$realname"),
+        ];
     }
 }

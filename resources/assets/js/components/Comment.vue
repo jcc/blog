@@ -18,12 +18,6 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="ion-clock"></i>{{ comment.created_at }}
                             <span class="pull-right operate">
-                                <!-- Favourite Button -->
-                                <!-- <a href="javascript:;" @click="like(index)" v-if="username != comment.username"> -->
-                                    <!-- <i class="ion-happy-outline" v-if="!comment.like"></i> -->
-                                    <!-- <i class="ion-happy" v-else></i> -->
-                                    <!-- {{ comment.like_num }} -->
-                                <!-- </a> -->
                                 <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
                                     <i class="ion-trash-b"></i>
                                 </a>
@@ -47,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success pull-right">发表评论</button>
+                            <button type="submit" class="btn btn-success pull-right">{{ $t('form.submit_comment') }}</button>
                         </div>
                     </div>
                 </form>
