@@ -35,8 +35,9 @@ Vue.use(VueRouter);
 
 Vue.config.lang = window.Language;
 
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang])
+const i18n = new VueI18n({
+    locale: Vue.config.lang,
+    messages: locales
 })
 
 Vue.component(
@@ -61,4 +62,4 @@ const router = new VueRouter({
     routes: routes
 });
 
-new Vue(Vue.util.extend({ router, store }, App)).$mount('#app');
+new Vue(Vue.util.extend({ router, store, i18n }, App)).$mount('#app');
