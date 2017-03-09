@@ -16,8 +16,9 @@ Vue.use(VueI18n);
 
 Vue.config.lang = window.Language;
 
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang])
+const i18n = new VueI18n({
+    locale: Vue.config.lang,
+    messages: locales
 })
 
 Vue.http.interceptors.push((request, next) => {
@@ -34,5 +35,6 @@ Vue.component('parse', require('./components/Parse.vue'));
 Vue.component('avatar', require('./components/AvatarUpload.vue'));
 
 new Vue({
-    el: '#app'
+    el: '#app',
+    i18n
 });
