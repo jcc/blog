@@ -21,7 +21,7 @@
                             <i class="ion-chatbubble-working"></i>{{ lang('Replies Num') }} : {{ $discussion->comments->count() }}
                         </div>
                         <div class="discuss-body">
-                            <parse :content="{{ $discussion->content }}"></parse>
+                            <parse content="{{ json_decode($discussion->content)->raw }}"></parse>
                         </div>
                         @if(config('blog.social_share.discussion_share'))
                         <div class="footing">
