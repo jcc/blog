@@ -6,7 +6,7 @@
     export default {
         props: {
             content: {
-                type: Object,
+                type: String,
                 default() {
                     return null
                 }
@@ -18,7 +18,7 @@
             }
         },
         created() {
-            this.rawHtml = marked(this.content.raw)
+            this.rawHtml = marked(this.content)
         }
     }
 </script>
