@@ -21,4 +21,10 @@ class ArticleApiTest extends TestCase
             'meta' => ['pagination' => []],
         ]);
     }
+
+    /** @test */
+    public function it_shows_article()
+    {
+        
+    }
 }

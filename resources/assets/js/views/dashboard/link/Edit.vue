@@ -64,7 +64,7 @@
 
                 this.$http.post('/api/upload/path', formData)
                     .then((response) => {
-                        this.link.image = '/uploads' + response.data.fullPath
+                        this.link.image = response.data.url
                     })
             },
             edit() {
