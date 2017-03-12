@@ -10,6 +10,7 @@ require('./bootstrap');
 import VueRouter from 'vue-router';
 import store from './vuex/store.js';
 import VueI18n from 'vue-i18n';
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 
 import routes from './routes.js';
 import locales from './lang';
@@ -17,6 +18,7 @@ import locales from './lang';
 import App from './App.vue';
 
 window.toastr = require('toastr/build/toastr.min.js');
+window.innerHeight = 800;
 
 window.toastr.options = {
     positionClass: "toast-bottom-right",
