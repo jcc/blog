@@ -14,7 +14,7 @@
         "erusev/parsedown": "^1.6",
         "dflydev/apache-mime-types": "^1.0",
         "league/fractal": "^0.14.0",
-        "laravel/socialite": "^2.0",
+        "laravel/socialite": "^3.0",
         "yzalis/identicon": "^1.1",
         "jellybool/translug" : "~1.0",
         "intervention/image": "^2.3"
