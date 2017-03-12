@@ -18,6 +18,8 @@
 
     <!-- Scripts -->
     <script>
+        window.Language = '{{ config('app.locale') }}';
+
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
