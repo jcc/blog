@@ -69,11 +69,11 @@ class UploadController extends ApiController
      */
     public function uploadFileByPath(Request $request)
     {
-        $path = $request->file('image')->store($request->get('path'));
+        $image = $this->manager->store($request->file('image'), $request->get('path'));
 
-        $this->link->updateColumn($request->get('id'), ['image' => '/uploads/' . $path]);
+        $this->link->updateColumn($request->get('id'), ['image' => $image['url']]);
 
-        return $this->respondWithArray($this->manager->fileDetail($path));
+        return $this->respondWithArray($image);
     }
 
     /**
