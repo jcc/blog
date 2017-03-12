@@ -35,6 +35,5 @@ Vue.component('parse', require('./components/Parse.vue'));
 Vue.component('avatar', require('./components/AvatarUpload.vue'));
 
 new Vue({
-    el: '#app',
-    i18n
-});
+    i18n: i18n,
+}).$mount('#app');
