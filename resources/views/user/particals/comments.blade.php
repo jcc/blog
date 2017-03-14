@@ -13,7 +13,7 @@
                     in <span class="timeago">{{ $comment->created_at->diffForHumans() }}</span>
                 </span>
 
-                <parse :content="{{ $comment->content }}"></parse>
+                <parse content="{{ json_decode($comment->content)->raw }}"></parse>
 
             @else
                 {{ lang('Forbidden') }}
