@@ -9,7 +9,13 @@ Route::group([
     Route::resource('user', 'UserController', ['except' => ['create', 'show']]);
     Route::post('/user/{id}/status', 'UserController@status');
 
-    Route::resource('article', 'ArticleController');
+    Route::resource('article', 'ArticleController', ['names' => [
+        'index' => 'api.article.index',
+        'store' => 'api.article.store',
+        'edit' => 'api.article.edit',
+        'update' => 'api.article.update',
+        'destroy' => 'api.article.destroy',
+    ],'except' => ['create', 'show']]);
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');
