@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-            <parse :content="{{ $article->content }}"></parse>
+            <parse content="{{ json_decode($article->content)->raw }}"></parse>
 
             @if($article->is_original)
                 <div class="publishing alert alert-dismissible alert-info">
