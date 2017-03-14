@@ -26,7 +26,7 @@ class BaseManager
      */
     public function __construct(PhpRepository $mimeDetect)
     {
-        $this->disk = Storage::disk(config('filesystmes.default', 'public'));
+        $this->disk = Storage::disk(config('filesystems.default', 'public'));
 
         $this->mimeDetect = $mimeDetect;
     }
