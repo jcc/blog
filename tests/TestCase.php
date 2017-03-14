@@ -16,5 +16,7 @@ abstract class TestCase extends BaseTestCase
             factory(User::class, 'admin')->create(),
             ['user', 'article']
         );
+
+        return $this;
     }
 }
