@@ -136,7 +136,7 @@ class Article extends Model
     public function setUniqueSlug($value, $extra) {
         $slug = str_slug($value.'-'.$extra);
         if (static::whereSlug($slug)->exists()) {
-            $this->setUniqueSlug($slug, $extra+1);
+            $this->setUniqueSlug($slug, (int) $extra + 1);
             return;
         }
         $this->attributes['slug'] = $slug;
