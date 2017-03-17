@@ -2,7 +2,7 @@
 
 @section('content')
     <jumbotron v-cloak>
-        <h3>{{ $category }}</h3>
+        <h3>{{ $category->name }}</h3>
 
         <h6>{{ lang('Category Meta') }}</h6>
     </jumbotron>
