@@ -157,9 +157,7 @@ class BaseManager
      */
     public function fileWebPath($path)
     {
-        $path = rtrim(config('filesystems.disks.local.webpath'), '/') . '/' . ltrim($path, '/');
-
-        return url($path);
+        return asset("storage/" . ltrim($path, '/'));
     }
 
     /**
