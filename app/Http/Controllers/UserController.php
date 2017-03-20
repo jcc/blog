@@ -197,7 +197,7 @@ class UserController extends Controller
                 ]);
         }
 
-        $path = 'avatars/' . Auth::user()->id . '/';
+        $path = 'avatars/' . Auth::user()->id;
 
         $result = $this->manager->store($file, $path);
 
