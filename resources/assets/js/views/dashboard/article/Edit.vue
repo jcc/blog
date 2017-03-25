@@ -139,7 +139,7 @@
             }
         },
         created() {
-            this.$http.get('/api/article/' + this.$route.params.id + '/edit?include=category,tags')
+            this.$http.get('article/' + this.$route.params.id + '/edit?include=category,tags')
                 .then((response) => {
                     this.article = response.data.data
 
@@ -174,12 +174,12 @@
                 this.article.category_id = this.selected.id
                 this.article.tags = JSON.stringify(tagIDs)
 
-                this.$http.put('/api/article/' + this.$route.params.id, this.article)
+                this.$http.put('article/' + this.$route.params.id, this.article)
                         .then((response) => {
                             toastr.success('You updated the article informations success!')
 
                             this.$router.push('/dashboard/articles')
-                        }, (response) => {
+                        }).catch(({response}) => {
                             stack_error(response.data)
                         })
             }

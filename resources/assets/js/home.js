@@ -4,15 +4,16 @@ window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n';
 import locales from './lang';
+import httpPlugin from './plugins/http';
 
 require('bootstrap-sass');
-require('vue-resource');
 require('social-share.js/dist/js/social-share.min.js');
 require('./vendor/select2.min.js');
 window.marked = require('marked');
 window.hljs = require('./vendor/highlight.min.js');
 
 Vue.use(VueI18n);
+Vue.use(httpPlugin);
 
 Vue.config.lang = window.Language;
 
@@ -20,11 +21,6 @@ const i18n = new VueI18n({
     locale: Vue.config.lang,
     messages: locales
 })
-
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-    next();
-});
 
 Vue.component('comment', require('./components/Comment.vue'));
 
