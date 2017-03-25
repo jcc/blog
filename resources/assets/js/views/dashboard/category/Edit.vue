@@ -45,19 +45,19 @@
             }
         },
         created() {
-            this.$http.get('/api/category/' + this.$route.params.id + '/edit')
+            this.$http.get('category/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.category = response.data.data
                 })
         },
         methods: {
             edit() {
-                this.$http.put('/api/category/' + this.$route.params.id, this.category)
+                this.$http.put('category/' + this.$route.params.id, this.category)
                     .then((response) => {
                         toastr.success('You updated the category infomation success!')
 
                         this.$router.push('/dashboard/categories')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

@@ -201,14 +201,14 @@
 
                 this.path = path + '/' + this.folder
 
-                this.$http.post('/api/folder', { folder: this.path })
+                this.$http.post('folder', { folder: this.path })
                     .then((response) => {
                         toastr.success('You create a new folder success!')
 
                         this.showFolder = false
                         this.$set(this.upload.subfolders, this.path, this.folder)
                         this.folder = ''
-                    }, (response) => {
+                    }).catch(({ response }) => {
                         toastr.error(response.status + ' : ' + response.statusText)
                     })
 
@@ -228,14 +228,14 @@
                 formData.append('name', this.file_name)
                 formData.append('folder', this.upload.folder)
 
-                this.$http.post('/api/upload', formData)
+                this.$http.post('upload', formData)
                     .then((response) => {
                         toastr.success('You upload a file success!')
 
                         this.upload.files.push(response.data)
                         this.file_name = ''
                         this.showFile = false
-                    }, (response) => {
+                    }).catch(({response}) => {
                         if (response.data.error) {
                             toastr.error(response.data.error.message)
                         } else {
@@ -245,27 +245,27 @@
             },
             deleteFolder(name) {
                 const path = (this.upload.folder == '/') ? '' : this.upload.folder
-                this.$http.post('/api/folder/delete', { del_folder: name, folder: this.upload.folder })
+                this.$http.post('folder/delete', { del_folder: name, folder: this.upload.folder })
                     .then((response) => {
                         toastr.success('You delete a folder success!')
 
                         this.$delete(this.upload.subfolders, path + '/' + name)
-                    }, (response) => {
+                    }).catch(({response}) => {
                         toastr.error(response.status + ' : Resource ' + response.statusText)
                     })
             },
             deleteFile(file, index) {
-                this.$http.post('/api/file/delete', { path: file.fullPath })
+                this.$http.post('file/delete', { path: file.fullPath })
                     .then((response) => {
                         toastr.success('You delete a file success!')
 
                         this.upload.files.splice(index, 1)
-                    }, (response) => {
+                    }).catch(({response}) => {
                         toastr.error(response.status + ' : Resource ' + response.statusText)
                     })
             },
             getFileInfo(path) {
-                var url = '/api/upload'
+                var url = 'upload'
 
                 if (path) {
                     url = url + '?folder=' + path

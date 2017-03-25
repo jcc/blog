@@ -39,7 +39,7 @@
                 autoDownloadFontAwesome: true
             })
 
-            this.$http.get('/api/comment/' + this.$route.params.id + '/edit')
+            this.$http.get('comment/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.comment = response.data.data
                     this.simplemde.value(this.comment.content_raw)
@@ -54,12 +54,12 @@
                     return
                 }
 
-                this.$http.put('/api/comment/' + this.$route.params.id, this.comment)
+                this.$http.put('comment/' + this.$route.params.id, this.comment)
                     .then((response) => {
                         toastr.success('You updated the comment success!')
 
                         this.$router.push('/dashboard/comments')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         let content = response.data.content[0]
 
                         swal({

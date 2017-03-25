@@ -37,19 +37,19 @@
             }
         },
         created() {
-            this.$http.get('/api/tag/' + this.$route.params.id + '/edit')
+            this.$http.get('tag/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.tag = response.data.data
                 })
         },
         methods: {
             edit() {
-                this.$http.put('/api/tag/' + this.$route.params.id, this.tag)
+                this.$http.put('tag/' + this.$route.params.id, this.tag)
                     .then((response) => {
                         toastr.success('You updated the tag information success!')
 
                         this.$router.push('/dashboard/tags')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

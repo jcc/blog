@@ -47,7 +47,7 @@
             }
         },
         created() {
-            this.$http.get('/api/link/' + this.$route.params.id + '/edit')
+            this.$http.get('link/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.link = response.data.data
                 })
@@ -62,18 +62,18 @@
 
                 if (!/\/(?:jpeg|jpg|png)/i.test(image.type)) return;
 
-                this.$http.post('/api/upload/path', formData)
+                this.$http.post('upload/path', formData)
                     .then((response) => {
                         this.link.image = response.data.url
                     })
             },
             edit() {
-                this.$http.put('/api/link/' + this.$route.params.id, this.link)
+                this.$http.put('link/' + this.$route.params.id, this.link)
                     .then((response) => {
                         toastr.success('You updated the link information success!')
 
                         this.$router.push('/dashboard/links')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

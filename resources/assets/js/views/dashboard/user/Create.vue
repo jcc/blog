@@ -39,12 +39,12 @@
             create(event) {
                 const formData = new FormData(event.target)
 
-                this.$http.post('/api/user', formData)
+                this.$http.post('user', formData)
                     .then((response) => {
                         toastr.success('You create a new account success!')
 
                         this.$router.push('/dashboard/users')
-                    }, (response) => {
+                    }).catch(({ response }) => {
                         stack_error(response.data)
                     })
             }

@@ -7,10 +7,11 @@
 
 require('./bootstrap');
 
+import httpPlugin from './plugins/http';
 import VueRouter from 'vue-router';
 import store from './vuex/store.js';
 import VueI18n from 'vue-i18n';
-import 'vue-multiselect/dist/vue-multiselect.min.css'
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 import routes from './routes.js';
 import locales from './lang';
@@ -32,6 +33,7 @@ window.toastr.options = {
     hideMethod: "fadeOut"
 };
 
+Vue.use(httpPlugin);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 
