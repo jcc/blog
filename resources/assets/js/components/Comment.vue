@@ -118,7 +118,7 @@
             }
         },
         mounted() {
-            var url = '/api/commentable/' + this.commentableId + '/comment'
+            var url = 'commentable/' + this.commentableId + '/comment'
             this.$http.get(url, {
                 params: {
                     commentable_type: this.commentableType
@@ -142,7 +142,7 @@
                     commentable_type: this.commentableType
                 }
 
-                this.$http.post('/api/comments', data)
+                this.$http.post('comments', data)
                     .then((response) => {
                         let comment = null
                         comment = response.data.data
@@ -161,7 +161,7 @@
             //     this.comments[index].like ? this.comments[index].like_num++ : this.comments[index].like_num--
             // },
             commentDelete(index, id) {
-                this.$http.delete('/api/comments/' + id)
+                this.$http.delete('comments/' + id)
                     .then((response) => {
                         this.comments.splice(index, 1)
                         toastr.success('You delete your comment success!')

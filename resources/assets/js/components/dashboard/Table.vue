@@ -192,7 +192,7 @@
                     this.$router.push(page + this.currentPage)
                 }
 
-                this.$http.get(url, { headers: this.$store.state.headers })
+                this.$http.get(url)
                     .then(response => {
                         this.pagination = response.data.meta.pagination
                         this.items = response.data.data

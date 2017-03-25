@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.visitors')" :fields="fields" api-url="/api/visitor" show-paginate></vue-table>
+        <vue-table :title="$t('page.visitors')" :fields="fields" api-url="visitor" show-paginate></vue-table>
     </div>
 </template>
 

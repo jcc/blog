@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.tags')" :fields="fields" api-url="/api/tag" show-paginate @table-action="tableActions">
+        <vue-table :title="$t('page.tags')" :fields="fields" api-url="tag" show-paginate @table-action="tableActions">
             <div slot="buttons">
                 <router-link to="/dashboard/tags/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
             </div>
@@ -49,12 +49,12 @@
                 if (action == 'edit-item') {
                     this.$router.push('/dashboard/tags/' + data.id + '/edit')
                 } else if (action == 'delete-item') {
-                    this.$http.delete('/api/tag/' + data.id)
+                    this.$http.delete('tag/' + data.id)
                         .then((response) => {
                             toastr.success('You delete the tag success!')
 
                             this.$emit('reload')
-                        }, (response) => {
+                        }).catch(({response}) => {
                             toastr.error(response.status + ' : Resource ' + response.statusText)
                         })
                 }

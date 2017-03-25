@@ -46,14 +46,14 @@
             }
         },
         created() {
-            this.$http.get('/api/user/' + this.$route.params.id + '/edit')
+            this.$http.get('user/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.user = response.data.data
                 })
         },
         methods: {
             edit() {
-                this.$http.put('/api/user/' + this.$route.params.id, this.user)
+                this.$http.put('user/' + this.$route.params.id, this.user)
                     .then((response) => {
                         toastr.success('You updated a new account information!')
 

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.comments')" :fields="fields" api-url="/api/comment" show-paginate @table-action="tableActions"></vue-table>
+        <vue-table :title="$t('page.comments')" :fields="fields" api-url="comment" show-paginate @table-action="tableActions"></vue-table>
     </div>
 </template>
 
@@ -48,12 +48,12 @@
                 if (action == 'edit-item') {
                     this.$router.push('/dashboard/comments/' + data.id + '/edit')
                 } else if (action == 'delete-item') {
-                    this.$http.delete('/api/comment/' + data.id)
+                    this.$http.delete('comment/' + data.id)
                         .then((response) => {
                             toastr.success('You delete the comment success!')
 
                             this.$emit('reload')
-                        }, (response) => {
+                        }).catch(({response}) => {
                             toastr.error(response.status + ' : Resource ' + response.statusText)
                         })
                 }
