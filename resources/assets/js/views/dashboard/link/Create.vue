@@ -57,12 +57,12 @@
                     return
                 }
 
-                this.$http.post('/api/link', formData)
+                this.$http.post('link', formData)
                     .then((response) => {
                         toastr.success('You created a new link success!')
 
                         this.$router.push('/dashboard/links')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

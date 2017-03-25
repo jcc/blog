@@ -79,7 +79,7 @@
             }
         },
         created() {
-            this.$http.get('/api/tags')
+            this.$http.get('tags')
                 .then((response) => {
                     this.allTag = response.data.data
                 })
@@ -109,12 +109,12 @@
                 formData.append('content', this.simplemde.value())
                 formData.append('tags', JSON.stringify(tagIDs))
 
-                this.$http.post('/api/discussion', formData)
+                this.$http.post('discussion', formData)
                     .then((response) => {
                         toastr.success('You created a new discussion success!')
 
                         this.$router.push('/dashboard/discussions')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

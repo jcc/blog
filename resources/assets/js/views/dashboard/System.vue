@@ -118,7 +118,7 @@
             }
         },
         created() {
-            this.$http.get('/api/system')
+            this.$http.get('system')
                 .then((response) => {
                     this.system = response.data
                 })

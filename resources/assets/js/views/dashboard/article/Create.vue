@@ -165,12 +165,12 @@
                 formData.append('category_id', this.selected.id)
                 formData.append('tags', JSON.stringify(tagIDs))
 
-                this.$http.post('/api/article', formData)
+                this.$http.post('article', formData)
                     .then((response) => {
                         toastr.success('You created a new article success!')
 
                         this.$router.push('/dashboard/articles')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

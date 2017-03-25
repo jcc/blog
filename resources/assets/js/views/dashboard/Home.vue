@@ -72,7 +72,7 @@
             }
         },
         mounted() {
-            this.$http.get('/api/statistics')
+            this.$http.get('statistics')
                 .then((response) => {
                     this.statistics = response.data
                 })
