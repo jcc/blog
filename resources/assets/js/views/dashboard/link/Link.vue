@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.links')" :fields="fields" api-url="/api/link" show-paginate @table-action="tableActions">
+        <vue-table :title="$t('page.links')" :fields="fields" api-url="link" show-paginate @table-action="tableActions">
             <div slot="buttons">
                 <router-link to="/dashboard/links/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
             </div>
@@ -63,12 +63,12 @@
                 if (action == 'edit-item') {
                     this.$router.push('/dashboard/links/' + data.id + '/edit')
                 } else if (action == 'delete-item') {
-                    this.$http.delete('/api/link/' + data.id)
+                    this.$http.delete('link/' + data.id)
                         .then((response) => {
                             toastr.success('You delete the link success!')
 
                             this.$emit('reload', action)
-                        }, (response) => {
+                        }).catch(({response}) => {
                             toastr.error(response.status + ' : Resource ' + response.statusText)
                         })
                 }

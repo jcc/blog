@@ -43,12 +43,12 @@
             create(event) {
                 let formData = new FormData(event.target)
 
-                this.$http.post('/api/category', formData)
+                this.$http.post('category', formData)
                     .then((response) => {
                         toastr.success('You created a new category success!')
 
                         this.$router.push('/dashboard/categories')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

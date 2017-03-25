@@ -78,7 +78,7 @@
             }
         },
         created() {
-            this.$http.get('/api/tags')
+            this.$http.get('tags')
                 .then((response) => {
                     this.allTag = response.data.data
                 })
@@ -90,7 +90,7 @@
                 autoDownloadFontAwesome: true
             })
 
-            this.$http.get('/api/discussion/' + this.$route.params.id + '/edit?include=tags')
+            this.$http.get('discussion/' + this.$route.params.id + '/edit?include=tags')
                 .then((response) => {
                     this.discussion = response.data.data
                     this.tags       = this.discussion.tags.data
@@ -113,12 +113,12 @@
                 this.discussion.tags = JSON.stringify(tagIDs)
                 this.discussion.content = this.simplemde.value()
 
-                this.$http.put('/api/discussion/' + this.$route.params.id, this.discussion)
+                this.$http.put('discussion/' + this.$route.params.id, this.discussion)
                     .then((response) => {
                         toastr.success('You updated the discussion success!')
 
                         this.$router.push('/dashboard/discussions')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

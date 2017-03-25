@@ -39,11 +39,11 @@
             }
         },
         created() {
-            this.$http.get('/api/categories')
+            this.$http.get('categories')
                 .then((response) => {
                     this.options = response.data.data
                 })
-            this.$http.get('/api/tags')
+            this.$http.get('tags')
                 .then((response) => {
                     this.allTag = response.data.data
                 })
