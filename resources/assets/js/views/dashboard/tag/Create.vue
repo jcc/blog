@@ -35,12 +35,12 @@
             create(event) {
                 var formData = new FormData(event.target)
 
-                this.$http.post('/api/tag', formData)
+                this.$http.post('tag', formData)
                     .then((response) => {
                         toastr.success('You created a new tag success!')
 
                         this.$router.push('/dashboard/tags')
-                    }, (response) => {
+                    }).catch(({response}) => {
                         stack_error(response.data)
                     })
             }

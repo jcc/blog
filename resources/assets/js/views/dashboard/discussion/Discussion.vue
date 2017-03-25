@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <vue-table :title="$t('page.discussions')" :fields="fields" api-url="/api/discussion"  :item-actions="itemActions" @table-action="tableActions" show-paginate>
+        <vue-table :title="$t('page.discussions')" :fields="fields" api-url="discussion"  :item-actions="itemActions" @table-action="tableActions" show-paginate>
             <div slot="buttons">
                 <router-link to="/dashboard/discussions/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
             </div>
@@ -62,12 +62,12 @@
                 if (action == 'edit-item') {
                     this.$router.push('/dashboard/discussions/' + data.id + '/edit')
                 } else if (action == 'delete-item') {
-                    this.$http.delete('/api/discussion/' + data.id)
+                    this.$http.delete('discussion/' + data.id)
                         .then((response) => {
                             toastr.success('You delete the discussion success!')
 
                             this.$emit('reload')
-                        }, (response) => {
+                        }).catch(({response}) => {
                             toastr.error(response.status + ' : Resource ' + response.statusText)
                         })
                 } else if (action == 'view-item') {
