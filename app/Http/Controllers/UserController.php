@@ -8,19 +8,14 @@ use Image;
 use Validator;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
-use App\Services\FileManager\UploadManager;
 
 class UserController extends Controller
 {
     protected $user;
 
-    protected $manager;
-
-    public function __construct(UserRepository $user, UploadManager $manager)
+    public function __construct(UserRepository $user)
     {
         $this->user = $user;
-
-        $this->manager = $manager;
     }
 
     /**
@@ -176,53 +171,5 @@ class UserController extends Controller
         $this->user->changePassword(Auth::user(), $request->get('password'));
 
         return redirect()->back();
-    }
-
-    /**
-     * Upload the avatar.
-     *
-     * @param Request $request
-     * @return mixed
-     */
-    public function avatar(Request $request)
-    {
-        $file = $request->file('file');
-
-        $validator = \Validator::make([ 'file' => $file ], [ 'file' => 'image' ]);
-
-        if($validator->fails()) {
-            return response()->json([
-                    'success' => false,
-                    'errors'  => $validator->getMessageBag()->toArray()
-                ]);
-        }
-
-        $path = 'avatars/' . Auth::user()->id;
-
-        $result = $this->manager->store($file, $path);
-
-        return response()->json($result);
-    }
-
-    /**
-     * Crop Avatar
-     * 
-     * @param  Request $request
-     * @return array
-     */
-    public function cropAvatar(Request $request)
-    {
-        $currentImage = $request->get('image');
-        $data = $request->get('data');
-
-        $image = Image::make($currentImage['relative_url']);
-
-        $image->crop((int) $data['width'], (int) $data['height'], (int) $data['x'], (int) $data['y']);
-
-        $image->save($currentImage['relative_url']);
-
-        $this->user->saveAvatar(Auth::user()->id, $currentImage['url']);
-
-        return response()->json($currentImage);
     }
 }
