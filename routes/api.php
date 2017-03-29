@@ -47,6 +47,11 @@ Route::group([
 Route::group([
     'namespace' => 'Api',
 ], function () {
+    // Edit Avatar
+    Route::post('user/avatar', 'UserController@avatar')->middleware('auth:api');
+    Route::post('user/crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
+
+    // Comment
     Route::get('commentable/{commentableId}/comment', 'CommentController@show');
     Route::post('comments', 'CommentController@store')->middleware('auth:api');
     Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
