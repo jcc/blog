@@ -3,13 +3,15 @@
 @section('title', $discussion->title)
 
 @section('content')
-    <jumbotron v-cloak>
+    @component('particals.jumbotron')
         <h4>{{ $discussion->title }}</h4>
+
         <span><i class="ion-person" style="margin-right: 10px"></i>{{ $discussion->user->name or 'null' }}</span><br/>
+
         @can('update', $discussion)
             <a href="{{ url("discussion/{$discussion->id}/edit") }}" class="edit-discuss btn btn-info btn-sm"><i class="ion-edit" style="padding: 0"></i> {{ lang('Edit Problem') }}</a>
         @endcan
-    </jumbotron>
+    @endcomponent
 
     <div class="discuss-show container">
         <div class="row">
