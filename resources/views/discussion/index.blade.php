@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <jumbotron v-cloak>
+    @component('particals.jumbotron')
         <h4>{{ lang('Discuss Problem') }}</h4>
 
         <h6>{{ lang('Discuss Subtitle') }}</h6>
 
         <a href="{{ url('discussion/create') }}" class="btn btn-info btn-sm"><i class="ion-edit"></i> {{ lang('Submit Problem') }}</a>
-    </jumbotron>
+    @endcomponent
 
     <div class="discussion container">
         <div class="row">

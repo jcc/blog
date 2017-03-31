@@ -3,7 +3,7 @@
 @section('title', $article->title)
 
 @section('content')
-    <jumbotron v-cloak>
+    @component('particals.jumbotron')
         <h4>{{ $article->title }}</h4>
 
         <h6>{{ $article->subtitle }}</h6>
@@ -18,7 +18,7 @@
             @endif
             <i class="ion-clock"></i>{{ $article->published_at->diffForHumans() }}
         </div>
-    </jumbotron>
+    @endcomponent
 
     <div class="article container">
         <div class="row">
