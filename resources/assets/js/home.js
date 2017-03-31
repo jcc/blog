@@ -24,8 +24,6 @@ const i18n = new VueI18n({
 
 Vue.component('comment', require('./components/Comment.vue'));
 
-Vue.component('jumbotron', require('./components/Jumbotron.vue'));
-
 Vue.component('parse', require('./components/Parse.vue'));
 
 Vue.component('avatar', require('./components/AvatarUpload.vue'));
