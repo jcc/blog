@@ -125,6 +125,7 @@
     import Multiselect from 'vue-multiselect'
     import { stack_error } from '../../../config/helper.js'
     import DatePicker from 'vue-datepicker'
+    import FineUploader from 'fine-uploader/lib/traditional'
 
     export default {
         mixins: [FormMixin],
@@ -144,6 +145,8 @@
                 placeholder: 'Please input the article content.',
                 autoDownloadFontAwesome: true
             })
+
+            this.contentUploader()
         },
         methods: {
             create(event) {
@@ -173,7 +176,36 @@
                     }).catch(({response}) => {
                         stack_error(response.data)
                     })
-            }
+            },
+            contentUploader() {
+                let contentUploader = new FineUploader.FineUploaderBasic({
+                    paste: {
+                        targetElement: document.querySelector(".CodeMirror")
+                    },
+                    request: {
+                        endpoint: '/server/uploads',
+                        inputName: 'file',
+                        params: {
+                            strategy: 'post'
+                        }
+                    },
+                    validation: {
+                        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
+                    },
+                    callbacks: {
+                        onPasteReceived(file) {
+                            let promise = new FineUploader.Promise()
+
+                            console.log(promise)
+                            return promise
+                        },
+                        onError() {
+                            console.log('error')
+                        }
+                    },
+                });
+                console.log(contentUploader)
+            },
         }
     }
 </script>

@@ -11,6 +11,7 @@
     "axios": "^0.15.2",
     "bootstrap-sass": "^3.3.7",
     "chart.js": "^2.4.0",
+    "fine-uploader": "^5.14.2-rc1",
     "ionicons": "^2.0.1",
     "jquery": "^3.1.0",
     "laravel-mix": "^0.8.3",
