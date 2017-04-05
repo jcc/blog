@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <jumbotron v-cloak>
+    @component('particals.jumbotron')
         <h3>{{ $tag->tag }}</h3>
 
         <h6>{{ lang('Tag Meta') }}</h6>
-    </jumbotron>
+    @endcomponent
+
     <div class="container">
         <div class="row">
             <div class="col-md-6">

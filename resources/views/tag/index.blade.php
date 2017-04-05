@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <jumbotron v-cloak>
+    @component('particals.jumbotron')
         <h3>{{ lang('Tags') }}</h3>
 
         <h6>{{ lang('Tags Meta') }}</h6>
-    </jumbotron>
+    @endcomponent
+
     <div class="container">
         <div class="row">
             @forelse($tags as $tag)
