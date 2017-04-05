@@ -145,7 +145,11 @@ class UserController extends Controller
     {
         $input = $request->except(['name', 'email', 'is_admin']);
 
-        $user = $this->user->update($id, $input);
+        $user = $this->user->getById($id);
+
+        $this->authorize('update', $user);
+
+        $this->user->update($id, $input);
 
         return redirect()->back();
     }
