@@ -3,9 +3,6 @@
 namespace Tests\Feature\Api;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ArticleApiTest extends TestCase
 {
@@ -33,7 +30,6 @@ class ArticleApiTest extends TestCase
     /** @test */
     public function it_store_a_article()
     {
-        $articlesCount = \App\Article::count();
         $article = factory(\App\Article::class)->make();
 
         $data = array_merge($article->toArray(), [ 'tags' => '[1, 2]' ]);
