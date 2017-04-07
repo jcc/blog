@@ -41,6 +41,7 @@ Route::group([
     Route::post('folder', 'UploadController@createFolder');
     Route::post('folder/delete', 'UploadController@deleteFolder');
     Route::post('file/delete', 'UploadController@deleteFile');
+    Route::post('file/upload', 'UploadController@fileUpload');
 
     Route::get('system', 'SystemController@getSystemInfo');
 });
