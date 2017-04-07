@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
 use App\Transformers\ArticleTransformer;
+use App\Services\FileManager\UploadManager;
 
 class ArticleController extends ApiController
 {
     protected $article;
 
-    public function __construct(ArticleRepository $article)
+    public function __construct(ArticleRepository $article, UploadManager $manager)
     {
         parent::__construct();
 
         $this->article = $article;
+        $this->manager = $manager;
     }
 
     /**
@@ -93,5 +95,26 @@ class ArticleController extends ApiController
         $this->article->destroy($id);
 
         return $this->noContent();
+    }
+
+    public function uploadPaste(Request $request)
+    {
+        // $fileName = $_POST;
+        $file = $request->file('file');
+        // var_dump($request->file('file'));die;
+        $validator = \Validator::make([ 'file' => $file ], [ 'file' => 'image' ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        $path = 'images/' . date("Y") . '/' . date("m") . '/' . date("d") . '/' . uniqid();
+
+        $result = $this->manager->store($file, $path);
+
+        return $this->respondWithArray($result);
     }
 }

@@ -136,7 +136,8 @@
         data() {
             return {
                 simplemde: '',
-                pageImage: ''
+                pageImage: '',
+                content: '',
             }
         },
         mounted() {
@@ -145,7 +146,6 @@
                 placeholder: 'Please input the article content.',
                 autoDownloadFontAwesome: true
             })
-
             this.contentUploader()
         },
         methods: {
@@ -178,15 +178,22 @@
                     })
             },
             contentUploader() {
+                let vm = this
+                let content = this.simplemde.value()
+
                 let contentUploader = new FineUploader.FineUploaderBasic({
                     paste: {
-                        targetElement: document.querySelector(".CodeMirror")
+                        targetElement: document.querySelector('.CodeMirror')
                     },
                     request: {
-                        endpoint: '/server/uploads',
-                        inputName: 'file',
+                        endpoint: '/api/file/upload',
+                        inputName: 'image',
+                        customHeaders: {
+                            'X-CSRF-TOKEN': window.Laravel.csrfToken,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
                         params: {
-                            strategy: 'post'
+                          strategy: 'article'
                         }
                     },
                     validation: {
@@ -196,15 +203,37 @@
                         onPasteReceived(file) {
                             let promise = new FineUploader.Promise()
 
-                            console.log(promise)
-                            return promise
+                            let formData = new FormData()
+
+                            if (typeof file.type == 'undefined' || file.type.indexOf('image/')) {
+                                return promise.failure('not a image.')
+                            }
+                            if (file.size > 5 * 1024 * 1024) {
+                              return promise.failure('您粘贴的图片过大')
+                            }
+
+                            formData.append('file', file);
+
+                            vm.$http.post('article/upload-paste', formData).then((response)=>{
+                                // vm.simplemde.value("This text will appear in the editor");
+                            })
+
+                            // return promise.then(() => {
+                            //     vm.simplemde.value(content + '\n![Uploading ...]()\n')
+                            // }).success('image')
+
                         },
-                        onError() {
-                            console.log('error')
-                        }
+                        // onComplete(id, name, responseJSON) {
+                        //     let url = ''
+                        //     if (typeof responseJSON['url'] !== 'undefined') {
+                        //       url = responseJSON.url
+                        //     }
+                        //     let result = '\n!['+name+']('+url+')\n'
+
+                        //     vm.simplemde.value(content + result)
+                        // },
                     },
                 });
-                console.log(contentUploader)
             },
         }
     }
