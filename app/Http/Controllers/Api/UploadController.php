@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use App\Http\Requests;
 use App\Repositories\LinkRepository;
 use App\Services\FileManager\UploadManager;
@@ -74,6 +75,30 @@ class UploadController extends ApiController
         $this->link->updateColumn($request->get('id'), ['image' => $image['url']]);
 
         return $this->respondWithArray($image);
+    }
+
+    /**
+     * Generic file upload method.
+     * 
+     * @param  Request $request
+     * @return array
+     */
+    public function fileUpload(Request $request)
+    {
+        $strategy = $request->get('strategy', 'images');
+
+        if (!$request->hasFile('image')) {
+            return $this->respondWithArray([
+                'success' => false,
+                'error' => 'no file found.',
+            ]);
+        }
+
+        $path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
+
+        $result = $this->manager->store($request->file('image'), $path);
+
+        return $this->respondWithArray($result);
     }
 
     /**

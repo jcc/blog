@@ -222,7 +222,7 @@
                     return
                 }
 
-                const formData = new FormData()
+                let formData = new FormData()
 
                 formData.append('file', this.files[0])
                 formData.append('name', this.file_name)
