@@ -32,6 +32,12 @@
                     </div>
                     <div class="col-sm-5">
                         <img v-if="article.page_image != ''" :src="article.page_image" alt="Pig Jian" width="41" height="41">
+                        <div class="cover-upload pull-right">
+                            <a href="javascript:;" class="btn btn-success file">
+                                <span>{{ $t('form.upload_file') }}</span>
+                                <input type="file" @change="coverUploader">
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -194,6 +200,27 @@ export default {
                         stack_error(response.data)
                     })
         },
+        coverUploader(event) {
+            let files = event.target.files
+
+            let formData = new FormData()
+
+            formData.append('image', files[0])
+            formData.append('strategy', 'cover')
+
+            this.$http.post('file/upload', formData)
+                .then((response) => {
+                    toastr.success('You upload a file success!')
+
+                    this.article.page_image = response.data.url
+                }).catch(({response}) => {
+                    if (response.data.error) {
+                        toastr.error(response.data.error.message)
+                    } else {
+                        toastr.error(response.status + ' : Resource ' + response.statusText)
+                    }
+                })
+        },
         contentUploader() {
             let vm = this
 
@@ -266,3 +293,36 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.cover-upload {
+    display: inline-block;
+
+    .file {
+        position: relative;
+        margin: 0 auto;
+        display: block;
+        width: 100px;
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+
+        span {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+        input {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          width: 100px;
+          height: 30px;
+          opacity: 0;
+        }
+    }
+}
+</style>
