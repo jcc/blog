@@ -92,6 +92,7 @@ php artisan blog:install
 
 ## Thanks
 
+- [overtrue](https://github.com/overtrue)
 - [Laravist](https://www.laravist.com/)
 - [Laravel - China](https://laravel-china.org/)
 

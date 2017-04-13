@@ -66,4 +66,9 @@ const router = new VueRouter({
     routes: routes
 });
 
-new Vue(Vue.util.extend({ router, store, i18n }, App)).$mount('#app');
+new Vue({
+    router,
+    store,
+    i18n,
+    render: h => h(App),
+}).$mount('#app');
