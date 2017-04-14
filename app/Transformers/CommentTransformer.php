@@ -23,8 +23,8 @@ class CommentTransformer extends TransformerAbstract
             'type'          => $comment->commentable_type,
             'content_raw'   => $content->raw,
             'created_at'    => $comment->created_at->diffForHumans(),
-            'like'          => false,
-            'like_num'      => 0,
+            'is_voted'      => auth()->guard('api')->id() ? $comment->isVotedBy(auth()->guard('api')->id()) : false,
+            'vote_count'    => $comment->voters->count(),
         ];
     }
 
