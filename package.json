@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "cropperjs": "^1.0.0-beta.2",
+    "emojione": "^2.2.7",
     "fine-uploader": "^5.14.2-rc1"
   }
 }
