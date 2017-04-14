@@ -4,12 +4,15 @@ namespace App;
 
 use App\Services\Mention;
 use App\Services\Markdowner;
+use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, CanBeVoted;
+
+    protected $vote = User::class;
 
     /**
      * The attributes that are mass assignable.

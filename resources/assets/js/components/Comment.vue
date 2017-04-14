@@ -14,10 +14,14 @@
                     </div>
                     <div class="media-body box-body">
                         <div class="heading">
-                            <i class="ion-person"></i>{{ comment.username }}
+                            <i class="ion-person"></i><a :href="'/user/' + comment.username">{{ comment.username }}</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="ion-clock"></i>{{ comment.created_at }}
                             <span class="pull-right operate">
+                                <template>
+                                    <a href="javascript:;" @click="vote(index)" v-if="comment.is_voted"><i class="ion-happy"></i> <small>{{ comment.vote_count }}</small> </a>
+                                    <a href="javascript:;" @click="vote(index)" v-else><small><i class="ion-happy-outline"></i> {{ comment.vote_count > 0 ? comment.vote_count : '' }}</small> </a>
+                                </template>
                                 <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
                                     <i class="ion-trash-b"></i>
                                 </a>
@@ -156,10 +160,13 @@
                 $('#content').focus()
                 this.content = '@' + name + ' '
             },
-            // like(index) {
-            //     this.comments[index].like = !this.comments[index].like
-            //     this.comments[index].like ? this.comments[index].like_num++ : this.comments[index].like_num--
-            // },
+            vote(index) {
+                this.$http.post('vote/comment', { id: this.comments[index].id })
+                    .then((response) => {
+                        this.comments[index].is_voted = !this.comments[index].is_voted
+                        this.comments[index].is_voted ? this.comments[index].vote_count++ : this.comments[index].vote_count--
+                    })
+            },
             commentDelete(index, id) {
                 this.$http.delete('comments/' + id)
                     .then((response) => {
@@ -180,7 +187,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     i {
         margin-right: 5px;
     }
@@ -227,6 +234,10 @@
     .comment .heading {
         padding: 10px 20px;
         background: #ECF0F1;
+
+        a {
+            color: #7F8C8D;
+        }
     }
     .comment-body {
         padding: 30px 50px;
