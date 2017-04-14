@@ -56,4 +56,23 @@ class CommentRepository
                     ->get();
     }
 
+    /**
+     * Toogle up vote and down vote by user.
+     * 
+     * @param  int $id
+     * @return boolean
+     */
+    public function toggleVote($id)
+    {
+        $user = auth()->user();
+
+        $comment = $this->getById($id);
+
+        $hasVoted = $user->hasVoted($comment);
+
+        $hasVoted ? $user->downVote($comment) : $user->upVote($comment);
+
+        return $hasVoted;
+    }
+
 }
