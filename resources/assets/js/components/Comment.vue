@@ -57,6 +57,7 @@
 <script>
     import { default as toastr } from 'toastr/build/toastr.min.js'
     import toastrConfig from '../config/toastr'
+    import emojione from 'emojione'
 
     export default {
         props: {
@@ -181,7 +182,7 @@
                     }
                 })
 
-                return marked(html)
+                return emojione.toImage(marked(html))
             }
         }
     }
@@ -242,9 +243,10 @@
     .comment-body {
         padding: 30px 50px;
         color: #34495e;
-    }
-    .comment-body a {
-        color: #1abc9c;
+
+        a {
+            color: #1abc9c;
+        }
     }
     .comment .comment-editor {
         margin-top: 40px;
