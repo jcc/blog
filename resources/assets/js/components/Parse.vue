@@ -3,22 +3,24 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            content: {
-                type: String,
-                default() {
-                    return null
-                }
+import emojione from 'emojione'
+
+export default {
+    props: {
+        content: {
+            type: String,
+            default() {
+                return null
             }
-        },
-        data() {
-            return {
-                rawHtml: ''
-            }
-        },
-        created() {
-            this.rawHtml = marked(this.content)
         }
+    },
+    data() {
+        return {
+            rawHtml: ''
+        }
+    },
+    created() {
+        this.rawHtml = emojione.toImage(marked(this.content))
     }
+}
 </script>
