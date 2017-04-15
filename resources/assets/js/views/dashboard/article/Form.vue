@@ -179,7 +179,7 @@ export default {
             }
 
             let tagIDs = []
-            let url = 'article/' + (this.article.id || '')
+            let url = 'article' + (this.article.id ? '/' + this.article.id : '')
             let method = (this.mode == 'update') ? 'patch' : 'post'
 
             for(var i = 0 ; i < this.tags.length ; i++) {
