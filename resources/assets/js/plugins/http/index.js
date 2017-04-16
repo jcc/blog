@@ -27,7 +27,10 @@ http.interceptors.response.use(function (response) {
     const { response } = error
 
     if ([400, 401].indexOf(response.status) >= 0) {
-        window.location = '/login';
+      if (response.status == 401 && response.data.error.message != 'Unauthorized') {
+        return Promise.reject(response);
+      }
+      window.location = '/login';
     }
 
     return Promise.reject(error);
