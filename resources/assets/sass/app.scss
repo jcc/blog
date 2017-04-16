@@ -23,3 +23,13 @@
 .multiselect__content {
     z-index: 2;
 }
+.avatar {
+    width: 50px;
+    margin: 0 auto;
+}
+.editor-toolbar.fullscreen {
+    z-index: 1000 !important;
+}
+.CodeMirror-fullscreen {
+    z-index: 1000 !important;
+}

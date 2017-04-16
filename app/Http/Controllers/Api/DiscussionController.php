@@ -57,7 +57,7 @@ class DiscussionController extends ApiController
     {
         $input = $request->all();
 
-        $this->discussion->update($id, $input);
+        $this->discussion->updateWithoutTags($id, $input);
 
         return $this->noContent();
     }

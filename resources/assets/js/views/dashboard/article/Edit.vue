@@ -27,13 +27,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-    .editor-toolbar.fullscreen {
-        z-index: 1000 !important;
-    }
-
-    .CodeMirror-fullscreen {
-        z-index: 1000 !important;
-    }
-</style>

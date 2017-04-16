@@ -41,11 +41,7 @@ class LinkController extends ApiController
      */
     public function store(LinkRequest $request)
     {
-        $image = $this->manager->store($request->file('image'), 'links');
-
-        $data = array_merge($request->all(), [
-            'image'=> $image['url']
-        ]);
+        $data = $request->all();
 
         $data['status'] = isset($data['status']);
 
