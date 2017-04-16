@@ -39,16 +39,14 @@
             },
             postData(rowData) {
                 this.$http.post(this.apiUrl + '/' + rowData.id + '/status', {status: !rowData.status})
-                    .then(response => {
-                        if (response.data) {
-                            this.rowData.status = !this.rowData.status
-                            if (this.rowData.status) {
-                                toastr.success('You changed a record of the status success!')
-                            } else {
-                                toastr.warning('You changed a record of the status, Please check again!')
-                            }
+                    .then((response) => {
+                        this.rowData.status = !this.rowData.status
+                        if (this.rowData.status) {
+                            toastr.success('You changed a record of the status success!')
+                        } else {
+                            toastr.warning('You changed a record of the status, Please check again!')
                         }
-                    }, (response) => {
+                    }).catch((response) => {
                         if (response.data.error) {
                             toastr.error(response.data.error.message)
                         } else {

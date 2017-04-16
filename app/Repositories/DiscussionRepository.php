@@ -85,6 +85,20 @@ class DiscussionRepository
     }
 
     /**
+     * Update a record by id without tag.
+     * 
+     * @param  int $id
+     * @param  array $data
+     * @return boolean
+     */
+    public function updateWithoutTags(int $id, array $data)
+    {
+        $this->model = $this->checkAuthScope();
+        $discussion = $this->model->findOrFail($id);
+        return $discussion->update($data);
+    }
+
+    /**
      * Check the auth and the model without global scope when user is the admin.
      * 
      * @return Model
