@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="ibox">
@@ -60,42 +60,42 @@
 </template>
 
 <script>
-    import Chart from '../../components/Chartjs.vue'
+import Chart from '../../components/Chartjs.vue'
 
-    export default {
-        components: {
-            Chart
-        },
-        data () {
-            return {
-                statistics: {}
-            }
-        },
-        mounted() {
-            this.$http.get('statistics')
-                .then((response) => {
-                    this.statistics = response.data
-                })
+export default {
+    components: {
+        Chart
+    },
+    data () {
+        return {
+            statistics: {}
         }
+    },
+    mounted() {
+        this.$http.get('statistics')
+            .then((response) => {
+                this.statistics = response.data
+            })
     }
+}
 </script>
 
 <style lang="scss" scoped>
-    h1 {
-        font-size: 30px;
-        font-weight: normal;
-    }
-    h5 {
-        font-size: 14px;
-    }
-    h1 i {
-        font-size: 35px;
-        margin-right: 12px;
-    }
-    .label {
-        padding: .3em .6em;
-    }
-    .no-margins {
-        margin: 0 !important;
-    }
+h1 {
+    font-size: 30px;
+    font-weight: normal;
+}
+h5 {
+    font-size: 14px;
+}
+h1 i {
+    font-size: 35px;
+    margin-right: 12px;
+}
+.label {
+    padding: .3em .6em;
+}
+.no-margins {
+    margin: 0 !important;
+}
 </style>

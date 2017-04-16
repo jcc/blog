@@ -119,10 +119,10 @@
 </template>
 
 <script>
-import FormMixin from './FormMixin.vue'
-import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
+import FormMixin from './FormMixin'
+import { default as SimpleMDE } from 'simplemde/dist/simplemde.min'
 import Multiselect from 'vue-multiselect'
-import { stack_error } from '../../../config/helper.js'
+import { stack_error } from '../../../config/helper'
 import DatePicker from 'vue-datepicker'
 import FineUploader from 'fine-uploader/lib/traditional'
 
@@ -180,7 +180,7 @@ export default {
 
             let tagIDs = []
             let url = 'article' + (this.article.id ? '/' + this.article.id : '')
-            let method = (this.mode == 'update') ? 'patch' : 'post'
+            let method = this.article.id ? 'patch' : 'post'
 
             for(var i = 0 ; i < this.tags.length ; i++) {
                 tagIDs[i] = this.tags[i].id

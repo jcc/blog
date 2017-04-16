@@ -72,8 +72,6 @@ class UploadController extends ApiController
     {
         $image = $this->manager->store($request->file('image'), $request->get('path'));
 
-        $this->link->updateColumn($request->get('id'), ['image' => $image['url']]);
-
         return $this->respondWithArray($image);
     }
 

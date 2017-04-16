@@ -23,55 +23,55 @@
 </template>
 
 <script>
-    import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
+import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
-    export default {
-        data() {
-            return {
-                comment: {},
-                simplemde: {}
-            }
-        },
-        mounted() {
-            this.simplemde = new SimpleMDE({
-                element: document.getElementById("editor"),
-                placeholder: 'Please input the comment content.',
-                autoDownloadFontAwesome: true
+export default {
+    data() {
+        return {
+            comment: {},
+            simplemde: {}
+        }
+    },
+    mounted() {
+        this.simplemde = new SimpleMDE({
+            element: document.getElementById("editor"),
+            placeholder: 'Please input the comment content.',
+            autoDownloadFontAwesome: true
+        })
+
+        this.$http.get('comment/' + this.$route.params.id + '/edit')
+            .then((response) => {
+                this.comment = response.data.data
+                this.simplemde.value(this.comment.content_raw)
             })
+    },
+    methods: {
+        edit() {
+            this.comment.content = this.simplemde.value()
 
-            this.$http.get('comment/' + this.$route.params.id + '/edit')
-                .then((response) => {
-                    this.comment = response.data.data
-                    this.simplemde.value(this.comment.content_raw)
-                })
-        },
-        methods: {
-            edit() {
-                this.comment.content = this.simplemde.value()
-
-                if (this.comment.content == '') {
-                    toastr.error('The content is required!')
-                    return
-                }
-
-                this.$http.put('comment/' + this.$route.params.id, this.comment)
-                    .then((response) => {
-                        toastr.success('You updated the comment success!')
-
-                        this.$router.push('/dashboard/comments')
-                    }).catch(({response}) => {
-                        let content = response.data.content[0]
-
-                        swal({
-                            title: "Error Text!",
-                            type: 'error',
-                            text: content,
-                            html: true
-                        });
-                    })
+            if (this.comment.content == '') {
+                toastr.error('The content is required!')
+                return
             }
+
+            this.$http.put('comment/' + this.$route.params.id, this.comment)
+                .then((response) => {
+                    toastr.success('You updated the comment success!')
+
+                    this.$router.push('/dashboard/comments')
+                }).catch(({response}) => {
+                    let content = response.data.content[0]
+
+                    swal({
+                        title: "Error Text!",
+                        type: 'error',
+                        text: content,
+                        html: true
+                    });
+                })
         }
     }
+}
 </script>
 
 <style lang="scss">
