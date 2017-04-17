@@ -31,6 +31,8 @@ return [
     'Published At'     => '发表时间',
     'Account Setting'  => '账号设置',
     'Notification Setting' => '通知设置',
+    'New Notification' => '新通知',
+    'Mark As Read'     => '标记为已读',
     'Account Binding'  => '账号绑定',
     'Reset Password'   => '重置密码',
     'Old Password'     => '旧密码',
@@ -76,5 +78,6 @@ return [
     'Discuss Title'        => '标题',
     'Discuss Tag'          => '标签',
     'Discuss Content'      => '内容',
-
+    'Deleted'              => '该条内容已被删除',
+    'Commented'            => '评论了你发布的'
 ];
