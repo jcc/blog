@@ -70,7 +70,7 @@ class CommentRepository
 
         $hasVoted = $user->hasVoted($comment);
 
-        $hasVoted ? $user->downVote($comment) : $user->upVote($comment);
+        $hasVoted ? $user->cancelVote($comment) : $user->upVote($comment);
 
         return $hasVoted;
     }
