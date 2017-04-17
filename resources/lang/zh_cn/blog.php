@@ -78,6 +78,6 @@ return [
     'Discuss Title'        => '标题',
     'Discuss Tag'          => '标签',
     'Discuss Content'      => '内容',
-    'Deleted'               => '该条内容已被删除',
+    'Deleted'              => '该条内容已被删除',
     'Commented'            => '评论了你发布的'
 ];

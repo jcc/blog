@@ -177,6 +177,11 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+	/**
+	 * Show the notifications for auth user
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function notifications()
     {
         if (!\Auth::id()) abort(404);
@@ -186,6 +191,11 @@ class UserController extends Controller
         return view('user.notifications', compact('user'));
     }
 
+	/**
+	 * Mark the auth user's notification as read
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function markAsRead()
     {
         if (!Auth::id()) abort(404);

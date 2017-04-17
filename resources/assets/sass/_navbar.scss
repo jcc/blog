@@ -3,21 +3,21 @@
 }
 
 .notification {
-	.ion-android-notifications {
-		position: relative;
-		font-size: 2.5rem; 
-		color: #fff; 
-		vertical-align: bottom;
+  .ion-android-notifications {
+	position: relative;
+	font-size: 2.5rem;
+	color: #fff;
+	vertical-align: bottom;
 
-		.new {
-			position: absolute;
-		    top: -5px;
-		    right: -5px;
-		    width: 10px;
-		    height: 10px;
-		    border-radius: 50%;
-		    background-color: #d9534f;
-		    display: none;
-		}
+	.new {
+	  position: absolute;
+	  top: -5px;
+	  right: -5px;
+	  width: 10px;
+	  height: 10px;
+	  border-radius: 50%;
+	  background-color: #d9534f;
+	  display: none;
 	}
+  }
 }
