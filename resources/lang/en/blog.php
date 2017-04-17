@@ -76,5 +76,6 @@ return [
     'Discuss Title'        => 'Title',
     'Discuss Tag'          => 'Tag',
     'Discuss Content'      => 'Content',
-
+    'Deleted'               => 'Item had been deleted',
+    'Commented'            => 'commented'
 ];
