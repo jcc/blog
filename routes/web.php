@@ -26,6 +26,8 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('profile', 'UserController@edit');
         Route::put('profile/{id}', 'UserController@update');
         Route::post('follow/{id}', 'UserController@doFollow');
+        Route::get('notification', 'UserController@notifications');
+        Route::post('notification', 'UserController@markAsRead');
     });
 
     Route::group(['prefix' => '{username}'], function () {
