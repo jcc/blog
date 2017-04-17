@@ -580,12 +580,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jcc/laravel-vote.git",
-                "reference": "2808abcecaad9329399069b8366b332ae19a83e3"
+                "reference": "fcee64cfb792d612561936ed8d65b5455467d613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jcc/laravel-vote/zipball/2808abcecaad9329399069b8366b332ae19a83e3",
-                "reference": "2808abcecaad9329399069b8366b332ae19a83e3",
+                "url": "https://api.github.com/repos/jcc/laravel-vote/zipball/fcee64cfb792d612561936ed8d65b5455467d613",
+                "reference": "fcee64cfb792d612561936ed8d65b5455467d613",
                 "shasum": ""
             },
             "require": {
@@ -611,7 +611,7 @@
                 }
             ],
             "description": "The package helps you to add user based vote system to your model",
-            "time": "2017-04-14 15:48:18"
+            "time": "2017-04-17 09:44:37"
         },
         {
             "name": "jellybool/translug",
@@ -663,16 +663,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.18",
+            "version": "v5.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d15ded55b5e690199393ea93a57edcbae20d1ffc"
+                "reference": "02444b7450350db17a7607c8a52f7268ebdb0dad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d15ded55b5e690199393ea93a57edcbae20d1ffc",
-                "reference": "d15ded55b5e690199393ea93a57edcbae20d1ffc",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/02444b7450350db17a7607c8a52f7268ebdb0dad",
+                "reference": "02444b7450350db17a7607c8a52f7268ebdb0dad",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +788,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-04-10 19:27:41"
+            "time": "2017-04-16 13:33:34"
         },
         {
             "name": "laravel/passport",
