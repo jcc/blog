@@ -17,16 +17,12 @@ if ($comment) {
 }
 
 ?>
-<div class="col-sm-12">
+<li>
     @if ($comment)
-    @if(empty($notification->read_at))
-        <i class="ion-ios-chatboxes"></i>
-    @else
-        <i class="ion-ios-chatboxes-outline"></i>
-    @endif
-    <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a> {{ lang('Commented') }} {{ $type }}
-    <a class="text-info" href="{{ $url }}">{{ $comment->commentable->title }}</a>
+        <i :class="'{{ empty($notification->read_at) }}' ? 'ion-ios-chatboxes' : 'ion-ios-chatboxes-outline'"></i>
+        <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a> {{ lang('Commented') }} {{ $type }}
+        <a class="text-info" href="{{ $url }}">{{ $comment->commentable->title }}</a>
     @else
         <s>{{ lang('Deleted') }}</s>
     @endif
-</div>
+</li>
