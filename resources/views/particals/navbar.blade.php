@@ -37,6 +37,16 @@
                     <li><a href="{{ url('login') }}">{{ lang('Login') }}</a></li>
                     <li><a href="{{ url('register') }}">{{ lang('Register') }}</a></li>
                 @else
+                    <li class="notification">
+                        <a href="{{ url('user/notification') }}"><i class="ion-android-notifications">
+                            <span class="new" 
+                            @if (Auth::user()->unreadNotifications->count() > 0)
+                            style='display: block'
+                            @endif
+                            >
+                            </span>
+                        </i></a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{ Auth::user()->nickname ?: Auth::user()->name }}
