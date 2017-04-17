@@ -1,3 +1,10 @@
+@media (min-width: 768px) {
+	.navbar-nav > li > a {
+	    padding-top: 17px;
+	    padding-bottom: 14px;
+	}
+}
+
 .navbar-collapse {
   border: none;
 }
