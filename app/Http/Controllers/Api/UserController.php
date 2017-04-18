@@ -63,7 +63,7 @@ class UserController extends ApiController
     {
         $password = bcrypt($request->input('password'));
         $data = array_merge($request->all(), [
-            'password'=>$password,
+            'password' => $password,
             'confirm_code' => str_random(64)
         ]);
 
