@@ -43,7 +43,7 @@
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <label for="content" class="col-sm-2 control-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="content" rows="12" name="content">{{ json_decode($discussion->content)->raw }}</textarea>
+                            <parse-textarea content="{{ json_decode($discussion->content)->raw }}"></parse-textarea>
 
                             @if ($errors->has('content'))
                                 <span class="help-block">

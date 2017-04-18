@@ -54,8 +54,9 @@ Route::group([
     Route::post('user/crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
 
     // Comment
-    Route::get('commentable/{commentableId}/comment', 'CommentController@show');
+    Route::get('commentable/{commentableId}/comment', 'CommentController@show')->middleware('api');
     Route::post('comments', 'CommentController@store')->middleware('auth:api');
     Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
+    Route::post('vote/comment', 'MeController@postVoteComment')->middleware('auth:api');
     Route::get('tags', 'TagController@getList');
 });

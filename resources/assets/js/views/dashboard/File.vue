@@ -125,183 +125,183 @@
 </template>
 
 <script>
-    import Modal from '../../components/dashboard/Modal.vue'
+import Modal from '../../components/dashboard/Modal.vue'
 
-    export default {
-        components: {
-            Modal
+export default {
+    components: {
+        Modal
+    },
+    data() {
+        return {
+            folder: '',
+            files: null,
+            file_name: '',
+            path: '',
+            upload: {},
+            showFolder: false,
+            showFile: false,
+            showImage: false,
+            preview_image: '',
+            fields: [
+                {
+                    name: 'name',
+                    title: 'ID',
+                    titleClass: 'text-center',
+                    dataClass: 'text-center'
+                },
+                {
+                    name: 'user',
+                    title: 'User Name',
+                    titleClass: 'text-center',
+                    dataClass: 'text-center',
+                    callback: 'username'
+                },
+                {
+                    name: 'title',
+                    title: 'Title'
+                },
+                {
+                    name: "content",
+                    title: 'Content',
+                    callback: 'content'
+                },
+                {
+                    name: 'status',
+                    title: 'Status',
+                    titleClass: 'text-center',
+                    dataClass: 'text-center',
+                    callback: 'status'
+                },
+                {
+                    name: 'created_at',
+                    title: 'Created At'
+                },
+                {
+                    name: '__actions',
+                    dataClass: 'text-center'
+                }
+            ]
+        }
+    },
+    mounted() {
+        this.getFileInfo(this.$route.query.folder)
+    },
+    methods: {
+        preview(path) {
+            this.showImage = true
+            this.preview_image = path
         },
-        data() {
-            return {
-                folder: '',
-                files: null,
-                file_name: '',
-                path: '',
-                upload: {},
-                showFolder: false,
-                showFile: false,
-                showImage: false,
-                preview_image: '',
-                fields: [
-                    {
-                        name: 'name',
-                        title: 'ID',
-                        titleClass: 'text-center',
-                        dataClass: 'text-center'
-                    },
-                    {
-                        name: 'user',
-                        title: 'User Name',
-                        titleClass: 'text-center',
-                        dataClass: 'text-center',
-                        callback: 'username'
-                    },
-                    {
-                        name: 'title',
-                        title: 'Title'
-                    },
-                    {
-                        name: "content",
-                        title: 'Content',
-                        callback: 'content'
-                    },
-                    {
-                        name: 'status',
-                        title: 'Status',
-                        titleClass: 'text-center',
-                        dataClass: 'text-center',
-                        callback: 'status'
-                    },
-                    {
-                        name: 'created_at',
-                        title: 'Created At'
-                    },
-                    {
-                        name: '__actions',
-                        dataClass: 'text-center'
+        confirm() {
+            if (!this.folder) {
+                toastr.error('The folder name must be required!')
+                return
+            }
+
+            const path = (this.upload.folder == '/') ? '' : this.upload.folder
+
+            this.path = path + '/' + this.folder
+
+            this.$http.post('folder', { folder: this.path })
+                .then((response) => {
+                    toastr.success('You create a new folder success!')
+
+                    this.showFolder = false
+                    this.$set(this.upload.subfolders, this.path, this.folder)
+                    this.folder = ''
+                }).catch(({ response }) => {
+                    toastr.error(response.status + ' : ' + response.statusText)
+                })
+
+        },
+        change(event) {
+            this.files = event.target.files
+        },
+        uploadFile() {
+            if (!this.files) {
+                toastr.error('The file must be required')
+                return
+            }
+
+            let formData = new FormData()
+
+            formData.append('file', this.files[0])
+            formData.append('name', this.file_name)
+            formData.append('folder', this.upload.folder)
+
+            this.$http.post('upload', formData)
+                .then((response) => {
+                    toastr.success('You upload a file success!')
+
+                    this.upload.files.push(response.data)
+                    this.file_name = ''
+                    this.showFile = false
+                }).catch(({response}) => {
+                    if (response.data.error) {
+                        toastr.error(response.data.error.message)
+                    } else {
+                        toastr.error(response.status + ' : Resource ' + response.statusText)
                     }
-                ]
-            }
+                })
         },
-        mounted() {
-            this.getFileInfo(this.$route.query.folder)
+        deleteFolder(name) {
+            const path = (this.upload.folder == '/') ? '' : this.upload.folder
+            this.$http.post('folder/delete', { del_folder: name, folder: this.upload.folder })
+                .then((response) => {
+                    toastr.success('You delete a folder success!')
+
+                    this.$delete(this.upload.subfolders, path + '/' + name)
+                }).catch(({response}) => {
+                    toastr.error(response.status + ' : Resource ' + response.statusText)
+                })
         },
-        methods: {
-            preview(path) {
-                this.showImage = true
-                this.preview_image = path
-            },
-            confirm() {
-                if (!this.folder) {
-                    toastr.error('The folder name must be required!')
-                    return
-                }
+        deleteFile(file, index) {
+            this.$http.post('file/delete', { path: file.fullPath })
+                .then((response) => {
+                    toastr.success('You delete a file success!')
 
-                const path = (this.upload.folder == '/') ? '' : this.upload.folder
+                    this.upload.files.splice(index, 1)
+                }).catch(({response}) => {
+                    toastr.error(response.status + ' : Resource ' + response.statusText)
+                })
+        },
+        getFileInfo(path) {
+            var url = 'upload'
 
-                this.path = path + '/' + this.folder
-
-                this.$http.post('folder', { folder: this.path })
-                    .then((response) => {
-                        toastr.success('You create a new folder success!')
-
-                        this.showFolder = false
-                        this.$set(this.upload.subfolders, this.path, this.folder)
-                        this.folder = ''
-                    }).catch(({ response }) => {
-                        toastr.error(response.status + ' : ' + response.statusText)
-                    })
-
-            },
-            change(event) {
-                this.files = event.target.files
-            },
-            uploadFile() {
-                if (!this.files) {
-                    toastr.error('The file must be required')
-                    return
-                }
-
-                const formData = new FormData()
-
-                formData.append('file', this.files[0])
-                formData.append('name', this.file_name)
-                formData.append('folder', this.upload.folder)
-
-                this.$http.post('upload', formData)
-                    .then((response) => {
-                        toastr.success('You upload a file success!')
-
-                        this.upload.files.push(response.data)
-                        this.file_name = ''
-                        this.showFile = false
-                    }).catch(({response}) => {
-                        if (response.data.error) {
-                            toastr.error(response.data.error.message)
-                        } else {
-                            toastr.error(response.status + ' : Resource ' + response.statusText)
-                        }
-                    })
-            },
-            deleteFolder(name) {
-                const path = (this.upload.folder == '/') ? '' : this.upload.folder
-                this.$http.post('folder/delete', { del_folder: name, folder: this.upload.folder })
-                    .then((response) => {
-                        toastr.success('You delete a folder success!')
-
-                        this.$delete(this.upload.subfolders, path + '/' + name)
-                    }).catch(({response}) => {
-                        toastr.error(response.status + ' : Resource ' + response.statusText)
-                    })
-            },
-            deleteFile(file, index) {
-                this.$http.post('file/delete', { path: file.fullPath })
-                    .then((response) => {
-                        toastr.success('You delete a file success!')
-
-                        this.upload.files.splice(index, 1)
-                    }).catch(({response}) => {
-                        toastr.error(response.status + ' : Resource ' + response.statusText)
-                    })
-            },
-            getFileInfo(path) {
-                var url = 'upload'
-
-                if (path) {
-                    url = url + '?folder=' + path
-                } else {
-                    path = '/'
-                }
-
-                this.$http.get(url)
-                    .then((response) => {
-                        this.upload = response.data.data
-                        if (this.upload.subfolders instanceof Array) {
-                            this.upload.subfolders = {}
-                        }
-                        this.$router.push('/dashboard/files' + '?folder=' + path)
-                    })
-            },
-            checkImageType(fileType) {
-                if (fileType != null) {
-                    return fileType.indexOf("image/") != -1
-                }
-
-                return false
+            if (path) {
+                url = url + '?folder=' + path
+            } else {
+                path = '/'
             }
+
+            this.$http.get(url)
+                .then((response) => {
+                    this.upload = response.data.data
+                    if (this.upload.subfolders instanceof Array) {
+                        this.upload.subfolders = {}
+                    }
+                    this.$router.push('/dashboard/files' + '?folder=' + path)
+                })
+        },
+        checkImageType(fileType) {
+            if (fileType != null) {
+                return fileType.indexOf("image/") != -1
+            }
+
+            return false
         }
     }
+}
 </script>
 
-<style scoped>
-    .box-body button, .box-body button:hover {
-        padding: 0;
-        border-radius: 50%;
-        width: 2.5em;
-        height: 2.5em;
-        outline: none;
-    }
-    .preview-size {
-        max-width: 500px;
-    }
+<style lang="scss" scoped>
+.box-body button, .box-body button:hover {
+    padding: 0;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    outline: none;
+}
+.preview-size {
+    max-width: 500px;
+}
 </style>

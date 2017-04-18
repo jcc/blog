@@ -31,6 +31,8 @@ return [
     'Published At'     => 'Published At',
     'Account Setting'  => 'Account',
     'Notification Setting' => 'Notifications',
+    'New Notification' => 'Notifications',
+    'Mark As Read'     => 'Mark As Read',
     'Account Binding'  => 'Account Bindings',
     'Reset Password'   => 'Reset password',
     'Old Password'     => 'Old password',
@@ -76,5 +78,6 @@ return [
     'Discuss Title'        => 'Title',
     'Discuss Tag'          => 'Tag',
     'Discuss Content'      => 'Content',
-
+    'Deleted'              => 'Item had been deleted',
+    'Commented'            => 'commented'
 ];

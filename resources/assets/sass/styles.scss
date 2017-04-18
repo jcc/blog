@@ -593,3 +593,53 @@ span.timeago {
         font-size: 20px;
     }
 }
+
+// Emojione
+img.emojione {
+    border: none !important;
+    box-shadow: none !important;
+    width: 30px;
+    margin: 0 !important;
+}
+
+// Notifications
+.notifications {
+    margin-top: 30px;
+
+    .panel-heading {
+
+        .tip {
+            height: 30px;
+            line-height: 30px;
+
+            b {
+                font-size: 16px;
+            }
+        }
+        form {
+            display: none;
+        }
+    }
+    .panel-body {
+        padding: 0;
+    }
+    ul.notification {
+        list-style: none;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        li {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding: 5px 10px;
+
+            i {
+                padding-left: 8px;
+                padding-right: 8x;
+            }
+            &:hover {
+                background-color: #efefef;
+            }
+        }
+    }
+}
