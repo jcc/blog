@@ -16,7 +16,6 @@ Route::group([
         'update' => 'api.article.update',
         'destroy' => 'api.article.destroy',
     ],'except' => ['create', 'show']]);
-    Route::post('/article/upload-paste', 'ArticleController@uploadPaste');
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');

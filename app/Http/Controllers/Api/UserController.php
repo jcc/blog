@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
-use App\Services\FileManager\UploadManager;
 
 class UserController extends ApiController
 {
@@ -15,12 +14,11 @@ class UserController extends ApiController
 
     protected $manager;
 
-    public function __construct(UserRepository $user, UploadManager $manager)
+    public function __construct(UserRepository $user)
     {
         parent::__construct();
 
         $this->user = $user;
-        $this->manager = $manager;
     }
 
     /**
@@ -138,27 +136,5 @@ class UserController extends ApiController
         $result = $this->manager->store($file, $path);
 
         return $this->respondWithArray($result);
-    }
-
-    /**
-     * Crop Avatar
-     * 
-     * @param  Request $request
-     * @return array
-     */
-    public function cropAvatar(Request $request)
-    {
-        $currentImage = $request->get('image');
-        $data = $request->get('data');
-
-        $image = Image::make($currentImage['relative_url']);
-
-        $image->crop((int) $data['width'], (int) $data['height'], (int) $data['x'], (int) $data['y']);
-
-        $image->save($currentImage['relative_url']);
-
-        $this->user->saveAvatar(auth()->user()->id, $currentImage['url']);
-
-        return $this->respondWithArray($currentImage);
     }
 }
