@@ -1,4 +1,4 @@
- <?php
+<?php
 
 return [
 
@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APPLICATION_NAME') ?: 'Wade Blog',
+    'name' => env('APPLICATION_NAME') ?: 'PJ Blog',
 
     /*
     |--------------------------------------------------------------------------
@@ -234,5 +234,5 @@ return [
         'Translug' => JellyBool\Translug\TranslugFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
     ],
-    'locale' => 'zh_cn',
+
 ];
