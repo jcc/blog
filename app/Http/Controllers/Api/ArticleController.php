@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
 use App\Transformers\ArticleTransformer;
-use App\Services\FileManager\UploadManager;
 
 class ArticleController extends ApiController
 {
