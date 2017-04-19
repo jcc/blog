@@ -36,43 +36,28 @@ class UploadController extends ApiController
     }
 
     /**
-     * Upload the file.
+     * Upload the file for file manager.
      *
      * @param  Request $request
      * @return array
      */
-    public function uploadFile(Request $request)
+    public function uploadForManager(Request $request)
     {
-        $file = $_FILES['file'];
+        $file = $request->file('file');
 
-        $fileName = $request->get('name');
+        $fileName = $request->get('name')
+                    ? $request->get('name').'.'.explode('/', $file->getClientMimeType())[1]
+                    : $file->getClientOriginalName();
 
-        $fileName = $fileName ? $fileName.'.'.explode('/', $file['type'])[1] : $file['name'];
+        $path = str_finish($request->get('folder'), '/');
 
-        $path = str_finish($request->get('folder'), '/').$fileName;
-
-        $content = \File::get($file['tmp_name']);
-
-        if ($this->manager->checkFile($path)) {
+        if ($this->manager->checkFile($path.$fileName)) {
             return $this->errorWrongArgs('This File exists.');
         }
 
-        $this->manager->saveFile($path, $content);
+        $result = $this->manager->store($file, $path, $fileName);
 
-        return $this->respondWithArray($this->manager->fileDetail($path));
-    }
-
-    /**
-     * Upload file by the path.
-     * 
-     * @param  Request $request
-     * @return array
-     */
-    public function uploadFileByPath(Request $request)
-    {
-        $image = $this->manager->store($request->file('image'), $request->get('path'));
-
-        return $this->respondWithArray($image);
+        return $this->respondWithArray($result);
     }
 
     /**

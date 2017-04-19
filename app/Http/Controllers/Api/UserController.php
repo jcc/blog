@@ -97,49 +97,6 @@ class UserController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        if (auth()->user()->id == $id || $this->user->getById($id)->is_admin) {
-            return $this->errorUnauthorized('You can\'t delete for yourself and other Administrators!');
-        }
-
-        $this->user->destroy($id);
-
-        return $this->noContent();
-    }
-
-    /**
-     * Upload the avatar.
-     *
-     * @param Request $request
-     * @return mixed
-     */
-    public function avatar(Request $request)
-    {
-        $file = $request->file('file');
-
-        $validator = \Validator::make([ 'file' => $file ], [ 'file' => 'image' ]);
-
-        if($validator->fails()) {
-            return response()->json([
-                    'success' => false,
-                    'errors'  => $validator->getMessageBag()->toArray()
-                ]);
-        }
-
-        $path = 'avatars/' . auth()->user()->id;
-
-        $result = $this->manager->store($file, $path);
-
-        return $this->respondWithArray($result);
-    }
-
-    /**
      * Crop Avatar
      * 
      * @param  Request $request
@@ -159,5 +116,22 @@ class UserController extends ApiController
         $this->user->saveAvatar(auth()->user()->id, $currentImage['url']);
 
         return $this->respondWithArray($currentImage);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        if (auth()->user()->id == $id || $this->user->getById($id)->is_admin) {
+            return $this->errorUnauthorized('You can\'t delete for yourself and other Administrators!');
+        }
+
+        $this->user->destroy($id);
+
+        return $this->noContent();
     }
 }

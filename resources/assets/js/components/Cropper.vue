@@ -70,7 +70,7 @@ export default {
         'data': this.cropper.getData()
       };
 
-      this.$http.post('/user/crop/avatar', formData)
+      this.$http.post('crop/avatar', formData)
           .then((response) => {
             that.$emit('succeed')
           })
