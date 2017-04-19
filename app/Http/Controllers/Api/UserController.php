@@ -62,6 +62,7 @@ class UserController extends ApiController
     public function store(UserRequest $request)
     {
         $data = array_merge($request->all(), [
+            'password' => bcrypt($request->get('password')),
             'confirm_code' => str_random(64)
         ]);
 
