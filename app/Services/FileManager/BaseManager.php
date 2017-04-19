@@ -226,17 +226,34 @@ class BaseManager
     }
 
     /**
-     * Save the file.
+     * Handle the file upload.
      *
-     * @param $path
-     * @param $content
-     * @return string
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @param string                                              $dir
+     * @param string                                              $fileName
+     *
+     * @return array|bool
      */
-    public function saveFile($path, $content)
+    public function store(UploadedFile $file, $dir = '', $name = '')
     {
-        $this->cleanFolder($path);
+        $hashName = is_null($name)
+                    ? str_ireplace('.jpeg', '.jpg', $file->hashName())
+                    : $name;
 
-        return $this->disk->put($path, $content);
+        $mime = $file->getMimeType();
+
+        $realPath = $this->disk->putFileAs($dir, $file, $hashName);
+
+        return [
+                'success' => true,
+                'filename' => $hashName,
+                'original_name' => $file->getClientOriginalName(),
+                'mime' => $mime,
+                'size' => human_filesize($file->getClientSize()),
+                'real_path' => $realPath,
+                'relative_url' => "storage/$realPath",
+                'url' => asset("storage/$realPath"),
+        ];
     }
 
     /**
@@ -283,34 +300,5 @@ class BaseManager
         $this->cleanFolder($path);
 
         return $this->disk->delete($path);
-    }
-
-    /**
-     * Handle the file upload. Returns the response body on success, or false
-     * on failure.
-     *
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
-     * @param string                                              $dir
-     * @param Closure                                             $callback
-     *
-     * @return array|bool
-     */
-    public function store(UploadedFile $file, $dir = '', Closure $callback = null)
-    {
-        $hashName = str_ireplace('.jpeg', '.jpg', $file->hashName());
-
-        $mime = $file->getMimeType();
-
-        $realname = $this->disk->putFileAs($dir, $file, $hashName);
-
-        return [
-                'success' => true,
-                'filename' => $hashName,
-                'original_name' => $file->getClientOriginalName(),
-                'mime' => $mime,
-                'size' => $file->getClientSize(),
-                'relative_url' => "storage/$realname",
-                'url' => asset("storage/$realname"),
-        ];
     }
 }

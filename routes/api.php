@@ -35,12 +35,10 @@ Route::group([
     Route::get('visitor', 'VisitorController@index');
 
     Route::get('upload', 'UploadController@index');
-    Route::post('upload', 'UploadController@uploadFile');
-    Route::post('upload/path', 'UploadController@uploadFileByPath');
+    Route::post('upload', 'UploadController@uploadForManager');
     Route::post('folder', 'UploadController@createFolder');
     Route::post('folder/delete', 'UploadController@deleteFolder');
     Route::post('file/delete', 'UploadController@deleteFile');
-    Route::post('file/upload', 'UploadController@fileUpload');
 
     Route::get('system', 'SystemController@getSystemInfo');
 });
@@ -48,9 +46,10 @@ Route::group([
 Route::group([
     'namespace' => 'Api',
 ], function () {
+    // File Upload
+    Route::post('file/upload', 'UploadController@fileUpload')->middleware('auth:api');
     // Edit Avatar
-    Route::post('user/avatar', 'UserController@avatar')->middleware('auth:api');
-    Route::post('user/crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
+    Route::post('crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
 
     // Comment
     Route::get('commentable/{commentableId}/comment', 'CommentController@show')->middleware('api');

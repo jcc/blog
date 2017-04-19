@@ -62,16 +62,15 @@ export default {
         change(event) {
             const image = event.target.files[0]
             const formData = new FormData()
-            formData.append('id', this.$route.params.id)
             formData.append('image', image)
-            formData.append('path', 'links')
+            formData.append('strategy', 'links')
 
             if (!/\/(?:jpeg|jpg|png)/i.test(image.type)) {
                 toastr.error('Uploaded Failed! Image only supported jpeg, jpg and png.');
                 return;
             }
 
-            this.$http.post('upload/path', formData)
+            this.$http.post('file/upload', formData)
                 .then((response) => {
                     this.link.image = response.data.url
                 })

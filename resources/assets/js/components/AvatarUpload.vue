@@ -36,12 +36,13 @@
     },
     methods: {
       upload(e) {
-        let files = e.target.files
+        let image = e.target.files[0]
         let formData = new FormData()
 
-        formData.append('file', files[0]);
+        formData.append('image', image);
+        formData.append('strategy', 'avatar');
 
-        this.$http.post('/user/avatar', formData)
+        this.$http.post('file/upload', formData)
             .then((response) => {
               this.cropImage = response.data
 
