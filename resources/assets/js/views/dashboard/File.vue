@@ -99,7 +99,8 @@
             <form class="form-horizontal" role="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="file" class="control-label col-sm-3">{{ $t('form.file') }}</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 file-upload">
+                        <button type="button" class="btn btn-primary">{{ $t('table.upload') }}</button>
                         <input type="file" id="file" name="file" @change="change" class="form-control">
                     </div>
                 </div>
@@ -232,7 +233,15 @@ export default {
                 .then((response) => {
                     toastr.success('You upload a file success!')
 
-                    this.upload.files.push(response.data)
+                    let file = {
+                        fullPath : response.data.real_path,
+                        mimeType : response.data.mime,
+                        name : response.data.original_name,
+                        size : response.data.size,
+                        webPath : response.data.url
+                    }
+
+                    this.upload.files.push(file)
                     this.file_name = ''
                     this.showFile = false
                 }).catch(({response}) => {
@@ -303,5 +312,12 @@ export default {
 }
 .preview-size {
     max-width: 500px;
+}
+.file-upload input {
+    width: 71px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    opacity: 0;
 }
 </style>
