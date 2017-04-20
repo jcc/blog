@@ -20,9 +20,10 @@ if ($comment) {
 <li>
     @if ($comment)
         <i :class="'{{ empty($notification->read_at) }}' ? 'ion-ios-chatboxes' : 'ion-ios-chatboxes-outline'"></i>
-        <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a> {{ lang('Commented') }} {{ $type }}
+        <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
+        {{ lang('Commented') }} {{ $type }}
         <a class="text-info" href="{{ $url }}">{{ $comment->commentable->title }}</a>
     @else
-        <s>{{ lang('Deleted') }}</s>
+        <s>{{ strtolower($type) }} {{ lang('Deleted') }}</s>
     @endif
 </li>
