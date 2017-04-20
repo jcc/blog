@@ -17,7 +17,8 @@ if ($comment) {
 }
 
 ?>
-<li>
+
+<li :class="'{{ empty($notification->read_at) }}' ? 'bold' : ''">
     @if ($comment)
         <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
         {{ lang('Mentioned') }} {{ lang('In') }}
