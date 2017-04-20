@@ -1,12 +1,12 @@
 @component('mail::message')
-**尊敬的 {{ $username }}：**
+**{{ lang('Dear') }} {{ $username }}：**
 
 {{ $message }}
 
 {{ $content }}
 
 @component('mail::button', ['url' => $url])
-查看
+{{ lang('View') }}
 @endcomponent
 
 Thanks,<br>

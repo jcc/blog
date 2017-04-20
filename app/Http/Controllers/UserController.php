@@ -7,6 +7,7 @@ use Hash;
 use Image;
 use Validator;
 use Illuminate\Http\Request;
+use App\Notifications\FollowedUser;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -115,6 +116,8 @@ class UserController extends Controller
             Auth::user()->unfollow($id);
         } else {
             Auth::user()->follow($id);
+
+            $user->notify(new FollowedUser(Auth::user()));
         }
 
         return redirect()->back();
