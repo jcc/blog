@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ReceivedComment extends Notification implements ShouldQueue
+class MentionedUser extends Notification
 {
     use Queueable;
 
@@ -16,6 +16,8 @@ class ReceivedComment extends Notification implements ShouldQueue
 
     /**
      * Create a new notification instance.
+     *
+     * @param \App\Comment $comment
      *
      * @return void
      */
@@ -47,7 +49,7 @@ class ReceivedComment extends Notification implements ShouldQueue
 
         $type = lang(ucfirst($comment->commentable_type));
 
-        $message = '您发布的' . $type . '《' . $comment->commentable->title . '》收到了一条来自 ' . $comment->user->name . ' 的评论：';
+        $message = '用户 ' . $comment->user->name . ' 在 《' . $comment->commentable->title . '》 评论中提及到你';
 
         $url = ($comment->commentable_type == 'articles')
                 ? url('article', ['slug'=>$comment->commentable->slug])
@@ -61,8 +63,8 @@ class ReceivedComment extends Notification implements ShouldQueue
         ];
 
         return (new MailMessage)
-                    ->subject("您的{$type}有新的评论")
-                    ->markdown('mail.receive.comment', $data);
+                    ->subject("有人在 {$type}【{$comment->commentable->title}】提及到您")
+                    ->markdown('mail.mention.user', $data);
     }
 
     /**
