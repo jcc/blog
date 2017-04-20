@@ -2,7 +2,9 @@
 
 return [
     'Articles'    => '文章',
+    'Article'    => '文章',
     'Discussions' => '讨论',
+    'Discussion' => '讨论',
     'Follow'      => '关注',
     'Following'   => '关注中',
     'Comments'    => '评论数',
@@ -78,6 +80,8 @@ return [
     'Discuss Title'        => '标题',
     'Discuss Tag'          => '标签',
     'Discuss Content'      => '内容',
-    'Deleted'              => '该条内容已被删除',
-    'Commented'            => '评论了你发布的'
+    'Deleted'              => '内容已被删除',
+    'Commented'            => '评论了你发布的',
+    'In'                   => '在',
+    'Mentioned'            => '提及到你',
 ];

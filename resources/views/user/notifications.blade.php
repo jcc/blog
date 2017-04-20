@@ -21,7 +21,7 @@
                     <div class="panel-body">
                         <ul class="notification">
                             @foreach(Auth::user()->notifications as $notification)
-                                @include('user.notice.'. snake_case(class_basename($notification->type), '-'))
+                                @include('notifications.'. snake_case(class_basename($notification->type), '-'))
                             @endforeach
                         </ul>
                     </div>

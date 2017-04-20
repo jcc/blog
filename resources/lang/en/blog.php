@@ -2,7 +2,9 @@
 
 return [
     'Articles'    => 'Articles',
+    'Article'     => 'Article',
     'Discussions' => 'Discussions',
+    'Discussion'  => 'Discussion',
     'Follow'      => 'Follow',
     'Following'   => 'Following',
     'Comments'    => 'Comments',
@@ -78,6 +80,8 @@ return [
     'Discuss Title'        => 'Title',
     'Discuss Tag'          => 'Tag',
     'Discuss Content'      => 'Content',
-    'Deleted'              => 'Item had been deleted',
-    'Commented'            => 'commented'
+    'Deleted'              => 'had been deleted',
+    'Commented'            => 'commented',
+    'In'                   => 'in',
+    'Mentioned'            => 'mentioned you',
 ];

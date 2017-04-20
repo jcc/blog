@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Services\Mention;
 use App\Services\Markdowner;
 use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\Model;
@@ -57,11 +56,9 @@ class Comment extends Model
      */
     public function setContentAttribute($value)
     {
-        $content = (new Mention)->parse($value);
-
         $data = [
-            'raw'  => $content,
-            'html' => (new Markdowner)->convertMarkdownToHtml($content)
+            'raw'  => $value,
+            'html' => (new Markdowner)->convertMarkdownToHtml($value)
         ];
 
         $this->attributes['content'] = json_encode($data);

@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Comment;
+use App\Services\Mention;
+use App\Notifications\MentionedUser;
 
 class CommentRepository
 {
@@ -23,7 +25,17 @@ class CommentRepository
      */
     public function store($input)
     {
-        return $this->save($this->model, $input);
+        $mention = new Mention();
+
+        $input['content'] = $mention->parse($input['content']);
+
+        $comment = $this->save($this->model, $input);
+
+        foreach ($mention->users as $user) {
+            $user->notify(new MentionedUser($comment));
+        }
+
+        return $comment;
     }
 
     /**
