@@ -45,9 +45,12 @@ class ReceivedComment extends Notification implements ShouldQueue
     {
         $comment = $this->comment;
 
-        $type = lang(ucfirst($comment->commentable_type));
+        $type = lang(substr(ucfirst($comment->commentable_type), 0, -1));
 
-        $message = '您发布的' . $type . '《' . $comment->commentable->title . '》收到了一条来自 ' . $comment->user->name . ' 的评论：';
+        $message = lang('Comment Content', [
+            'type' => strtolower($type),
+            'title' => $comment->commentable->title,
+            'user' => $comment->user->name]);
 
         $url = ($comment->commentable_type == 'articles')
                 ? url('article', ['slug'=>$comment->commentable->slug])
@@ -61,7 +64,7 @@ class ReceivedComment extends Notification implements ShouldQueue
         ];
 
         return (new MailMessage)
-                    ->subject("您的{$type}有新的评论")
+                    ->subject(lang('New Comment', ['type' => strtolower($type)]))
                     ->markdown('mail.receive.comment', $data);
     }
 
