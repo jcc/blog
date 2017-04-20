@@ -17,7 +17,8 @@ if ($comment) {
 }
 
 ?>
-<li>
+
+<li :class="'{{ empty($notification->read_at) }}' ? 'bold' : ''">
     @if ($comment)
         <i :class="'{{ empty($notification->read_at) }}' ? 'ion-ios-chatboxes' : 'ion-ios-chatboxes-outline'"></i>
         <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
