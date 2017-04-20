@@ -3,11 +3,7 @@
 
 {{ $message }}
 
-{{ $content }}
-
-@component('mail::button', ['url' => $url])
-{{ lang('View') }}
-@endcomponent
+<a href="{{ $url }}" target="_blank">{{ lang('View') }}</a>
 
 Thanks,<br>
 {{ config('app.name') }}

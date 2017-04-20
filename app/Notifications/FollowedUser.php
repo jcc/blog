@@ -2,28 +2,28 @@
 
 namespace App\Notifications;
 
-use App\Comment;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class MentionedUser extends Notification implements ShouldQueue
+class FollowedUser extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $comment;
+    protected $user;
 
     /**
      * Create a new notification instance.
      *
-     * @param \App\Comment $comment
-     *
+     * @param \App\User $user
+     * 
      * @return void
      */
-    public function __construct(Comment $comment)
+    public function __construct(User $user)
     {
-        $this->comment = $comment;
+        $this->user = $user;
     }
 
     /**
@@ -45,28 +45,17 @@ class MentionedUser extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $comment = $this->comment;
-
-        $type = lang(substr(ucfirst($comment->commentable_type), 0, -1));
-
-        $message = lang('Mentioned Content', [
-            'user' => $comment->user->name,
-            'title' => $comment->commentable->title ]);
-
-        $url = ($comment->commentable_type == 'articles')
-                ? url('article', ['slug'=>$comment->commentable->slug])
-                : url('discussion', ['id' => $comment->commentable->id]);
+        $message = lang('Followed Content', [ 'user' => $this->user->name]);
 
         $data = [
             'username' => $notifiable->name,
             'message'  => $message,
-            'content'  => json_decode($comment->content)->raw,
-            'url' => $url
+            'url'      => url('user', [ 'username' => $this->user->name ])
         ];
 
         return (new MailMessage)
-                    ->subject(lang('Someone Mentioned', ['type' => strtolower($type), 'title' => $comment->commentable->title]))
-                    ->markdown('mail.mention.user', $data);
+                    ->subject(lang('Someone Followed'))
+                    ->markdown('mail.followed.user', $data);
     }
 
     /**
@@ -77,6 +66,6 @@ class MentionedUser extends Notification implements ShouldQueue
      */
     public function toArray($notifiable)
     {
-        return $this->comment->toArray();
+        return $this->user->toArray();
     }
 }
