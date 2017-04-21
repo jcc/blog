@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success pull-right">发起新讨论</button>
+                            <button type="submit" class="btn btn-success pull-right" onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
                         </div>
                     </div>
                 </form>

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="dicussion row">
             <div class="col-md-9 col-md-offset-1">
-                <form class="form-horizontal" action="/discussion/{{ $discussion->id }}" method="POST">
+                <form class="form-horizontal" action="{{ url('discussion', ['id' => $discussion->id]) }}" method="POST">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
@@ -55,7 +55,7 @@
                 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success pull-right">修改讨论</button>
+                            <button type="submit" class="btn btn-success pull-right" onClick="this.form.submit(); this.disabled=true;">{{ lang('Edit Discussion') }}</button>
                         </div>
                     </div>
                 </form>
