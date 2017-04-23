@@ -230,13 +230,13 @@ class BaseManager
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
      * @param string                                              $dir
-     * @param string                                              $fileName
+     * @param string                                              $name
      *
      * @return array|bool
      */
     public function store(UploadedFile $file, $dir = '', $name = '')
     {
-        $hashName = is_null($name)
+        $hashName = empty($name)
                     ? str_ireplace('.jpeg', '.jpg', $file->hashName())
                     : $name;
 
