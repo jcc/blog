@@ -31,7 +31,7 @@
                         <input type="text" id="page_image" class="form-control" name="page_image" v-model="article.page_image" placeholder="ex: /uploads/default_avatar.png">
                     </div>
                     <div class="col-sm-5">
-                        <img v-if="article.page_image != ''" :src="article.page_image" alt="Pig Jian" width="41" height="41">
+                        <img v-if="article.page_image != null && article.page_image != ''" :src="article.page_image" alt="Pig Jian" width="41" height="41">
                         <div class="cover-upload pull-right">
                             <a href="javascript:;" class="btn btn-success file">
                                 <span>{{ $t('form.upload_file') }}</span>
