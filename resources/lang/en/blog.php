@@ -24,6 +24,8 @@ return [
     'Login'       => 'Login In',
     'Register'    => 'Register',
     'Edit Profile'=> 'Edit Profile',
+    'Create Discussion' => 'Create Discussion',
+    'Edit Discussion'  => 'Edit Discussion',
     'Discuss Problem'  => 'Discuss Problem',
     'Discuss Subtitle' => 'Welcome to submit all kind of the problems',
     'Submit Problem'   => 'Submit Problems',
