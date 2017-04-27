@@ -18,9 +18,24 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="ion-clock"></i>{{ comment.created_at }}
                             <span class="pull-right operate">
-                                <template>
-                                    <a href="javascript:;" @click="vote(index)" v-if="comment.is_voted"><i class="ion-happy"></i> <small>{{ comment.vote_count }}</small> </a>
-                                    <a href="javascript:;" @click="vote(index)" v-else><small><i class="ion-happy-outline"></i> {{ comment.vote_count > 0 ? comment.vote_count : '' }}</small> </a>
+                                <b :class="comment.vote_count > 0 ? 'text-success' : 'text-danger'">{{ comment.vote_count == 0 ? '' : comment.vote_count }}</b>
+                                <template v-if="username != comment.username">
+                                    <a 
+                                    :title="comment.is_up_voted ? 'Cancel vote' : 'Up vote'" 
+                                    :data-tooltip-text="comment.is_up_voted ? 'Cancel vote' : 'Up vote'" 
+                                    :href="canComment ? 'javascript:;' : '/login'" 
+                                    :disabled="isLike ? 'true' : 'false'" 
+                                    @click="upVote(index)"> 
+                                        <i :class="comment.is_up_voted ? 'rating-button ion-arrow-up-a text-success' : 'rating-button ion-arrow-up-a'"></i>
+                                    </a>
+                                    <a 
+                                    :title="comment.is_down_voted ? 'Cancel vote' : 'Down vote'" 
+                                    :data-tooltip-text="comment.is_down_voted ? 'Cancel vote' : 'Down vote'" 
+                                    :href="canComment ? 'javascript:;' : '/login'" 
+                                    :disabled="isLike ? 'true' : 'false'" 
+                                    @click="downVote(index)"> 
+                                        <i :class="comment.is_down_voted ? 'rating-button ion-arrow-down-a text-danger' : 'rating-button ion-arrow-down-a'"></i>
+                                    </a>
                                 </template>
                                 <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
                                     <i class="ion-trash-b"></i>
@@ -28,7 +43,13 @@
                                 <a href="javascript:;" @click="reply(comment.username)"><i class="ion-ios-undo"></i></a>
                             </span>
                         </div>
-                        <div class="comment-body markdown" v-html="comment.content_html"></div>
+                        <template v-if="comment.vote_count < 0">
+                            <div :class="'comment-body markdown downvoted ' + downVotedClass(comment.vote_count)" v-html="comment.content_html"></div>
+                        </template>
+                        <template v-else>
+                            <div :class="'comment-body markdown'" v-html="comment.content_html"></div>
+                        </template>
+                        
                     </div>
                 </div>
 
@@ -123,6 +144,7 @@ export default {
             comments: [],
             content: '',
             isSubmiting: false,
+	    isLike: false
         }
     },
     mounted() {
@@ -175,11 +197,67 @@ export default {
             $('#content').focus()
             this.content = '@' + name + ' '
         },
-        vote(index) {
-            this.$http.post('vote/comment', { id: this.comments[index].id })
+    	downVotedClass(votes){
+    		votes = votes > 0 ? 0 : votes > 5 ? 5 : votes*-1
+                    
+    		var downVoteClass = 'downvoted' + votes
+                    
+    		return downVoteClass
+    	},
+        upVote(index) {
+            this.isLike = true
+            this.$http.post('comments/upvote', { id: this.comments[index].id })
                 .then((response) => {
-                    this.comments[index].is_voted = !this.comments[index].is_voted
-                    this.comments[index].is_voted ? this.comments[index].vote_count++ : this.comments[index].vote_count--
+                    if(this.comments[index].is_up_voted){
+                        this.comments[index].vote_count--
+                        this.comments[index].is_voted = false
+                        this.comments[index].is_down_voted = false
+                        this.comments[index].is_up_voted = false
+                    }
+                    else if(this.comments[index].is_down_voted){
+                        this.comments[index].vote_count = this.comments[index].vote_count + 2
+                        this.comments[index].is_voted = true
+                        this.comments[index].is_up_voted = true
+                        this.comments[index].is_down_voted = false
+                    }
+                    else{
+                        this.comments[index].vote_count++
+                        this.comments[index].is_voted = true
+                        this.comments[index].is_up_voted = true
+                        this.comments[index].is_down_voted = false
+                    }
+                    this.isLike = false
+                }).catch(({response}) => {
+                	this.isLike = false
+                	stack_error(response.data)
+                })
+        },
+        downVote(index) {
+            this.isLike = true
+            this.$http.post('comments/downvote', { id: this.comments[index].id })
+                .then((response) => {
+                    if(this.comments[index].is_down_voted){
+                        this.comments[index].vote_count++
+                        this.comments[index].is_voted = false
+                        this.comments[index].is_down_voted = false
+                        this.comments[index].is_up_voted = false
+                    }
+                    else if(this.comments[index].is_up_voted){
+                        this.comments[index].vote_count = this.comments[index].vote_count - 2
+                        this.comments[index].is_voted = true
+                        this.comments[index].is_down_voted = true
+                        this.comments[index].is_up_voted = false
+                    }
+                    else{
+                        this.comments[index].vote_count--
+                        this.comments[index].is_voted = true
+                        this.comments[index].is_down_voted = true
+                        this.comments[index].is_up_voted = false
+                    }
+                    this.isLike = false
+                }).catch(({response}) => {
+                	this.isLike = false
+                	stack_error(response.data)
                 })
         },
         commentDelete(index, id) {
@@ -294,13 +372,19 @@ export default {
 i {
     margin-right: 5px;
 }
-.operate {
-    font-size: 16px;
-}
-.operate a {
-    margin-right: 5px;
-    text-decoration: none;
-}
+    .operate {
+        font-size: 16px;
+        a {
+            margin-right: 5px;
+            text-decoration: none;
+        }
+        b{
+            margin-right: 5px;
+        }
+    }
+    .rating-button{
+        margin-right: -4px;
+    }
 .none {
     color: #c5c5c5;
     font-size: 16px;
@@ -357,5 +441,33 @@ i {
 .comment .footing {
     padding: 10px 20px;
     border-top: 1px dashed #e1e1e1;
+}
+.comment .downvoted5 {
+  background: #fff;
+  opacity: .1;
+}
+
+.comment .downvoted4 {
+  background: #fff;
+  opacity: .2;
+}
+
+.comment .downvoted3 {
+  background: #fff;
+  opacity: .4;
+}
+
+.comment .downvoted2 {
+  background: #fff;
+  opacity: .5;
+}
+
+.comment .downvoted1 {
+  background: #fff;
+  opacity: .6;
+}
+
+.comment .downvoted:hover {
+  opacity: 1;
 }
 </style>

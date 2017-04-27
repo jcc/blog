@@ -97,4 +97,6 @@ return [
     'New Comment'          => 'You has a new comment with :type',
     'Comment Content'      => 'Your published :type <:title> received a comment : ',
     'Be Banned Comment'    => 'Comment had been banned!',
+    'Likes'                => 'up voted your comment on',
+    'Dislikes'             => 'down voted your comment on',
 ];
