@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Comment;
 use App\Services\Mention;
+use App\Notifications\GotVote;
 use App\Notifications\MentionedUser;
 
 class CommentRepository
@@ -74,17 +75,49 @@ class CommentRepository
      * @param  int $id
      * @return boolean
      */
-    public function toggleVote($id)
+    public function toggleVote($id, $isUpVote)
     {
         $user = auth()->user();
-
+        
         $comment = $this->getById($id);
-
+        
+        if($comment == null)
+        {
+            return false;
+        }
+        
         $hasVoted = $user->hasVoted($comment);
-
-        $hasVoted ? $user->cancelVote($comment) : $user->upVote($comment);
-
-        return $hasVoted;
+        
+        $hasUpVoted = $user->hasUpVoted($comment);
+        
+        $hasDownVoted = $user->hasDownVoted($comment);
+        
+        if($hasVoted)
+        {
+            $user->cancelVote($comment);
+        }
+        
+        if($isUpVote)
+        {
+            if($hasUpVoted)
+            {
+                return false;
+            }
+            
+            $comment->user->notify(new GotVote('up_vote', $user, $comment));
+            $user->upVote($comment);
+            return true;
+        }
+        else 
+        {
+            if($hasDownVoted)
+            {
+                return false;
+            }
+            
+            $comment->user->notify(new GotVote('down_vote', $user, $comment));
+            $user->downVote($comment);
+            return true;
+        }
     }
-
 }
