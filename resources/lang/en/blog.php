@@ -99,5 +99,4 @@ return [
     'Be Banned Comment'    => 'Comment had been banned!',
     'Likes'                => 'up voted your comment on',
     'Dislikes'             => 'down voted your comment on',
-    
 ];
