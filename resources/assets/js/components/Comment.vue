@@ -429,6 +429,7 @@ i {
 .comment-body {
     padding: 30px 50px;
     color: #34495e;
+    display: grid;
 
     a {
         color: #1abc9c;
