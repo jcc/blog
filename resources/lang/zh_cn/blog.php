@@ -97,4 +97,6 @@ return [
     'New Comment'          => '您的:type有新的评论',
     'Comment Content'      => '您发布的 :type《:title》收到了一条来自 :user 的评论：',
     'Be Banned Comment'    => '评论已被禁止!',
+    'Likes'                => '...',
+    'Dislikes'             => '...',
 ];

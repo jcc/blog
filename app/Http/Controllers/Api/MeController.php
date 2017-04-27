@@ -26,8 +26,43 @@ class MeController extends ApiController
                 'id' => 'required|exists:comments,id',
             ]);
 
-        $this->comment->toggleVote($request->id);
+        $this->comment->toggleVote($request->id, true);
 
+        return $this->noContent();
+    }
+    
+    /**
+     * post UpVote the comment by user.
+     * 
+     * @param  Request $request
+     * @return mixed
+     */
+    public function postUpVoteComment(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:comments,id',
+        ]);
+        
+        $this->comment->toggleVote($request->id, true);
+        
+        return $this->noContent();
+    }
+    
+    
+    /**
+     * post DownVote the comment by user.
+     * 
+     * @param  Request $request
+     * @return mixed
+     */
+    public function postDownVoteComment(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:comments,id',
+        ]);
+        
+        $this->comment->toggleVote($request->id, false);
+        
         return $this->noContent();
     }
 

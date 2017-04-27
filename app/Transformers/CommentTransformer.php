@@ -24,7 +24,9 @@ class CommentTransformer extends TransformerAbstract
             'content_raw'   => $content->raw,
             'created_at'    => $comment->created_at->diffForHumans(),
             'is_voted'      => auth()->guard('api')->id() ? $comment->isVotedBy(auth()->guard('api')->id()) : false,
-            'vote_count'    => $comment->voters->count(),
+            'is_up_voted'   => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasUpVoted($comment) : false,
+            'is_down_voted' => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasDownVoted($comment) : false,
+            'vote_count'    => ($comment->countUpVoters()-$comment->countDownVoters()),
         ];
     }
 
