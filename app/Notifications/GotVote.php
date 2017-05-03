@@ -14,7 +14,7 @@ class GotVote extends Notification implements ShouldQueue
     use Queueable;
     
     protected $vote_type;
-	protected $user;
+    protected $user;
     protected $comment;
 
     /**
@@ -25,7 +25,7 @@ class GotVote extends Notification implements ShouldQueue
     public function __construct($vote_type, User $user, Comment $comment)
     {
         $this->vote_type = $vote_type;
-		$this->user = $user;
+        $this->user = $user;
         $this->comment = $comment;
     }
 

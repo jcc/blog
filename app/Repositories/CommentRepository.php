@@ -73,51 +73,49 @@ class CommentRepository
      * Toogle up vote and down vote by user.
      * 
      * @param  int $id
+     * @param  boolean $isUpVote
+     * 
      * @return boolean
      */
-    public function toggleVote($id, $isUpVote)
+    public function toggleVote($id, $isUpVote = true)
     {
         $user = auth()->user();
-        
+
         $comment = $this->getById($id);
-        
-        if($comment == null)
-        {
+
+        if($comment == null) {
             return false;
         }
-        
-        $hasVoted = $user->hasVoted($comment);
-        
-        $hasUpVoted = $user->hasUpVoted($comment);
-        
-        $hasDownVoted = $user->hasDownVoted($comment);
-        
-        if($hasVoted)
-        {
-            $user->cancelVote($comment);
+
+        return $isUpVote
+                ? $this->upOrDownVote($user, $comment)
+                : $this->upOrDownVote($user, $comment, 'down');
+    }
+
+    /**
+     * Up vote or down vote item.
+     * 
+     * @param  \App\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $target
+     * @param  string $type
+     * 
+     * @return boolean
+     */
+    public function upOrDownVote($user, $target, $type = 'up')
+    {
+        $hasVoted = $user->{'has' . ucfirst($type) . 'Voted'}($target);
+
+        if($hasVoted) {
+            $user->cancelVote($target);
+            return false;
         }
-        
-        if($isUpVote)
-        {
-            if($hasUpVoted)
-            {
-                return false;
-            }
-            
-            $comment->user->notify(new GotVote('up_vote', $user, $comment));
-            $user->upVote($comment);
-            return true;
+
+        if ($type == 'up') {
+            $target->user->notify(new GotVote($type . '_vote', $user, $target));
         }
-        else 
-        {
-            if($hasDownVoted)
-            {
-                return false;
-            }
-            
-            $comment->user->notify(new GotVote('down_vote', $user, $comment));
-            $user->downVote($comment);
-            return true;
-        }
+
+        $user->{$type . 'Vote'}($target);
+
+        return true;
     }
 }
