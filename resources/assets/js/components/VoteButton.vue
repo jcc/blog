@@ -1,0 +1,69 @@
+<template>
+    <span class="vote-button">
+        <a href="javascript:;" @click="upVote(item.id)">
+            <i :class="item.is_up_voted ? 'ion-happy text-success' : 'ion-happy-outline'"></i>
+            <small v-if="item.vote_count > 0">{{ item.vote_count }}</small>
+        </a>
+        <a href="javascript:;" @click="downVote(item.id)">
+            <i :class="item.is_down_voted ? 'ion-sad text-danger' : 'ion-sad-outline'"></i>
+        </a>
+    </span>
+</template>
+
+<script>
+export default {
+    props: {
+        item: {
+            type: Object,
+            default() {
+                return {}
+            }
+        },
+        api: {
+          type: String,
+          default: 'comments'
+        },
+    },
+    data() {
+        return {
+            isLike: false,
+        }
+    },
+    methods: {
+        toggleStatus() {
+          let count = this.item.vote_count
+
+          this.item.is_voting = !this.item.is_voting
+
+          this.item.vote_count = this.item.is_voting ? count + 1 : count - 1
+        },
+        upVote(id) {
+          this.toggleVote(id, 'up')
+        },
+        downVote(id) {
+          this.toggleVote(id, 'down')
+        },
+        toggleVote(id, type) {
+          let url = this.api + '/vote/' + type
+          let upType = 'is_up_voted'
+          let downType = 'is_down_voted'
+          let checkType = type == 'up' ? downType : upType
+          let votingType = type == 'up' ? upType : downType
+
+          this.$http.post(url, {id: id})
+              .then(() => {
+                if(this.item[checkType]) {
+                  this.item[upType] = !this.item[upType]
+                  this.item[downType] = !this.item[downType]
+                  type == 'up' ? this.item.vote_count++ : this.item.vote_count--
+                } else {
+                  this.item[votingType] = !this.item[votingType]
+                  if(type == 'up') this.item[upType] ? this.item.vote_count++ : this.item.vote_count--
+                }
+              }).catch(() => {
+                this.$store.dispatch('setMessage', {type: 'error', message: ['操作失败！']})
+              })
+        },
+    }
+}
+</script>
