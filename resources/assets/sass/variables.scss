@@ -97,6 +97,26 @@ $brand-success:   $turquoise;
 $brand-warning:   $sun-flower;
 $brand-danger:    $alizarin;
 
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             $brand-success !default;
+$state-success-bg:               $brand-success !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                $brand-info !default;
+$state-info-bg:                  $brand-info !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             $brand-warning !default;
+$state-warning-bg:               $brand-warning !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              $brand-danger !default;
+$state-danger-bg:                $brand-danger !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
