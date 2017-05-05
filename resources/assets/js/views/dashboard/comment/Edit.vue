@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { stack_error } from '../../../config/helper'
 import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
 export default {
@@ -60,14 +61,7 @@ export default {
 
                     this.$router.push('/dashboard/comments')
                 }).catch(({response}) => {
-                    let content = response.data.content[0]
-
-                    swal({
-                        title: "Error Text!",
-                        type: 'error',
-                        text: content,
-                        html: true
-                    });
+                    stack_error(response)
                 })
         }
     }
