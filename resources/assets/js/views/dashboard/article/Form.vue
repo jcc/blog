@@ -197,7 +197,7 @@ export default {
 
                         this.$router.push('/dashboard/articles')
                     }).catch(({response}) => {
-                        stack_error(response.data)
+                        stack_error(response)
                     })
         },
         coverUploader(event) {

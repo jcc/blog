@@ -90,7 +90,7 @@ export default {
 
                     this.$router.push('/dashboard/links')
                 }).catch(({response}) => {
-                    stack_error(response.data)
+                    stack_error(response)
                 })
         }
     },
