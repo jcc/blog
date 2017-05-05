@@ -167,7 +167,7 @@ export default {
                     toastr.success('You publish the comment success!')
                 }).catch(({response}) => {
                     this.isSubmiting = false
-                    stack_error(response.data)
+                    stack_error(response)
                 })
         },
         reply(name) {
