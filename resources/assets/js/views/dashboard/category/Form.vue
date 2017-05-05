@@ -56,7 +56,7 @@ export default {
 
                     this.$router.push('/dashboard/categories')
                 }).catch(({response}) => {
-                    stack_error(response.data)
+                    stack_error(response)
                 })
         }
     }

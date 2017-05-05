@@ -48,7 +48,7 @@ export default {
 
                     this.$router.push('/dashboard/tags')
                 }).catch(({response}) => {
-                    stack_error(response.data)
+                    stack_error(response)
                 })
         }
     },
