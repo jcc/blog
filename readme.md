@@ -24,6 +24,8 @@ I believe it will be better and better. If you are interested in this, you can j
 
 Here is [documents](https://manual.pigjian.com/)
 
+[Example](http://example.pigjian.com)
+
 ## Basic Features
 
 - Manage users, articles, discussions and media
@@ -78,6 +80,20 @@ Install the `Vuejs` extended repositories:
 
 ```shel
 npm install
+```
+
+Compile the js code: 
+
+```shel
+npm run dev
+
+// OR
+
+npm run watch
+
+// OR
+
+npm run production
 ```
 
 ### 3. Run the blog install command, the command will run the `migrate` command and generate test data.
