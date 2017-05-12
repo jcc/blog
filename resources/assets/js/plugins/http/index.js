@@ -26,7 +26,7 @@ http.interceptors.response.use(function (response) {
 }, function (error) {
     const { response } = error
 
-    if ([400, 401].indexOf(response.status) >= 0) {
+    if ([401].indexOf(response.status) >= 0) {
       if (response.status == 401 && response.data.error.message != 'Unauthorized') {
         return Promise.reject(response);
       }
