@@ -6,18 +6,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 use App\Repositories\LinkRepository;
-use App\Services\FileManager\UploadManager;
 
 class UploadController extends ApiController
 {
     protected $manager;
     protected $link;
 
-    public function __construct(UploadManager $manager, LinkRepository $link)
+    public function __construct(LinkRepository $link)
     {
         parent::__construct();
 
-        $this->manager = $manager;
+        $this->manager = app('uploader');
 
         $this->link = $link;
     }
@@ -112,6 +111,10 @@ class UploadController extends ApiController
         $folder = $request->get('folder') . '/' . $del_folder;
 
         $data = $this->manager->deleteFolder($folder);
+
+        if(!$data) {
+            return $this->errorForbidden('The directory must be empty to delete it.');
+        }
 
         return $this->respondWithArray([ 'data' => $data ]);
     }
