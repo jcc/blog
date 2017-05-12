@@ -172,6 +172,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Jcc\LaravelVote\VoteServiceProvider::class,
+        JellyBool\Flysystem\Upyun\UpyunServiceProvider::class,
 
         /*
          * Application Service Providers...

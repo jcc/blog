@@ -63,6 +63,15 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'upyun' => [
+            'driver'        => 'upyun',
+            'bucket'        => env('UPYUN_BUCKET'),
+            'operator'      => env('UPYUN_OPERATOR'),
+            'password'      => env('UPYUN_PASSWORD'),
+            'domain'        => env('UPYUN_DOMAIN'),
+            'protocol'      => env('UPYUN_PROTOCOL'),
+        ],
+
     ],
 
 ];

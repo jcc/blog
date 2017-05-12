@@ -7,20 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
-use App\Services\FileManager\UploadManager;
 
 class UserController extends ApiController
 {
     protected $user;
 
-    protected $manager;
-
-    public function __construct(UserRepository $user, UploadManager $manager)
+    public function __construct(UserRepository $user)
     {
         parent::__construct();
 
         $this->user = $user;
-        $this->manager = $manager;
     }
 
     /**

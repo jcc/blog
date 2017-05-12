@@ -59,24 +59,42 @@
 
                     <!--All Files-->
                     <tr v-for="(file, index) in upload.files">
-                        <td>
-                            <a target="_blank" :href="file.webPath">
-                                <i class="ion-image" v-if="checkImageType(file.mimeType)"></i>
-                                <i class="ion-document-text" v-else></i>
-                                {{ file.name }}
-                            </a>
-                        </td>
-                        <td>{{ file.mimeType }}</td>
-                        <td>{{ file.modified }}</td>
-                        <td>{{ file.size }}</td>
-                        <td>
-                            <button type="button" class="btn btn-info" v-if="checkImageType(file.mimeType)" @click="preview(file.webPath)">
-                                <i class="ion-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" @click="deleteFile(file, index)">
-                                <i class="ion-trash-b"></i>
-                            </button>
-                        </td>
+                        <template v-if="file.type == 'folder'">
+                            <td>
+                                <a href="javascript:;" @click="getFileInfo(file.fullPath)">
+                                    <i class="ion-filing"></i>
+                                    {{ file.name }}
+                                </a>
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" @click="deleteFolder(file.fullPath)">
+                                    <i class="ion-trash-b"></i>
+                                </button>
+                            </td>
+                        </template>
+                        <template v-else>
+                            <td>
+                                <a target="_blank" :href="file.webPath">
+                                    <i class="ion-image" v-if="checkImageType(file.mimeType)"></i>
+                                    <i class="ion-document-text" v-else></i>
+                                    {{ file.name }}
+                                </a>
+                            </td>
+                            <td>{{ file.mimeType }}</td>
+                            <td>{{ file.modified }}</td>
+                            <td>{{ file.size }}</td>
+                            <td>
+                                <button type="button" class="btn btn-info" v-if="checkImageType(file.mimeType)" @click="preview(file.webPath)">
+                                    <i class="ion-eye"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" @click="deleteFile(file, index)">
+                                    <i class="ion-trash-b"></i>
+                                </button>
+                            </td>
+                        </template>
                     </tr>
                     </tbody>
                 </table>
@@ -260,7 +278,11 @@ export default {
 
                     this.$delete(this.upload.subfolders, path + '/' + name)
                 }).catch(({response}) => {
-                    toastr.error(response.status + ' : Resource ' + response.statusText)
+                    if(response.data.error) {
+                        toastr.error(response.data.error.http_code + ' : Resource ' + response.data.error.message)
+                    } else {
+                        toastr.error(response.status + ' : Resource ' + response.statusText)
+                    }
                 })
         },
         deleteFile(file, index) {

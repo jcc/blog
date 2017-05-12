@@ -24,11 +24,9 @@ class BaseManager
      * UploadManager constructor.
      * @param PhpRepository $mimeDetect
      */
-    public function __construct(PhpRepository $mimeDetect)
+    public function __construct()
     {
         $this->disk = Storage::disk(config('filesystems.default', 'public'));
-
-        $this->mimeDetect = $mimeDetect;
     }
 
     /**
@@ -168,7 +166,7 @@ class BaseManager
      */
     public function fileMimeType($path)
     {
-        return $this->mimeDetect->findType(
+        return (new PhpRepository())->findType(
             pathinfo($path, PATHINFO_EXTENSION)
         );
     }
@@ -283,7 +281,7 @@ class BaseManager
         );
 
         if (!empty($filesFolders)) {
-            throw new UploadException("The directory must be empty to delete it.");
+            return false;
         }
 
         return $this->disk->deleteDirectory($folder);
