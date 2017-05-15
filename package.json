@@ -27,11 +27,10 @@
     "vue-i18n": "v6.0.0-alpha.5",
     "vue-multiselect": "^2.0.0-beta.15",
     "vue-router": "^2.1.1",
-    "vuex": "^2.1.1"
-  },
-  "dependencies": {
-    "cropperjs": "^1.0.0-beta.2",
+    "vuex": "^2.1.1",
+    "cropperjs": "^1.0.0-rc.1",
     "emojione": "^2.2.7",
-    "fine-uploader": "^5.14.2-rc1"
+    "fine-uploader": "^5.14.2-rc1",
+    "v-textcomplete": "^0.1.2"
   }
 }

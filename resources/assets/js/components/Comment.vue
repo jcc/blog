@@ -37,7 +37,7 @@
                             </a>
                         </label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="content" rows="7" name="content" v-model="content" placeholder="Markdown"></textarea>
+                            <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown" :rows="7" :strategies="strategies"></text-complete>
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,9 +58,11 @@ import emojione from 'emojione'
 import FineUploader from 'fine-uploader/lib/traditional'
 import { stack_error } from '../config/helper'
 import VoteButton from './VoteButton'
+import TextComplete from 'v-textcomplete'
+import { default as githubEmoji } from '../vendor/github_emoji'
 
 export default {
-    components: { VoteButton },
+    components: { VoteButton, TextComplete },
     props: {
         contentWrapperClass: {
             type: String,
@@ -122,6 +124,20 @@ export default {
             comments: [],
             content: '',
             isSubmiting: false,
+            strategies: [{
+                match: /(^|\s):([a-z0-9+\-\_]*)$/,
+                search(term, callback) {
+                    callback(Object.keys(githubEmoji).filter(function (name) {
+                    return name.startsWith(term);
+                    }).slice(0, 10))
+                },
+                template(name) {
+                    return '<img width="17" src="' + githubEmoji[name] + '"></img> ' + name;
+                },
+                replace(value) {
+                    return '$1:' + value + ': '
+                },
+            }],
         }
     },
     mounted() {
