@@ -11,9 +11,9 @@
   <br><br>
   <a href="https://www.yousails.com">
     <img src="https://yousails.com/banners/brand.png" width=350>
-  </a>
+  </a><br/>
   <a href="https://www.upyun.com">
-    <img src="https://pigjian.com/storage/logo/upyun.png" width=350>
+    <img src="https://pigjian.com/storage/logo/upyun.png" width=300>
   </a>
 </p>
 
