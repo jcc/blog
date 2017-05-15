@@ -12,6 +12,9 @@
   <a href="https://www.yousails.com">
     <img src="https://yousails.com/banners/brand.png" width=350>
   </a>
+  <a href="https://www.upyun.com">
+    <img src="https://pigjian.com/storage/logo/upyun.png" width=350>
+  </a>
 </p>
 
 # PJ Blog
