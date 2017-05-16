@@ -157,7 +157,9 @@ export default {
 
         toastr.options = toastrConfig
 
-        this.contentUploader()
+        if (this.canComment) {
+            this.contentUploader()
+        }
     },
     methods: {
         comment() {
