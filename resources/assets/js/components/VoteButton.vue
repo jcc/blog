@@ -60,8 +60,10 @@ export default {
                   this.item[votingType] = !this.item[votingType]
                   if(type == 'up') this.item[upType] ? this.item.vote_count++ : this.item.vote_count--
                 }
-              }).catch(() => {
-                this.$store.dispatch('setMessage', {type: 'error', message: ['操作失败！']})
+              }).catch((response) => {
+                if(response.status == 401) {
+                  window.location = '/login';
+                }
               })
         },
     }
