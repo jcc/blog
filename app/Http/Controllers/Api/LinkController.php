@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LinkRequest;
 use App\Repositories\LinkRepository;
 use App\Transformers\LinkTransformer;
-use App\Services\FileManager\UploadManager;
 
 class LinkController extends ApiController
 {
@@ -14,13 +13,13 @@ class LinkController extends ApiController
 
     protected $manager;
 
-    public function __construct(LinkRepository $link, UploadManager $manager)
+    public function __construct(LinkRepository $link)
     {
         parent::__construct();
 
         $this->link = $link;
 
-        $this->manager = $manager;
+        $this->manager = app('uploader');
     }
     
     /**
