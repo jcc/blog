@@ -314,3 +314,28 @@ $rgb-black: "0,0,0" !default;
 $mdb-label-color: unquote("rgba(#{$rgb-black}, 0.26)") !default;
 $mdb-label-color-toggle-focus: unquote("rgba(#{$rgb-black}, .54)") !default;
 $mdb-toggle-label-color: $mdb-label-color !default;
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+$alert-padding:               15px !default;
+$alert-border-radius:         $border-radius-base !default;
+$alert-link-font-weight:      bold !default;
+
+$alert-success-bg:            $state-success-bg !default;
+$alert-success-text:          $state-success-text !default;
+$alert-success-border:        $state-success-border !default;
+
+$alert-info-bg:               $clouds !default;
+$alert-info-text:             $state-info-text !default;
+$alert-info-border:           $clouds !default;
+
+$alert-warning-bg:            $state-warning-bg !default;
+$alert-warning-text:          $state-warning-text !default;
+$alert-warning-border:        $state-warning-border !default;
+
+$alert-danger-bg:             $state-danger-bg !default;
+$alert-danger-text:           $state-danger-text !default;
+$alert-danger-border:         $state-danger-border !default;
+
