@@ -4,8 +4,8 @@
       <img id="cropImage" style="width:100%" :src="image.url">
     </div>
     <span slot="footer" class="footer">
-      <button class="btn btn-outline-secondary" @click="cancel">取 消</button>
-      <button class="btn btn-primary" @click="upload">确 定</button>
+      <button class="btn btn-outline-secondary" @click="cancel">{{ $t('form.cancel') }}</button>
+      <button class="btn btn-primary" @click="upload">{{ $t('form.ok') }}</button>
     </span>
   </div>
 </template>
