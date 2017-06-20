@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Comment;
-use App\Services\Mention;
+use App\Tools\Mention;
 use App\Notifications\GotVote;
 use App\Notifications\MentionedUser;
 

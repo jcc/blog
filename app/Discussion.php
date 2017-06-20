@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Scopes\StatusScope;
-use App\Services\Markdowner;
+use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
