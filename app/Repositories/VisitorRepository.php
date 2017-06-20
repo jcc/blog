@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Services\IP;
+use App\Tools\IP;
 use App\Visitor;
 
 class VisitorRepository
