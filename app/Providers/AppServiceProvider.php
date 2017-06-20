@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Article;
 use App\Discussion;
 use Illuminate\Support\ServiceProvider;
-use App\Services\FileManager\BaseManager;
-use App\Services\FileManager\UpyunManager;
+use App\Tools\FileManager\BaseManager;
+use App\Tools\FileManager\UpyunManager;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Services\Markdowner;
+use App\Tools\Markdowner;
 use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
