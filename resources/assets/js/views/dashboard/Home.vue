@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import Chart from '../../components/Chartjs.vue'
+import Chart from 'components/Chartjs.vue'
 
 export default {
     components: {
