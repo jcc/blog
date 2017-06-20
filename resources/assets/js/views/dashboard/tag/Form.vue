@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { stack_error } from '../../../config/helper'
+import { stack_error } from 'config/helper'
 
 export default {
     props: {

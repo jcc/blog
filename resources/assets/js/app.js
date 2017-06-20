@@ -7,14 +7,14 @@
 
 require('./bootstrap');
 
-import httpPlugin from './plugins/http';
+import httpPlugin from 'plugins/http';
 import VueRouter from 'vue-router';
 import store from './vuex/store.js';
 import VueI18n from 'vue-i18n';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 import routes from './routes.js';
-import locales from './lang';
+import locales from 'lang';
 
 import App from './App.vue';
 
@@ -46,17 +46,17 @@ const i18n = new VueI18n({
 
 Vue.component(
     'vue-table-pagination',
-    require('./components/dashboard/TablePagination.vue')
+    require('components/dashboard/TablePagination.vue')
 );
 
 Vue.component(
     'vue-table',
-    require('./components/dashboard/Table.vue')
+    require('components/dashboard/Table.vue')
 );
 
 Vue.component(
     'vue-form',
-    require('./components/dashboard/Form.vue')
+    require('components/dashboard/Form.vue')
 );
 
 const router = new VueRouter({

@@ -21,6 +21,7 @@
     "simplemde": "^1.11.2",
     "social-share.js": "^1.0.15",
     "sweetalert": "^1.1.3",
+    "path-to-regexp": "^1.7.0",
     "toastr": "^2.1.2",
     "vue": "^2.1.6",
     "vue-datepicker": "^1.3.0",

@@ -1,5 +1,5 @@
-import Dashboard from './views/Dashboard.vue'
-import Parent from './views/Parent.vue'
+import Dashboard from 'views/Dashboard.vue'
+import Parent from 'views/Parent.vue'
 
 export default [
     {
@@ -13,7 +13,7 @@ export default [
             },
             {
                 path: 'home',
-                component: require('./views/dashboard/Home.vue')
+                component: require('dashboard/Home.vue')
             },
             {
                 path: 'users',
@@ -21,15 +21,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/user/User.vue')
+                        component: require('dashboard/user/User.vue')
                     },
                     {
                         path: 'create',
-                        component: require('./views/dashboard/user/Create.vue')
+                        component: require('dashboard/user/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/user/Edit.vue')
+                        component: require('dashboard/user/Edit.vue')
                     }
                 ]
             },
@@ -40,15 +40,15 @@ export default [
                     {
                         path: '/',
                         name: 'articles',
-                        component: require('./views/dashboard/article/Article.vue')
+                        component: require('dashboard/article/Article.vue')
                     },
                     {
                         path: 'create',
-                        component: require('./views/dashboard/article/Create.vue')
+                        component: require('dashboard/article/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/article/Edit.vue')
+                        component: require('dashboard/article/Edit.vue')
                     }
                 ]
             },
@@ -58,15 +58,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/discussion/Discussion.vue')
+                        component: require('dashboard/discussion/Discussion.vue')
                     },
                     {
                         path: 'create',
-                        component: require('./views/dashboard/discussion/Create.vue')
+                        component: require('dashboard/discussion/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/discussion/Edit.vue')
+                        component: require('dashboard/discussion/Edit.vue')
                     }
                 ]
             },
@@ -76,11 +76,11 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/comment/Comment.vue')
+                        component: require('dashboard/comment/Comment.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/comment/Edit.vue')
+                        component: require('dashboard/comment/Edit.vue')
                     }
                 ]
             },
@@ -90,21 +90,21 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/tag/Tag.vue')
+                        component: require('dashboard/tag/Tag.vue')
                     },
                     {
                         path: 'Create',
-                        component: require('./views/dashboard/tag/Create.vue')
+                        component: require('dashboard/tag/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/tag/Edit.vue')
+                        component: require('dashboard/tag/Edit.vue')
                     }
                 ]
             },
             {
                 path: 'files',
-                component: require('./views/dashboard/File.vue')
+                component: require('dashboard/File.vue')
             },
             {
                 path: 'categories',
@@ -112,15 +112,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/category/Category.vue')
+                        component: require('dashboard/category/Category.vue')
                     },
                     {
                         path: 'create',
-                        component: require('./views/dashboard/category/Create.vue')
+                        component: require('dashboard/category/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/category/Edit.vue')
+                        component: require('dashboard/category/Edit.vue')
                     }
                 ]
             },
@@ -130,25 +130,25 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('./views/dashboard/link/Link.vue')
+                        component: require('dashboard/link/Link.vue')
                     },
                     {
                         path: 'create',
-                        component: require('./views/dashboard/link/Create.vue')
+                        component: require('dashboard/link/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('./views/dashboard/link/Edit.vue')
+                        component: require('dashboard/link/Edit.vue')
                     }
                 ]
             },
             {
                 path: 'visitors',
-                component: require('./views/dashboard/Visitor.vue')
+                component: require('dashboard/Visitor.vue')
             },
             {
                 path: 'system',
-                component: require('./views/dashboard/System.vue')
+                component: require('dashboard/System.vue')
             },
             {
                 path: '*',
