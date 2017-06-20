@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { stack_error } from '../../../config/helper'
+import { stack_error } from 'config/helper'
 import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
 export default {

@@ -9,3 +9,4 @@ Homestead.yaml
 /public/js
 /public/fonts
 /public/mix-manifest.json
+npm-debug.log

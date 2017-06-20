@@ -144,7 +144,7 @@
 </template>
 
 <script>
-import Modal from '../../components/dashboard/Modal.vue'
+import Modal from 'components/dashboard/Modal.vue'
 
 export default {
     components: {

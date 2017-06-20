@@ -122,7 +122,7 @@
 import FormMixin from './FormMixin'
 import { default as SimpleMDE } from 'simplemde/dist/simplemde.min'
 import Multiselect from 'vue-multiselect'
-import { stack_error } from '../../../config/helper'
+import { stack_error } from 'config/helper'
 import DatePicker from 'vue-datepicker'
 import FineUploader from 'fine-uploader/lib/traditional'
 

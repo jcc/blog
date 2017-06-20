@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { apiUrl } from '../../config/base'
+import { apiUrl } from 'config/base'
 
 /**
  * Create Axios
