@@ -9,6 +9,7 @@
                             v-model="selected"
                             :options="options"
                             label="name"
+                            :placeholder="$t('form.select_category')"
                             track-by="name">
                         </multiselect>
                     </div>

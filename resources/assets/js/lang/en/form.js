@@ -12,6 +12,7 @@ export default {
     'content_notice': 'Please input the content',
     'tag': 'Tag',
     'select_tag': 'Select Tags',
+    'select_category': 'Select Categories',
     'meta_description': 'Meta Description',
     'datetime': 'Date Time',
     'is_draft': 'Is Draft?',
