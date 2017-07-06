@@ -11,7 +11,7 @@
         "intervention/image": "^2.3",
         "jcc/laravel-vote": "dev-master",
         "jellybool/flysystem-upyun": "dev-master",
-        "jellybool/translug": "~1.0",
+        "jellybool/translug": "~2.0",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/socialite": "^3.0",
