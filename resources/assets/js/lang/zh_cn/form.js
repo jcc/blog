@@ -12,6 +12,7 @@ export default {
     'content_notice': '请输入内容',
     'tag': '标签',
     'select_tag': '选择标签',
+    'select_category': '选择分类',
     'meta_description': '主要描述',
     'datetime': '日期时间',
     'is_draft': '是否草稿？',
