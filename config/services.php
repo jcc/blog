@@ -44,8 +44,8 @@ return [
 
     // Translation
     'youdao' => [
-        'key' => env('YOUDAO_API_KEY'),
-        'from' => env('YOUDAO_KEY_FROM'),
+       'appKey' => env('YOUDAO_APP_KEY'),
+       'appSecret' => env('YOUDAO_APP_SECRET'),
     ],
 
 ];
