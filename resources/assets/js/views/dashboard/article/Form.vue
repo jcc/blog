@@ -163,9 +163,11 @@ export default {
         }
     },
     mounted() {
+        let t = this.$t
+
         this.simplemde = new SimpleMDE({
             element: document.getElementById("editor"),
-            placeholder: 'Please input the article content.',
+            placeholder: t('form.content_placeholder', { type: t('form.article') }),
             autoDownloadFontAwesome: true,
             forceSync: true
         })

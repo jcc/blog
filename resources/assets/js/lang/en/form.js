@@ -51,11 +51,17 @@ export default {
     'upload_file': 'Upload New File',
     'create_category': 'Create Category',
     'edit_category': 'Edit Category',
+    'category_description': 'Please input category\'s description',
     'create_link': 'Create Link',
     'edit_link': 'Edit Link',
     'create': 'Create',
     'edit': 'Edit',
     'crop_avatar': 'Crop Avatar',
     'modify_avatar': 'Modify Avatar',
+    'content_placeholder': 'Please input the %{type} content.',
+    'article': 'article',
+    'discussion': 'discussion',
+    'comment': 'comment',
+    'published_at': 'Published At?',
 
 }
