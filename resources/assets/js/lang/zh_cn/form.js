@@ -51,11 +51,17 @@ export default {
     'upload_file': '上传文件',
     'create_category': '创建分类',
     'edit_category': '修改分类',
+    'category_description': '请输入分类描述',
     'create_link': '创建友链',
     'edit_link': '修改友链',
     'create': '创建',
     'edit': '修改',
     'crop_avatar': '裁剪头像',
     'modify_avatar': '修改头像',
+    'content_placeholder': '请输入{type}内容。',
+    'article': '文章',
+    'discussion': '讨论',
+    'comment': '评论',
+    'published_at': '发布时间？',
 
 }

@@ -38,6 +38,9 @@ export default {
             }
         }
     },
+    mounted() {
+        this.option.placeholder = this.$t('form.published_at')
+    },
     created() {
         this.loadCategories()
         this.loadTags()
