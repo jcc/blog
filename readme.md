@@ -43,6 +43,16 @@ Here is [documents](https://manual.pigjian.com/)
 
 [PJ Blog](https://github.com/jcc/blog) Laravel 5.*
 
+## Server Requirements
+
+- PHP >= 5.6.4
+- Node >= 6.x
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
+
 ## Preview
 
 ![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
