@@ -11,6 +11,8 @@ class MeController extends ApiController
 
     public function __construct(CommentRepository $comment)
     {
+        parent::__construct();
+
         $this->comment = $comment;
     }
 
@@ -22,7 +24,7 @@ class MeController extends ApiController
      * 
      * @return mixed
      */
-    public function postVoteCOmment(Request $request, $type)
+    public function postVoteComment(Request $request, $type)
     {
         $this->validate($request, [
             'id' => 'required|exists:comments,id',
@@ -32,6 +34,6 @@ class MeController extends ApiController
             ? $this->comment->toggleVote($request->id)
             : $this->comment->toggleVote($request->id, false);
         
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 }

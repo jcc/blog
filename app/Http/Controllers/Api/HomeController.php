@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Repositories\VisitorRepository;
 use App\Repositories\ArticleRepository;
@@ -21,6 +20,8 @@ class HomeController extends ApiController
         ArticleRepository $article,
         CommentRepository $comment)
     {
+        parent::__construct();
+
         $this->user = $user;
         $this->visitor = $visitor;
         $this->article = $article;
@@ -36,7 +37,7 @@ class HomeController extends ApiController
 
         $data = compact('users', 'visitors', 'articles', 'comments');
 
-        return $this->respondWithArray($data);
+        return $this->response->json($data);
     }
 
 }

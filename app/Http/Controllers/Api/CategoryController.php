@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Repositories\CategoryRepository;
-use App\Transformers\CategoryTransformer;
 
 class CategoryController extends ApiController
 {
@@ -21,34 +20,35 @@ class CategoryController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return $this->respondWithPaginator($this->category->page(), new CategoryTransformer);
+        return $this->response->collection($this->category->page());
     }
 
     /**
      * Show all of the categories.
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getList()
     {
-        return $this->respondWithCollection($this->category->all(), new CategoryTransformer);
+        return $this->response->collection($this->category->all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CategoryRequest  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(CategoryRequest $request)
     {
         $this->category->store($request->all());
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
@@ -56,7 +56,8 @@ class CategoryController extends ApiController
      *
      * @param $id
      * @param Request $request
-     * @return \App\User
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function status($id, Request $request)
     {
@@ -64,18 +65,19 @@ class CategoryController extends ApiController
 
         $this->category->updateColumn($id, $input);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return $this->respondWithItem($this->category->getById($id), new CategoryTransformer);
+        return $this->response->item($this->category->getById($id));
     }
 
     /**
@@ -83,25 +85,27 @@ class CategoryController extends ApiController
      *
      * @param  \App\Http\Requests\CategoryRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(CategoryRequest $request, $id)
     {
         $this->category->update($id, $request->all());
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
         $this->category->destroy($id);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 }

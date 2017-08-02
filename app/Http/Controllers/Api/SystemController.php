@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests;
-use Illuminate\Http\Request;
-
 class SystemController extends ApiController
 {
+    /**
+     * SystemController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * Get the system info.
      * 
@@ -31,6 +36,6 @@ class SystemController extends ApiController
             'db_version'      => $version,
         ];
 
-        return $this->respondWithArray($data);
+        return $this->response->json($data);
     }
 }
