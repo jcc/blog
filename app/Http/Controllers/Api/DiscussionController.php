@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
-use App\Transformers\DiscussionTransformer;
 
 class DiscussionController extends ApiController
 {
@@ -21,18 +20,19 @@ class DiscussionController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return $this->respondWithPaginator($this->discussion->page(10, 'desc'), new DiscussionTransformer);
+        return $this->response->collection($this->discussion->page(10, 'desc'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\DiscussionRequest  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(DiscussionRequest $request)
     {
@@ -43,7 +43,7 @@ class DiscussionController extends ApiController
 
         $this->discussion->store($data);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
@@ -51,7 +51,8 @@ class DiscussionController extends ApiController
      *
      * @param $id
      * @param Request $request
-     * @return \App\User
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function status($id, Request $request)
     {
@@ -59,18 +60,19 @@ class DiscussionController extends ApiController
 
         $this->discussion->updateWithoutTags($id, $input);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return $this->respondWIthItem($this->discussion->getById($id), new DiscussionTransformer);
+        return $this->response->item($this->discussion->getById($id));
     }
 
     /**
@@ -78,7 +80,8 @@ class DiscussionController extends ApiController
      *
      * @param  \App\Http\Requests\DiscussionRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(DiscussionRequest $request, $id)
     {
@@ -88,19 +91,19 @@ class DiscussionController extends ApiController
 
         $this->discussion->update($id, $data);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
         $this->discussion->destroy($id);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 }

@@ -6,7 +6,6 @@ use Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Repositories\UserRepository;
-use App\Transformers\UserTransformer;
 
 class UserController extends ApiController
 {
@@ -22,11 +21,11 @@ class UserController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return $this->respondWithPaginator($this->user->page(), new UserTransformer);
+        return $this->response->collection($this->user->page());
     }
 
     /**
@@ -34,26 +33,26 @@ class UserController extends ApiController
      *
      * @param $id
      * @param Request $request
-     * @return \App\User
+     * @return \Illuminate\Http\JsonResponse
      */
     public function status($id, Request $request)
     {
         $input = $request->all();
 
         if (auth()->user()->id == $id || $this->user->getById($id)->is_admin) {
-            return $this->errorUnauthorized('You can\'t change status for yourself and other Administrators!');
+            return $this->response->withUnauthorized('You can\'t change status for yourself and other Administrators!');
         }
 
         $this->user->update($id, $input);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(UserRequest $request)
     {
@@ -64,18 +63,18 @@ class UserController extends ApiController
 
         $this->user->store($data);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return $this->respondWithItem($this->user->getById($id), new UserTransformer);
+        return $this->response->item($this->user->getById($id));
     }
 
     /**
@@ -83,20 +82,20 @@ class UserController extends ApiController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
         $this->user->update($id, $request->all());
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
      * Crop Avatar
      * 
      * @param  Request $request
-     * @return array
+     * @return \Illuminate\Http\JsonResponse
      */
     public function cropAvatar(Request $request)
     {
@@ -111,23 +110,23 @@ class UserController extends ApiController
 
         $this->user->saveAvatar(auth()->user()->id, $currentImage['url']);
 
-        return $this->respondWithArray($currentImage);
+        return $this->response->json($currentImage);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
         if (auth()->user()->id == $id || $this->user->getById($id)->is_admin) {
-            return $this->errorUnauthorized('You can\'t delete for yourself and other Administrators!');
+            return $this->response->withUnauthorized('You can\'t delete for yourself and other Administrators!');
         }
 
         $this->user->destroy($id);
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 }
