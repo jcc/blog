@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="editor" class="col-sm-2 control-label">{{ $t('form.description') }}</label>
                 <div class="col-sm-10">
-                    <textarea id="editor" name="description" placeholder="Please Input Category's Description" v-model="category.description" class="form-control"></textarea>
+                    <textarea id="editor" name="description" :placeholder="$t('form.category_description')" v-model="category.description" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-group">
