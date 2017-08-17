@@ -3,10 +3,11 @@
 namespace App\Support;
 
 use League\Fractal\Manager;
+use App\Transformers\EmptyTransformer;
 use League\Fractal\TransformerAbstract;
 use Illuminate\Database\Eloquent\Collection;
 use League\Fractal\Resource\Item as FractalItem;
-use App\Transformers\EmptyTransformer;
+use League\Fractal\Serializer\DataArraySerializer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection as FractalCollection;
@@ -28,6 +29,12 @@ class Transform
     public function __construct(Manager $fractal)
     {
         $this->fractal = $fractal;
+
+        if (request()->has('include')) {
+            $this->fractal->parseIncludes(request()->query('include'));
+        }
+
+        $this->fractal->setSerializer(new DataArraySerializer);
     }
 
     /**
