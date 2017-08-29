@@ -13,7 +13,7 @@ export default [
             },
             {
                 path: 'home',
-                component: require('dashboard/Home.vue')
+                component: () => import('dashboard/Home.vue'),
             },
             {
                 path: 'users',
@@ -21,15 +21,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/user/User.vue')
+                        component: () => import('dashboard/user/User.vue')
                     },
                     {
                         path: 'create',
-                        component: require('dashboard/user/Create.vue')
+                        component: () => import('dashboard/user/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/user/Edit.vue')
+                        component: () => import('dashboard/user/Edit.vue')
                     }
                 ]
             },
@@ -40,15 +40,15 @@ export default [
                     {
                         path: '/',
                         name: 'articles',
-                        component: require('dashboard/article/Article.vue')
+                        component: () => import('dashboard/article/Article.vue')
                     },
                     {
                         path: 'create',
-                        component: require('dashboard/article/Create.vue')
+                        component: () => import('dashboard/article/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/article/Edit.vue')
+                        component: () => import('dashboard/article/Edit.vue')
                     }
                 ]
             },
@@ -58,15 +58,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/discussion/Discussion.vue')
+                        component: () => import('dashboard/discussion/Discussion.vue')
                     },
                     {
                         path: 'create',
-                        component: require('dashboard/discussion/Create.vue')
+                        component: () => import('dashboard/discussion/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/discussion/Edit.vue')
+                        component: () => import('dashboard/discussion/Edit.vue')
                     }
                 ]
             },
@@ -76,11 +76,11 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/comment/Comment.vue')
+                        component: () => import('dashboard/comment/Comment.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/comment/Edit.vue')
+                        component: () => import('dashboard/comment/Edit.vue')
                     }
                 ]
             },
@@ -90,21 +90,21 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/tag/Tag.vue')
+                        component: () => import('dashboard/tag/Tag.vue')
                     },
                     {
                         path: 'Create',
-                        component: require('dashboard/tag/Create.vue')
+                        component: () => import('dashboard/tag/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/tag/Edit.vue')
+                        component: () => import('dashboard/tag/Edit.vue')
                     }
                 ]
             },
             {
                 path: 'files',
-                component: require('dashboard/File.vue')
+                component: () => import('dashboard/File.vue')
             },
             {
                 path: 'categories',
@@ -112,15 +112,15 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/category/Category.vue')
+                        component: () => import('dashboard/category/Category.vue')
                     },
                     {
                         path: 'create',
-                        component: require('dashboard/category/Create.vue')
+                        component: () => import('dashboard/category/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/category/Edit.vue')
+                        component: () => import('dashboard/category/Edit.vue')
                     }
                 ]
             },
@@ -130,25 +130,25 @@ export default [
                 children: [
                     {
                         path: '/',
-                        component: require('dashboard/link/Link.vue')
+                        component: () => import('dashboard/link/Link.vue')
                     },
                     {
                         path: 'create',
-                        component: require('dashboard/link/Create.vue')
+                        component: () => import('dashboard/link/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        component: require('dashboard/link/Edit.vue')
+                        component: () => import('dashboard/link/Edit.vue')
                     }
                 ]
             },
             {
                 path: 'visitors',
-                component: require('dashboard/Visitor.vue')
+                component: () => import('dashboard/Visitor.vue')
             },
             {
                 path: 'system',
-                component: require('dashboard/System.vue')
+                component: () => import('dashboard/System.vue')
             },
             {
                 path: '*',
