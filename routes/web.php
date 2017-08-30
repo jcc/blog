@@ -1,4 +1,8 @@
 <?php
+Route::get('a', function(){
+  echo 11;
+});
+
 
 // User Auth
 Auth::routes();

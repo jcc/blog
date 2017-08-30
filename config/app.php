@@ -22,7 +22,7 @@ return [
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
     | services your application utilizes. Set this in your ".env" file.
-    |
+    | production
     */
 
     'env' => env('APP_ENV', 'production'),
@@ -173,6 +173,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Jcc\LaravelVote\VoteServiceProvider::class,
         JellyBool\Flysystem\Upyun\UpyunServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Translug' => JellyBool\Translug\TranslugFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
