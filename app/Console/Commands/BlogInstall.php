@@ -22,8 +22,6 @@ class BlogInstall extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -45,7 +43,7 @@ class BlogInstall extends Command
 
     /**
      * Exec sheel with pretty print.
-     * 
+     *
      * @param  string $command
      * @return mixed
      */
