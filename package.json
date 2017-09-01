@@ -16,6 +16,7 @@
     "bootstrap-sass": "^3.3.7",
     "chart.js": "^2.4.0",
     "cropperjs": "^1.0.0-rc.1",
+    "cross-env": "^5.0.5",
     "emojione": "^2.2.7",
     "fine-uploader": "^5.14.2-rc1",
     "ionicons": "^2.0.1",
