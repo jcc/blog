@@ -24,7 +24,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-            <parse content="{{ json_decode($article->content)->raw }}"></parse>
+            @if($article->content['raw'])
+                    <parse content="{{ $article->content['raw'] }}"></parse>
+                @else
+                <div class="markdown">
+                    {!! $article->content['html'] !!}
+                </div>
+            @endif
 
             @if($article->is_original)
                 <div class="publishing alert alert-dismissible alert-info">
