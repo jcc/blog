@@ -25,10 +25,10 @@
             <div class="col-md-8 col-md-offset-2">
 
             @if($article->content['raw'])
-                    <parse content="{{ $article->content['raw'] }}"></parse>
+                    <parse content="{{ json_decode($article->content)->raw }}"></parse>
                 @else
                 <div class="markdown">
-                    {!! $article->content['html'] !!}
+                    {!! json_decode($article->content)->html !!}
                 </div>
             @endif
 

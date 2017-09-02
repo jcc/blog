@@ -38,10 +38,6 @@ class Article extends Model
         'published_at',
     ];
 
-    protected $casts = [
-        'content' => 'array'
-    ];
-
     /**
      * The "booting" method of the model.
      *
