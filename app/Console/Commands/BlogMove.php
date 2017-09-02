@@ -39,7 +39,7 @@ class BlogMove extends Command
     {
         $start = 1;
         $hasImage = 0;
-        $posts = DB::table('wp_posts')->where('post_status', 'publish')->all();
+        $posts = DB::table('wp_posts')->where('post_status', 'publish')->get();
         $this->info('总共'.count($posts).'篇文章------------------------');
 
 
