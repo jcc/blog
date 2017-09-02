@@ -46,7 +46,7 @@ class BlogMove extends Command
         foreach ($posts as $post){
             $this->info('处理进度：'.$start.'/'.count($posts));
 
-            $meta = DB::table('wp_postmeta')->where('post_id', $post->id)->where('meta_key', '_thumbnail_id')->first();
+            $meta = DB::table('wp_postmeta')->where('post_id', $post->ID)->where('meta_key', '_thumbnail_id')->first();
 
             $page_image = '';
             if ($meta != null){
