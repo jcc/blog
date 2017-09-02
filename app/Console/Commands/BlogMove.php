@@ -67,7 +67,7 @@ class BlogMove extends Command
                     'title'         =>  $post->post_title,
                     'subtitle'      =>  '',
                     'content'       =>  json_encode([
-                        'raw'   =>  strip_tags($post->post_content),
+                        'raw'   =>  '',
                         'html'  =>  $post->post_content
                     ]),
                     'page_image'    =>  $page_image,
