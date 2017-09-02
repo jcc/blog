@@ -54,7 +54,8 @@ class BlogMove extends Command
 
                     if ($attachment != null){
                         $hasImage++;
-                        $page_image = $attachment->guid;
+                        $page_image = str_replace('http://sunnierblog-wordpress.stor.sinaapp.com', 'https://static.xtwind.com', $attachment->guid);
+
                     }
                 }
 
