@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-            @if($article->content['raw'])
+            @if(json_decode($article->content)->raw)
                     <parse content="{{ json_decode($article->content)->raw }}"></parse>
                 @else
                 <div class="markdown">
