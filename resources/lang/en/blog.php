@@ -5,6 +5,7 @@ return [
     'Article'     => 'Article',
     'Discussions' => 'Discussions',
     'Discussion'  => 'Discussion',
+    'Life'      =>  'Life',
     'Follow'      => 'Follow',
     'Following'   => 'Following',
     'Comments'    => 'Comments',

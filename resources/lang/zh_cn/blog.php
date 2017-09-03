@@ -5,6 +5,7 @@ return [
     'Article'    => '文章',
     'Discussions' => '讨论',
     'Discussion' => '讨论',
+    'Life'      =>  '生活',
     'Follow'      => '关注',
     'Following'   => '关注中',
     'Comments'    => '评论数',
