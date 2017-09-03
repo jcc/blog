@@ -42,9 +42,13 @@ class BlogMove extends Command
         $posts = DB::table('wp_posts')->where('post_status', 'publish')->get();
         $this->info('总共'.count($posts).'篇文章------------------------');
 
-        DB::transaction(function () use($posts, $start, $hasImage){
+        DB::transaction(function () use($posts, $start, &$hasImage){
             foreach ($posts as $post){
                 $this->info('处理进度：'.$start.'/'.count($posts));
+
+                if ($post->post_title == ''){
+                    continue;
+                }
 
                 $meta = DB::table('wp_postmeta')->where('post_id', $post->ID)->where('meta_key', '_thumbnail_id')->first();
 
@@ -63,7 +67,7 @@ class BlogMove extends Command
                     'category_id'   =>  1,
                     'user_id'       =>  12,
                     'last_user_id'  =>  12,
-                    'slug'          =>  $post->post_name,
+                    'slug'          =>  $post->post_name . '.html',
                     'title'         =>  $post->post_title,
                     'subtitle'      =>  '',
                     'content'       =>  json_encode([
