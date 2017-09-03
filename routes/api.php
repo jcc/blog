@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-//    'middleware' => ['auth:api', 'admin'],
+    'middleware' => ['auth:api', 'admin'],
     'namespace' => 'Api',
 ], function () {
     Route::get('statistics', 'HomeController@statistics');
