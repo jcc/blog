@@ -6,6 +6,7 @@ return [
     'Discussions' => 'Discussions',
     'Discussion'  => 'Discussion',
     'Life'      =>  'Life',
+    'technology'      =>  'Technology',
     'Follow'      => 'Follow',
     'Following'   => 'Following',
     'Comments'    => 'Comments',
