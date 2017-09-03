@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'public',
+    'default' => 'qiniu',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,6 +70,20 @@ return [
             'password'      => env('UPYUN_PASSWORD'),
             'domain'        => env('UPYUN_DOMAIN'),
             'protocol'      => env('UPYUN_PROTOCOL'),
+        ],
+
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => '7qnb9q.com1.z0.glb.clouddn.com', //你的七牛域名
+                'https'     => 'o6qdyzx6o.qnssl.com',         //你的HTTPS域名
+                'custom'    => 'static.xtwind.com',                //你的自定义域名
+            ],
+            'access_key'=> 'a1uh_gNUH82EDljI63PPpYq2ki5hQJnY0_32B10V',  //AccessKey
+            'secret_key'=> 'BeTthX3_P9mVH3zDvfBWYP3bB7q2gotrmcgaZm7h',  //SecretKey
+            'bucket'    => 'summerwind',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => 'public'  //空间访问控制 public 或 private
         ],
 
     ],

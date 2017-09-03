@@ -25,11 +25,6 @@ export default [
         uri  : '/dashboard/comments'
     },
     {
-        label: 'sidebar.file',
-        icon : 'ion-ios-folder',
-        uri  : '/dashboard/files'
-    },
-    {
         label: 'sidebar.tag',
         icon : 'ion-ios-pricetags',
         uri  : '/dashboard/tags'

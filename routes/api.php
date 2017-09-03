@@ -34,11 +34,11 @@ Route::group([
 
     Route::get('visitor', 'VisitorController@index');
 
-    Route::get('upload', 'UploadController@index');
-    Route::post('upload', 'UploadController@uploadForManager');
-    Route::post('folder', 'UploadController@createFolder');
-    Route::post('folder/delete', 'UploadController@deleteFolder');
-    Route::post('file/delete', 'UploadController@deleteFile');
+//    Route::get('upload', 'UploadController@index');
+//    Route::post('upload', 'UploadController@uploadForManager');
+//    Route::post('folder', 'UploadController@createFolder');
+//    Route::post('folder/delete', 'UploadController@deleteFolder');
+//    Route::post('file/delete', 'UploadController@deleteFile');
 
     Route::get('system', 'SystemController@getSystemInfo');
 });

@@ -13,8 +13,8 @@ return [
 
     // Meta
     'meta' => [
-        'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs',
-        'description' => 'Nothing is impossible in PJ Blog'
+        'keywords' => '夏天的风,夏天博客,blog,laravel,vuejs,php',
+        'description' => '追求互联网技术,记录夏天对技术的追求与生活的热爱'
     ],
 
     // Social Share
@@ -34,8 +34,8 @@ return [
     // Article Page
     'article' => [
         'title'       => 'Nothing is impossible.',
-        'description' => 'https://pigjian.com',
-        'number'      => 15,
+        'description' => '',
+        'number'      => 10,
         'sort'        => 'desc',
         'sortColumn'  => 'published_at',
     ],
@@ -51,15 +51,15 @@ return [
     'footer' => [
         'github' => [
             'open' => true,
-            'url'  => 'https://github.com/jcc',
+            'url'  => 'https://github.com/wh469012917',
         ],
         'twitter' => [
-            'open' => true,
+            'open' => false,
             'url'  => 'https://twitter.com/pigjian'
         ],
-        'meta' => '© PJ Blog 2016. Powered By Jiajian Chan',
+        'meta' => '人生如旅途，我们一边再见一边遇见',
     ],
 
-    'license' => 'Powered By Jiajian Chan.<br/>This article is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.',
+    'license' => '采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"> 知识共享 署名-非商业性使用 4.0 国际 许可协议</a> 进行许可',
 
 ];

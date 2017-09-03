@@ -7,7 +7,7 @@
         <h6>{{ config('blog.article.description') }}</h6>
     @endcomponent
 
-    @include('widgets.article')
+    @include('article.article')
 
     {{ $articles->links('pagination.default') }}
 

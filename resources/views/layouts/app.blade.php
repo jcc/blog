@@ -12,7 +12,7 @@
 
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
 
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', config('app.name')) - 专注科技与人文</title>
 
     <link rel="stylesheet" href="{{ mix('css/home.css') }}">
 

@@ -28,7 +28,7 @@
                 <!-- Search Box -->
                 <li>
                     <form class="navbar-form navbar-right search" role="search" method="get" action="{{ url('search') }}">
-                        <input type="text" class="form-control" name="q" placeholder="{{ lang('Search') }}" required>
+                        <input type="text" class="form-control" name="q" value="{{ lang('Search') }}" required>
                     </form>
                 </li>
 

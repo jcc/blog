@@ -103,10 +103,6 @@ export default [
                 ]
             },
             {
-                path: 'files',
-                component: () => import('dashboard/File.vue')
-            },
-            {
                 path: 'categories',
                 component: Parent,
                 children: [
