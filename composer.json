@@ -19,9 +19,9 @@
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.14.0",
         "league/html-to-markdown": "^4.2",
+        "overtrue/laravel-filesystem-qiniu": "^1.0",
         "predis/predis": "^1.1",
-        "yzalis/identicon": "^1.1",
-        "zgldh/qiniu-laravel-storage": "^0.8.1"
+        "yzalis/identicon": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
