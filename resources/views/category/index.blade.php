@@ -14,7 +14,7 @@
                     @forelse($categories as $category)
                         <li class="list-group-item">
                             <span class="badge">{{ $category->articles->count() }}</span>
-                            <a href="{{ url('category', ['name' => $category->name]) }}">{{ $category->name }}</a>
+                            <a href="{{ url('category', ['name' => $category->slug]) }}">{{ $category->name }}</a>
                         </li>
                     @empty
                         <li class="list-group-item">{{ lang('Nothing') }}</li>

@@ -26,6 +26,7 @@ export default {
     'cancel': '取消',
     'ok': '确认',
     'category_name': '分类名字',
+    'slug': '别名',
     'description': '描述',
     'path': '路径',
     'link_name': '链接名',

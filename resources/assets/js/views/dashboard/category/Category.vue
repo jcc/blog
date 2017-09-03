@@ -25,8 +25,8 @@ export default {
                     trans: 'table.name'
                 },
                 {
-                    name: 'path',
-                    trans: 'table.path'
+                    name: 'slug',
+                    trans: 'table.slug'
                 },
                 {
                     name: 'created_at',
