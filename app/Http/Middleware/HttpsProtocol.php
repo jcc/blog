@@ -16,7 +16,8 @@ class HttpsProtocol
      */
     public function handle($request, Closure $next)
     {
-
+        Log::info('X-forwarded-Proto:'.$request->header('X-Forwarded-Proto'));
+        Log::info('Uri:'.$request->getRequestUri());
         if ($request->header('X-Forwarded-Proto') == 'http' && !app()->environment('local')) {
             //$request->setTrustedProxies( [ $request->getClientIp() ] );
 
