@@ -107,7 +107,7 @@
             },
             showPaginate: {
                 type: Boolean,
-                dafault() {
+                default() {
                     return false
                 }
             },
