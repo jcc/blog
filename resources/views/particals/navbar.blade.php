@@ -19,10 +19,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">{{ lang('Articles') }}</a></li>
-                <li><a href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
                 <li><a href="{{ url('category', ['name' => 'technology']) }}">{{ lang('technology') }}</a></li>
                 <li><a href="{{ url('category', ['name' => 'life']) }}">{{ lang('Life') }}</a></li>
+                <li><a href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

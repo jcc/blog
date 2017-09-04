@@ -37,14 +37,14 @@ return [
         'description' => '',
         'number'      => 10,
         'sort'        => 'desc',
-        'sortColumn'  => 'published_at',
+        'sortColumn'  => 'id',
     ],
 
     // Discussion Page
     'discussion' => [
         'number' => 20,
         'sort'   => 'desc',
-        'sortColumn' => 'created_at',
+        'sortColumn' => 'id',
     ],
 
     // Footer
