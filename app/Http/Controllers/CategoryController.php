@@ -37,7 +37,7 @@ class CategoryController extends Controller
     {
         if (!$category = $this->category->getByName($category)) abort(404);
 
-        $articles = $category->articles;
+        $articles = $category->articles()->paginate(10);
 
         return view('category.show', compact('category', 'articles'));
     }

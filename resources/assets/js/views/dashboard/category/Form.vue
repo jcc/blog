@@ -8,6 +8,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">{{ $t('form.slug') }}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="slug" id="slug" v-model="category.slug" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="path" class="col-sm-2 control-label">{{ $t('form.path') }}</label>
                 <div class="col-sm-10">
                     <input type="text" name="path" id="path" v-model="category.path" class="form-control">

@@ -5,6 +5,8 @@ return [
     'Article'    => '文章',
     'Discussions' => '讨论',
     'Discussion' => '讨论',
+    'Life'      =>  '生活',
+    'technology'      =>  '技术',
     'Follow'      => '关注',
     'Following'   => '关注中',
     'Comments'    => '评论数',
@@ -99,4 +101,5 @@ return [
     'Be Banned Comment'    => '评论已被禁止!',
     'Likes'                => '...',
     'Dislikes'             => '...',
+    'Read More'            => '阅读全部',
 ];

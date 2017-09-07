@@ -19,10 +19,10 @@ class CategoryRepository
      * Get record by the name.
      * 
      * @param  string $name
-     * @return collection
+     * @return Category
      */
     public function getByName($name)
     {
-        return $this->model->where('name', $name)->first();
+        return $this->model->where('slug', $name)->first();
     }
 }

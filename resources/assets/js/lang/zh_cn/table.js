@@ -13,6 +13,7 @@ export default {
     tag: '标签',
     meta_description: '描述',
     name: '名字',
+    slug: '别名',
     type: '类型',
     date: '日期',
     size: '大小',

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'public',
+    'default' => 'qiniu',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,6 +70,14 @@ return [
             'password'      => env('UPYUN_PASSWORD'),
             'domain'        => env('UPYUN_DOMAIN'),
             'protocol'      => env('UPYUN_PROTOCOL'),
+        ],
+
+        'qiniu' => [
+            'driver'     => 'qiniu',
+            'access_key' => env('QINIU_ACCESS_KEY', 'a1uh_gNUH82EDljI63PPpYq2ki5hQJnY0_32B10V'),
+            'secret_key' => env('QINIU_SECRET_KEY', 'BeTthX3_P9mVH3zDvfBWYP3bB7q2gotrmcgaZm7h'),
+            'bucket'     => env('QINIU_BUCKET', 'summerwind'),
+            'domain'     => env('QINIU_DOMAIN', 'https://static.xtwind.com'), // or host: https://xxxx.clouddn.com
         ],
 
     ],

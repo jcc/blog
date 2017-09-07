@@ -20,6 +20,7 @@
                         <li class="list-group-item">{{ lang('Nothing') }}</li>
                     @endforelse
                 </ul>
+                {{ $articles->links('pagination.default') }}
             </div>
         </div>
     </div>

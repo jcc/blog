@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\BlogMove;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\BlogInstall::class,
         Commands\CreateAdmin::class,
+        BlogMove::class
     ];
 
     /**

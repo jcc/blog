@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Article;
 use App\Discussion;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use App\Tools\FileManager\BaseManager;
 use App\Tools\FileManager\UpyunManager;
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $lang = config('app.locale') != 'zh_cn' ? config('app.locale') : 'zh';
         \Carbon\Carbon::setLocale($lang);
+
+        if (!request()->secure() && !app()->environment('local')) {
+            URL::forceScheme('https');
+        }
 
         Relation::morphMap([
             'discussions' => Discussion::class,
