@@ -185,8 +185,6 @@ return [
 
         Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
 
-        Recca0120\LaravelTracy\LaravelTracyServiceProvider::class,
-
     ],
 
     /*
