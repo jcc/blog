@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Auth;
 use Closure;
+use Illuminate\Support\Facades\Log;
 
 class HttpsProtocol
 {
@@ -16,8 +17,8 @@ class HttpsProtocol
      */
     public function handle($request, Closure $next)
     {
-
-        if ($request->header('X-Forwarded-Proto') == 'http' && !app()->environment('local')) {
+        
+        if ($request->header('X-Forwarded-Proto') != 'https' && !app()->environment('local')) {
             //$request->setTrustedProxies( [ $request->getClientIp() ] );
 
             return redirect()->secure($request->getRequestUri());
