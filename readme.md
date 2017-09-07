@@ -21,7 +21,7 @@
 
 This is a powerful blog, I try to build the blog more beautiful, more convenient. 
 
-`Laravel 5.*` and `Vuejs 2.*` combined with the establishment of a good response and quickly dashboard, the dashboard made through the `Vuejs` component development.
+`Laravel 5.5.*` and `Vuejs 2.*` combined with the establishment of a good response and quickly dashboard, the dashboard made through the `Vuejs` component development.
 
 I believe it will be better and better. If you are interested in this, you can join and enjoy it.
 
@@ -41,11 +41,11 @@ Here is [documents](https://manual.pigjian.com/)
 - Markdown Editor
 - and more...
 
-[PJ Blog](https://github.com/jcc/blog) Laravel 5.*
+[PJ Blog](https://github.com/jcc/blog) Laravel 5.5.*
 
 ## Server Requirements
 
-- PHP >= 7.0.0
+- PHP >= 7.1.0
 - Node >= 6.x
 - OpenSSL PHP Extension
 - PDO PHP Extension
