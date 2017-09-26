@@ -38,6 +38,10 @@ class Article extends Model
         'published_at',
     ];
 
+    protected $casts = [
+        'content'    =>    'array'
+    ];
+
     /**
      * The "booting" method of the model.
      *
@@ -113,7 +117,7 @@ class Article extends Model
 
     /**
      * Set the title and the readable slug.
-     * 
+     *
      * @param string $value
      */
     public function setTitleAttribute($value)
