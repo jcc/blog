@@ -87,7 +87,7 @@ class CommentController extends ApiController
     {
         $this->comment->update($id, $request->all());
 
-        return $this->noContent();
+        return $this->response->withNoContent();
     }
 
     /**
