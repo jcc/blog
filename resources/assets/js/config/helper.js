@@ -14,8 +14,7 @@ export function stack_error(response) {
         swal({
             title: "Error Text!",
             type: 'error',
-            text: content,
-            html: true
+            html: content
         });
     }
 }
