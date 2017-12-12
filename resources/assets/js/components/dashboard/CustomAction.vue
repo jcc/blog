@@ -29,12 +29,10 @@ export default{
                 text: "The action may affect some data, Please think twice!",
                 type: "warning",
                 showCancelButton: true,
-                closeOnConfirm: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, changed it!",
-            },
-            function () {
-                index.postData(rowData)
+            }).then(function (result) {
+                result.value && index.postData(rowData)
             })
         },
         postData(rowData) {
