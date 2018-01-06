@@ -23,7 +23,7 @@
     "jquery": "^3.1.0",
     "laravel-mix": "^1.4.0",
     "lodash": "^4.16.2",
-    "marked": "^0.3.6",
+    "marked": "^0.3.9",
     "path-to-regexp": "^1.7.0",
     "simplemde": "^1.11.2",
     "social-share.js": "^1.0.15",
