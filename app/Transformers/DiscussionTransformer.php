@@ -13,6 +13,10 @@ class DiscussionTransformer extends TransformerAbstract
         'user'
     ];
 
+    protected $defaultIncludes = [
+        'user',
+    ];
+
     public function transform(Discussion $discussion)
     {
         $content = json_decode($discussion->content);
@@ -20,9 +24,6 @@ class DiscussionTransformer extends TransformerAbstract
         return [
             'id'            => $discussion->id,
             'user_id'       => $discussion->user_id,
-            'user'          => [
-                'name'   => $discussion->user->name
-            ],
             'title'         => $discussion->title,
             'content_raw'   => $content->raw,
             'content_html'  => $content->html,
@@ -40,9 +41,9 @@ class DiscussionTransformer extends TransformerAbstract
      */
     public function includeComments(Discussion $discussion)
     {
-        $comments = $discussion->comments;
-
-        return $this->collection($comments, new CommentTransformer);
+        if ($comments = $discussion->comments) {
+            return $this->collection($comments, new CommentTransformer);
+        }
     }
 
     /**
@@ -53,9 +54,9 @@ class DiscussionTransformer extends TransformerAbstract
      */
     public function includeTags(Discussion $discussion)
     {
-        $tags = $discussion->tags;
-
-        return $this->collection($tags, new TagTransformer);
+        if ($tags = $discussion->tags) {
+            return $this->collection($tags, new TagTransformer);
+        }
     }
 
     /**
@@ -66,8 +67,8 @@ class DiscussionTransformer extends TransformerAbstract
      */
     public function includeUser(Discussion $discussion)
     {
-        $user = $discussion->user;
-
-        return $this->item($user, new UserTransformer);
+        if ($user = $discussion->user) {
+            return $this->item($user, new UserTransformer);
+        }
     }
 }
