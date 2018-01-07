@@ -38,9 +38,9 @@ class CommentTransformer extends TransformerAbstract
      */
     public function includeUser(Comment $comment)
     {
-        $user = $comment->user;
-
-        return $this->item($user, new UserTransformer);
+        if ($user = $comment->user) {
+            return $this->item($user, new UserTransformer);
+        }
     }
 
 }
