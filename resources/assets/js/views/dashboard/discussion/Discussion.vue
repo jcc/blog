@@ -56,7 +56,9 @@ export default {
     },
     methods: {
         username(value) {
-            return value.name
+            if (value) {
+              return value.data.name
+            }
         },
         tableActions(action, data) {
             if (action == 'edit-item') {

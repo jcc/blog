@@ -2,7 +2,7 @@
     <div class="row">
         <form class="form col-md-4 col-md-offset-4" role="form" @submit.prevent="onSubmit">
             <div class="form-group text-center">
-                <img :src="user.avatar ? user.avatar : 'https://pigjian.com/uploads/default_avatar.png'" id="avatar" class="img-circle" width="100" :alt="user.name">
+                <img :src="user.avatar ? user.avatar : '/images/default.png'" id="avatar" class="img-circle" width="100" :alt="user.name">
             </div>
             <div class="form-group">
                 <label for="name">{{ $t('form.name') }}</label>
