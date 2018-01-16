@@ -125,6 +125,11 @@ php artisan blog:install
 - [Laravist](https://www.laravist.com/)
 - [Laravel - China](https://laravel-china.org/)
 
+## Donate
+
+Support all ERC20 tokens. My Address:
+**0x600dfF1311E5DA3a8697fD86d4Fd9bed257395eb**
+
 ## License
 
 The project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
