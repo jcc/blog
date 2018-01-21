@@ -11,6 +11,15 @@
 @import "_toastr";
 @import "_togglebutton";
 
+body {
+  background-color: #f9f9fb;
+  color: #636b6f !important;
+}
+
+.btn i {
+  color: #fff;
+}
+
 .width-5-percent {
     width: 5%;
 }

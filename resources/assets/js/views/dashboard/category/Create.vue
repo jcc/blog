@@ -1,11 +1,11 @@
 <template>
     <vue-form :title="$t('form.create_category')">
-        <div slot="buttons">
-            <router-link to="/dashboard/categories" class="btn btn-default" exact>{{ $t('form.back') }}</router-link>
-        </div>
-        <div slot="content">
+        <template slot="buttons">
+            <router-link to="/dashboard/categories" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+        </template>
+        <template slot="content">
             <category-form></category-form>
-        </div>
+        </template>
     </vue-form>
 </template>
 

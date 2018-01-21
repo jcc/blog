@@ -17,11 +17,11 @@ export default {
                 placeholder: 'Published At?',
                 inputStyle: {
                     'display': 'inline-block',
-                    'padding': '6px',
+                    'padding': '6px 6px 6px 10px',
                     'height': '41px',
                     'line-height': '22px',
-                    'font-size': '16px',
-                    'border': '2px solid #dce4ec',
+                    'font-size': '13px',
+                    'border': '1px solid #dce4ec',
                     'border-radius': '6px',
                     'color': '#5F5F5F'
                 },

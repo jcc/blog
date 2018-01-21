@@ -6,12 +6,12 @@
 
                     <div class="modal-header">
                         <slot name="header">
-                            <a type="button" class="close" @click="cancel"><i class="ion-close-round"></i></a>
                             <h4 class="modal-title">
                                 <slot name="title">
                                     {{title}}
                                 </slot>
                             </h4>
+                            <a class="close" @click="cancel"><i class="fas fa-times-circle"></i></a>
                         </slot>
                     </div>
 
@@ -73,7 +73,7 @@ export default {
         },
         cancelClass: {
             type: String,
-            default: 'btn btn-outline'
+            default: 'btn btn-light'
         },
         closeWhenConfirm: {
             type: Boolean,
@@ -136,52 +136,30 @@ export default {
 };
 </script>
 
-<style scoped>
-    .modal {
-        display: block;
-        position: fixed;
-        z-index: 9998;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, .5);
-        transition: opacity .3s ease;
-    }
-
-    .modal-header {
-        padding-bottom: 25px;
-        border: none;
-    }
-
-    .modal-dialog {
-        display: table;
-        vertical-align: middle;
-        margin: 30px auto;
-    }
-
-    .modal-content {
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-        transition: all .3s ease;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-
-    .modal-enter {
-        opacity: 0;
-    }
-
-    .modal-leave-active {
-        opacity: 0;
-    }
-
-    .modal-enter .modal-content,
-    .modal-leave-active .modal-content {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    .btn-outline {
-        color: #fff;
-    }
+<style lang="scss" scoped>
+  .modal {
+      display: block;
+      background-color: rgba(0, 0, 0, .5);
+      transition: opacity .3s ease;
+  }
+  .modal-header {
+      padding-bottom: 25px;
+      border: none;
+  }
+  .modal-dialog {
+      vertical-align: middle;
+      margin: 30px auto;
+  }
+  .modal-content {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+      transition: all .3s ease;
+      font-family: Helvetica, Arial, sans-serif;
+  }
+  .modal-enter .modal-content,
+  .modal-leave-active .modal-content {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+  }
 </style>

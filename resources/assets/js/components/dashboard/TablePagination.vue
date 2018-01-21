@@ -1,27 +1,27 @@
 <template>
-    <nav class="text-center">
+    <nav class="d-flex justify-content-center">
         <ul class="pagination">
-            <li :class="isOnFirstPage ? disabledClass : ''">
-                <a @click="loadPage('prev')"><i class="ion-chevron-left"></i></a>
+            <li class="page-item" :class="isOnFirstPage ? disabledClass : ''">
+                <a class="page-link" @click="loadPage('prev')"><i class="ion-chevron-left"></i></a>
             </li>
             <template v-if="notEnoughPages">
                 <template v-for="n in totalPage">
-                    <li :class="isCurrentPage(n) ? 'active' : ''">
-                        <a @click="loadPage(n)"> {{ n }} </a>
+                    <li class="page-item" :class="isCurrentPage(n) ? 'active' : ''">
+                        <a class="page-link" @click="loadPage(n)"> {{ n }} </a>
                     </li>
                 </template>
             </template>
             <template v-else>
                 <template v-for="n in windowSize">
-                    <li :class="isCurrentPage(windowStart+n) ? 'active' : ''">
-                        <a @click="loadPage(windowStart+n)">
+                    <li class="page-item" :class="isCurrentPage(windowStart+n) ? 'active' : ''">
+                        <a class="page-link" @click="loadPage(windowStart+n)">
                             {{ windowStart+n }}
                         </a>
                     </li>
                 </template>
             </template>
-            <li :class="isOnLastPage ? disabledClass : ''">
-                <a @click="loadPage('next')"><i class="ion-chevron-right"></i></a>
+            <li class="page-item" :class="isOnLastPage ? disabledClass : ''">
+                <a class="page-link" @click="loadPage('next')"><i class="ion-chevron-right"></i></a>
             </li>
         </ul>
     </nav>
@@ -45,7 +45,9 @@
       background-color: #3d4e60;
       border-right: none;
     }
-    .pagination li {
-      cursor: pointer;
+    .pagination {
+      li {
+        cursor: pointer;
+      }
     }
 </style>

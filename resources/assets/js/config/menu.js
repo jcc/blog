@@ -1,57 +1,57 @@
 export default [
     {
         label: 'sidebar.dashboard',
-        icon : 'ion-ios-speedometer',
+        icon : 'fas fa-tachometer-alt',
         uri  : '/dashboard/home'
     },
     {
         label: 'sidebar.user',
-        icon : 'ion-person-stalker',
+        icon : 'fas fa-users',
         uri  : '/dashboard/users'
     },
     {
         label: 'sidebar.article',
-        icon : 'ion-ios-book',
+        icon : 'fas fa-book',
         uri  : '/dashboard/articles'
     },
     {
         label: 'sidebar.discussion',
-        icon : 'ion-help-circled',
+        icon : 'fas fa-question-circle',
         uri  : '/dashboard/discussions'
     },
     {
         label: 'sidebar.comment',
-        icon : 'ion-chatbubble-working',
+        icon : 'fas fa-comments',
         uri  : '/dashboard/comments'
     },
     {
         label: 'sidebar.file',
-        icon : 'ion-ios-folder',
+        icon : 'fas fa-folder',
         uri  : '/dashboard/files'
     },
     {
         label: 'sidebar.tag',
-        icon : 'ion-ios-pricetags',
+        icon : 'fas fa-tags',
         uri  : '/dashboard/tags'
     },
     {
         label: 'sidebar.category',
-        icon : 'ion-ios-list',
+        icon : 'fas fa-list-alt',
         uri  : '/dashboard/categories'
     },
     {
         label: 'sidebar.link',
-        icon : 'ion-ios-world',
+        icon : 'fas fa-globe',
         uri  : '/dashboard/links'
     },
     {
         label: 'sidebar.visitor',
-        icon : 'ion-chatbubble-working',
+        icon : 'fas fa-eye',
         uri  : '/dashboard/visitors'
     },
     {
         label: 'sidebar.system',
-        icon : 'ion-gear-b',
+        icon : 'fas fa-cogs',
         uri  : '/dashboard/system'
     }
 ]

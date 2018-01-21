@@ -10,13 +10,13 @@
                         <div class="sidebar">
                             <ul>
                                 <li aria-expanded="false" :class="[type == 'system' ? 'active' : '']" @click="type = 'system'">
-                                    <a> <i class="ion-ios-toggle"></i>{{ $t('page.system') }}</a>
+                                    <a> <i class="fas fa-puzzle-piece"></i>{{ $t('page.system') }}</a>
                                 </li>
                                 <li aria-expanded="true" :class="[type == 'php' ? 'active' : '']" @click="type = 'php'">
-                                    <a><i class="ion-code"></i> PHP</a>
+                                    <a><i class="fas fa-code"></i> PHP</a>
                                 </li>
                                 <li aria-expanded="false" :class="[type == 'database' ? 'active' : '']" @click="type = 'database'">
-                                    <a><i class="ion-social-buffer"></i> {{ $t('page.database') }}</a>
+                                    <a><i class="fas fa-database"></i> {{ $t('page.database') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -28,7 +28,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="pk-table-width-150">{{ $t('page.key') }}</th>
+                                        <th width="150">{{ $t('page.key') }}</th>
                                         <th>{{ $t('page.value') }}</th>
                                     </tr>
                                 </thead>
@@ -57,7 +57,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ $t('page.key') }}</th>
+                                        <th width="150">{{ $t('page.key') }}</th>
                                         <th>{{ $t('page.value') }}</th>
                                     </tr>
                                 </thead>
@@ -82,7 +82,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ $t('page.key') }}</th>
+                                        <th width="150">{{ $t('page.key') }}</th>
                                         <th>{{ $t('page.value') }}</th>
                                     </tr>
                                 </thead>
@@ -176,8 +176,7 @@ ul li{
     color: #666;
 }
 .sidebar ul li a i{
-    font-size: 22px;
+    font-size: 14px;
     margin-right: 10px;
-    vertical-align: middle;
 }
 </style>

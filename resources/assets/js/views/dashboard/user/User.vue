@@ -1,9 +1,9 @@
 <template>
     <div class="row">
         <vue-table :title="$t('page.users')" :fields="fields" api-url="user" @table-action="tableActions" show-paginate>
-            <div slot="buttons">
-                <router-link to="/dashboard/users/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
-            </div>
+            <template slot="buttons">
+                <router-link to="/dashboard/users/create" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+            </template>
         </vue-table>
     </div>
 </template>
@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         avatar(value) {
-            return '<img src="' + value + '" class="avatar img-responsive img-circle" />'
+            return '<img src="' + value + '" class="avatar img-fluid rounded-circle" />'
         },
         tableActions(action, data) {
             if (action == 'edit-item') {

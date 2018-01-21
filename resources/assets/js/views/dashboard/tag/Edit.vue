@@ -1,11 +1,11 @@
 <template>
     <vue-form :title="$t('form.edit_tag')">
-        <div slot="buttons">
-            <router-link to="/dashboard/tags" class="btn btn-default" exact>{{ $t('form.back') }}</router-link>
-        </div>
-        <div slot="content">
+        <template slot="buttons">
+            <router-link to="/dashboard/tags" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+        </template>
+        <template slot="content">
             <tag-form :tag="tag"></tag-form>
-        </div>
+        </template>
     </vue-form>
 </template>
 

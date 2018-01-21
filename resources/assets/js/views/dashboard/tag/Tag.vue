@@ -1,9 +1,9 @@
 <template>
     <div class="row">
         <vue-table :title="$t('page.tags')" :fields="fields" api-url="tag" show-paginate @table-action="tableActions">
-            <div slot="buttons">
-                <router-link to="/dashboard/tags/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
-            </div>
+            <template slot="buttons">
+                <router-link to="/dashboard/tags/create" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+            </template>
         </vue-table>
     </div>
 </template>

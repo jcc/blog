@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="ibox">
                     <div class="ibox-title ibox-warning">
-                        <span class="label label-warning pull-right">{{ $t('page.admin') }}</span>
+                        <span class="badge badge-secondary float-right">{{ $t('page.admin') }}</span>
                         <h5 class="no-margins">Notice For Everyone.</h5>
                     </div>
                 </div>
@@ -14,7 +14,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">{{ $t('page.all') }}</span>
+                        <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
                         <h5 class="no-margins">{{ $t('page.user_num') }}</h5>
                     </div>
                     <div class="ibox-content">
@@ -25,7 +25,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">{{ $t('page.all') }}</span>
+                        <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
                         <h5 class="no-margins">{{ $t('page.view_num') }}</h5>
                     </div>
                     <div class="ibox-content">
@@ -36,7 +36,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">{{ $t('page.all') }}</span>
+                        <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
                         <h5 class="no-margins">{{ $t('page.article_num') }}</h5>
                     </div>
                     <div class="ibox-content">
@@ -47,7 +47,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">{{ $t('page.all') }}</span>
+                        <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
                         <h5 class="no-margins">{{ $t('page.comment_num') }}</h5>
                     </div>
                     <div class="ibox-content">
