@@ -1,11 +1,11 @@
 <template>
     <vue-form :title="$t('form.edit_discussion')">
-        <div slot="buttons">
-            <router-link to="/dashboard/discussions" class="btn btn-default" exact>{{ $t('form.back') }}</router-link>
-        </div>
-        <div slot="content">
+        <template slot="buttons">
+            <router-link to="/dashboard/discussions" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+        </template>
+        <template slot="content">
             <discussion-form :discussion="discussion"></discussion-form>
-        </div>
+        </template>
     </vue-form>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
     <div class="row">
         <vue-table :title="$t('page.links')" :fields="fields" api-url="link" show-paginate @table-action="tableActions">
-            <div slot="buttons">
-                <router-link to="/dashboard/links/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
-            </div>
+            <template slot="buttons">
+                <router-link to="/dashboard/links/create" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+            </template>
         </vue-table>
     </div>
 </template>
@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         image(value) {
-            return '<img src="'+ value +'" width="50" height="50" class="img-circle">'
+            return '<img src="'+ value +'" width="50" height="50" class="rounded-circle">'
         },
         tableActions(action, data) {
             if (action == 'edit-item') {

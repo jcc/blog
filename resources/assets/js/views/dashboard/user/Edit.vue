@@ -1,11 +1,11 @@
 <template>
     <vue-form :title="$t('form.edit_user')">
-        <div slot="buttons">
-            <router-link to="/dashboard/users" class="btn btn-default" exact>{{ $t('form.back') }}</router-link>
-        </div>
-        <div slot="content">
+        <template slot="buttons">
+            <router-link to="/dashboard/users" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+        </template>
+        <template slot="content">
             <user-form :user="user"></user-form>
-        </div>
+        </template>
     </vue-form>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
     <vue-form :title="$t('form.edit_comment')">
-        <div slot="buttons">
-            <router-link to="/dashboard/comments" class="btn btn-default" exact>{{ $t('form.back') }}</router-link>
-        </div>
-        <div slot="content">
+        <template slot="buttons">
+            <router-link to="/dashboard/comments" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+        </template>
+        <template slot="content">
             <div class="row">
-                <form class="form col-md-10 col-md-offset-1" @submit.prevent="edit">
+                <form class="col-md-10 offset-md-1" @submit.prevent="edit">
                     <div class="form-group text-center">
                         <h3>{{ comment.commentable }}</h3>
                         <h6 id="type">{{ (comment.type == 'articles') ? $t('form.articles') : $t('form.discussions') }}</h6>
@@ -18,7 +18,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </template>
     </vue-form>
 </template>
 
@@ -71,11 +71,11 @@ export default {
 </script>
 
 <style lang="scss">
-    .editor-toolbar.fullscreen {
-        z-index: 1000 !important;
-    }
+  .editor-toolbar.fullscreen {
+      z-index: 1000 !important;
+  }
 
-    .CodeMirror-fullscreen {
-        z-index: 1000 !important;
-    }
+  .CodeMirror-fullscreen {
+      z-index: 1000 !important;
+  }
 </style>

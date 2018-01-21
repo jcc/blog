@@ -1,9 +1,9 @@
 <template>
     <div class="row">
         <vue-table :title="$t('page.discussions')" :fields="fields" api-url="discussion"  :item-actions="itemActions" @table-action="tableActions" show-paginate>
-            <div slot="buttons">
-                <router-link to="/dashboard/discussions/create" class="btn btn-success">{{ $t('page.create') }}</router-link>
-            </div>
+            <template slot="buttons">
+                <router-link to="/dashboard/discussions/create" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+            </template>
         </vue-table>
     </div>
 </template>
