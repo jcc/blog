@@ -1,12 +1,12 @@
 <template>
     <div :class="wrapperClass" class="ibox">
-        <div class="ibox-title">
-            <small class="pull-right" style="margin-top: 7px;">
+        <div class="ibox-title d-flex">
+            <h5 class="align-self-center font-weight-normal">{{ title }}</h5>
+            <small class="ml-auto">
                 <slot name="buttons"></slot>
             </small>
-            <h5>{{ title }}</h5>
         </div>
-        <div class="ibox-content no-padding">
+        <div class="ibox-content no-padding table-responsive">
             <table :class="tableClass">
                 <thead>
                     <tr>
@@ -129,8 +129,8 @@
                 type: Array,
                 default() {
                     return [
-                        { name: 'edit-item', icon: 'ion-edit', class: 'btn btn-info' },
-                        { name: 'delete-item', icon: 'ion-trash-b', class: 'btn btn-danger' }
+                        { name: 'edit-item', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
+                        { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
                     ]
                 }
             }
@@ -282,15 +282,17 @@
       text-align: center;
     }
     .actions a {
+      display: inline-block;
       border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      line-height: 2rem;
+      padding: 0;
       margin-left: 5px;
       margin-right: 5px;
-    }
-    .active {
-      background-color: #3d4e60;
-      border-right: none;
-    }
-    .pagination li {
-      cursor: pointer;
+
+      i {
+        font-size: 0.8rem;
+      }
     }
 </style>

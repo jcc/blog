@@ -2,27 +2,29 @@
     <div class="row">
         <div class="ibox">
             <div class="ibox-title">
-                <div class="row no-margin">
-                    <div class="col-md-6">
-                        <h4 class="pull-left">{{ $t('page.files') }}&nbsp;&nbsp;</h4>
-                        <div class="pull-left">
-                            <ul class="breadcrumb">
-                                <li v-for="(disp, path) in upload.breadcrumbs">
+                <div class="row d-flex no-margin">
+                    <div class="col-md-6 d-flex align-self-center">
+                        <h5 class="align-self-center float-left">{{ $t('page.files') }}&nbsp;&nbsp;</h5>
+                        <div class="float-left">
+                            <nav aria-label="breadcrumb">
+                              <ol class="breadcrumb">
+                                <li class="breadcrumb-item" v-for="(disp, path) in upload.breadcrumbs">
                                     <a href="javascript:;" @click="getFileInfo(path)">
                                         {{ disp }}
                                     </a>
                                 </li>
-                                <li class="active">{{ upload.folderName }}</li>
-                            </ul>
+                                <li class="breadcrumb-item active">{{ upload.folderName }}</li>
+                              </ol>
+                            </nav>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <small class="pull-right" style="margin-top: 7px;">
-                            <button type="button" class="btn btn-success btn-md" @click="showFolder = true">
-                                <i class="ion-ios-plus"></i> {{ $t('table.new_folder') }}
+                    <div class="col-md-6 align-self-center">
+                        <small class="float-right">
+                            <button type="button" class="btn btn-success btn-sm" @click="showFolder = true">
+                                <i class="fas fa-plus-circle"></i> {{ $t('table.new_folder') }}
                             </button>
-                            <button type="button" class="btn btn-primary btn-md" @click="showFile = true">
-                                <i class="ion-ios-filing-outline"></i> {{ $t('table.upload') }}
+                            <button type="button" class="btn btn-primary btn-sm" @click="showFile = true">
+                                <i class="fas fa-inbox"></i> {{ $t('table.upload') }}
                             </button>
                         </small>
                     </div>
@@ -43,7 +45,7 @@
                     <tr v-for="(name, path) in upload.subfolders">
                         <td>
                             <a href="javascript:;" @click="getFileInfo(path)">
-                                <i class="ion-filing"></i>
+                                <i class="fas fa-folder"></i>
                                 {{ name }}
                             </a>
                         </td>
@@ -51,8 +53,8 @@
                         <td>-</td>
                         <td>-</td>
                         <td>
-                            <button type="button" class="btn btn-danger" @click="deleteFolder(name)">
-                                <i class="ion-trash-b"></i>
+                            <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(name)">
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
                     </tr>
@@ -62,7 +64,7 @@
                         <template v-if="file.type == 'folder'">
                             <td>
                                 <a href="javascript:;" @click="getFileInfo(file.fullPath)">
-                                    <i class="ion-filing"></i>
+                                    <i class="fas fa-folder"></i>
                                     {{ file.name }}
                                 </a>
                             </td>
@@ -70,16 +72,16 @@
                             <td>-</td>
                             <td>-</td>
                             <td>
-                                <button type="button" class="btn btn-danger" @click="deleteFolder(file.fullPath)">
-                                    <i class="ion-trash-b"></i>
+                                <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(file.fullPath)">
+                                    <i class="fas fa-trash-alt"></i>
                                 </button>
                             </td>
                         </template>
                         <template v-else>
                             <td>
                                 <a target="_blank" :href="file.webPath">
-                                    <i class="ion-image" v-if="checkImageType(file.mimeType)"></i>
-                                    <i class="ion-document-text" v-else></i>
+                                    <i class="fas fa-image" v-if="checkImageType(file.mimeType)"></i>
+                                    <i class="fas fa-file-alt" v-else></i>
                                     {{ file.name }}
                                 </a>
                             </td>
@@ -87,11 +89,11 @@
                             <td>{{ file.modified }}</td>
                             <td>{{ file.size }}</td>
                             <td>
-                                <button type="button" class="btn btn-info" v-if="checkImageType(file.mimeType)" @click="preview(file.webPath)">
-                                    <i class="ion-eye"></i>
+                                <button type="button" class="btn btn-sm btn-info" v-if="checkImageType(file.mimeType)" @click="preview(file.webPath)">
+                                    <i class="fas fa-eye"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger" @click="deleteFile(file, index)">
-                                    <i class="ion-trash-b"></i>
+                                <button type="button" class="btn btn-sm btn-danger" @click="deleteFile(file, index)">
+                                    <i class="fas fa-trash-alt"></i>
                                 </button>
                             </td>
                         </template>
@@ -102,10 +104,10 @@
         </div>
 
         <modal :show="showFolder" @confirm="confirm" @cancel="showFolder = false" show-footer>
-            <div slot="title">{{ $t('form.create_folder') }}</div>
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="folder" class="control-label col-sm-3">{{ $t('form.folder_name') }}</label>
+            <template slot="title">{{ $t('form.create_folder') }}</template>
+            <form>
+                <div class="form-group row">
+                    <label for="folder" class="col-form-label col-sm-3">{{ $t('form.folder_name') }}</label>
                     <div class="col-sm-8">
                         <input type="text" id="folder" class="form-control" v-model="folder" :placeholder="$t('form.folder_name')">
                     </div>
@@ -113,17 +115,17 @@
             </form>
         </modal>
         <modal :show="showFile" @confirm="uploadFile" @cancel="showFile = false" show-footer>
-            <div slot="title">{{ $t('form.upload_file') }}</div>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="file" class="control-label col-sm-3">{{ $t('form.file') }}</label>
+            <template slot="title">{{ $t('form.upload_file') }}</template>
+            <form enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="file" class="col-form-label col-sm-3">{{ $t('form.file') }}</label>
                     <div class="col-sm-8 file-upload">
                         <button type="button" class="btn btn-primary">{{ $t('table.upload') }}</button>
                         <input type="file" id="file" name="file" @change="change" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="file_name" class="control-label col-sm-3">{{ $t('form.file_name') }}</label>
+                <div class="form-group row">
+                    <label for="file_name" class="col-form-label col-sm-3">{{ $t('form.file_name') }}</label>
                     <div class="col-sm-8">
                         <input type="text" id="file_name" class="form-control" name="file_name" v-model="file_name" :placeholder="$t('form.file_name')">
                     </div>
@@ -131,14 +133,10 @@
             </form>
         </modal>
         <modal :show="showImage" @confirm="confirm" @cancel="showImage = false">
-            <div slot="title">{{ $t('form.image') }}</div>
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <div class="col-sm-12 text-center">
-                        <img :src="preview_image" class="preview-size">
-                    </div>
-                </div>
-            </form>
+            <template slot="title">{{ $t('form.image') }}</template>
+            <div class="col-sm-12 text-center">
+                <img :src="preview_image" class="preview-size">
+            </div>
         </modal>
     </div>
 </template>
@@ -325,6 +323,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ibox-content .btn {
+  display: inline-block;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  padding: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+h5 {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.breadcrumb {
+  padding: 0.25rem .7rem !important;
+  margin: 0;
+}
 .box-body button, .box-body button:hover {
     padding: 0;
     border-radius: 50%;
@@ -333,7 +349,7 @@ export default {
     outline: none;
 }
 .preview-size {
-    max-width: 500px;
+  width: 100%;
 }
 .file-upload input {
     width: 71px;

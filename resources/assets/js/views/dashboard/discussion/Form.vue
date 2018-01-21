@@ -1,15 +1,14 @@
 <template>
-    
     <div class="row">
-        <form class="form-horizontal col-md-9 col-md-offset-1" @submit.prevent="onSubmit">
-            <div class="form-group">
-                <label for="title" class="col-sm-2 control-label">{{ $t('form.title') }}</label>
+        <form class="col-sm-9 offset-sm-1" @submit.prevent="onSubmit">
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">{{ $t('form.title') }}</label>
                 <div class="col-sm-10">
                     <input type="text" id="title" name="title" v-model="discussion.title" class="form-control">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">{{ $t('form.tag') }}</label>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">{{ $t('form.tag') }}</label>
                 <div class="col-sm-10">
                     <multiselect
                         v-model="tags"
@@ -26,14 +25,14 @@
                     </multiselect>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="title" class="col-sm-2 control-label">{{ $t('form.content') }}</label>
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">{{ $t('form.content') }}</label>
                 <div class="col-sm-10">
                     <textarea id="editor" name="content"></textarea>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
                     {{ $t('form.status') }}
                 </div>
                 <div class="col-sm-2">
@@ -45,8 +44,8 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
                     <button type="submit" class="btn btn-info">{{ discussion.id ? $t('form.edit') : $t('form.create') }}</button>
                 </div>
             </div>

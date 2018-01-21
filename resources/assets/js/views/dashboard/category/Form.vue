@@ -1,26 +1,26 @@
 <template>
     <div class="row">
-        <form class="form-horizontal col-md-6 col-md-offset-3" @submit.prevent="onSubmit">
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">{{ $t('form.category_name') }}</label>
-                <div class="col-sm-10">
+        <form class="col-sm-6 offset-sm-2" @submit.prevent="onSubmit">
+            <div class="form-group row">
+                <label for="name" class="col-sm-3 col-form-label">{{ $t('form.category_name') }}</label>
+                <div class="col-sm-9">
                     <input type="text" name="name" id="name" v-model="category.name" class="form-control">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="path" class="col-sm-2 control-label">{{ $t('form.path') }}</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label for="path" class="col-sm-3 col-form-label">{{ $t('form.path') }}</label>
+                <div class="col-sm-9">
                     <input type="text" name="path" id="path" v-model="category.path" class="form-control">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="editor" class="col-sm-2 control-label">{{ $t('form.description') }}</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label for="editor" class="col-sm-3 col-form-label">{{ $t('form.description') }}</label>
+                <div class="col-sm-9">
                     <textarea id="editor" name="description" :placeholder="$t('form.category_description')" v-model="category.description" class="form-control"></textarea>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-9">
                     <button type="submit" class="btn btn-info">{{ category.id ? $t('form.edit') : $t('form.create') }}</button>
                 </div>
             </div>

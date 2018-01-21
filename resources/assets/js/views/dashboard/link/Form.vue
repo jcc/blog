@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <form class="form col-md-4 col-md-offset-4" role="form" @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <form class="col-sm-4 offset-sm-4" role="form" @submit.prevent="onSubmit" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">{{ $t('form.link_name') }}</label>
                 <input type="text" class="form-control" id="name" name="name" :placeholder="$t('form.link_name')" v-model="link.name">

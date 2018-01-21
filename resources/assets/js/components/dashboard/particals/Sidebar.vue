@@ -3,7 +3,7 @@
         <ul class="sidebar-nav">
             <div class="user">
                 <div class="avatar">
-                    <img class="img-responsive img-circle" :src="user.avatar">
+                    <img class="img-fluid rounded-circle" :src="user.avatar">
                 </div>
                 <div class="nickname">
                     <p>{{ user.name }}</p>
@@ -11,13 +11,13 @@
                 </div>
                 <div class="buttons">
                     <a href="/">
-                        <i class="ion-ios-home"></i>
+                        <i class="fas fa-home"></i>
                     </a>
                     <a :href="userInfo">
-                        <i class="ion-person"></i>
+                        <i class="fas fa-user"></i>
                     </a>
                     <a href="/setting">
-                        <i class="ion-ios-gear"></i>
+                        <i class="fas fa-cog"></i>
                     </a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import menus from '../../../config/menu.js'
+    import menus from 'config/menu.js'
 
     export default {
         data () {
@@ -63,11 +63,19 @@
     margin: 0;
     padding: 0;
     list-style: none;
+
+    i {
+      font-size: .9rem;
+    }
 }
 
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
+
+    i {
+      font-size: .6rem;
+    }
 }
 
 .navbar {
@@ -112,7 +120,6 @@
     color: #828a9a;
 }
 .buttons a:hover {
-    font-size: 30px;
     color: #fff;
 }
 .sidebar-nav li a {
