@@ -1,45 +1,35 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <div class="navbar-header">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name') }}
-            </a>
-        </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">{{ lang('Articles') }}</a></li>
-                <li><a href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ lang('Articles') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav navbar-right">
                 <!-- Search Box -->
-                <li>
-                    <form class="navbar-form navbar-right search" role="search" method="get" action="{{ url('search') }}">
-                        <input type="text" class="form-control" name="q" placeholder="{{ lang('Search') }}" required>
-                    </form>
-                </li>
+                <form class="form-inline my-2 my-lg-0 search" role="search" method="get" action="{{ url('search') }}">
+                  <input class="form-control mr-sm-2" type="search" name="q" placeholder="{{ lang('Search') }}" required>
+                </form>
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('login') }}">{{ lang('Login') }}</a></li>
-                    <li><a href="{{ url('register') }}">{{ lang('Register') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('login') }}">{{ lang('Login') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('register') }}">{{ lang('Register') }}</a></li>
                 @else
-                    <li class="notification">
-                        <a href="{{ url('user/notification') }}"><i class="ion-android-notifications">
-                            <span class="new" 
+                    <li class="nav-item notification">
+                        <a class="nav-link" href="{{ url('user/notification') }}"><i class="fas fa-bell">
+                            <span class="new"
                             @if (Auth::user()->unreadNotifications->count() > 0)
                             style='display: block'
                             @endif
@@ -47,11 +37,11 @@
                             </span>
                         </i></a>
                     </li>
-                    <li class="dropdown">
+                    <li class="nav-item dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{ Auth::user()->nickname ?: Auth::user()->name }}
                             <b class="caret"></b>&nbsp;&nbsp;
-                            <img class="avatar img-circle" src="{{ Auth::user()->avatar }}">
+                            <img class="avatar rounded-circle" src="{{ Auth::user()->avatar }}">
                         </a>
 
                         <ul class="dropdown-menu text-center" role="menu">

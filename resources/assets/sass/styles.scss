@@ -1,16 +1,17 @@
 // Basic
 [v-cloak] { display: none; }
-.navbar-default {
-    border: none !important;
+.navbar {
+    padding: 0;
 }
 .avatar {
-    width: 50px !important;
+    width: 40px !important;
 }
 html {
     height: 100%;
 }
 body{
     height: 100%;
+    background-color: #f9f9fb;
 }
 #app {
     min-height: 100%;
@@ -34,16 +35,10 @@ textarea {
 .bold {
     font-weight: bold;
 }
-.container-fluid {
-    padding: 0;
-
-    .jumbotron {
-        border-radius: 0;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        background-color: #597289;
-        color: #fff;
-    }
+.jumbotron.jumbotron-fluid {
+    border-radius: 0;
+    background-color: #597289;
+    color: #fff;
 }
 i.large {
     line-height: 1;
@@ -207,11 +202,24 @@ i.large {
 .navbar {
     font-family: Lato, "微软雅黑", 'Helvetica Neue', Arial, Helvetica,  sans-serif;
     border: none;
+    background-color: #52697f;
+
+    .container {
+      min-height: 60px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    button {
+      border: 0;
+      color: #fff !important;
+      outline:none;
+      font-size: 1.5rem;
+    }
 }
 .navbar-nav > li > .dropdown-menu {
-    margin-top: 4px; 
-    border-top-right-radius: 4px; 
-    border-top-left-radius: 4px; 
+    margin-top: 4px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
 }
 .navbar-nav > li > .dropdown-menu > li i {
     margin-right: 15px;
@@ -261,7 +269,7 @@ i.large {
     .copy-right {
         background-color: $default-color;
         padding-top: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 12px;
     }
     ul {
         padding: 0;
@@ -405,12 +413,12 @@ i.large {
         }
         .media-left img {
             border-radius: 5px;
-            width: 260px;
+            width: 200px;
         }
         .media-body {
             .media-heading > a {
                 color: $wet-asphalt;
-                font-size: 1.28571429em;
+                font-size: 1.2rem;
                 display: inline-block;
                 font-weight: 400;
 
@@ -511,16 +519,16 @@ i.large {
         color: #18bc9c;
     }
 }
-.panel-default, .panel-info {
+.card-default, .card-info {
      border: none;
 }
-.panel-default > .panel-heading {
+.card-default > .card-header {
     color: $asbestos;
     background-color: $clouds;
     border: none;
     font-size: 16px;
 }
-.panel-info > .panel-heading {
+.card-info > .card-header {
     color: #fff;
     background-color: #597289;
     border: none;
@@ -545,7 +553,6 @@ i.large {
 
         a, span{
             color: #fff;
-            font-size: 16px;
         }
         span.meta {
             color: #597289;
@@ -609,7 +616,12 @@ img.emojione {
 .notifications {
     margin-top: 30px;
 
-    .panel-heading {
+    .card {
+      border: none;
+    }
+    .card-header {
+        background-color: transparent;
+        border: none;
 
         .tip {
             height: 30px;
@@ -623,7 +635,7 @@ img.emojione {
             display: none;
         }
     }
-    .panel-body {
+    .card-body {
         padding: 0;
     }
     ul.notification {

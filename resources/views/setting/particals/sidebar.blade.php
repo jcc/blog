@@ -1,7 +1,7 @@
-<div class="panel panel-info">
-    <div class="panel-heading">{{ lang('Settings') }}</div>
+<div class="card card-info">
+    <div class="card-header">{{ lang('Settings') }}</div>
 
-    <div class="list-group">
+    <div class="list-group list-group-flush">
         <a href="{{ url('setting') }}" class="list-group-item {{ isActive('setting.index') }}">
             <i class="ion-ios-barcode-outline"></i>{{ lang('Account Setting') }}
         </a>

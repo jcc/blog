@@ -5,7 +5,7 @@ import VueI18n from 'vue-i18n';
 import locales from 'lang';
 import httpPlugin from 'plugins/http';
 
-require('bootstrap/js/dist');
+require('bootstrap');
 require('social-share.js/dist/js/social-share.min.js');
 require('vendor/select2.min.js');
 window.marked = require('marked');

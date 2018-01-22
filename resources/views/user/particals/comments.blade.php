@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group list-group-flush">
     @forelse($comments as $comment)
         <li class="list-group-item">
             @if($comment->commentable)
