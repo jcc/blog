@@ -9,20 +9,20 @@
         <h6>{{ $article->subtitle }}</h6>
 
         <div class="header">
-            <i class="ion-person"></i>{{ $article->user->name or 'null' }}，
+            <i class="fas fa-user"></i>{{ $article->user->name or 'null' }}，
             @if(count($article->tags))
-            <i class="ion-pricetag"></i>
+            <i class="fas fa-tags"></i>
                 @foreach($article->tags as $tag)
                     <a href="{{ url('tag', ['tag' => $tag->tag]) }}">{{ $tag->tag }}</a>，
                 @endforeach
             @endif
-            <i class="ion-clock"></i>{{ $article->published_at->diffForHumans() }}
+            <i class="fas fa-clock"></i>{{ $article->published_at->diffForHumans() }}
         </div>
     @endcomponent
 
     <div class="article container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 offset-md-2">
 
             <parse content="{{ $article->content['raw'] }}"></parse>
 

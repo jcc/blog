@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         <div class="dicussion row">
-            <div class="col-md-9 col-md-offset-1">
-                <form class="form-horizontal" action="{{ url('discussion') }}" method="POST">
+            <div class="col-md-9 offset-md-1">
+                <form class="form" action="{{ url('discussion') }}" method="POST">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                        <label for="title" class="col-sm-2 control-label">{{ lang('Discuss Title') }}</label>
+                    <div class="form-group row{{ $errors->has('title') ? ' has-error' : '' }}">
+                        <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}</label>
                         <div class="col-sm-10">
                             <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
 
@@ -19,8 +19,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
-                        <label class="col-sm-2 control-label">{{ lang('Discuss Tag') }}</label>
+                    <div class="form-group row{{ $errors->has('tags') ? ' has-error' : '' }}">
+                        <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
                         <div class="col-sm-10">
                             <select class="select" multiple="multiple" name="tags[]" style="width: 100%">
                                 @foreach($tags as $tag)
@@ -35,8 +35,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                        <label for="content" class="col-sm-2 control-label">{{ lang('Discuss Content') }}</label>
+                    <div class="form-group row{{ $errors->has('content') ? ' has-error' : '' }}">
+                        <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="content" rows="12" name="content">{{ old('content') }}</textarea>
 
@@ -47,9 +47,9 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success pull-right" onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
+                            <button type="submit" class="btn btn-success float-right" onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
                         </div>
                     </div>
                 </form>

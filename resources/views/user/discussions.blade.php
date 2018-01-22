@@ -5,9 +5,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ lang('Your Discussions') }} ( {{ $discussions->count() }} )</div>
+            <div class="col-md-8 offset-md-2">
+                <div class="card card-default">
+                    <div class="card-header">{{ lang('Your Discussions') }} ( {{ $discussions->count() }} )</div>
 
                     @include('user.particals.discussions')
 

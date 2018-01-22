@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group list-group-flush">
     @forelse($discussions as $discussion)
         <li class="list-group-item">
             <a href="{{ url('discussion', ['id' => $discussion->id]) }}">{{ $discussion->title }}</a>

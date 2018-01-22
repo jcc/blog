@@ -8,15 +8,15 @@
             </div>
 
             <div class="col-md-8">
-                <div class="panel">
-                    <div class="panel-heading">{{ lang('Reset Password') }}</div>
+                <div class="card card-default">
+                    <div class="card-header">{{ lang('Reset Password') }}</div>
 
-                    <div class="panel-body">
-                        <form class="form-horizontal" action="{{ url('password/change') }}" method="POST">
+                    <div class="card-body">
+                        <form class="form" action="{{ url('password/change') }}" method="POST">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label text-right">{{ lang('Old Password') }}</label>
+                            <div class="form-group row{{ $errors->has('old_password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('Old Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="old_password" required>
@@ -28,8 +28,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label text-right">{{ lang('New Password') }}</label>
+                            <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('New Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" required>
@@ -41,8 +41,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label text-right">{{ lang('Confirm New Password') }}</label>
+                            <div class="form-group row{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('Confirm New Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password_confirmation" required>
@@ -54,8 +54,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
+                            <div class="form-group row">
+                                <div class="col-md-8 offset-md-4">
                                     <button style="submit" class="btn btn-primary">{{ lang('Update Password') }}</button>
                                 </div>
                             </div>
