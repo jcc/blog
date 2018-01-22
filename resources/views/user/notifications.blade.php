@@ -3,14 +3,14 @@
 @section('content')
     <div class="container notifications">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel">
-                    <div class="panel-heading">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
                         <span class="tip">
                             <b>{{ Auth::user()->unreadNotifications->count() }}</b>
                             {{ lang('New Notification') }}
                         </span>
-                        <a class="btn btn-success btn-sm pull-right mark-as-read" href="javascript:;"
+                        <a class="btn btn-success btn-sm float-right mark-as-read" href="javascript:;"
                             onclick="event.preventDefault();document.getElementById('mark-as-read').submit();">
                             {{ lang('Mark As Read') }}
                         </a>
@@ -18,7 +18,7 @@
                             {{ csrf_field() }}
                         </form>
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <ul class="notification">
                             @foreach(Auth::user()->notifications as $notification)
                                 @include('notifications.'. snake_case(class_basename($notification->type), '-'))

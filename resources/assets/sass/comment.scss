@@ -22,7 +22,7 @@
         -moz-transform: rotateZ(360deg);
         transform: rotateZ(360deg);
     }
-    .img-circle {
+    .media-left img {
         width: 64px;
         height: 64px;
         -webkit-transition: transition .6s ease-in;
@@ -43,7 +43,7 @@
     .downvoted:hover {
       opacity: 1;
     }
-    
+
     i {
         margin-right: 5px;
     }

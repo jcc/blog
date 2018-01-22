@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="margin-top: 50px;">
-            <div class="well bs-component">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('auth/github/register') }}">
+        <div class="col-md-6 offset-md-3" style="margin-top: 50px;">
+            <div class="well">
+                <form class="form" role="form" method="POST" action="{{ url('auth/github/register') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="github_id" value="{{ $oauthData['github_id'] }}">
                     <fieldset>
                         <legend class="text-center">{{ lang('Register') }}</legend>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-10 offset-md-1">
                                 <label for="name" class="control-label">{{ lang('Username') }}</label>
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $oauthData['github_name'] or '' }}" placeholder="{{ lang('Input Name') }}" required>
 
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-10 offset-md-1">
                                 <label for="email" class="control-label">{{ lang('Email') }}</label>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ $oauthData['email'] or '' }}" placeholder="{{ lang('Input Email') }}" required>
 
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-10 offset-md-1">
                                 <label for="password" class="control-label">{{ lang('Password') }}</label>
                                 <input id="password" type="password" class="form-control" name="password" placeholder="{{ lang('Input Password') }}" required autofocus>
 
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-10 offset-md-1">
                                 <label for="password-confirm" class="control-label">{{ lang('Confirm Password') }}</label>
 
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ lang('Input Confirm Password') }}" required>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-1">
+                            <div class="col-md-10 offset-md-1">
                                 <button type="submit" class="btn btn-primary form-control">
                                     {{ lang('Register') }}
                                 </button>

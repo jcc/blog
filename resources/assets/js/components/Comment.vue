@@ -1,48 +1,48 @@
 <template>
     <div class="container">
         <div class="row comment">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 offset-md-2">
                 <h5>{{ title }}</h5>
             </div>
             <div :class="contentWrapperClass">
                 <div :class="nullClass" v-if="comments.length == 0">{{ nullText }}</div>
                 <div class="media" v-for="(comment, index) in comments" v-else>
-                    <div class="media-left">
+                    <div class="media-left mr-3">
                         <a :href="'/user/' + comment.username">
-                            <img class="media-object img-circle" :src="comment.avatar">
+                            <img class="media-object rounded-circle" :src="comment.avatar">
                         </a>
                     </div>
                     <div class="media-body box-body">
                         <div class="heading">
-                            <i class="ion-person"></i><a :href="'/user/' + comment.username">{{ comment.username }}</a>
+                            <i class="fas fa-user"></i><a :href="'/user/' + comment.username">{{ comment.username }}</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="ion-clock"></i>{{ comment.created_at }}
-                            <span class="pull-right operate">
+                            <i class="fas fa-clock"></i>{{ comment.created_at }}
+                            <span class="float-right operate">
                                 <vote-button v-if="username != comment.username" :item="comment"></vote-button>
                                 <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
-                                    <i class="ion-trash-b"></i>
+                                    <i class="fas fa-trash-alt"></i>
                                 </a>
-                                <a href="javascript:;" @click="reply(comment.username)"><i class="ion-ios-undo"></i></a>
+                                <a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
                             </span>
                         </div>
                         <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html"></div>
                     </div>
                 </div>
 
-                <form class="form-horizontal" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label own-avatar">
+                <form class="form mt-4" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label own-avatar">
                             <a :href="'/user/' + username">
-                                <img class="img-circle" :src="userAvatar">
+                                <img width="60" class="rounded-circle" :src="userAvatar">
                             </a>
                         </label>
                         <div class="col-sm-10">
                             <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown" :rows="7" :strategies="strategies"></text-complete>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <div class="col-sm-12">
-                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success pull-right">{{ $t('form.submit_comment') }}</button>
+                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success float-right">{{ $t('form.submit_comment') }}</button>
                         </div>
                     </div>
                 </form>
@@ -53,10 +53,10 @@
 
 <script>
 import { default as toastr } from 'toastr/build/toastr.min.js'
-import toastrConfig from '../config/toastr'
+import toastrConfig from 'config/toastr'
 import emojione from 'emojione'
 import FineUploader from 'fine-uploader/lib/traditional'
-import { stack_error } from '../config/helper'
+import { stack_error } from 'config/helper'
 import VoteButton from './VoteButton'
 import TextComplete from 'v-textcomplete'
 import { default as githubEmoji } from '../vendor/github_emoji'
@@ -67,7 +67,7 @@ export default {
         contentWrapperClass: {
             type: String,
             default() {
-                return 'col-md-8 col-md-offset-2'
+                return 'col-md-8 offset-md-2'
             }
         },
         title: {

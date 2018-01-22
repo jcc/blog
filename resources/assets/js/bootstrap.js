@@ -8,7 +8,7 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-require('bootstrap/js/dist');
+require('bootstrap');
 window.swal = require('sweetalert2');
 
 /**

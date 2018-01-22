@@ -5,10 +5,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ lang('Your Followings') }} ( {{ $followings->count() }} )</div>
-                    <ul class="list-group">
+            <div class="col-md-8 offset-md-2">
+                <div class="card card-default">
+                    <div class="card-header">{{ lang('Your Followings') }} ( {{ $followings->count() }} )</div>
+                    <ul class="list-group list-group-flush">
                         @forelse($followings as $following)
                             <li class="list-group-item">
                                 <a href="{{ url('user', ['name' => $following->name]) }}">
