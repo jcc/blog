@@ -220,6 +220,10 @@ i.large {
     margin-top: 4px;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
+
+    li a {
+      padding: 10px;
+    }
 }
 .navbar-nav > li > .dropdown-menu > li i {
     margin-right: 15px;
