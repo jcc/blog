@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <div class="col-md-10 offset-md-1">
                                 <a href="{{ url('/auth/github') }}" class="btn btn-primary form-control">
-                                    <i class="ion-social-github"></i> {{ lang('Login With Github') }}
+                                    <i class="fab fa-github"></i> {{ lang('Login With Github') }}
                                 </a>
                             </div>
                         </div>

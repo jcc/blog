@@ -2,7 +2,7 @@
     <nav class="d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item" :class="isOnFirstPage ? disabledClass : ''">
-                <a class="page-link" @click="loadPage('prev')"><i class="ion-chevron-left"></i></a>
+                <a class="page-link" @click="loadPage('prev')"><i class="fas fa-chevron-left"></i></a>
             </li>
             <template v-if="notEnoughPages">
                 <template v-for="n in totalPage">
@@ -21,7 +21,7 @@
                 </template>
             </template>
             <li class="page-item" :class="isOnLastPage ? disabledClass : ''">
-                <a class="page-link" @click="loadPage('next')"><i class="ion-chevron-right"></i></a>
+                <a class="page-link" @click="loadPage('next')"><i class="fas fa-chevron-right"></i></a>
             </li>
         </ul>
     </nav>

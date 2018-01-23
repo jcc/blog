@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span :style="{color: color}" @click="setStatus(rowData)"><i class="ion-record"></i></span>
+        <span :style="{color: color}" @click="setStatus(rowData)"><i class="fas fa-circle"></i></span>
     </div>
 </template>
 
