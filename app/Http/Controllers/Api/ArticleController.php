@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Purifier;
 use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
 
@@ -42,6 +43,7 @@ class ArticleController extends ApiController
 
         $data['is_draft']    = isset($data['is_draft']);
         $data['is_original'] = isset($data['is_original']);
+        $data['content'] = Purifier::clean($data['content']);
 
         $this->article->store($data);
 
@@ -75,6 +77,8 @@ class ArticleController extends ApiController
         $data = array_merge($request->all(), [
             'last_user_id' => \Auth::id()
         ]);
+
+        $data['content'] = Purifier::clean($data['content']);
 
         $this->article->update($id, $data);
 
