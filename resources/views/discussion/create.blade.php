@@ -7,41 +7,41 @@
                 <form class="form" action="{{ url('discussion') }}" method="POST">
                     {{ csrf_field() }}
 
-                    <div class="form-group row{{ $errors->has('title') ? ' has-error' : '' }}">
+                    <div class="form-group row">
                         <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
+                            <input type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ old('title') }}">
 
                             @if ($errors->has('title'))
-                                <span class="help-block">
+                                <span class="invalid-feedback">
                                     <strong>{{ $errors->first('title') }}</strong>
                                 </span>
                             @endif
                         </div>
                     </div>
-                    <div class="form-group row{{ $errors->has('tags') ? ' has-error' : '' }}">
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
                         <div class="col-sm-10">
-                            <select class="select" multiple="multiple" name="tags[]" style="width: 100%">
+                            <select class="select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
                                 @foreach($tags as $tag)
                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                 @endforeach
                             </select>
 
                             @if ($errors->has('tags'))
-                                <span class="help-block">
+                                <span class="invalid-feedback d-block">
                                     <strong>{{ $errors->first('tags') }}</strong>
                                 </span>
                             @endif
                         </div>
                     </div>
-                    <div class="form-group row{{ $errors->has('content') ? ' has-error' : '' }}">
+                    <div class="form-group row">
                         <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="content" rows="12" name="content">{{ old('content') }}</textarea>
+                            <textarea class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="12" name="content">{{ old('content') }}</textarea>
 
                             @if ($errors->has('content'))
-                                <span class="help-block">
+                                <span class="invalid-feedback">
                                     <strong>{{ $errors->first('content') }}</strong>
                                 </span>
                             @endif

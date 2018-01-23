@@ -17,14 +17,14 @@
                     <form class="form" role="form" method="POST" action="{{ url('/password/email') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label">{{ lang('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
