@@ -22,7 +22,7 @@ if ($comment && $comment->commentable) {
 
 <li :class="'{{ empty($notification->read_at) }}' ? 'bold' : ''">
     @if ($comment && $comment->commentable)
-        <i :class="'{{ empty($notification->read_at) }}' ? 'ion-ios-chatboxes' : 'ion-ios-chatboxes-outline'"></i>
+        <i :class="'{{ empty($notification->read_at) }}' ? 'fas fa-comment-alt' : 'far fa-comment-alt'"></i>
         <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
         {{ lang('Commented') }} {{ $type }}
         <a class="text-info" href="{{ $url }}">{{ $comment->commentable->title }}</a>

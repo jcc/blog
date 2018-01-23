@@ -14,8 +14,8 @@
                 <div class="upload-box">
                     <input type="file" class="form-control" @change="change" id="image" name="image">
                     <img v-if="link.image" :src="link.image" :alt="link.name" width="100" height="100" class="img-circle image">
-                    <i v-else class="ion-image link-image"></i>
-                    <div v-if="link.image" class="mask"><i class="ion-upload"></i></div>
+                    <i v-else class="fas fa-image link-image"></i>
+                    <div v-if="link.image" class="mask"><i class="fas fa-cloud-upload-alt"></i></div>
                 </div>
             </div>
             <div class="form-group">

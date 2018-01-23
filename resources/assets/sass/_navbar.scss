@@ -13,11 +13,14 @@
   color: #fff;
 }
 
+.navbar-nav .notification i {
+  color: #fff;
+}
+
 .notification {
   i {
     position: relative;
     font-size: 1.2rem;
-    color: #fff;
     vertical-align: bottom;
 
     .new {

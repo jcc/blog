@@ -12,10 +12,10 @@
 @import "markdown";
 @import "vendor/highlight.min";
 
-@import "_form";
-@import "_navbar";
-@import "_pagination";
-@import "_togglebutton";
-@import "_toastr";
-@import "styles";
+@import "form";
+@import "navbar";
+@import "pagination";
+@import "togglebutton";
+@import "toastr";
 @import "comment";
+@import "styles";

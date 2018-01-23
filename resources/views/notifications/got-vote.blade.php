@@ -16,17 +16,17 @@ if ($comment &&  $comment->commentable) {
             break;
     }
 }
-    
+
 if($notification->data['vote_type'] == 'up_vote')
 {
-	$iconRead = 'ion-ios-arrow-thin-up';
-	$iconNotRead =  'ion-arrow-up-a';
+	$iconRead = 'fas fa-thumbs-up-alt';
+	$iconNotRead =  'fas fa-thumbs-up';
 	$action = lang('Likes'); // Likes your comment
 }
 else
 {
-	$iconRead = 'ion-ios-arrow-thin-down';
-	$iconNotRead =  'ion-arrow-down-a';
+	$iconRead = 'fas fa-thumbs-down-alt';
+	$iconNotRead =  'fas fa-thumbs-down';
 	$action = lang('Dislikes'); // Dislikes your comment
 }
 

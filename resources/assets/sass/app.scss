@@ -5,15 +5,19 @@
 //Simplemde
 @import "vendor/simplemde.min";
 
-@import "_form";
-@import "_navbar";
-@import "_ibox";
-@import "_toastr";
-@import "_togglebutton";
+@import "form";
+@import "navbar";
+@import "ibox";
+@import "toastr";
+@import "togglebutton";
 
 body {
   background-color: #f9f9fb;
   color: #636b6f !important;
+}
+
+.navbar-toggler {
+  color: $wet-asphalt;
 }
 
 .btn i {

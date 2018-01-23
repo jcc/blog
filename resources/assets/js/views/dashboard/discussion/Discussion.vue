@@ -48,9 +48,9 @@ export default {
                 }
             ],
             itemActions: [
-                { name: 'view-item', icon: 'ion-eye', class: 'btn btn-success' },
-                { name: 'edit-item', icon: 'ion-edit', class: 'btn btn-info' },
-                { name: 'delete-item', icon: 'ion-trash-b', class: 'btn btn-danger' }
+                { name: 'view-item', icon: 'fas fa-eye', class: 'btn btn-success' },
+                { name: 'edit-item', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
+                { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
             ]
         };
     },

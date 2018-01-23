@@ -10,8 +10,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
 
     <title>@yield('title', config('app.name'))</title>

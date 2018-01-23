@@ -45,17 +45,17 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-item"><a href="{{ url('user', ['name' => Auth::user()->name]) }}"><i class="ion-person"></i>{{ lang('Personal Center') }}</a></li>
-                            <li class="dropdown-item"><a href="{{ url('setting') }}"><i class="ion-gear-b"></i>{{ lang('Settings') }}</a></li>
+                            <li class="dropdown-item"><a href="{{ url('user', ['name' => Auth::user()->name]) }}"><i class="fas fa-user"></i>{{ lang('Personal Center') }}</a></li>
+                            <li class="dropdown-item"><a href="{{ url('setting') }}"><i class="fas fa-cog"></i>{{ lang('Settings') }}</a></li>
                             @if(Auth::user()->is_admin)
-                                <li class="dropdown-item"><a href="{{ url('dashboard') }}"><i class="ion-ios-speedometer"></i>{{ lang('Dashboard') }}</a></li>
+                                <li class="dropdown-item"><a href="{{ url('dashboard') }}"><i class="fas fa-tachometer-alt"></i>{{ lang('Dashboard') }}</a></li>
                             @endif
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">
                                 <a href="{{ url('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    <i class="ion-log-out"></i>{{ lang('Logout') }}
+                                    <i class="fas fa-sign-out-alt"></i>{{ lang('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">

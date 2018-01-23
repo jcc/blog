@@ -23,7 +23,7 @@
                     <div class="extra">
                         @foreach($article->tags as $tag)
                         <a href="{{ url('tag', ['tag' => $tag->tag]) }}">
-                            <div class="label"><i class="ion-pricetag"></i>{{ $tag->tag }}</div>
+                            <div class="label"><i class="fas fa-tag"></i>{{ $tag->tag }}</div>
                         </a>
                         @endforeach
 
@@ -32,7 +32,7 @@
                             <i class="fas fa-clock"></i>{{ $article->published_at->diffForHumans() }}&nbsp;,&nbsp;
                             <i class="fas fa-eye"></i>{{ $article->view_count }}
                             <a href="{{ url($article->slug) }}" class="float-right">
-                                Read More <i class="ion-ios-arrow-forward"></i>
+                                Read More <i class="fas fa-chevron-right"></i>
                             </a>
                         </div>
                     </div>

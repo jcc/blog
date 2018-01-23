@@ -2,7 +2,7 @@
     <nav class="navbar navbar bg-white">
       <div class="navbar-brand">
           <a class="navbar-toggler text-left" @click="toggle">
-              <i class="ion-navicon-round text-secondary"></i>
+              <i class="fas fa-bars text-secondary"></i>
           </a>
       </div>
     </nav>

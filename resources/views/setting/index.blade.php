@@ -16,10 +16,10 @@
                             {{ csrf_field() }}
 
                             <div class="form-group row{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('Old Password') }}</label>
+                                <label class="col-md-4 col-form-label text-right">{{ lang('Old Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="old_password" required>
+                                    <input type="password" class="form-control" name="old_password" required>
 
                                     @if ($errors->has('old_password'))
                                         <span class="help-block">
@@ -29,10 +29,10 @@
                                 </div>
                             </div>
                             <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('New Password') }}</label>
+                                <label class="col-md-4 col-form-label text-right">{{ lang('New Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input type="password" class="form-control" name="password" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -42,10 +42,10 @@
                                 </div>
                             </div>
                             <div class="form-group row{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 col-form-label text-right">{{ lang('Confirm New Password') }}</label>
+                                <label class="col-md-4 col-form-label text-right">{{ lang('Confirm New Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password_confirmation" required>
+                                    <input type="password" class="form-control" name="password_confirmation" required>
 
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">
