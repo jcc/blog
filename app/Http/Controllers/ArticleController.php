@@ -17,7 +17,7 @@ class ArticleController extends Controller
 
     /**
      * Display the articles resource.
-     * 
+     *
      * @return mixed
      */
     public function index()
@@ -29,15 +29,13 @@ class ArticleController extends Controller
 
     /**
      * Display the article resource by article slug.
-     * 
+     *
      * @param  string $slug
      * @return mixed
      */
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
-
-//        $article->content = collect(json_decode($article->content))->get('html');
 
         return view('article.show', compact('article'));
     }
