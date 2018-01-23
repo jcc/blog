@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name') }} Dashboard</title>
 
-    <!-- Icon -->
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">

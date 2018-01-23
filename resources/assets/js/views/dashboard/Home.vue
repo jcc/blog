@@ -18,7 +18,7 @@
                         <h5 class="no-margins">{{ $t('page.user_num') }}</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins"><i class="ion-ios-people"></i>{{ statistics.users }}</h1>
+                        <h1 class="no-margins"><i class="fas fa-users"></i>{{ statistics.users }}</h1>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <h5 class="no-margins">{{ $t('page.view_num') }}</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins"><i class="ion-eye"></i>{{ statistics.visitors }}</h1>
+                        <h1 class="no-margins"><i class="fas fa-eye"></i>{{ statistics.visitors }}</h1>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <h5 class="no-margins">{{ $t('page.article_num') }}</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins"><i class="ion-ios-paper"></i>{{ statistics.articles }}</h1>
+                        <h1 class="no-margins"><i class="fas fa-newspaper"></i>{{ statistics.articles }}</h1>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <h5 class="no-margins">{{ $t('page.comment_num') }}</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins"><i class="ion-chatbubbles"></i>{{ statistics.comments }}</h1>
+                        <h1 class="no-margins"><i class="fas fa-comments"></i>{{ statistics.comments }}</h1>
                     </div>
                 </div>
             </div>

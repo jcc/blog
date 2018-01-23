@@ -6,7 +6,7 @@
 
         <h6>{{ lang('Discuss Subtitle') }}</h6>
 
-        <a href="{{ url('discussion/create') }}" class="btn btn-info btn-sm"><i class="ion-edit"></i> {{ lang('Submit Problem') }}</a>
+        <a href="{{ url('discussion/create') }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> {{ lang('Submit Problem') }}</a>
     @endcomponent
 
     <div class="discussion container mb-4">

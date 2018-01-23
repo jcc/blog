@@ -4,9 +4,9 @@
         <ul>
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="previous disabled"><span><i class="ion-chevron-left"></i></span></li>
+                <li class="previous disabled"><span><i class="fas fa-chevron-left"></i></span></li>
             @else
-                <li class="previous"><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><i class="ion-chevron-left"></i></a></li>
+                <li class="previous"><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><i class="fas fa-chevron-left"></i></a></li>
             @endif
 
             {{-- Pagination Elements --}}
@@ -30,9 +30,9 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li class="next"><a href="{{ $paginator->nextPageUrl() }}" rel="next"><i class="ion-chevron-right"></i></a></li>
+                <li class="next"><a href="{{ $paginator->nextPageUrl() }}" rel="next"><i class="fas fa-chevron-right"></i></a></li>
             @else
-                <li class="next disabled"><span><i class="ion-chevron-right"></i></span></li>
+                <li class="next disabled"><span><i class="fas fa-chevron-right"></i></span></li>
             @endif
         </ul>
     </div>

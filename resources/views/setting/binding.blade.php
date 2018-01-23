@@ -18,11 +18,11 @@
                                 <div class="col-md-6">
                                     @if(!Auth::user()->github_id && config('services.github.client_id'))
                                         <a href="{{ url('auth/github') }}" class="btn btn-light">
-                                            <i class="ion-social-github"></i> Github
+                                            <i class="fab fa-github"></i> Github
                                         </a>
                                     @else
                                         <button class="btn btn-light" disabled>
-                                            <i class="ion-social-github"></i> Github
+                                            <i class="fab fa-github"></i> Github
                                         </button>
                                     @endif
                                 </div>
