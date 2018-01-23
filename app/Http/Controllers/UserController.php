@@ -21,7 +21,7 @@ class UserController extends Controller
 
     /**
      * Redirect to user information page.
-     * 
+     *
      * @return redirect
      */
     public function index()
@@ -53,7 +53,7 @@ class UserController extends Controller
 
     /**
      * Display the following users list.
-     * 
+     *
      * @param  string $username
      * @return \Illuminate\Http\Response
      */
@@ -70,7 +70,7 @@ class UserController extends Controller
 
     /**
      * Display the list of user's discussions.
-     * 
+     *
      * @param  string $username
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +87,7 @@ class UserController extends Controller
 
     /**
      * Display the list of user's comments.
-     * 
+     *
      * @param  string $username
      * @return \Illuminate\Http\Response
      */
@@ -104,7 +104,7 @@ class UserController extends Controller
 
     /**
      * Follow or unfollow the other user.
-     * 
+     *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -159,7 +159,7 @@ class UserController extends Controller
 
     /**
      * Change the user's password.
-     * 
+     *
      * @param  Request $request
      * @return Redirect
      */
@@ -167,7 +167,7 @@ class UserController extends Controller
     {
         if (! Hash::check($request->get('old_password'), Auth::user()->password)) {
             return redirect()->back()
-                             ->withErrors(['old_password' => 'The password must be the same of current password.']);
+                             ->withErrors(['old_password' => trans('passwords.check_old_password')]);
         }
 
         Validator::make($request->all(), [

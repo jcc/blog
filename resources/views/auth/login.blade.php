@@ -10,25 +10,25 @@
 
                     <fieldset>
                         <legend class="text-center">{{ lang('Login') }}</legend>
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <div class="col-md-10 offset-md-1">
                                 <label class="control-label" for="email">{{ lang('Email') }}</label>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <div class="col-md-10 offset-md-1">
                                 <label class="control-label" for="password">{{ lang('Password') }}</label>
-                                <input id="password" type="password" class="form-control" name="password" placeholder="{{ lang('Input Password') }}" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ lang('Input Password') }}" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
