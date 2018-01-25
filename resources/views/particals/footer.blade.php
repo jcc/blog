@@ -30,6 +30,6 @@
         </div>
     </div>
     <div class="copy-right text-center">
-        <span>{!! config('blog.footer.meta') !!}</a>
+        <span>{!! config('blog.footer.meta') !!}</span>
     </div>
 </footer>
