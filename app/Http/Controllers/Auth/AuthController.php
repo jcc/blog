@@ -54,7 +54,8 @@ class AuthController extends Controller
         } else {
             if ($user) {
                 auth()->loginUsingId($user->id);
-                return redirect()->to('article');
+                // article
+                return redirect()->to('/');
             } else {
                 $this->registerUser($githubUser);
                 return redirect()->to('auth/github/register');
