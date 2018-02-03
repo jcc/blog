@@ -12,9 +12,9 @@
 
 <script>
 import { mapActions } from 'vuex';
-import Sidebar from './components/particals/Sidebar';
-import Navbar from './components/particals/Navbar';
-import FooterBar from './components/particals/FooterBar';
+import Sidebar from 'dashboard/components/particals/Sidebar';
+import Navbar from 'dashboard/components/particals/Navbar';
+import FooterBar from 'dashboard/components/particals/FooterBar';
 
 export default {
   components: {

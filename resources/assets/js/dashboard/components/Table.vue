@@ -81,8 +81,8 @@
   </div>
 </template>
 <script>
-import CustomAction from './CustomAction'
-import TablePagination from './TablePagination'
+import CustomAction from 'dashboard/components/CustomAction'
+import TablePagination from 'dashboard/components/TablePagination'
 
 export default {
   props: {

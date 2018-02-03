@@ -55,7 +55,7 @@ import toastrConfig from 'config/toastr'
 import emojione from 'emojione'
 import FineUploader from 'fine-uploader/lib/traditional'
 import { stack_error } from 'config/helper'
-import VoteButton from './VoteButton'
+import VoteButton from 'home/components/VoteButton'
 import TextComplete from 'v-textcomplete'
 import { default as githubEmoji } from 'vendor/github_emoji'
 

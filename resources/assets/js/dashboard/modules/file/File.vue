@@ -10,8 +10,8 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item" v-for="(disp, path) in upload.breadcrumbs">
                     <a href="javascript:;" @click="getFileInfo(path)">
-                                        {{ disp }}
-                                    </a>
+                      {{ disp }}
+                    </a>
                   </li>
                   <li class="breadcrumb-item active">{{ upload.folderName }}</li>
                 </ol>
@@ -20,13 +20,13 @@
           </div>
           <div class="col-md-6 align-self-center">
             <small class="float-right">
-                            <button type="button" class="btn btn-success btn-sm" @click="showFolder = true">
-                                <i class="fas fa-plus-circle"></i> {{ $t('table.new_folder') }}
-                            </button>
-                            <button type="button" class="btn btn-primary btn-sm" @click="showFile = true">
-                                <i class="fas fa-inbox"></i> {{ $t('table.upload') }}
-                            </button>
-                        </small>
+              <button type="button" class="btn btn-success btn-sm" @click="showFolder = true">
+                <i class="fas fa-plus-circle"></i> {{ $t('table.new_folder') }}
+              </button>
+              <button type="button" class="btn btn-primary btn-sm" @click="showFile = true">
+                <i class="fas fa-inbox"></i> {{ $t('table.upload') }}
+              </button>
+            </small>
           </div>
         </div>
       </div>
@@ -44,9 +44,9 @@
             <tr v-for="(name, path) in upload.subfolders">
               <td>
                 <a href="javascript:;" @click="getFileInfo(path)">
-                                <i class="fas fa-folder"></i>
-                                {{ name }}
-                            </a>
+                  <i class="fas fa-folder"></i>
+                  {{ name }}
+                </a>
               </td>
               <td>-</td>
               <td>-</td>
@@ -62,9 +62,9 @@
               <template v-if="file.type == 'folder'">
                 <td>
                   <a href="javascript:;" @click="getFileInfo(file.fullPath)">
-                                    <i class="fas fa-folder"></i>
-                                    {{ file.name }}
-                                </a>
+                    <i class="fas fa-folder"></i>
+                    {{ file.name }}
+                  </a>
                 </td>
                 <td>-</td>
                 <td>-</td>
@@ -78,10 +78,10 @@
               <template v-else>
                 <td>
                   <a target="_blank" :href="file.webPath">
-                                    <i class="fas fa-image" v-if="checkImageType(file.mimeType)"></i>
-                                    <i class="fas fa-file-alt" v-else></i>
-                                    {{ file.name }}
-                                </a>
+                    <i class="fas fa-image" v-if="checkImageType(file.mimeType)"></i>
+                    <i class="fas fa-file-alt" v-else></i>
+                    {{ file.name }}
+                  </a>
                 </td>
                 <td>{{ file.mimeType }}</td>
                 <td>{{ file.modified }}</td>
@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import Modal from 'dashboard/components/Modal.vue'
+import Modal from 'dashboard/components/Modal'
 
 export default {
   components: {
