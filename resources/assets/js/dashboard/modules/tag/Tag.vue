@@ -2,7 +2,7 @@
   <div class="row">
     <vue-table :title="$t('page.tags')" :fields="fields" api-url="tag" show-paginate @table-action="tableActions">
       <template slot="buttons">
-        <router-link to="/dashboard/tags/create" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+        <router-link :to="{ name: 'dashboard.tag.create' }" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
       </template>
     </vue-table>
   </div>
@@ -46,7 +46,7 @@ export default {
   methods: {
     tableActions(action, data) {
       if (action == 'edit-item') {
-        this.$router.push('/dashboard/tags/' + data.id + '/edit')
+        this.$router.push({ name: 'dashboard.tag.edit', params: { id: data.id } })
       } else if (action == 'delete-item') {
         this.$http.delete('tag/' + data.id)
           .then((response) => {

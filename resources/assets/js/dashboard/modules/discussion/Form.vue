@@ -115,7 +115,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd the discussion success!')
 
-          this.$router.push('/dashboard/discussions')
+          this.$router.push({ name: 'dashboard.discussion' })
         }).catch(({ response }) => {
           stack_error(response)
         })
