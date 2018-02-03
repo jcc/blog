@@ -17,24 +17,20 @@ export default {
           trans: 'table.id',
           titleClass: 'width-5-percent text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'title',
           trans: 'table.title',
           sortField: 'title',
-        },
-        {
+        }, {
           name: 'subtitle',
           trans: 'table.subtitle',
           sortField: 'subtitle',
-        },
-        {
+        }, {
           name: 'published_at',
           trans: 'table.published_at',
           titleClass: 'width-10-percent',
           sortField: 'created_at'
-        },
-        {
+        }, {
           name: '__actions',
           trans: 'table.action',
           titleClass: 'text-center',

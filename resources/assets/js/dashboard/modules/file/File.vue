@@ -161,35 +161,29 @@ export default {
           title: 'ID',
           titleClass: 'text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'user',
           title: 'User Name',
           titleClass: 'text-center',
           dataClass: 'text-center',
           callback: 'username'
-        },
-        {
+        }, {
           name: 'title',
           title: 'Title'
-        },
-        {
+        }, {
           name: "content",
           title: 'Content',
           callback: 'content'
-        },
-        {
+        }, {
           name: 'status',
           title: 'Status',
           titleClass: 'text-center',
           dataClass: 'text-center',
           callback: 'status'
-        },
-        {
+        }, {
           name: 'created_at',
           title: 'Created At'
-        },
-        {
+        }, {
           name: '__actions',
           dataClass: 'text-center'
         }

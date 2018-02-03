@@ -17,35 +17,29 @@ export default {
           trans: 'table.id',
           titleClass: 'width-5-percent text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'image',
           trans: 'table.image',
           titleClass: 'text-center',
           dataClass: 'text-center',
           callback: 'image'
-        },
-        {
+        }, {
           name: 'name',
           trans: 'table.name',
           titleClass: 'text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'link',
           trans: 'table.link'
-        },
-        {
+        }, {
           name: '__component',
           trans: 'table.enabled',
           titleClass: 'width-10-percent text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'created_at',
           trans: 'table.created_at'
-        },
-        {
+        }, {
           name: '__actions',
           trans: 'table.action',
           titleClass: 'text-center',
