@@ -27,7 +27,7 @@
   </nav>
 </template>
 <script>
-import PaginationMixin from './TablePaginationMixin.vue'
+import PaginationMixin from 'dashboard/components/TablePaginationMixin.vue'
 
 export default {
   mixins: [PaginationMixin],
