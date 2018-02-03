@@ -25,6 +25,7 @@ mix.webpackConfig({
       'vendor': 'assets/js/vendor',
       'dashboard': 'assets/js/dashboard',
       'home': 'assets/js/home',
+      'empty-component': 'assets/js/App',
     },
     modules: [
       'node_modules',
@@ -34,7 +35,7 @@ mix.webpackConfig({
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .js('resources/assets/js/home.js', 'public/js')
-   .sass('resources/assets/sass/home.scss', 'public/css')
-   .version();
+  .sass('resources/assets/sass/app.scss', 'public/css')
+  .js('resources/assets/js/home.js', 'public/js')
+  .sass('resources/assets/sass/home.scss', 'public/css')
+  .version();

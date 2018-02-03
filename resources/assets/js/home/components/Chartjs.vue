@@ -14,7 +14,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validator (value) {
+      validator(value) {
         return types.indexOf(value) > -1
       }
     },
@@ -28,20 +28,20 @@ export default {
       default: () => ({})
     }
   },
-  mounted () {
+  mounted() {
     this.chart = new Chart(this.$el, {
       type: this.type,
       data: this.data,
       options: this.options
     })
   },
-  data () {
+  data() {
     return {
       chart: null
     }
   },
   watch: {
-    data (val) {
+    data(val) {
       this.$nextTick(() => {
         // this.chart.data.datasets = val.datasets
         // this.chart.data.labels = val.labels

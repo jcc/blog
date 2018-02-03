@@ -1,13 +1,13 @@
 <template>
-    <div id="wrapper" :class="{ toggled: isToggle }">
-        <sidebar></sidebar>
-        <div id="page-content-wrapper">
-            <navbar></navbar>
-            <div class="container-fluid">
-                <router-view></router-view>
-            </div>
-        </div>
+  <div id="wrapper" :class="{ toggled: isToggle }">
+    <sidebar></sidebar>
+    <div id="page-content-wrapper">
+      <navbar></navbar>
+      <div class="container-fluid">
+        <router-view></router-view>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -17,128 +17,132 @@ import Navbar from './components/particals/Navbar';
 import FooterBar from './components/particals/FooterBar';
 
 export default {
-    components: {
-        Sidebar,
-        Navbar,
-        FooterBar
-    },
-    computed: {
-        isToggle () {
-            return this.$store.state.sidebar.opened
-        }
+  components: {
+    Sidebar,
+    Navbar,
+    FooterBar
+  },
+  computed: {
+    isToggle() {
+      return this.$store.state.sidebar.opened
     }
+  }
 }
 </script>
 
 <style lang="scss">
 $sidebarSize: 250px;
 $sidebarColor: #828e9a;
-$sidebarBar: darken($sidebarColor, 3%); /* divider */
+$sidebarBar: darken($sidebarColor, 3%);
+
+/* divider */
+
 $sidebarRoll: darken($sidebarColor, 8%);
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
+
 
 /* Toggle Styles */
 
 #wrapper {
-    padding-left: 0;
-    transition: all 0.5s ease;
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
+  padding-left: 0;
+  transition: all 0.5s ease;
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #4d5e70;
-    transition: all 0.5s ease;
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #4d5e70;
+  transition: all 0.5s ease;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+  width: 250px;
 }
 
 #page-content-wrapper {
-    width: 100%;
-    position: absolute;
+  width: 100%;
+  position: absolute;
 
-    .container-fluid {
-        .row {
-            margin: 15px;
-        }
+  .container-fluid {
+    .row {
+      margin: 15px;
     }
+  }
 }
 
 #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
+  position: absolute;
+  margin-right: -250px;
 }
 
 @media(max-width: 768px) {
-    #page-content-wrapper {
-        padding-left: 0;
-        transition: all 0.5s ease;
-    }
-    #wrapper.toggled #page-content-wrapper {
-        transition: all 0.5s ease;
-        padding-left: 250px;
-        margin-right: -250px;
-    }
+  #page-content-wrapper {
+    padding-left: 0;
+    transition: all 0.5s ease;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    transition: all 0.5s ease;
+    padding-left: 250px;
+    margin-right: -250px;
+  }
 }
 
 @media(min-width:768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
+  #wrapper {
+    padding-left: 250px;
+  }
 
-    #wrapper.toggled {
-        padding-left: 0;
-    }
+  #wrapper.toggled {
+    padding-left: 0;
+  }
 
-    #sidebar-wrapper {
-        width: 250px;
-    }
+  #sidebar-wrapper {
+    width: 250px;
+  }
 
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
 
-    #page-content-wrapper {
-        position: relative;
-    }
+  #page-content-wrapper {
+    position: relative;
+  }
 
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
 }
 
 .hr {
-    margin-left: 1px;
-    margin-right: 1px;
-    border: 1px solid $sidebarBar;
+  margin-left: 1px;
+  margin-right: 1px;
+  border: 1px solid $sidebarBar;
 }
 
 .profile {
-    margin: 15px auto;
-    text-align: center;
-    img {
-        height: 125px;
-        border: 3px solid lightgrey;
-        border-radius: 200px;
-    }
-    h1 {
-        margin-top: 10px;
-        color: white;
-        font-size: 1.3em;
-    }
+  margin: 15px auto;
+  text-align: center;
+  img {
+    height: 125px;
+    border: 3px solid lightgrey;
+    border-radius: 200px;
+  }
+  h1 {
+    margin-top: 10px;
+    color: white;
+    font-size: 1.3em;
+  }
 }
 </style>
