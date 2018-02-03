@@ -18,20 +18,16 @@ export default {
           trans: 'table.id',
           titleClass: 'width-5-percent text-center',
           dataClass: 'text-center'
-        },
-        {
+        }, {
           name: 'name',
           trans: 'table.name'
-        },
-        {
+        }, {
           name: 'path',
           trans: 'table.path'
-        },
-        {
+        }, {
           name: 'created_at',
           trans: 'table.created_at'
-        },
-        {
+        }, {
           name: '__actions',
           trans: 'table.action',
           titleClass: 'text-center',
