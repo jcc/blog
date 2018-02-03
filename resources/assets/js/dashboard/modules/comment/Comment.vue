@@ -45,7 +45,7 @@ export default {
     },
     tableActions(action, data) {
       if (action == 'edit-item') {
-        this.$router.push('/dashboard/comments/' + data.id + '/edit')
+        this.$router.push({ name: 'dashboard.comment.edit', params: { id: data.id } })
       } else if (action == 'delete-item') {
         this.$http.delete('comment/' + data.id)
           .then((response) => {

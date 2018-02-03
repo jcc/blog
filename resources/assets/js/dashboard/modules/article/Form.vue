@@ -176,7 +176,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd the article success!')
 
-          this.$router.push('/dashboard/articles')
+          this.$router.push({ name: 'dashboard.article' })
         }).catch(({ response }) => {
           stack_error(response)
         })

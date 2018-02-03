@@ -67,7 +67,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd a new account information!')
 
-          this.$router.push('/dashboard/users')
+          this.$router.push({ name: 'dashboard.user' })
         }).catch(({ response }) => {
           stack_error(response)
         })

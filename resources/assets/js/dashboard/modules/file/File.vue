@@ -304,7 +304,7 @@ export default {
           if (this.upload.subfolders instanceof Array) {
             this.upload.subfolders = {}
           }
-          this.$router.push('/dashboard/files' + '?folder=' + path)
+          this.$router.push({ name: 'dashboard.file', query: { folder: path } })
         })
     },
     checkImageType(fileType) {
