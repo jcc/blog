@@ -22,13 +22,13 @@ const i18n = new VueI18n({
     messages: locales
 })
 
-Vue.component('comment', require('components/Comment.vue'));
+Vue.component('comment', require('home/components/Comment.vue'));
 
-Vue.component('parse', require('components/Parse.vue'));
+Vue.component('parse', require('home/components/Parse.vue'));
 
-Vue.component('parse-textarea', require('components/Textarea.vue'));
+Vue.component('parse-textarea', require('home/components/Textarea.vue'));
 
-Vue.component('avatar', require('components/AvatarUpload.vue'));
+Vue.component('avatar', require('home/components/AvatarUpload.vue'));
 
 new Vue({
     i18n: i18n,
