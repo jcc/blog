@@ -1,7 +1,7 @@
 <template>
   <vue-form :title="$t('form.edit_comment')">
     <template slot="buttons">
-      <router-link to="/dashboard/comments" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+      <router-link :to="{ name: 'dashboard.comment' }" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
     </template>
     <template slot="content">
       <div class="row">
@@ -61,7 +61,7 @@ export default {
         .then((response) => {
           toastr.success('You updated the comment success!')
 
-          this.$router.push('/dashboard/comments')
+          this.$router.push({ name: 'dashboard.comment' })
         }).catch(({ response }) => {
           stack_error(response)
         })

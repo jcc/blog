@@ -54,7 +54,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd the category success!')
 
-          this.$router.push('/dashboard/categories')
+          this.$router.push({ name: 'dashboard.category' })
         }).catch(({ response }) => {
           stack_error(response)
         })

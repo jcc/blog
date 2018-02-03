@@ -88,7 +88,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd the link information success!')
 
-          this.$router.push('/dashboard/links')
+          this.$router.push({ name: 'dashboard.link' })
         }).catch(({ response }) => {
           stack_error(response)
         })

@@ -46,7 +46,7 @@ export default {
         .then((response) => {
           toastr.success('You ' + this.mode + 'd the tag success!')
 
-          this.$router.push('/dashboard/tags')
+          this.$router.push({ name: 'dashboard.tag' })
         }).catch(({ response }) => {
           stack_error(response)
         })
