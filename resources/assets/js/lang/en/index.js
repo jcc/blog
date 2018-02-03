@@ -4,8 +4,8 @@ import table from './table'
 import form from './form'
 
 export default {
-    sidebar,
-    page,
-    table,
-    form
+  sidebar,
+  page,
+  table,
+  form
 }

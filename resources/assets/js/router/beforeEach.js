@@ -23,7 +23,7 @@ const beforeEach = (to, from, next) => {
   //     }
   //     next()
   //   });
-    next();
+  next();
 };
 
 export default beforeEach

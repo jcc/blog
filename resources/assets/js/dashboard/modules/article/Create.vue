@@ -1,18 +1,18 @@
 <template>
-    <vue-form :title="$t('form.create_article')">
-        <template slot="buttons">
-            <router-link to="/dashboard/articles" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
-        </template>
-        <template slot="content">
-            <article-form></article-form>
-        </template>
-    </vue-form>
+  <vue-form :title="$t('form.create_article')">
+    <template slot="buttons">
+      <router-link to="/dashboard/articles" class="btn btn-sm btn-secondary" exact>{{ $t('form.back') }}</router-link>
+    </template>
+    <template slot="content">
+      <article-form></article-form>
+    </template>
+  </vue-form>
 </template>
 
 <script>
 import ArticleForm from './Form'
 
 export default {
-    components: { ArticleForm },
+  components: { ArticleForm },
 }
 </script>

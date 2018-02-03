@@ -12,7 +12,7 @@ import { routes as visitor } from './modules/visitor'
 
 export default [{
   path: '/dashboard',
-  component: () => import('./Main'),
+  component: () => import ('./Main'),
   beforeEnter: requireAuth,
   children: [
     ...home,
@@ -29,10 +29,10 @@ export default [{
   ],
 }]
 
-function requireAuth (to, from, next) {
-    if (window.User) {
-        return next()
-    } else {
-        return next('/')
-    }
+function requireAuth(to, from, next) {
+  if (window.User) {
+    return next()
+  } else {
+    return next('/')
+  }
 }

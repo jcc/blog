@@ -1,6 +1,6 @@
 export default [{
   path: 'discussions',
-  component: () => import('../../../App'),
+  component: () => import('empty-component'),
   children: [{
     path: '/',
     name: 'dashboard.discussion',
