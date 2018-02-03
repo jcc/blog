@@ -1,6 +1,6 @@
 export default [{
   path: 'comments',
-  component: () => import('../../../App'),
+  component: () => import('empty-component'),
   children: [{
     path: '/',
     name: 'dashboard.comment',

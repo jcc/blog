@@ -6,13 +6,13 @@ import * as mutations from './mutations.js';
 Vue.use(Vuex);
 
 const state = {
-    sidebar: {
-        opened: false
-    }
+  sidebar: {
+    opened: false
+  }
 };
 
 export default new Vuex.Store({
-    state,
-    actions,
-    mutations
+  state,
+  actions,
+  mutations
 });
