@@ -19,13 +19,12 @@ mix.webpackConfig({
   },
   resolve: {
     alias: {
-      'components': 'assets/js/components',
       'config': 'assets/js/config',
       'lang': 'assets/js/lang',
       'plugins': 'assets/js/plugins',
       'vendor': 'assets/js/vendor',
-      'views': 'assets/js/views',
-      'dashboard': 'assets/js/views/dashboard',
+      'dashboard': 'assets/js/dashboard',
+      'home': 'assets/js/home',
     },
     modules: [
       'node_modules',

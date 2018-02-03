@@ -13,7 +13,7 @@ import store from './vuex/store.js';
 import VueI18n from 'vue-i18n';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
-import routes from './routes.js';
+import router from './router'
 import locales from 'lang';
 
 import App from './App.vue';
@@ -46,25 +46,18 @@ const i18n = new VueI18n({
 
 Vue.component(
     'vue-table-pagination',
-    require('components/dashboard/TablePagination.vue')
+    require('dashboard/components/TablePagination.vue')
 );
 
 Vue.component(
     'vue-table',
-    require('components/dashboard/Table.vue')
+    require('dashboard/components/Table.vue')
 );
 
 Vue.component(
     'vue-form',
-    require('components/dashboard/Form.vue')
+    require('dashboard/components/Form.vue')
 );
-
-const router = new VueRouter({
-    mode: 'history',
-    base: __dirname,
-    linkActiveClass: 'active',
-    routes: routes
-});
 
 new Vue({
     router,
