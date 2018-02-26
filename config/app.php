@@ -234,7 +234,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Translug' => JellyBool\Translug\TranslugFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Purifier' => Mews\Purifier\Facades\Purifier::class,
     ],
 
 ];

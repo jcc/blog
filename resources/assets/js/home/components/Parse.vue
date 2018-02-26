@@ -20,7 +20,20 @@ export default {
     }
   },
   created() {
-    this.rawHtml = emojione.toImage(marked(this.content))
-  }
+    this.rawHtml = this.parse(this.content)
+  },
+  methods: {
+    parse(content) {
+      marked.setOptions({
+        highlight: (code) => {
+          return hljs.highlightAuto(code).value
+        },
+        sanitize: true
+      })
+
+      return emojione.toImage(marked(content))
+    },
+  },
 }
+
 </script>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Purifier;
 use App\Repositories\TagRepository;
 use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
@@ -65,7 +64,7 @@ class DiscussionController extends Controller
             'status'       => true
         ]);
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $this->discussion->store($data);
 
@@ -121,7 +120,7 @@ class DiscussionController extends Controller
             'last_user_id' => \Auth::id()
         ]);
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $this->discussion->update($id, $data);
 

@@ -104,6 +104,7 @@ import Multiselect from 'vue-multiselect'
 import { stack_error } from 'config/helper'
 import DatePicker from 'vue-datepicker'
 import FineUploader from 'fine-uploader/lib/traditional'
+import emojione from 'emojione'
 
 export default {
   mixins: [FormMixin],
@@ -142,17 +143,33 @@ export default {
   },
   mounted() {
     let t = this.$t
+    let self = this
 
     this.simplemde = new SimpleMDE({
       element: document.getElementById("editor"),
       placeholder: t('form.content_placeholder', { type: t('form.article') }),
       autoDownloadFontAwesome: true,
-      forceSync: true
+      forceSync: true,
+      previewRender(plainText, preview) {
+        preview.className += ' markdown'
+
+        return self.parse(plainText)
+      },
     })
 
     this.contentUploader()
   },
   methods: {
+    parse(content) {
+      marked.setOptions({
+        highlight: (code) => {
+          return hljs.highlightAuto(code).value
+        },
+        sanitize: true
+      })
+
+      return emojione.toImage(marked(content))
+    },
     onSubmit() {
       if (!this.tags || !this.selected) {
         toastr.error('Category and Tag must select one or more.')

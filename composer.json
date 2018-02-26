@@ -19,7 +19,6 @@
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.14.0",
         "league/html-to-markdown": "^4.2",
-        "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
         "yzalis/identicon": "^1.1"
     },
