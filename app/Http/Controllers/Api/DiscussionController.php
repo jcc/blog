@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Purifier;
 use Illuminate\Http\Request;
 use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
@@ -42,7 +41,7 @@ class DiscussionController extends ApiController
             'last_user_id' => \Auth::id()
         ]);
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $this->discussion->store($data);
 
@@ -92,7 +91,7 @@ class DiscussionController extends ApiController
             'last_user_id' => \Auth::id()
         ]);
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $this->discussion->update($id, $data);
 
