@@ -5,6 +5,10 @@
 //Simplemde
 @import "vendor/simplemde.min";
 
+// Markdown
+@import "markdown";
+@import "vendor/highlight.min";
+
 @import "form";
 @import "navbar";
 @import "ibox";

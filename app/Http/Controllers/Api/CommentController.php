@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use Auth;
-use Purifier;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 use App\Repositories\CommentRepository;
@@ -43,7 +42,7 @@ class CommentController extends ApiController
             'user_id' => Auth::user()->id
         ]);
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $comment = $this->comment->store($data);
 
@@ -90,7 +89,7 @@ class CommentController extends ApiController
     {
         $data = $request->all();
 
-        $data['content'] = Purifier::clean($data['content']);
+        $data['content'] = $data['content'];
 
         $this->comment->update($id, $data);
 
