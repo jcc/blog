@@ -1,6 +1,6 @@
 export default [{
   path: 'categories',
-  component: () => import('empty-component'),
+  component: () => import('js/App'),
   children: [{
     path: '/',
     name: 'dashboard.category',

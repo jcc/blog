@@ -25,7 +25,7 @@ mix.webpackConfig({
       'vendor': 'assets/js/vendor',
       'dashboard': 'assets/js/dashboard',
       'home': 'assets/js/home',
-      'empty-component': 'assets/js/App',
+      'js': 'assets/js',
     },
     modules: [
       'node_modules',
