@@ -1,6 +1,6 @@
 export default [{
   path: 'users',
-  component: () => import ('js/App'),
+  component: () => import ('js/App.vue'),
   children: [{
     path: '/',
     name: 'dashboard.user',
