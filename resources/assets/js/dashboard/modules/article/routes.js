@@ -1,6 +1,6 @@
 export default [{
   path: 'articles',
-  component: () => import('empty-component'),
+  component: () => import('js/App'),
   children: [{
     path: '/',
     name: 'dashboard.article',
