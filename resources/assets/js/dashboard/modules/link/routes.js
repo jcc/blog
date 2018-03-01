@@ -1,6 +1,6 @@
 export default [{
   path: 'links',
-  component: () => import('empty-component'),
+  component: () => import('js/App'),
   children: [{
     path: '/',
     name: 'dashboard.link',
