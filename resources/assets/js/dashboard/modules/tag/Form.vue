@@ -3,7 +3,7 @@
     <form class="col-md-4 offset-md-4" role="form" @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="tag">{{ $t('form.tag') }}</label>
-        <input type="text" class="form-control" id="tag" :placeholder="$t('form.tag')" name="tag" v-model="tag.tag" :disabled="tag.tag ? true : false">
+        <input type="text" class="form-control" id="tag" :placeholder="$t('form.tag')" name="tag" v-model="tag.tag" :disabled="(mode == 'udpate' && tag.tag) ? true : false">
       </div>
       <div class="form-group">
         <label for="title">{{ $t('form.title') }}</label>
