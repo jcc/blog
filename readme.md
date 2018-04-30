@@ -45,7 +45,7 @@ Here is [documents](https://manual.pigjian.com/)
 
 ## Server Requirements
 
-- PHP >= 7.0.0
+- PHP >= 7.1.0
 - Node >= 6.x
 - OpenSSL PHP Extension
 - PDO PHP Extension
