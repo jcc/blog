@@ -32,6 +32,15 @@ mix.webpackConfig({
       path.resolve(__dirname, "resources")
     ]
   },
+});
+
+let themes = [
+  'resources/assets/sass/themes/default-theme.scss',
+  'resources/assets/sass/themes/gray-theme.scss',
+];
+
+themes.forEach((item) => {
+  mix.sass(item, 'public/css/themes').version();
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')

@@ -20,11 +20,11 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h6 class="media-heading">
+                        <h5 class="media-heading">
                             <a href="{{ url('discussion', ['id' => $discussion->id]) }}">
                                 {{ $discussion->title }}
                             </a>
-                        </h6>
+                        </h5>
                         <div class="media-conversation-meta">
                             <div class="media-conversation-replies">
                                 <a href="{{ url('discussion', ['id' => $discussion->id]) }}">

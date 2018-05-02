@@ -1,0 +1,108 @@
+a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #9caebf;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+
+  &:focus {
+    color: #6289ad;
+    background-color: transparent;
+  }
+  &:hover {
+    color: #6289ad;
+    background-color: transparent;
+  }
+}
+
+.navbar-nav>li>.dropdown-menu {
+  border: none;
+
+  li a {
+    color: #6289ad;
+  }
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #6289ad;
+  border-color: #6289ad;
+
+  &:hover {
+    color: #fff;
+    background-color: #4b6f91;
+    border-color: #486a8a;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #34495e;
+  border-color: #32465b;
+
+  &:hover {
+    color: #fff;
+    background-color: #22303d;
+    border-color: #1c2833;
+  }
+}
+
+.navbar-nav>li>.dropdown-menu>li:focus, .navbar-nav>li>.dropdown-menu>li:hover {
+  text-decoration: none;
+  background-color: #6289ad;
+
+  a {
+    color: #fff;
+  }
+}
+
+.user-follow a.text {
+  color: #fff;
+}
+
+.form-control, .form-control:focus, input {
+  border-width: 2px;
+  box-shadow: none;
+  outline: 0;
+}
+
+.jumbotron.jumbotron-fluid {
+  background-color: #9caebf;
+}
+
+.search input {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+
+  &::placeholder {
+      color: #fff;
+  }
+
+  &::-ms-input-placeholder {
+      color: #fff;
+  }
+
+  &::-ms-input-placeholder {
+      color: #fff;
+  }
+}
+
+.footer {
+  background-color: #9caebf;
+  color: #fff;
+  margin-top: 30px;
+
+  .copy-right {
+    background-color: #9caebf;
+  }
+
+  a:hover {
+    color: #6289ad;
+  }
+}
