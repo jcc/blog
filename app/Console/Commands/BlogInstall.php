@@ -42,7 +42,7 @@ class BlogInstall extends Command
     }
 
     /**
-     * Exec sheel with pretty print.
+     * Exec shell with pretty print.
      *
      * @param  string $command
      * @return mixed
