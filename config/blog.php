@@ -11,6 +11,9 @@ return [
     // Default Icon
     'default_icon' => env('DEFAULT_ICON') ?: '/images/favicon.ico',
 
+    // Color Theme
+    'color_theme' => 'default-theme',
+
     // Meta
     'meta' => [
         'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs',

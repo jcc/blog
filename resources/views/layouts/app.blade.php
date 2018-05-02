@@ -15,6 +15,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
 
     <!-- Scripts -->
     <script>
