@@ -19,6 +19,28 @@ class CommentRepository
     }
 
     /**
+     * Get number of the records.
+     *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return $this->model
+                    ->when($keyword, function ($query) use ($keyword) {
+                        $query->whereHas('user', function ($query) use ($keyword) {
+                            $query->where('name', 'like', "%{$keyword}%");
+                        });
+                    })
+                    ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
      * Store a new record.
      *
      * @param  $input
@@ -57,7 +79,7 @@ class CommentRepository
 
     /**
      * Get comments by the commentable_id and commentable_type
-     * 
+     *
      * @param  int $commentableId
      * @param  string $commentableType
      * @return array
@@ -71,10 +93,10 @@ class CommentRepository
 
     /**
      * Toogle up vote and down vote by user.
-     * 
+     *
      * @param  int $id
      * @param  boolean $isUpVote
-     * 
+     *
      * @return boolean
      */
     public function toggleVote($id, $isUpVote = true)
@@ -94,11 +116,11 @@ class CommentRepository
 
     /**
      * Up vote or down vote item.
-     * 
+     *
      * @param  \App\User $user
      * @param  \Illuminate\Database\Eloquent\Model $target
      * @param  string $type
-     * 
+     *
      * @return boolean
      */
     public function upOrDownVote($user, $target, $type = 'up')

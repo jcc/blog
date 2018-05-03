@@ -41,7 +41,7 @@ class UserRepository
 
     /**
      * Get the user by name.
-     * 
+     *
      * @param  string $name
      * @return mixed
      */
@@ -50,6 +50,27 @@ class UserRepository
         return $this->model
                     ->where('name', $name)
                     ->first();
+    }
+
+    /**
+     * Get number of the records
+     *
+     * @param  Request $request
+     * @param  int $number
+     * @param  string $sort
+     * @param  string $sortColumn
+     * @return Paginate
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return $this->model->withoutGlobalScope(StatusScope::class)
+                    ->when($keyword, function ($query) use ($keyword) {
+                        $query->where('name', 'like', "%{$keyword}%");
+                    })
+                    ->orderBy($sortColumn, $sort)
+                    ->paginate($number);
     }
 
     /**
@@ -67,7 +88,7 @@ class UserRepository
 
     /**
      * Get the article record without draft scope.
-     * 
+     *
      * @param  int $id
      * @return mixed
      */
@@ -78,7 +99,7 @@ class UserRepository
 
     /**
      * Update the article record without draft scope.
-     * 
+     *
      * @param  int $id
      * @param  array $input
      * @return boolean
@@ -92,7 +113,7 @@ class UserRepository
 
     /**
      * Get user by the user github id.
-     * 
+     *
      * @param  int $githubId
      * @return mixed
      */
@@ -103,8 +124,8 @@ class UserRepository
 
     /**
      * Change the user password.
-     * 
-     * @param  App\User $user 
+     *
+     * @param  App\User $user
      * @param  string $password
      * @return boolean
      */
@@ -115,7 +136,7 @@ class UserRepository
 
     /**
      * Save the user avatar path.
-     * 
+     *
      * @param  int $id
      * @param  string $photo
      * @return boolean

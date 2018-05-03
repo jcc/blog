@@ -2,7 +2,13 @@
   <div :class="wrapperClass" class="ibox">
     <div class="ibox-title d-flex">
       <h5 class="align-self-center font-weight-normal">{{ title }}</h5>
-      <small class="ml-auto">
+      <small class="ml-auto d-flex flex-row">
+        <div class="input-group input-group-sm mr-2">
+          <input type="text" class="form-control" v-model="searchable[searchKey]" :placeholder="searchPlaceholder" @keyup.enter="onSearch()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" @click="onSearch()"><span class="fa fa-search"></span></button>
+          </div>
+        </div>
         <slot name="buttons"></slot>
       </small>
     </div>
@@ -132,6 +138,24 @@ export default {
           { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
         ]
       }
+    },
+    moreParams: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    canSearch: {
+      type: Boolean,
+      default: true,
+    },
+    searchKey: {
+      type: String,
+      default: 'keyword'
+    },
+    searchPlaceholder: {
+      type: String,
+      default: '',
     }
   },
   components: {
@@ -141,6 +165,10 @@ export default {
   data() {
     return {
       items: [],
+      params: this.moreParams || {},
+      searchable: {
+        [this.searchKey]: ''
+      },
       totalPage: 0,
       currentPage: 0,
       pagination: null
@@ -158,13 +186,15 @@ export default {
     }
   },
   created() {
-    this.currentPage = this.$route.query.page
+    if (this.$route.query[this.searchKey]) {
+      this.searchable[this.searchKey] = this.$route.query[this.searchKey]
+    }
 
-    this.loadData()
+    this.onSearch()
   },
   mounted() {
     this.$parent.$on('reload', () => {
-      this.loadData()
+      this.onSearch(this.$route.query.page)
     })
   },
   methods: {
@@ -177,21 +207,30 @@ export default {
         this.goPage(page)
       }
     },
+    onSearch(page) {
+      this.currentPage = page ? page : 1
+
+      this.params = this.searchable
+
+      setTimeout(() => {
+        this.loadData()
+      }, 10)
+    },
     loadData() {
-      var url = this.apiUrl;
+      let url = this.apiUrl
+      let params = {}
 
       if (this.currentPage) {
-        let page = ''
-        if (url.indexOf('?') != -1) {
-          page = '&page='
-        } else {
-          page = '?page='
-        }
-        url = url + page + this.currentPage
-        this.$router.push(page + this.currentPage)
+        params = Object.assign(this.params, {
+          page: this.currentPage
+        })
+      } else {
+        params = this.params
       }
 
-      this.$http.get(url)
+      this.$router.push({ name: this.$route.name, query: params })
+
+      this.$http.get(url, { params: params })
         .then(response => {
           this.pagination = response.data.meta.pagination
           this.items = response.data.data
@@ -271,6 +310,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn {
+  outline: none;
+}
+
+.table {
+  border-bottom: 1px solid #e7eaec;
+}
+
 .none {
   color: #ECF0F1;
   padding-bottom: 20px;
