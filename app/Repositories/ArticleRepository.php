@@ -22,7 +22,30 @@ class ArticleRepository
 
     /**
      * Get the page of articles without draft scope.
-     * 
+     *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $this->model = $this->checkAuthScope();
+
+        $keyword = $request->get('keyword');
+
+        return $this->model
+                    ->when($keyword, function ($query) use ($keyword) {
+                        $query->where('title', 'like', "%{$keyword}%")
+                            ->orWhere('subtitle', 'like', "%{$keyword}%");
+                    })
+                    ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
+     * Get the page of articles without draft scope.
+     *
      * @param  integer $number
      * @param  string  $sort
      * @param  string  $sortColumn
@@ -37,7 +60,7 @@ class ArticleRepository
 
     /**
      * Get the article record without draft scope.
-     * 
+     *
      * @param  int $id
      * @return mixed
      */
@@ -48,7 +71,7 @@ class ArticleRepository
 
     /**
      * Update the article record without draft scope.
-     * 
+     *
      * @param  int $id
      * @param  array $input
      * @return boolean
@@ -82,7 +105,7 @@ class ArticleRepository
 
     /**
      * Check the auth and the model without global scope when user is the admin.
-     * 
+     *
      * @return Model
      */
     public function checkAuthScope()
@@ -107,7 +130,7 @@ class ArticleRepository
 
     /**
      * Search the articles by the keyword.
-     * 
+     *
      * @param  string $key
      * @return collection
      */

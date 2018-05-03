@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use App\Repositories\VisitorRepository;
 
 class VisitorController extends ApiController
@@ -20,9 +21,9 @@ class VisitorController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection($this->visitor->page());
+        return $this->response->collection($this->visitor->pageWithRequest($request));
     }
 
 }

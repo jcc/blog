@@ -19,6 +19,31 @@ class DiscussionRepository
     /**
      * Get number of the records.
      *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $this->model = $this->checkAuthScope();
+
+        $keyword = $request->get('keyword');
+
+        return $this->model
+                    ->when($keyword, function ($query) use ($keyword) {
+                        $query->where('title', 'like', "%{$keyword}%")
+                            ->orWhereHas('user', function ($query) use ($keyword) {
+                                $query->where('name', 'like', "%{$keyword}%");
+                            });
+                    })
+                    ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
+     * Get number of the records.
+     *
      * @param  int $number
      * @param  string $sort
      * @param  string $sortColumn
@@ -33,7 +58,7 @@ class DiscussionRepository
 
     /**
      * Get the discussion record without draft scope.
-     * 
+     *
      * @param  int $id
      * @return mixed
      */
@@ -64,7 +89,7 @@ class DiscussionRepository
 
     /**
      * Update a record by id.
-     * 
+     *
      * @param  int $id
      * @param  array $data
      * @return boolean
@@ -86,7 +111,7 @@ class DiscussionRepository
 
     /**
      * Update a record by id without tag.
-     * 
+     *
      * @param  int $id
      * @param  array $data
      * @return boolean
@@ -102,7 +127,7 @@ class DiscussionRepository
 
     /**
      * Check the auth and the model without global scope when user is the admin.
-     * 
+     *
      * @return Model
      */
     public function checkAuthScope()
