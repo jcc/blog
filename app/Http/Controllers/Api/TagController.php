@@ -22,9 +22,9 @@ class TagController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection($this->tag->page());
+        return $this->response->collection($this->tag->pageWithRequest($request));
     }
 
     /**

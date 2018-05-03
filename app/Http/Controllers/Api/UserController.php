@@ -23,9 +23,9 @@ class UserController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection($this->user->page());
+        return $this->response->collection($this->user->pageWithRequest($request));
     }
 
     /**
@@ -93,7 +93,7 @@ class UserController extends ApiController
 
     /**
      * Crop Avatar
-     * 
+     *
      * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      */

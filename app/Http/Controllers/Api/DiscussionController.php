@@ -22,9 +22,9 @@ class DiscussionController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection($this->discussion->page(10, 'desc'));
+        return $this->response->collection($this->discussion->pageWithRequest($request));
     }
 
     /**

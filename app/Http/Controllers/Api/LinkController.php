@@ -20,15 +20,15 @@ class LinkController extends ApiController
 
         $this->manager = app('uploader');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection($this->link->page());
+        return $this->response->collection($this->link->pageWithRequest($request));
     }
 
     /**
