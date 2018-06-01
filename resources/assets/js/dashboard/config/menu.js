@@ -39,6 +39,10 @@ export default [{
   icon: 'fas fa-eye',
   uri: { name: 'dashboard.visitor' }
 }, {
+  label: 'sidebar.role',
+  icon: 'fas fa-exclamation-triangle',
+  uri: { name: 'dashboard.role' }
+}, {
   label: 'sidebar.system',
   icon: 'fas fa-cogs',
   uri: { name: 'dashboard.system' }

@@ -12,7 +12,7 @@ return [
     'default_icon' => env('DEFAULT_ICON') ?: '/images/favicon.ico',
 
     // Color Theme
-    'color_theme' => 'default-theme',
+    'color_theme' => 'gray-theme',
 
     // Meta
     'meta' => [
