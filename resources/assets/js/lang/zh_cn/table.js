@@ -5,6 +5,7 @@ export default {
   email: '邮箱地址',
   status: '状态',
   title: '标题',
+  guard_name: '应用范围',
   subtitle: '副标题',
   created_at: '创建时间',
   published_at: '发布时间',

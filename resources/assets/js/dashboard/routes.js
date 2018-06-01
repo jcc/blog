@@ -9,6 +9,7 @@ import { routes as system } from './modules/system'
 import { routes as tag } from './modules/tag'
 import { routes as user } from './modules/user'
 import { routes as visitor } from './modules/visitor'
+import { routes as role } from './modules/role'
 
 export default [{
   path: '/dashboard',
@@ -25,6 +26,7 @@ export default [{
     ...link,
     ...file,
     ...visitor,
+    ...role,
     ...system,
   ],
 }]
