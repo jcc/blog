@@ -32,6 +32,8 @@ Route::group([
     Route::resource('link', 'LinkController', ['except' => ['create', 'show']]);
     Route::post('/link/{id}/status', 'LinkController@status');
 
+    Route::resource('role', 'RoleController', ['except' => ['create', 'show']]);
+
     Route::get('visitor', 'VisitorController@index');
 
     Route::get('upload', 'UploadController@index');
