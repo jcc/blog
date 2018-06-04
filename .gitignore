@@ -10,3 +10,5 @@ Homestead.yaml
 /public/fonts
 /public/mix-manifest.json
 npm-debug.log
+.phpstorm.meta.php
+_ide_helper.php
