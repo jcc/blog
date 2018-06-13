@@ -88,4 +88,19 @@ class Discussion extends Model
         $this->attributes['content'] = json_encode($data);
     }
 
+    /**
+     * checkAuth
+     *
+     * @author Huiwang <905130909@qq.com>
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCheckAuth($query)
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $query->withoutGlobalScope(StatusScope::class);
+        }
+        return $query;
+    }
 }
