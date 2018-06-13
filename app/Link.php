@@ -37,4 +37,20 @@ class Link extends Model
 
         static::addGlobalScope(new StatusScope());
     }
+
+    /**
+     * checkAuth
+     *
+     * @author Huiwang <905130909@qq.com>
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCheckAuth($query)
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $query->withoutGlobalScope(StatusScope::class);
+        }
+        return $query;
+    }
 }
