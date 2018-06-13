@@ -15,7 +15,7 @@ Route::group([
         'edit' => 'api.article.edit',
         'update' => 'api.article.update',
         'destroy' => 'api.article.destroy',
-    ],'except' => ['create', 'show']]);
+    ], 'except' => ['create', 'show']]);
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');
@@ -27,10 +27,11 @@ Route::group([
     Route::resource('comment', 'CommentController', ['except' => ['create']]);
 
     Route::resource('tag', 'TagController', ['except' => ['create', 'show']]);
-    Route::post('/tag/{id}/status', 'TagController@status');
 
     Route::resource('link', 'LinkController', ['except' => ['create', 'show']]);
     Route::post('/link/{id}/status', 'LinkController@status');
+
+    Route::resource('role', 'RoleController', ['except' => ['create', 'show']]);
 
     Route::get('visitor', 'VisitorController@index');
 

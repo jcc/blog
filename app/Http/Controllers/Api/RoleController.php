@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Link;
-use App\Scopes\StatusScope;
 use Illuminate\Http\Request;
-use App\Http\Requests\LinkRequest;
+use Spatie\Permission\Models\Role;
 
-class LinkController extends ApiController
+class RoleController extends ApiController
 {
     public function __construct()
     {
@@ -17,52 +15,33 @@ class LinkController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
         $keyword = $request->get('keyword');
-
-        $links = Link::checkAuth()->when($keyword, function ($query) use ($keyword) {
+        $roles = Role::query()->when($keyword, function ($query) use ($keyword) {
             $query->where('name', 'like', "%{$keyword}%");
         })
             ->orderBy('created_at', 'desc')->paginate(10);
 
-        return $this->response->collection($links);
+        return $this->response->collection($roles);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\LinkRequest $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(LinkRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
-        $data['status'] = isset($data['status']);
-
-        Link::create($data);
-
-        return $this->response->withNoContent();
-    }
-
-    /**
-     * Update Link Status By Link ID.
-     *
-     * @param $id
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function status($id, Request $request)
-    {
-        $input = $request->all();
-
-        $link = Link::withoutGlobalScope(StatusScope::class)->findOrFail($id);
-        $link->update($input);
+        Role::create($data);
 
         return $this->response->withNoContent();
     }
@@ -76,22 +55,20 @@ class LinkController extends ApiController
      */
     public function edit($id)
     {
-        $link = Link::checkAuth()->findOrFail($id);
-
-        return $this->response->item($link);
+        return $this->response->item(Role::findOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\LinkRequest $request
-     * @param int                            $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(LinkRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        Link::checkAuth()->findOrFail($id)->update($request->all());
+        Role::findOrFail($id)->update($request->all());
 
         return $this->response->withNoContent();
     }
@@ -105,7 +82,7 @@ class LinkController extends ApiController
      */
     public function destroy($id)
     {
-        Link::checkAuth()->findOrFail($id)->delete();
+        Role::destroy($id);
 
         return $this->response->withNoContent();
     }

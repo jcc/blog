@@ -6,17 +6,9 @@ use Socialite;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
 
 class AuthController extends Controller
 {
-    protected $user;
-
-    public function __construct(UserRepository $user)
-    {
-        $this->user = $user;
-    }
-
     /**
      * Redirect the user to the GitHub authentication page.
      *
@@ -35,7 +27,7 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $githubUser = Socialite::driver('github')->user();
-        $user = $this->user->getByGithubId($githubUser->id);
+        $user = User::query()->where('github_id', $githubUser->id)->first();
 
         if (auth()->check()) {
             $currentUser = auth()->user();

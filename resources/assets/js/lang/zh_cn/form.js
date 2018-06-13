@@ -63,5 +63,10 @@ export default {
   'discussion': '讨论',
   'comment': '评论',
   'published_at': '发布时间？',
+  'create_role': '创建角色',
+  'edit_role': '修改角色',
+  'role_name': '角色名',
+  'guard_name': '应用范围',
+  'select_guard_name': '选择应用范围',
 
 }
