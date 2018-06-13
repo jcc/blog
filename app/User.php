@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\GotVote;
 use Jcc\LaravelVote\Vote;
 use App\Traits\FollowTrait;
 use App\Scopes\StatusScope;
@@ -94,5 +95,32 @@ class User extends Authenticatable
         if (auth()->id() != $this->id && $this->email_notify_enabled == 'yes' && config('blog.mail_notification')) {
             return $this->email;
         }
+    }
+
+    /**
+     * Up vote or down vote item.
+     *
+     * @param  \App\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $target
+     * @param  string $type
+     *
+     * @return boolean
+     */
+    public static function upOrDownVote($user, $target, $type = 'up')
+    {
+        $hasVoted = $user->{'has' . ucfirst($type) . 'Voted'}($target);
+
+        if ($hasVoted) {
+            $user->cancelVote($target);
+            return false;
+        }
+
+        if ($type == 'up') {
+            $target->user->notify(new GotVote($type . '_vote', $user, $target));
+        }
+
+        $user->{$type . 'Vote'}($target);
+
+        return true;
     }
 }
