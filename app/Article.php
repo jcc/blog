@@ -39,13 +39,11 @@ class Article extends Model
     ];
 
     protected $casts = [
-        'content'    =>    'array'
+        'content' => 'array',
     ];
 
     /**
      * The "booting" method of the model.
-     *
-     * @return void
      */
     public static function boot()
     {
@@ -108,6 +106,7 @@ class Article extends Model
      * Get the created at attribute.
      *
      * @param $value
+     *
      * @return string
      */
     public function getCreatedAtAttribute($value)
@@ -137,11 +136,13 @@ class Article extends Model
      * @param $value
      * @param $extra
      */
-    public function setUniqueSlug($value, $extra) {
+    public function setUniqueSlug($value, $extra)
+    {
         $slug = str_slug($value.'-'.$extra);
 
         if (static::whereSlug($slug)->exists()) {
             $this->setUniqueSlug($slug, (int) $extra + 1);
+
             return;
         }
 
@@ -156,10 +157,26 @@ class Article extends Model
     public function setContentAttribute($value)
     {
         $data = [
-            'raw'  => $value,
-            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+            'raw' => $value,
+            'html' => (new Markdowner())->convertMarkdownToHtml($value),
         ];
 
         $this->attributes['content'] = json_encode($data);
+    }
+
+    /**
+     * checkAuth
+     *
+     * @author Huiwang <905130909@qq.com>
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCheckAuth($query)
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $query->withoutGlobalScope(DraftScope::class);
+        }
+        return $query;
     }
 }
