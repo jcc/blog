@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Link;
+use App\Scopes\StatusScope;
 use Illuminate\Http\Request;
 use App\Http\Requests\LinkRequest;
-use App\Repositories\LinkRepository;
 
 class LinkController extends ApiController
 {
-    protected $link;
-
-    protected $manager;
-
-    public function __construct(LinkRepository $link)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->link = $link;
-
-        $this->manager = app('uploader');
     }
 
     /**
@@ -28,13 +21,20 @@ class LinkController extends ApiController
      */
     public function index(Request $request)
     {
-        return $this->response->collection($this->link->pageWithRequest($request));
+        $keyword = $request->get('keyword');
+
+        $links = Link::checkAuth()->when($keyword, function ($query) use ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%");
+        })
+            ->orderBy('created_at', 'desc')->paginate(10);
+
+        return $this->response->collection($links);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\LinkRequest  $request
+     * @param \App\Http\Requests\LinkRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -44,13 +44,13 @@ class LinkController extends ApiController
 
         $data['status'] = isset($data['status']);
 
-        $this->link->store($data);
+        Link::create($data);
 
         return $this->response->withNoContent();
     }
 
     /**
-     * Update Link Status By Link ID
+     * Update Link Status By Link ID.
      *
      * @param $id
      * @param Request $request
@@ -61,7 +61,8 @@ class LinkController extends ApiController
     {
         $input = $request->all();
 
-        $this->link->update($id, $input);
+        $link = Link::withoutGlobalScope(StatusScope::class)->findOrFail($id);
+        $link->update($input);
 
         return $this->response->withNoContent();
     }
@@ -69,26 +70,28 @@ class LinkController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return $this->response->item($this->link->getById($id));
+        $link = Link::checkAuth()->findOrFail($id);
+
+        return $this->response->item($link);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\LinkRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\LinkRequest $request
+     * @param int                            $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(LinkRequest $request, $id)
     {
-        $this->link->update($id, $request->all());
+        Link::checkAuth()->findOrFail($id)->update($request->all());
 
         return $this->response->withNoContent();
     }
@@ -96,13 +99,13 @@ class LinkController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $this->link->destroy($id);
+        Link::checkAuth()->findOrFail($id)->delete();
 
         return $this->response->withNoContent();
     }

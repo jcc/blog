@@ -12,7 +12,7 @@ class Visitor extends Model
      * @var array
      */
     protected $fillable = [
-        'ip', 'article_id', 'clicks'
+        'ip', 'article_id', 'clicks',
     ];
 
     /**
@@ -23,5 +23,32 @@ class Visitor extends Model
     public function article()
     {
         return $this->belongsTo(Article::class);
+    }
+
+    /**
+     * 记录访问记录.
+     *
+     * @author Huiwang <905130909@qq.com>
+     *
+     * @param $articleId
+     * @param $ip
+     *
+     * @return Visitor|Model|null|object
+     */
+    public static function log($articleId, $ip)
+    {
+        $log = self::query()->where('article_id', $articleId)->where('ip', $ip)->first();
+        if ($log) {
+            $log->increment('clicks');
+        } else {
+            $data = [
+                'ip' => $ip,
+                'article_id' => $articleId,
+                'clicks' => 1,
+            ];
+            $log = self::create($data);
+        }
+
+        return $log;
     }
 }

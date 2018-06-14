@@ -4,6 +4,9 @@ namespace App\Tools;
 
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated
+ */
 class IP
 {
     /**
