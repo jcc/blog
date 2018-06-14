@@ -3,41 +3,45 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Repositories\RoleRepository;
-use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends ApiController
 {
-    protected $role;
-
-    public function __construct(RoleRepository $role)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->role = $role;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
-        return $this->response->collection($this->role->pageWithRequest($request));
+        $keyword = $request->get('keyword');
+        $roles = Role::query()->when($keyword, function ($query) use ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%");
+        })
+            ->orderBy('created_at', 'desc')->paginate(10);
+
+        return $this->response->collection($roles);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $data = $request->all();
 
-        $this->role->store($data);
+        Role::create($data);
 
         return $this->response->withNoContent();
     }
@@ -45,24 +49,26 @@ class RoleController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return $this->response->item($this->role->getById($id));
+        return $this->response->item(Role::findOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        $this->role->update($id, $request->all());
+        Role::findOrFail($id)->update($request->all());
 
         return $this->response->withNoContent();
     }
@@ -70,12 +76,13 @@ class RoleController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $this->role->destroy($id);
+        Role::destroy($id);
 
         return $this->response->withNoContent();
     }

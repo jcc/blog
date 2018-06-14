@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Article;
+use App\Visitor;
 use Illuminate\Http\Request;
-use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
 {
-    protected $article;
-
-    public function __construct(ArticleRepository $article)
-    {
-        $this->article = $article;
-    }
-
     /**
      * Display the articles resource.
      *
@@ -22,7 +15,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = $this->article->page(config('blog.article.number'), config('blog.article.sort'), config('blog.article.sortColumn'));
+        $articles = Article::checkAuth()
+            ->orderBy(config('blog.article.sortColumn'), config('blog.article.sort'))
+            ->paginate(config('blog.article.number'));
 
         return view('article.index', compact('articles'));
     }
@@ -30,12 +25,25 @@ class ArticleController extends Controller
     /**
      * Display the article resource by article slug.
      *
-     * @param  string $slug
-     * @return mixed
+     * @author Huiwang <905130909@qq.com>
+     *
+     * @param Request $request
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
-        $article = $this->article->getBySlug($slug);
+        $article = Article::checkAuth()->where('slug', $slug)->firstOrFail();
+
+        $article->increment('view_count');
+
+        $ip = $request->getClientIp();
+
+        if ($ip == '::1') {
+            $ip = '127.0.0.1';
+        }
+
+        Visitor::log($article->id, $ip);
 
         return view('article.show', compact('article'));
     }
