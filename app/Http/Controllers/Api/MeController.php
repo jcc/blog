@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class MeController extends ApiController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * post up vote the comment by user.
      *
