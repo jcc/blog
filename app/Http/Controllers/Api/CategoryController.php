@@ -8,11 +8,6 @@ use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends ApiController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Display a listing of the resource.
      *
