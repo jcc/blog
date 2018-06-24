@@ -9,11 +9,6 @@ use App\Visitor;
 
 class HomeController extends ApiController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function statistics()
     {
         $users = User::query()->count();
