@@ -142,8 +142,8 @@ export default {
     }
   },
   mounted() {
-    let t = this.$t || this.$i18n.t
-    let self = this
+    let t = this.$t || this.$i18n.t;
+    let self = this;
 
     this.simplemde = new SimpleMDE({
       element: document.getElementById("editor"),
