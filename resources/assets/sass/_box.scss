@@ -1,11 +1,11 @@
-.ibox {
+.box {
     clear: both;
     margin-bottom: 25px;
     margin-top: 0;
     padding: 0;
     width: 100%;
 }
-.ibox-title {
+.box-title {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -20,22 +20,22 @@
     padding: 15px 15px 7px;
     min-height: 48px;
 }
-.ibox-default {
+.box-default {
     border-color: #e7eaec;
 }
-.ibox-success {
+.box-success {
     border-color: #3498db;
 }
-.ibox-success {
+.box-success {
     border-color: #1abc9c;
 }
-.ibox-warning {
+.box-warning {
     border-color: #f1c40f;
 }
-.ibox-danger {
+.box-danger {
     border-color: #e74c3c;
 }
-.ibox-content {
+.box-content {
     clear: both;
     background-color: #ffffff;
     color: inherit;
@@ -47,4 +47,14 @@
 }
 .no-padding {
     padding: 0;
+}
+.box-radius {
+  .box-title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .box-content {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 }
