@@ -13,10 +13,6 @@ const path = require('path');
  */
 
 mix.webpackConfig({
-  output: {
-    publicPath: "/",
-    chunkFilename: 'js/[name].[chunkhash].js'
-  },
   resolve: {
     alias: {
       'config': 'assets/js/config',
@@ -47,4 +43,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
   .sass('resources/assets/sass/app.scss', 'public/css')
   .js('resources/assets/js/home.js', 'public/js')
   .sass('resources/assets/sass/home.scss', 'public/css')
-  .version();
+
+if (mix.inProduction()) {
+  mix.webpackConfig({
+    output: {
+      publicPath: "/",
+      chunkFilename: 'js/[name].[chunkhash].js'
+    }
+  })
+  mix.version()
+}
