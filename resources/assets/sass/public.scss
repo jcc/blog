@@ -1,8 +1,8 @@
 // Font-awesome
-@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
-@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
-@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
-@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/brands';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/regular';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/solid';
 
 // Variables
 @import "variables";
@@ -14,4 +14,4 @@
 @import "node_modules/sweetalert2/src/sweetalert2.scss";
 
 // Toastr
-@import "vendor/toastr.min";
+@import url("vendor/toastr.min.css");

@@ -3,15 +3,15 @@
 @import "public";
 
 //Simplemde
-@import "vendor/simplemde.min";
+@import url("vendor/simplemde.min.css");
 
 // Markdown
 @import "markdown";
-@import "vendor/highlight.min";
+@import url("vendor/highlight.min.css");
 
 @import "form";
 @import "navbar";
-@import "ibox";
+@import "box";
 @import "toastr";
 @import "togglebutton";
 

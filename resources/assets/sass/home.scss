@@ -6,11 +6,11 @@
 @import "node_modules/social-share.js/src/css/share.scss";
 
 // Select 2
-@import "vendor/select2.min";
+@import url("vendor/select2.min.css");
 
 // Markdown
 @import "markdown";
-@import "vendor/highlight.min";
+@import url("vendor/highlight.min.css");
 
 @import "form";
 @import "navbar";
