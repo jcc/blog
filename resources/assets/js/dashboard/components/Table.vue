@@ -1,6 +1,6 @@
 <template>
-  <div :class="wrapperClass" class="ibox">
-    <div class="ibox-title d-flex">
+  <div :class="wrapperClass" class="box">
+    <div class="box-title d-flex">
       <h5 class="align-self-center font-weight-normal">{{ title }}</h5>
       <small class="ml-auto d-flex flex-row">
         <div class="input-group input-group-sm mr-2">
@@ -12,7 +12,7 @@
         <slot name="buttons"></slot>
       </small>
     </div>
-    <div class="ibox-content no-padding table-responsive">
+    <div class="box-content no-padding table-responsive">
       <table :class="tableClass">
         <thead>
           <tr>

@@ -1,13 +1,13 @@
 <template>
   <div class="row">
-    <div class="ibox">
-      <div class="ibox-title">
+    <div class="box">
+      <div class="box-title">
         <small class="float-right">
           <slot name="buttons"></slot>
         </small>
         <h5>{{ title }}</h5>
       </div>
-      <div class="ibox-content">
+      <div class="box-content">
         <slot name="content"></slot>
       </div>
     </div>
