@@ -1,10 +1,10 @@
 <template>
   <div class="row">
-    <div class="ibox">
-      <div class="ibox-title">
+    <div class="box">
+      <div class="box-title">
         <h5>{{ $t('page.systems') }}</h5>
       </div>
-      <div class="ibox-content">
+      <div class="box-content">
         <div class="row">
           <div class="col-md-2">
             <div class="sidebar">

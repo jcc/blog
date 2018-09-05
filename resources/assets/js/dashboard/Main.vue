@@ -62,7 +62,8 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #4d5e70;
+  background-color: transparent;
+  background-image: linear-gradient(180deg, #647f9d, #3d4e60);
   transition: all 0.5s ease;
 }
 
