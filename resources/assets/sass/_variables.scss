@@ -16,8 +16,14 @@ $green:   #2ECC71 !default;
 $teal:    #1ABC9C !default;
 $cyan:    #3498db !default;
 $wet-asphalt:    #34495e !default;
+$black:   #000 !default;
 
 $component-active-bg: $wet-asphalt !default;
+
+// Shadow
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .025) !default;
+$box-shadow:                  0 .25rem .5rem rgba($black, .05) !default;
+$box-shadow-lg:               0 .5rem 1.5rem rgba($black, .075) !default;
 
 // Toggle
 $rgb-black: "0,0,0" !default;

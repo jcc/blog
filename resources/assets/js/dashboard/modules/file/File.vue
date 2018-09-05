@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="ibox">
-      <div class="ibox-title">
+    <div class="box">
+      <div class="box-title">
         <div class="row d-flex no-margin">
           <div class="col-md-6 d-flex align-self-center">
             <h5 class="align-self-center float-left">{{ $t('page.files') }}&nbsp;&nbsp;</h5>
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="ibox-content no-padding">
+      <div class="box-content no-padding">
         <table id="uploads-table" class="table table-striped table-hover">
           <tbody>
             <tr>
@@ -313,7 +313,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ibox-content .btn {
+.box-content .btn {
   display: inline-block;
   border-radius: 50%;
   width: 2.2rem;
