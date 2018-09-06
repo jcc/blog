@@ -12,7 +12,7 @@
         <slot name="buttons"></slot>
       </small>
     </div>
-    <div class="box-content no-padding table-responsive">
+    <div class="box-content p-0 border-0 table-responsive">
       <table :class="tableClass">
         <thead>
           <tr>

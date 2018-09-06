@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="box-content no-padding">
+      <div class="box-content p-0">
         <table id="uploads-table" class="table table-striped table-hover">
           <tbody>
             <tr>
