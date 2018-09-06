@@ -65,12 +65,12 @@ class CategoryController extends ApiController
     {
         $input = $request->all();
 
-        $cagegory = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         foreach ($input as $key => $value) {
-            $cagegory->{$key} = $value;
+            $category->{$key} = $value;
         }
 
-        $cagegory->save();
+        $category->save();
 
         return $this->response->withNoContent();
     }
