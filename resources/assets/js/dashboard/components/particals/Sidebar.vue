@@ -15,8 +15,18 @@
           <a href="/setting"><i class="fas fa-cog"></i></a>
         </div>
       </div>
-      <li v-for="menu in menus">
-        <router-link :to="menu.uri">
+      <li v-for="menu in menus" :class="{ 'mb-3': menu.children }">
+        <div class="sidebar-group" v-if="menu.children">
+          <p class="sidebar-heading text-white-50"><span>{{ $t(menu.label) }}</span></p>
+          <ul class="sidebar-group-items">
+            <li v-for="item in menu.children">
+              <router-link :to="item.uri">
+                <i :class="item.icon"></i> {{ $t(item.label) }}
+              </router-link>
+            </li>
+          </ul>
+        </div>
+        <router-link :to="menu.uri" class="mb-1" v-else>
           <i :class="menu.icon"></i> {{ $t(menu.label) }}
         </router-link>
       </li>
@@ -60,7 +70,7 @@
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
+  text-indent: 16px;
   line-height: 40px;
 
   i {
@@ -136,6 +146,20 @@
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
+}
+
+.sidebar-group {
+  .sidebar-heading {
+    padding-left: 16px;
+    text-transform: uppercase;
+    letter-spacing: .13rem;
+    font-size: 12px;
+    font-weight: 800;
+    margin: 0;
+  }
+  .sidebar-group-items {
+    padding: 0;
+  }
 }
 
 .active {
