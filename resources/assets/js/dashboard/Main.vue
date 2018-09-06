@@ -77,7 +77,7 @@ body {
 
   .container-fluid {
     .row {
-      margin: 15px;
+      margin: 30px 15px;
     }
   }
 }

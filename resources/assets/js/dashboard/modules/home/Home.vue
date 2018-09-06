@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="row pt-3">
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="box shadow-sm box-radius">
+        <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
             <h5 class="no-margins">{{ $t('page.user_num') }}</h5>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="box box-radius">
+        <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
             <h5 class="no-margins">{{ $t('page.view_num') }}</h5>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="box box-radius">
+        <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
             <h5 class="no-margins">{{ $t('page.article_num') }}</h5>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="box box-radius">
+        <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
             <h5 class="no-margins">{{ $t('page.comment_num') }}</h5>
