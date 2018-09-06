@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="box">
+    <div class="box box-radius shadow-sm">
       <div class="box-title">
         <small class="float-right">
           <slot name="buttons"></slot>

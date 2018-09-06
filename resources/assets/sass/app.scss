@@ -31,22 +31,32 @@ body {
 .width-5-percent {
     width: 5%;
 }
+
 .width-10-percent {
     width: 10%;
 }
+
 .no-margin {
     margin: 0 !important;
 }
+
 .multiselect__content {
     z-index: 2;
 }
+
 .avatar {
     width: 50px;
     margin: 0 auto;
 }
+
 .editor-toolbar.fullscreen {
     z-index: 1000 !important;
 }
+
 .CodeMirror-fullscreen {
     z-index: 1000 !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f9f9fb !important;
 }

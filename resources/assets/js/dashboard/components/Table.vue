@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperClass" class="box">
+  <div :class="wrapperClass" class="box box-radius shadow-sm">
     <div class="box-title d-flex">
       <h5 class="align-self-center font-weight-normal">{{ title }}</h5>
       <small class="ml-auto d-flex flex-row">
@@ -101,7 +101,7 @@ export default {
     tableClass: {
       type: String,
       default () {
-        return 'table table-striped table-hover'
+        return 'table table-hover'
       }
     },
     title: {
