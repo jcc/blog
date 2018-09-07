@@ -5,6 +5,7 @@ export default {
   email: 'E-Mail адрес',
   status: 'Статус',
   title: 'Заголовок',
+  guard_name: 'Oхрана',
   subtitle: 'Подзаголовок',
   created_at: 'Создано',
   published_at: 'Опубликовано',

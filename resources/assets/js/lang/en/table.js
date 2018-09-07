@@ -5,6 +5,7 @@ export default {
   email: 'E-Mail Address',
   status: 'Status',
   title: 'Title',
+  guard_name: 'Guard',
   subtitle: 'Sub Title',
   created_at: 'Created At',
   published_at: 'Published At',
