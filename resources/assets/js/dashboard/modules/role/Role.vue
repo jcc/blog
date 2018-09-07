@@ -2,7 +2,7 @@
   <div class="row">
     <vue-table :title="$t('page.roles')" :fields="fields" api-url="role" :item-actions="itemActions" @table-action="tableActions" show-paginate>
       <template slot="buttons">
-        <router-link :to="{ name: 'dashboard.role.create' }" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+        <router-link :to="{ name: 'dashboard.role.create' }" class="btn btn-sm btn-success" v-if="checkPermission('CREATE_ROLE')">{{ $t('page.create') }}</router-link>
       </template>
     </vue-table>
   </div>
@@ -36,9 +36,9 @@ export default {
         }
       ],
       itemActions: [
-        { name: 'set-permission-item', icon: 'fas fa-cogs', class: 'btn btn-success' },
-        { name: 'edit-item', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
-        { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
+        { name: 'set-permission-item', permission: 'UPDATE_ROLE_PERMISSIONS', icon: 'fas fa-cogs', class: 'btn btn-success' },
+        { name: 'edit-item', permission: 'UPDATE_ROLE', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
+        { name: 'delete-item', permission: 'DESTROY_ROLE', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
       ]
     };
   },

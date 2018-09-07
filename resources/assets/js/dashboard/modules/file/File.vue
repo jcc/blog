@@ -3,8 +3,8 @@
     <div class="box">
       <div class="box-title">
         <div class="row d-flex m-0">
-          <div class="col-md-6 d-flex align-self-center p-0">
-            <h5 class="align-self-center float-left">{{ $t('page.files') }}&nbsp;&nbsp;</h5>
+          <div class="col-md-6 d-flex align-items-center p-0">
+            <h5 class="align-self-center">{{ $t('page.files') }}&nbsp;&nbsp;</h5>
             <div class="float-left">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -18,12 +18,12 @@
               </nav>
             </div>
           </div>
-          <div class="col-md-6 align-self-center p-0">
-            <small class="float-right">
-              <button type="button" class="btn btn-success btn-sm" @click="showFolder = true">
+          <div class="col-md-6 align-items-center p-0 text-right">
+            <small>
+              <button type="button" class="btn btn-success btn-sm" @click="showFolder = true" v-if="checkPermission('CREATE_FILE_FOLDER')">
                 <i class="fas fa-plus-circle"></i> {{ $t('table.new_folder') }}
               </button>
-              <button type="button" class="btn btn-primary btn-sm" @click="showFile = true">
+              <button type="button" class="btn btn-primary btn-sm" @click="showFile = true" v-if="checkPermission('UPLOAD_FILE')">
                 <i class="fas fa-inbox"></i> {{ $t('table.upload') }}
               </button>
             </small>
@@ -52,7 +52,10 @@
               <td>-</td>
               <td>-</td>
               <td>
-                <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(name)">
+                <a href="javascript:;" class="btn btn-sm btn-secondary" @click="getFileInfo(path)">
+                  <i class="fas fa-folder-open"></i>
+                </a>
+                <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(name)" v-if="checkPermission('DESTROY_FILE')">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>
@@ -70,7 +73,10 @@
                 <td>-</td>
                 <td>-</td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(file.fullPath)">
+                  <a href="javascript:;" class="btn btn-sm btn-secondary" @click="getFileInfo(file.fullPath)">
+                    <i class="fas fa-folder-open"></i>
+                  </a>
+                  <button type="button" class="btn btn-sm btn-danger" @click="deleteFolder(file.fullPath)" v-if="checkPermission('DESTROY_FILE')">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </td>
@@ -90,7 +96,7 @@
                   <button type="button" class="btn btn-sm btn-info" v-if="checkImageType(file.mimeType)" @click="preview(file.webPath)">
                     <i class="fas fa-eye"></i>
                   </button>
-                  <button type="button" class="btn btn-sm btn-danger" @click="deleteFile(file, index)">
+                  <button type="button" class="btn btn-sm btn-danger" @click="deleteFile(file, index)" v-if="checkPermission('DESTROY_FILE')">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </td>

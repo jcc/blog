@@ -18,7 +18,7 @@
           <tr>
             <template v-for="field in fields">
               <template v-if="isSpecialField(field.name)">
-                <th v-if="field.name == '__actions'" :class="field.titleClass">
+                <th v-if="field.name == '__actions' && checkPermissions(itemActions)" :class="field.titleClass">
                   <template v-if="field.trans">
                     {{ $t(field.trans) }}
                   </template>
@@ -53,13 +53,13 @@
             <tr v-for="item in items">
               <template v-for="field in fields">
                 <template v-if="isSpecialField(field.name)">
-                  <template v-if="field.name == '__actions'">
+                  <template v-if="field.name == '__actions' && checkPermissions(itemActions)">
                     <td :class="field.dataClass" class="actions">
                       <template v-for="action in itemActions">
-                        <a @click="callAction(action.name, item)" :class="action.class">
-                                                    <i :class="action.icon"></i>
-                                                    {{ action.label }}
-                                                </a>
+                        <a @click="callAction(action.name, item)" :class="action.class" v-if="!action.permission || checkPermission(action.permission)">
+                          <i :class="action.icon"></i>
+                          {{ action.label }}
+                        </a>
                       </template>
                     </td>
                   </template>
@@ -134,8 +134,8 @@ export default {
       type: Array,
       default () {
         return [
-          { name: 'edit-item', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
-          { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
+          { name: 'edit-item', permission: `UPDATE_${this.apiUrl.toUpperCase()}`, icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
+          { name: 'delete-item', permission: `DESTROY_${this.apiUrl.toUpperCase()}`, icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
         ]
       }
     },

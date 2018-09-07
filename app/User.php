@@ -10,10 +10,11 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote;
+    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote, HasRoles;
 
     /**
      * The attributes that should be mutated to dates.
@@ -72,6 +73,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
+
+    public function isSuperAdmin()
+    {
+        return ($this->id == config('blog.super_admin')) ? 1 : 0;
     }
 
     /**

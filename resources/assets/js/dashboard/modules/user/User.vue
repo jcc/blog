@@ -2,7 +2,7 @@
   <div class="row">
     <vue-table :title="$t('page.users')" :fields="fields" api-url="user" @table-action="tableActions" show-paginate>
       <template slot="buttons">
-        <router-link :to="{ name: 'dashboard.user.create' }" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+        <router-link :to="{ name: 'dashboard.user.create' }" class="btn btn-sm btn-success" v-if="checkPermission('CREATE_USER')">{{ $t('page.create') }}</router-link>
       </template>
     </vue-table>
   </div>

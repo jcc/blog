@@ -48,7 +48,7 @@ class RoleController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function edit($id)
     {
         return $this->response->item(Role::findOrFail($id));
     }
