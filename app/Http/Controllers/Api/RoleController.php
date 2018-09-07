@@ -80,6 +80,8 @@ class RoleController extends ApiController
     {
         $role->permissions()->sync($request->get('permissions'));
 
+        app()['cache']->forget('spatie.permission.cache');
+
         return $this->response->withNoContent();
     }
 
