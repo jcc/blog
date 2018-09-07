@@ -5,10 +5,10 @@
         <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
-            <h5 class="no-margins">{{ $t('page.user_num') }}</h5>
+            <h5 class="m-0">{{ $t('page.user_num') }}</h5>
           </div>
           <div class="box-content">
-            <h1 class="no-margins"><i class="fas fa-users"></i>{{ statistics.users }}</h1>
+            <h1 class="m-0"><i class="fas fa-users"></i>{{ statistics.users }}</h1>
           </div>
         </div>
       </div>
@@ -16,10 +16,10 @@
         <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
-            <h5 class="no-margins">{{ $t('page.view_num') }}</h5>
+            <h5 class="m-0">{{ $t('page.view_num') }}</h5>
           </div>
           <div class="box-content">
-            <h1 class="no-margins"><i class="fas fa-eye"></i>{{ statistics.visitors }}</h1>
+            <h1 class="m-0"><i class="fas fa-eye"></i>{{ statistics.visitors }}</h1>
           </div>
         </div>
       </div>
@@ -27,10 +27,10 @@
         <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
-            <h5 class="no-margins">{{ $t('page.article_num') }}</h5>
+            <h5 class="m-0">{{ $t('page.article_num') }}</h5>
           </div>
           <div class="box-content">
-            <h1 class="no-margins"><i class="fas fa-newspaper"></i>{{ statistics.articles }}</h1>
+            <h1 class="m-0"><i class="fas fa-newspaper"></i>{{ statistics.articles }}</h1>
           </div>
         </div>
       </div>
@@ -38,10 +38,10 @@
         <div class="box box-radius shadow-sm">
           <div class="box-title">
             <span class="badge badge-success float-right">{{ $t('page.all') }}</span>
-            <h5 class="no-margins">{{ $t('page.comment_num') }}</h5>
+            <h5 class="m-0">{{ $t('page.comment_num') }}</h5>
           </div>
           <div class="box-content">
-            <h1 class="no-margins"><i class="fas fa-comments"></i>{{ statistics.comments }}</h1>
+            <h1 class="m-0"><i class="fas fa-comments"></i>{{ statistics.comments }}</h1>
           </div>
         </div>
       </div>
@@ -87,9 +87,5 @@ h1 i {
 
 .label {
   padding: .3em .6em;
-}
-
-.no-margins {
-  margin: 0 !important;
 }
 </style>

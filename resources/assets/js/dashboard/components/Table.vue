@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClass" class="box box-radius shadow-sm">
     <div class="box-title d-flex">
-      <h5 class="align-self-center font-weight-normal">{{ title }}</h5>
+      <h5 class="align-self-center font-weight-normal m-0">{{ title }}</h5>
       <small class="ml-auto d-flex flex-row">
         <div class="input-group input-group-sm mr-2">
           <input type="text" class="form-control" v-model="searchable[searchKey]" :placeholder="searchPlaceholder" @keyup.enter="onSearch()">

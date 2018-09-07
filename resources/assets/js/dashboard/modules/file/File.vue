@@ -2,8 +2,8 @@
   <div class="row">
     <div class="box">
       <div class="box-title">
-        <div class="row d-flex no-margin">
-          <div class="col-md-6 d-flex align-self-center">
+        <div class="row d-flex m-0">
+          <div class="col-md-6 d-flex align-self-center p-0">
             <h5 class="align-self-center float-left">{{ $t('page.files') }}&nbsp;&nbsp;</h5>
             <div class="float-left">
               <nav aria-label="breadcrumb">
@@ -18,7 +18,7 @@
               </nav>
             </div>
           </div>
-          <div class="col-md-6 align-self-center">
+          <div class="col-md-6 align-self-center p-0">
             <small class="float-right">
               <button type="button" class="btn btn-success btn-sm" @click="showFolder = true">
                 <i class="fas fa-plus-circle"></i> {{ $t('table.new_folder') }}
