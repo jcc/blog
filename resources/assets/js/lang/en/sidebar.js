@@ -9,6 +9,7 @@ export default {
   category: 'Categories',
   link: 'Links',
   visitor: 'Visitors',
+  role: 'Roles',
   system: 'Systems',
   modules: {
     base: 'Base Module',
