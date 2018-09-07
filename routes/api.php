@@ -31,7 +31,7 @@ Route::group([
     Route::resource('link', 'LinkController', ['except' => ['create', 'show']]);
     Route::post('/link/{id}/status', 'LinkController@status');
 
-    Route::resource('role', 'RoleController', ['except' => ['create', 'show']]);
+    Route::resource('role', 'RoleController', ['except' => ['create', 'edit']]);
 
     Route::get('visitor', 'VisitorController@index');
 
@@ -42,6 +42,9 @@ Route::group([
     Route::post('file/delete', 'UploadController@deleteFile');
 
     Route::get('system', 'SystemController@getSystemInfo');
+
+    Route::get('permissions', 'PermissionsController@index');
+    Route::post('role/{role}/permissions', 'RoleController@updateRolePermissions');
 });
 
 Route::group([
