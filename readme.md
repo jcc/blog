@@ -39,6 +39,7 @@ Here is [documents](https://manual.pigjian.com/)
 - Own comments system
 - Multi-language switching
 - Markdown Editor
+- Roles & Permissions
 - and more...
 
 [PJ Blog](https://github.com/jcc/blog) Laravel 5.*
@@ -55,9 +56,9 @@ Here is [documents](https://manual.pigjian.com/)
 
 ## Preview
 
-![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
+![New Blog](https://pig-storage.b0.upaiyun.com/cover/2018/09/07/d2T4cAjTagf5L1rXH1FjLsFkJVffsPIGPkHEl2A5.jpg)
 
-![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog2.jpeg)
+![New Blog](https://pig-storage.b0.upaiyun.com/cover/2018/09/07/4b7ExtB6NHZVh8n5KnW2673Ej6gwtLm1SUAubtpa.jpg)
 
 ## Install
 
