@@ -5,6 +5,9 @@ return [
     // Mail Notification
     'mail_notification' => env('MAIL_NOTIFICATION') ?: false,
 
+    // Super Admin
+    'super_admin' => env('APP_SUPER_ADMIN') ?: 1,
+
     // Default Avatar
     'default_avatar' => env('DEFAULT_AVATAR') ?: '/images/default.png',
 

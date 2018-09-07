@@ -2,7 +2,7 @@
   <div class="row">
     <vue-table :title="$t('page.discussions')" :fields="fields" api-url="discussion" :item-actions="itemActions" @table-action="tableActions" show-paginate>
       <template slot="buttons">
-        <router-link :to="{ name: 'dashboard.discussion.create' }" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+        <router-link :to="{ name: 'dashboard.discussion.create' }" class="btn btn-sm btn-success" v-if="checkPermission('CREATE_DISCUSSION')">{{ $t('page.create') }}</router-link>
       </template>
     </vue-table>
   </div>
@@ -43,8 +43,8 @@ export default {
       ],
       itemActions: [
         { name: 'view-item', icon: 'fas fa-eye', class: 'btn btn-success' },
-        { name: 'edit-item', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
-        { name: 'delete-item', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
+        { name: 'edit-item', permission: 'UPDATE_DISCUSSION', icon: 'fas fa-pencil-alt', class: 'btn btn-info' },
+        { name: 'delete-item', permission: 'DESTROY_DISCUSSION', icon: 'fas fa-trash-alt', class: 'btn btn-danger' }
       ]
     };
   },

@@ -2,7 +2,7 @@
   <div class="row">
     <vue-table :title="$t('page.categories')" :fields="fields" api-url="category" show-paginate @table-action="tableActions">
       <template slot="buttons">
-        <router-link :to="{ name: 'dashboard.category.create' }" class="btn btn-sm btn-success">{{ $t('page.create') }}</router-link>
+        <router-link :to="{ name: 'dashboard.category.create' }" class="btn btn-sm btn-success" v-if="checkPermission('CREATE_CATEGORY')">{{ $t('page.create') }}</router-link>
       </template>
     </vue-table>
   </div>
