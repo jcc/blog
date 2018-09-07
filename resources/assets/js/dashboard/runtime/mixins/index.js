@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {
   checkPerm
-} from 'runtime/utils'
+} from 'dashboard/runtime/utils'
 
 Vue.mixin({
   methods: {
@@ -10,18 +10,41 @@ Vue.mixin({
      * @desc Check the user if has the permission
      *
      * @param {string} permission
-     * @param {string} type
      *
      * @returns {boolean}
      */
-    checkPermission(permission, type = 'api') {
-      let data = this.$store.state.auth.user
+    checkPermission(permission) {
+      let data = window.Permissions
 
-      if (data.is_super_admin) {
+      if (window.isSuperAdmin) {
         return true
       }
 
       return checkPerm(data, permission)
     },
+
+    /**
+     * @desc Check the user if has the permissions
+     *
+     * @param {string} permissions
+     *
+     * @returns {boolean}
+     */
+    checkPermissions(permissions) {
+      let i = 0,
+          data = window.Permissions
+
+      if (window.isSuperAdmin) {
+        return true
+      }
+
+      permissions.forEach((item) => {
+        if (item.permission) {
+          i = checkPerm(data, item.permission) ? i + 1 : i
+        }
+      })
+
+      return i > 0
+    }
   }
 })

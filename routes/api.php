@@ -6,45 +6,75 @@ Route::group([
 ], function () {
     Route::get('statistics', 'HomeController@statistics');
 
-    Route::resource('user', 'UserController', ['except' => ['create', 'show']]);
-    Route::post('/user/{id}/status', 'UserController@status');
+    // User
+    Route::get('user', 'UserController@index')->middleware(['permission:list_user']);
+    Route::post('user', 'UserController@store')->middleware(['permission:create_user']);
+    Route::get('user/{id}/edit', 'UserController@edit')->middleware(['permission:update_user']);
+    Route::put('user/{id}', 'UserController@update')->middleware(['permission:update_user']);
+    Route::delete('user/{id}', 'UserController@destroy')->middleware(['permission:destroy_user']);
+    Route::post('/user/{id}/status', 'UserController@status')->middleware(['permission:update_user']);
 
-    Route::resource('article', 'ArticleController', ['names' => [
-        'index' => 'api.article.index',
-        'store' => 'api.article.store',
-        'edit' => 'api.article.edit',
-        'update' => 'api.article.update',
-        'destroy' => 'api.article.destroy',
-    ], 'except' => ['create', 'show']]);
+    // Article
+    Route::get('article', 'ArticleController@index')->name('api.article.index')->middleware(['permission:list_article']);
+    Route::post('article', 'ArticleController@store')->name('api.article.store')->middleware(['permission:create_article']);
+    Route::get('article/{id}/edit', 'ArticleController@edit')->name('api.article.edit')->middleware(['permission:update_article']);
+    Route::put('article/{id}', 'ArticleController@update')->name('api.article.update')->middleware(['permission:update_article']);
+    Route::delete('article/{id}', 'ArticleController@destroy')->name('api.article.destroy')->middleware(['permission:destroy_article']);
 
-    Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
-    Route::get('/categories', 'CategoryController@getList');
-    Route::post('/category/{id}/status', 'CategoryController@status');
+    // Category
+    Route::get('category', 'CategoryController@index')->middleware(['permission:list_category']);
+    Route::post('category', 'CategoryController@store')->middleware(['permission:create_category']);
+    Route::get('category/{id}/edit', 'CategoryController@edit')->middleware(['permission:update_category']);
+    Route::put('category/{id}', 'CategoryController@update')->middleware(['permission:update_category']);
+    Route::delete('category/{id}', 'CategoryController@destroy')->middleware(['permission:destroy_category']);
+    Route::get('/categories', 'CategoryController@getList')->middleware(['permission:create_article|update_article']);
 
-    Route::resource('discussion', 'DiscussionController', ['except' => ['create', 'show']]);
-    Route::post('/discussion/{id}/status', 'DiscussionController@status');
+    // Discussion
+    Route::get('discussion', 'DiscussionController@index')->middleware(['permission:list_discussion']);
+    Route::post('discussion', 'DiscussionController@store')->middleware(['permission:create_discussion']);
+    Route::get('discussion/{id}/edit', 'DiscussionController@edit')->middleware(['permission:update_discussion']);
+    Route::put('discussion/{id}', 'DiscussionController@update')->middleware(['permission:update_discussion']);
+    Route::delete('discussion/{id}', 'DiscussionController@destroy')->middleware(['permission:destroy_discussion']);
+    Route::post('/discussion/{id}/status', 'DiscussionController@status')->middleware(['permission:update_discussion']);
 
-    Route::resource('comment', 'CommentController', ['except' => ['create']]);
+    // Tag
+    Route::get('comment', 'CommentController@index')->middleware(['permission:list_comment']);
+    Route::get('comment/{id}/edit', 'CommentController@edit')->middleware(['permission:update_comment']);
+    Route::put('comment/{id}', 'CommentController@update')->middleware(['permission:update_comment']);
+    Route::delete('comment/{id}', 'CommentController@destroy')->middleware(['permission:destroy_comment']);
 
-    Route::resource('tag', 'TagController', ['except' => ['create', 'show']]);
+    // Tag
+    Route::get('tag', 'TagController@index')->middleware(['permission:list_tag']);
+    Route::post('tag', 'TagController@store')->middleware(['permission:create_tag']);
+    Route::get('tag/{id}/edit', 'TagController@edit')->middleware(['permission:update_tag']);
+    Route::put('tag/{id}', 'TagController@update')->middleware(['permission:update_tag']);
+    Route::delete('tag/{id}', 'TagController@destroy')->middleware(['permission:destroy_tag']);
 
-    Route::resource('link', 'LinkController', ['except' => ['create', 'show']]);
-    Route::post('/link/{id}/status', 'LinkController@status');
+    // Link
+    Route::get('link', 'LinkController@index')->middleware(['permission:list_link']);
+    Route::post('link', 'LinkController@store')->middleware(['permission:create_link']);
+    Route::get('link/{id}/edit', 'LinkController@edit')->middleware(['permission:update_link']);
+    Route::put('link/{id}', 'LinkController@update')->middleware(['permission:update_link']);
+    Route::delete('link/{id}', 'LinkController@destroy')->middleware(['permission:destroy_link']);
+    Route::post('/link/{id}/status', 'LinkController@status')->middleware(['permission:update_link']);
 
-    Route::resource('role', 'RoleController', ['except' => ['create', 'edit']]);
+    Route::get('role', 'RoleController@index')->middleware(['permission:list_role']);
+    Route::post('role', 'RoleController@store')->middleware(['permission:create_role']);
+    Route::get('role/{id}/edit', 'RoleController@edit')->middleware(['permission:update_role']);
+    Route::put('role/{id}', 'RoleController@update')->middleware(['permission:update_role']);
+    Route::delete('role/{id}', 'RoleController@destroy')->middleware(['permission:destroy_role']);
+    Route::get('permissions', 'PermissionsController@index')->middleware(['permission:update_role_permissions']);
+    Route::post('role/{role}/permissions', 'RoleController@updateRolePermissions')->middleware(['permission:update_role_permissions']);
 
-    Route::get('visitor', 'VisitorController@index');
+    Route::get('visitor', 'VisitorController@index')->middleware(['permission:list_visitor']);
 
-    Route::get('upload', 'UploadController@index');
-    Route::post('upload', 'UploadController@uploadForManager');
-    Route::post('folder', 'UploadController@createFolder');
-    Route::post('folder/delete', 'UploadController@deleteFolder');
-    Route::post('file/delete', 'UploadController@deleteFile');
+    Route::get('upload', 'UploadController@index')->middleware(['permission:list_file']);
+    Route::post('upload', 'UploadController@uploadForManager')->middleware(['permission:upload_file']);
+    Route::post('folder', 'UploadController@createFolder')->middleware(['permission:create_file_folder']);
+    Route::post('folder/delete', 'UploadController@deleteFolder')->middleware(['permission:destroy_file']);
+    Route::post('file/delete', 'UploadController@deleteFile')->middleware(['permission:destroy_file']);
 
-    Route::get('system', 'SystemController@getSystemInfo');
-
-    Route::get('permissions', 'PermissionsController@index');
-    Route::post('role/{role}/permissions', 'RoleController@updateRolePermissions');
+    Route::get('system', 'SystemController@getSystemInfo')->middleware(['permission:list_system_info']);
 });
 
 Route::group([

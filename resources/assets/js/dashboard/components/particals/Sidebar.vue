@@ -15,11 +15,11 @@
           <a href="/setting"><i class="fas fa-cog"></i></a>
         </div>
       </div>
-      <li v-for="menu in menus" :class="{ 'mb-3': menu.children }">
+      <li v-for="menu in menus" :class="{ 'mb-3': menu.children }" v-if="menu.can">
         <div class="sidebar-group" v-if="menu.children">
           <p class="sidebar-heading text-white-50"><span>{{ $t(menu.label) }}</span></p>
           <ul class="sidebar-group-items">
-            <li v-for="item in menu.children">
+            <li v-for="item in menu.children" v-if="item.can">
               <router-link :to="item.uri">
                 <i :class="item.icon"></i> {{ $t(item.label) }}
               </router-link>
@@ -40,7 +40,6 @@
   export default {
     data () {
       return {
-        menus: menus,
         user: {}
       }
     },
@@ -48,6 +47,26 @@
       this.user = window.User
     },
     computed: {
+      menus () {
+        menus.forEach((item) => {
+          if (item.children) {
+            let i = 0
+
+            item.children.forEach((child) => {
+              child.can = child.permission ? this.checkPermission(child.permission) : true
+
+              i = child.can ? i + 1 : i
+            })
+
+            item.can = i > 0
+          } else {
+            item.can = item.permission ? this.checkPermission(item.permission) : true
+          }
+        })
+
+        return menus
+      },
+
       userInfo() {
         return '/user/' + this.user.name
       }
