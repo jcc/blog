@@ -56,3 +56,8 @@ body {
 .table-hover tbody tr:hover {
   background-color: #f9f9fb !important;
 }
+
+.text-upper {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}

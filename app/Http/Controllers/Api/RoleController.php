@@ -48,7 +48,7 @@ class RoleController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function edit($id)
+    public function show($id)
     {
         return $this->response->item(Role::findOrFail($id));
     }
@@ -64,6 +64,21 @@ class RoleController extends ApiController
     public function update(Request $request, $id)
     {
         Role::findOrFail($id)->update($request->all());
+
+        return $this->response->withNoContent();
+    }
+
+    /**
+     * Update Role Permissions
+     *
+     * @param \Illuminate\Http\Request       $request
+     * @param \Spatie\Permission\Models\Role $role
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateRolePermissions(Request $request, Role $role)
+    {
+        $role->permissions()->sync($request->get('permissions'));
 
         return $this->response->withNoContent();
     }
