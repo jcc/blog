@@ -36,7 +36,7 @@ let themes = [
 ];
 
 themes.forEach((item) => {
-  mix.sass(item, 'public/css/themes').version();
+  mix.sass(item, 'public/css/themes')
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')
