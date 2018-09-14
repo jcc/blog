@@ -11,8 +11,7 @@ const path = require('path');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.webpackConfig({
+let config = {
   resolve: {
     alias: {
       'config': 'assets/js/config',
@@ -28,7 +27,18 @@ mix.webpackConfig({
       path.resolve(__dirname, "resources")
     ]
   },
-});
+}
+
+if (!process.argv.includes('--hot')) {
+  config = Object.assign(config, {
+    output: {
+      publicPath: "/",
+      chunkFilename: 'js/[name].[chunkhash].js'
+    }
+  })
+}
+
+mix.webpackConfig(config)
 
 let themes = [
   'resources/assets/sass/themes/default-theme.scss',
@@ -45,11 +55,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
   .sass('resources/assets/sass/home.scss', 'public/css')
 
 if (mix.inProduction()) {
-  mix.webpackConfig({
-    output: {
-      publicPath: "/",
-      chunkFilename: 'js/[name].[chunkhash].js'
-    }
-  })
   mix.version()
 }
