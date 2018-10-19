@@ -35,6 +35,16 @@
         </div>
       </template>
       <div class="form-group">
+        <div class="custom-control custom-checkbox d-inline-block pr-3">
+          <input type="checkbox" class="custom-control-input" id="is-admin" v-model="user.is_admin">
+          <label class="custom-control-label" for="is-admin">Set Admin</label>
+        </div>
+      </div>
+      <div class="form-group" v-if="user.is_admin">
+        <label>Roles</label>
+        <multiselect v-model="roles" :options="allRoles" multiple searchable hide-selected :close-on-select="false" :clear-on-select="false" :limit="5" :placeholder="$t('form.select_tag')" label="name" track-by="name"></multiselect>
+      </div>
+      <div class="form-group">
         <button type="submit" class="btn btn-primary">{{ user.id ? $t('form.edit') : $t('form.create') }}</button>
       </div>
     </form>
@@ -42,9 +52,13 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 import { stack_error } from 'config/helper'
 
 export default {
+  components: {
+    Multiselect
+  },
   props: {
     user: {
       type: Object,
@@ -53,15 +67,50 @@ export default {
       }
     },
   },
+
+  data: () => ({
+    roles: [],
+    allRoles: [],
+    isAdmin: false
+  }),
+
   computed: {
     mode() {
       return this.user.id ? 'update' : 'create'
     },
   },
+
+  watch: {
+    user(val) {
+      this.roles = val.roles.data
+    }
+  },
+
+  async created() {
+    await this.loadRoles()
+  },
+
   methods: {
+    loadRoles() {
+      this.$http.get('role', {
+        params: {
+          per_page: 100
+        }
+      }).then(({data}) => {
+        this.allRoles = data.data
+      })
+    },
+
     onSubmit() {
       let url = 'user' + (this.user.id ? '/' + this.user.id : '')
       let method = this.user.id ? 'patch' : 'post'
+      let roleIds = []
+
+      this.roles.forEach((item) => {
+        roleIds.push(item.id)
+      })
+
+      this.user.roles = roleIds
 
       this.$http[method](url, this.user)
         .then((response) => {

@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     loadUser() {
-      this.$http.get('user/' + this.$route.params.id + '/edit')
+      this.$http.get('user/' + this.$route.params.id + '/edit?include=roles')
         .then((response) => {
           this.user = response.data.data
         })

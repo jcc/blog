@@ -10,7 +10,7 @@ Route::group([
     Route::get('user', 'UserController@index')->middleware(['permission:list_user']);
     Route::post('user', 'UserController@store')->middleware(['permission:create_user']);
     Route::get('user/{id}/edit', 'UserController@edit')->middleware(['permission:update_user']);
-    Route::put('user/{id}', 'UserController@update')->middleware(['permission:update_user']);
+    Route::patch('user/{id}', 'UserController@update')->middleware(['permission:update_user']);
     Route::delete('user/{id}', 'UserController@destroy')->middleware(['permission:destroy_user']);
     Route::post('/user/{id}/status', 'UserController@status')->middleware(['permission:update_user']);
 
