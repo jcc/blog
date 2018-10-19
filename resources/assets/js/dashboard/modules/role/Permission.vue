@@ -49,7 +49,7 @@
       },
 
       loadRole () {
-        this.$http.get(`role/${this.$route.params.id}`).then(({data}) => {
+        this.$http.get(`role/${this.$route.params.id}/edit`).then(({data}) => {
           this.selectedPermissions = data.data.permission_ids
         })
       },
