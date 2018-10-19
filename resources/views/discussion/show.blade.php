@@ -6,7 +6,7 @@
     @component('particals.jumbotron')
         <h4>{{ $discussion->title }}</h4>
 
-        <span><i class="fas fa-user" style="margin-right: 10px"></i>{{ $discussion->user->name or 'null' }}</span><br/>
+        <span><i class="fas fa-user" style="margin-right: 10px"></i>{{ $discussion->user->name ?? 'null' }}</span><br/>
 
         @can('update', $discussion)
             <a href="{{ url("discussion/{$discussion->id}/edit") }}" class="edit-discuss btn btn-info btn-sm"><i class="fas fa-pencil-alt" style="padding: 0"></i> {{ lang('Edit Problem') }}</a>
