@@ -33,7 +33,7 @@
                                 {{ lang('Replies') }}
                             </div>
                         </div>
-                        {{ $discussion->user->name or 'null' }}
+                        {{ $discussion->user->name ?? 'null' }}
                     </div>
                 </div>
                 @empty

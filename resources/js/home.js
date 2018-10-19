@@ -2,8 +2,8 @@ window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n';
-import locales from 'lang';
-import httpPlugin from 'plugins/http';
+import locales from 'lang/index';
+import httpPlugin from 'plugins/http/index';
 
 require('bootstrap');
 require('social-share.js/dist/js/social-share.min.js');

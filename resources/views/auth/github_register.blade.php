@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <div class="col-md-10 offset-md-1">
                                 <label for="name" class="control-label">{{ lang('Username') }}</label>
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $oauthData['github_name'] or '' }}" placeholder="{{ lang('Input Name') }}" required>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $oauthData['github_name'] ?? '' }}" placeholder="{{ lang('Input Name') }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <div class="col-md-10 offset-md-1">
                                 <label for="email" class="control-label">{{ lang('Email') }}</label>
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $oauthData['email'] or '' }}" placeholder="{{ lang('Input Email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $oauthData['email'] ?? '' }}" placeholder="{{ lang('Input Email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">

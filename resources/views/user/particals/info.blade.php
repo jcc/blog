@@ -6,10 +6,10 @@
             </div>
             <div class="col-sm-5 content">
                 <div class="header">
-                    {{ $user->nickname or $user->name }}
+                    {{ $user->nickname ?? $user->name }}
                 </div>
                 <div class="description">
-                    {{ $user->description or lang('Nothing') }}
+                    {{ $user->description ?? lang('Nothing') }}
                 </div>
                 @if(Auth::check())
                     <div class="actions">

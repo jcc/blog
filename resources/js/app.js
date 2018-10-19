@@ -7,18 +7,18 @@
 
 require('./bootstrap')
 
-import httpPlugin from 'plugins/http'
+import httpPlugin from 'plugins/http/index'
 import VueRouter from 'vue-router'
 import store from './vuex/store.js'
 import VueI18n from 'vue-i18n'
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-import router from './router'
-import locales from 'lang'
+import router from './router/index'
+import locales from 'lang/index'
 
 import App from './App.vue'
 
-require('dashboard/runtime/mixins')
+require('dashboard/runtime/mixins/index')
 
 window.marked = require('marked')
 window.hljs = require('vendor/highlight.min.js')
