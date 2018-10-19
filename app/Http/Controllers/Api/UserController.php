@@ -64,7 +64,11 @@ class UserController extends ApiController
             'confirm_code' => str_random(64),
         ]);
 
-        User::create($data);
+        \DB::transaction(function () use ($request, $data) {
+            $user = User::create($data);
+
+            $user->syncRoles($request->get('roles'));
+        });
 
         return $this->response->withNoContent();
     }
@@ -78,7 +82,7 @@ class UserController extends ApiController
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::withoutGlobalScopes()->findOrFail($id);
 
         return $this->response->item($user);
     }
@@ -95,7 +99,11 @@ class UserController extends ApiController
     {
         $user = User::findOrFail($id);
 
-        $user->update($request->all());
+        \DB::transaction(function () use ($request, $user) {
+            $user->update($request->all());
+
+            $user->syncRoles($request->get('roles'));
+        });
 
         return $this->response->withNoContent();
     }
