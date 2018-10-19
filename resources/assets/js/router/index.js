@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import beforeEach from './beforeEach'
 import { routes as dashboard } from '../dashboard'
-import { routes as home } from '../home'
 
 Vue.use(Router);
 

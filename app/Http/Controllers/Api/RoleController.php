@@ -17,10 +17,10 @@ class RoleController extends ApiController
     public function index(Request $request)
     {
         $keyword = $request->get('keyword');
+
         $roles = Role::query()->when($keyword, function ($query) use ($keyword) {
             $query->where('name', 'like', "%{$keyword}%");
-        })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        })->orderBy('created_at', 'desc')->paginate($request->get('per_page', 10));
 
         return $this->response->collection($roles);
     }
