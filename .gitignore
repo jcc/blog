@@ -1,10 +1,13 @@
 /node_modules
+storage/
 /public/storage
 /vendor
 /.idea
 Homestead.json
 Homestead.yaml
 .env
+
+package-lock.json
 /public/css
 /public/js
 /public/fonts
