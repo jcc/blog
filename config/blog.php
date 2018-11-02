@@ -59,9 +59,9 @@ return [
             'open' => true,
             'url'  => 'https://github.com/skywingfs',
         ],
-        'twitter' => [
-            'open' => false,
-            'url'  => 'https://twitter.com/pigjian'
+        'weibo' => [
+            'open' => true,
+            'url'  => 'https://weibo.com/331293207'
         ],
         'meta' => '© Blog Powered By Jiajian Chan',
     ],
