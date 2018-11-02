@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://phpgoto.com'),
+    'url' => env('APP_URL', 'http://pigjian.app'),
 
     /*
     |--------------------------------------------------------------------------
