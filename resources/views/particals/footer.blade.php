@@ -15,10 +15,10 @@
                         </a>
                     </li>
                     @endif
-                    @if(config('blog.footer.twitter.open'))
+                    @if(config('blog.footer.weibo.open'))
                     <li class="mx-2">
-                        <a href="{{ config('blog.footer.twitter.url') }}" target="_blank">
-                            <i class="fab fa-twitter"></i>
+                        <a href="{{ config('blog.footer.weibo.url') }}" target="_blank">
+                            <i class="fab fa-weibo"></i>
                         </a>
                     </li>
                     @endif
