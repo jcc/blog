@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://phpgoto.com'),
+    'url' => env('APP_URL', 'http://phpgoto.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -184,7 +184,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-//        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
