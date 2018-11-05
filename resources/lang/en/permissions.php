@@ -18,7 +18,6 @@ return [
     'create_article' => 'Create Article',
     'update_article' => 'Update Article',
     'destroy_article' => 'Delete Article',
-
     // Discussion
     'list_discussion' => 'List Discussions',
     'create_discussion' => 'Create Discussion',

@@ -21,6 +21,10 @@ Route::group([
     Route::patch('article/{id}', 'ArticleController@update')->name('api.article.update')->middleware(['permission:update_article']);
     Route::delete('article/{id}', 'ArticleController@destroy')->name('api.article.destroy')->middleware(['permission:destroy_article']);
 
+    //BOOK
+    Route::get('book', 'BookController@index')->name('api.book.index')->middleware(['permission:list_book']);
+
+
     // Category
     Route::get('category', 'CategoryController@index')->middleware(['permission:list_category']);
     Route::post('category', 'CategoryController@store')->middleware(['permission:create_category']);
@@ -37,7 +41,7 @@ Route::group([
     Route::delete('discussion/{id}', 'DiscussionController@destroy')->middleware(['permission:destroy_discussion']);
     Route::post('/discussion/{id}/status', 'DiscussionController@status')->middleware(['permission:update_discussion']);
 
-    // Tag
+    // Comment
     Route::get('comment', 'CommentController@index')->middleware(['permission:list_comment']);
     Route::get('comment/{id}/edit', 'CommentController@edit')->middleware(['permission:update_comment']);
     Route::patch('comment/{id}', 'CommentController@update')->middleware(['permission:update_comment']);

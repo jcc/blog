@@ -41,6 +41,7 @@ export default {
   website: '网站地址',
   create_article: '创建文章',
   edit_article: '修改文章',
+  create_book: '创建图书',
   create_discussion: '创建讨论',
   edit_discussion: '修改讨论',
   edit_comment: '修改评论',
@@ -70,6 +71,7 @@ export default {
   select_guard_name: '选择应用范围',
   set_permissions: '设置权限',
   save: '保存',
-  submit: '提交'
+  submit: '提交',
+  isbn: 'ISBN（国际标准书号）'
 
 }
