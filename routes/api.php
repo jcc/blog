@@ -23,6 +23,7 @@ Route::group([
 
     //BOOK
     Route::get('book', 'BookController@index')->name('api.book.index')->middleware(['permission:list_book']);
+    Route::post('book', 'BookController@store')->name('api.book.store')->middleware(['permission:create_book']);
 
 
     // Category

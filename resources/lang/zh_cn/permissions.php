@@ -20,7 +20,8 @@ return [
     'destroy_article' => '删除文章',
 
     // BOOK
-    'list_book' => '书籍列表',
+    'list_book' => '图书列表',
+    'create_book' => '创建图书',
 
 
     // Discussion

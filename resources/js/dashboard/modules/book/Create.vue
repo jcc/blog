@@ -8,12 +8,12 @@
             <div class="row">
                 <form class="col-sm-6 offset-sm-2" @submit.prevent="onSubmit">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-3 col-form-label">{{ $t('form.isbn') }}</label>
+                        <label for="isbn13" class="col-sm-3 col-form-label">{{ $t('form.isbn') }}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="name" id="name" v-model="book.name" class="form-control">
+                            <input type="text" name="isbn13" id="isbn13" v-model="book.isbn13" class="form-control">
                         </div>
                     </div>
-                   
+
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-9">
                             <button type="submit" class="btn btn-info">{{$t('form.create')}}</button>
@@ -33,33 +33,33 @@ import { stack_error } from 'config/helper'
 
 export default {
   props: {
-    category: {
+    book: {
       type: Object,
-      default () {
+      default() {
         return {}
       }
     }
   },
   computed: {
     mode() {
-      return this.book.id ? 'update' : 'create'
-    },
+      return 'create'
+    }
   },
   methods: {
     onSubmit() {
-      let url = 'category' + (this.category.id ? '/' + this.category.id : '')
-      let method = this.category.id ? 'patch' : 'post'
+      let url = 'book'
+      let method = 'post'
 
-      this.$http[method](url, this.category)
-        .then((response) => {
-          toastr.success('You ' + this.mode + 'd the category success!')
+      this.$http[method](url, this.book)
+        .then(response => {
+          toastr.success('You ' + this.mode + 'd the book success!')
 
-          this.$router.push({ name: 'dashboard.category' })
-        }).catch(({ response }) => {
+          this.$router.push({ name: 'dashboard.book' })
+        })
+        .catch(({ response }) => {
           stack_error(response)
         })
     }
   }
 }
-
 </script>

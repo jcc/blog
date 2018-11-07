@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Article;
+use App\Book;
 use App\Scopes\DraftScope;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
@@ -17,45 +17,65 @@ class BookController extends ApiController
      */
     public function index(Request $request)
     {
-       
+
 
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\ArticleRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function store(BookRequest $request)
+    public function store1(Request $request)
     {
-      // init app
-      $app = new Application();
-
-      // book's isbn10/isbn13 code
-              $isbn = '9787115473899';
-              return $isbn;
-      // get a book entity
-              try {
-                  $book = $app->getBook($isbn);
-                  if ($book) {
-                      // use as an array
-                      $book = $book->toJSON();
-                      return $this->response->collection($book);
-                      // or get json format
-      //                $book->toJSON();
-      //
-      //                // also, get property directly is allowed
-      //                $book->getTitle();
-      //                $book->getPrice();
-                  }
-              } catch (\Exception $exception) {
-                  // handle exception
-              }
+        //  9787121215728 https://images.weserv.nl/?url=
+        $req = $request->all();
+        // init app
+        $app = new Application();
+        try {
+            $book = $app->getBook($req['isbn13']);
+            if ($book) {
+                $book = $book->toArray();
+                $book['author'] = rtrim(implode(",", $book['author']), ',');
+                $book['tags'] = rtrim(implode(",", $book['tags']), ',');
+                $book['isbn13'] = $book['isbn'];
+                $book['image'] = $book['cover'];
+                $book['image_proxy'] = 'https://images.weserv.nl/?url=' . $book['cover'];
+                $book['pubdate'] = $book['publication_date'];
+                unset($book['cover']);
+                unset($book['isbn']);
+                unset($book['publication_date']);
+                dump($book);
+                $new_book = Book::create($book);
+                return $new_book;
+                return $this->response->withNoContent();
+            }
+        } catch (\Exception $exception) {
+            // handle exception
+        }
 
     }
 
+    public function store(Request $request)
+    {
+        //  9787121215728 https://images.weserv.nl/?url=
+        $req = $request->all();
+        // init app
+        $app = new Application();
+
+        $book = $app->getBook($req['isbn13']);
+        if ($book) {
+            $book = $book->toArray();
+            $book['author'] = rtrim(implode(",", $book['author']), ',');
+            $book['tags'] = rtrim(implode(",", $book['tags']), ',');
+            $book['isbn13'] = $book['isbn'];
+            $book['image'] = $book['cover'];
+            $book['image_proxy'] = 'https://images.weserv.nl/?url=' . $book['cover'];
+            $book['pubdate'] = $book['publication_date'];
+            unset($book['cover']);
+            unset($book['isbn']);
+            unset($book['publication_date']);
+//            dump($book);
+            $new_book = Book::create($book);
+            return $this->response->withNoContent();
+        }
+
+    }
 
 }
