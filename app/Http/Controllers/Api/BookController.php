@@ -58,7 +58,6 @@ class BookController extends ApiController
         $req = $request->all();
         // init app
         $app = new Application();
-
         $book = $app->getBook($req['isbn13']);
         if ($book) {
             $book = $book->toArray();
