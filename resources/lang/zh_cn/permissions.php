@@ -22,7 +22,7 @@ return [
     // BOOK
     'list_book' => '图书列表',
     'create_book' => '创建图书',
-
+    'destroy_book' => '删除图书',
 
     // Discussion
     'list_discussion' => '讨论列表',

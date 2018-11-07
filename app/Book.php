@@ -20,7 +20,18 @@ class Book extends Model
     
     protected $guarded = [];
 
-
+    /**
+     * checkAuth
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCheckAuth($query)
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $query->withoutGlobalScope(DraftScope::class);
+        }
+        return $query;
+    }
    
     
 }
