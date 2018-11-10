@@ -160,7 +160,11 @@
                 element: document.getElementById('editor'),
                 placeholder: t('form.content_placeholder', {type: t('form.article')}),
                 autoDownloadFontAwesome: true,
-                autosave: {enabled: true},
+                autosave: {
+                    enabled: true,
+                    uniqueId: "phpgoto",
+                    delay: 1000
+                },
                 forceSync: true,
                 previewRender(plainText, preview) {
                     preview.className += ' markdown'
