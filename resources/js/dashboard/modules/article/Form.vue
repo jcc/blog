@@ -159,11 +159,12 @@
             this.simplemde = new SimpleMDE({
                 element: document.getElementById('editor'),
                 placeholder: t('form.content_placeholder', {type: t('form.article')}),
+                autofocus: true,
                 autoDownloadFontAwesome: true,
                 autosave: {
                     enabled: true,
                     uniqueId: "phpgoto",
-                    delay: 1000
+                    delay: 3000
                 },
                 forceSync: true,
                 previewRender(plainText, preview) {
