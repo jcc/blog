@@ -6,6 +6,8 @@ storage/
 Homestead.json
 Homestead.yaml
 .env
+composer.json
+composer.lock
 
 package-lock.json
 /public/css
