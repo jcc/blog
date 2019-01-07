@@ -11,11 +11,11 @@ a {
   color: #fff;
 
   &:focus {
-    color: #0078ff;
+    color: #6289ad;
     background-color: transparent;
   }
   &:hover {
-    color: #0078ff;
+    color: #6289ad;
     background-color: transparent;
   }
 }
@@ -24,14 +24,14 @@ a {
   border: none;
 
   li a {
-    color: #0078ff;
+    color: #6289ad;
   }
 }
 
 .btn-success {
   color: #fff;
-  background-color: #0078ff;
-  border-color: #0078ff;
+  background-color: #6289ad;
+  border-color: #6289ad;
 
   &:hover {
     color: #fff;
@@ -54,7 +54,7 @@ a {
 
 .navbar-nav>li>.dropdown-menu>li:focus, .navbar-nav>li>.dropdown-menu>li:hover {
   text-decoration: none;
-  background-color: #0078ff;
+  background-color: #6289ad;
 
   a {
     color: #fff;
@@ -103,6 +103,6 @@ a {
   }
 
   a:hover {
-    color: #0078ff;
+    color: #6289ad;
   }
 }
