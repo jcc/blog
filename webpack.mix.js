@@ -14,13 +14,13 @@ const path = require('path');
 let config = {
   resolve: {
     alias: {
-      'config': 'assets/js/config',
-      'lang': 'assets/js/lang',
-      'plugins': 'assets/js/plugins',
-      'vendor': 'assets/js/vendor',
-      'dashboard': 'assets/js/dashboard',
-      'home': 'assets/js/home',
-      'js': 'assets/js',
+      'config': 'js/config',
+      'lang': 'js/lang',
+      'plugins': 'js/plugins',
+      'vendor': 'js/vendor',
+      'dashboard': 'js/dashboard',
+      'home': 'js/home',
+      'js': 'js',
     },
     modules: [
       'node_modules',
@@ -41,18 +41,18 @@ if (!process.argv.includes('--hot')) {
 mix.webpackConfig(config)
 
 let themes = [
-  'resources/assets/sass/themes/default-theme.scss',
-  'resources/assets/sass/themes/gray-theme.scss',
+  'resources/sass/themes/default-theme.scss',
+  'resources/sass/themes/gray-theme.scss',
 ];
 
 themes.forEach((item) => {
   mix.sass(item, 'public/css/themes')
 })
 
-mix.js('resources/assets/js/app.js', 'public/js')
-  .sass('resources/assets/sass/app.scss', 'public/css')
-  .js('resources/assets/js/home.js', 'public/js')
-  .sass('resources/assets/sass/home.scss', 'public/css')
+mix.js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
+  .js('resources/js/home.js', 'public/js')
+  .sass('resources/sass/home.scss', 'public/css')
 
 if (mix.inProduction()) {
   mix.version()

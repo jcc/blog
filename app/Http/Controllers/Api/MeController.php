@@ -2,26 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
-use App\Repositories\CommentRepository;
 
 class MeController extends ApiController
 {
-    protected $comment;
-
-    public function __construct(CommentRepository $comment)
-    {
-        parent::__construct();
-
-        $this->comment = $comment;
-    }
-
     /**
      * post up vote the comment by user.
-     * 
+     *
      * @param Request $request
-     * @param string $type
-     * 
+     * @param string  $type
+     *
      * @return mixed
      */
     public function postVoteComment(Request $request, $type)
@@ -30,10 +22,12 @@ class MeController extends ApiController
             'id' => 'required|exists:comments,id',
         ]);
 
-        ($type == 'up')
-            ? $this->comment->toggleVote($request->id)
-            : $this->comment->toggleVote($request->id, false);
-        
+        $user = auth()->user();
+
+        $comment = Comment::findOrFail($request->id);
+
+        ($type == 'up') ? User::upOrDownVote($user, $comment) : User::upOrDownVote($user, $comment, 'down');
+
         return $this->response->withNoContent();
     }
 }

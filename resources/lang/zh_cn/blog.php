@@ -3,8 +3,8 @@
 return [
     'Articles'    => '文章',
     'Article'    => '文章',
-    'Discussions' => '讨论',
-    'Discussion' => '讨论',
+    'Discussions' => '闲聊灌水',
+    'Discussion' => '闲聊灌水',
     'Follow'      => '关注',
     'Following'   => '关注中',
     'Comments'    => '评论数',

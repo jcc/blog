@@ -1,0 +1,63 @@
+
+// Public
+@import "public";
+
+//Simplemde
+@import url("vendor/simplemde.min.css");
+
+// Markdown
+@import "markdown";
+@import url("vendor/highlight.min.css");
+
+@import "form";
+@import "navbar";
+@import "box";
+@import "toastr";
+@import "togglebutton";
+
+body {
+  background-color: #f9f9fb;
+  color: #636b6f !important;
+}
+
+.navbar-toggler {
+  color: $wet-asphalt;
+}
+
+.btn i {
+  color: #fff;
+}
+
+.width-5-percent {
+    width: 5%;
+}
+
+.width-10-percent {
+    width: 10%;
+}
+
+.multiselect__content {
+    z-index: 2;
+}
+
+.avatar {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.editor-toolbar.fullscreen {
+    z-index: 1000 !important;
+}
+
+.CodeMirror-fullscreen {
+    z-index: 1000 !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f9f9fb !important;
+}
+
+.text-upper {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}

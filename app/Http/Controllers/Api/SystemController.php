@@ -5,16 +5,8 @@ namespace App\Http\Controllers\Api;
 class SystemController extends ApiController
 {
     /**
-     * SystemController constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Get the system info.
-     * 
+     *
      * @return mixed
      */
     public function getSystemInfo()

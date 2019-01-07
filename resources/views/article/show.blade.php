@@ -9,7 +9,7 @@
         <h6>{{ $article->subtitle }}</h6>
 
         <div class="header">
-            <i class="fas fa-user"></i>{{ $article->user->name or 'null' }}，
+            <i class="fas fa-user"></i>{{ $article->user->name ?? 'null' }}，
             @if(count($article->tags))
             <i class="fas fa-tags"></i>
                 @foreach($article->tags as $tag)

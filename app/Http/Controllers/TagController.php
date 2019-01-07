@@ -2,42 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Repositories\TagRepository;
+use App\Tag;
 
 class TagController extends Controller
 {
-    protected $tag;
-
-    public function __construct(TagRepository $tag)
-    {
-        $this->tag = $tag;
-    }
-
     /**
      * Display the tag resource.
-     * 
+     *
      * @return mixed
      */
     public function index()
     {
-        $tags = $this->tag->all();
+        $tags = Tag::query()->get();
 
         return view('tag.index', compact('tags'));
     }
 
     /**
      * Display the articles and discussions by the tag.
-     * 
-     * @param  string $tag
+     *
+     * @param string $tag
+     *
      * @return mixed
      */
     public function show($tag)
     {
-        $tag = $this->tag->getByName($tag);
+        $tag = Tag::query()->where('tag', $tag)->first();
 
-        if (!$tag) abort(404);
+        if (!$tag) {
+            abort(404);
+        }
 
         $articles = $tag->articles;
         $discussions = $tag->discussions;
