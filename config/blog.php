@@ -39,8 +39,8 @@ return [
 
     // Article Page
     'article' => [
-        'title'       => 'PHP面试网',
-        'description' => 'http://www.phpmianshi.cn',
+        'title'       => '胜人者有力 自胜者强',
+        'description' => '',
         'number'      => 15,
         'sort'        => 'desc',
         'sortColumn'  => 'published_at',
@@ -63,7 +63,7 @@ return [
             'open' => false,
             'url'  => ''
         ],
-        'meta' => '© PHP面试网 2016. Powered By cicada chirp',
+        'meta' => '© PHP面试网 '.date("Y").'. Powered By cicada chirp',
     ],
 
     'license' => 'Powered By Jiajian Chan.<br/>This article is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.',
