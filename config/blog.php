@@ -15,7 +15,7 @@ return [
     'default_icon' => env('DEFAULT_ICON') ?: '/images/favicon.ico',
 
     // Color Theme
-    'color_theme' => 'gray-theme',
+    'color_theme' => 'default-theme',
 
     // Meta
     'meta' => [
@@ -63,7 +63,7 @@ return [
             'open' => false,
             'url'  => ''
         ],
-        'meta' => '© PHP面试网 '.date("Y").'. Powered By cicada chirp',
+        'meta' => '© PHP面试网 '.date("Y")-'. Powered By cicada chirp',
     ],
 
     'license' => 'Powered By Jiajian Chan.<br/>This article is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.',
