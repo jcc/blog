@@ -19,8 +19,8 @@ return [
 
     // Meta
     'meta' => [
-        'keywords' => 'PJ Blog,blog,pigjian,laravel,vuejs',
-        'description' => 'Nothing is impossible in PJ Blog'
+        'keywords' => 'PHP,PHP面试网,Blog,blog,php面试,php面试题,面试题,laravel,vuejs',
+        'description' => 'PHP面试网'
     ],
 
     // Social Share
@@ -39,8 +39,8 @@ return [
 
     // Article Page
     'article' => [
-        'title'       => 'Nothing is impossible.',
-        'description' => 'https://pigjian.com',
+        'title'       => 'PHP面试网',
+        'description' => 'http://www.phpmianshi.cn',
         'number'      => 15,
         'sort'        => 'desc',
         'sortColumn'  => 'published_at',
@@ -57,13 +57,13 @@ return [
     'footer' => [
         'github' => [
             'open' => true,
-            'url'  => 'https://github.com/jcc',
+            'url'  => 'https://github.com/liudandandear',
         ],
         'twitter' => [
-            'open' => true,
-            'url'  => 'https://twitter.com/pigjian'
+            'open' => false,
+            'url'  => ''
         ],
-        'meta' => '© PJ Blog 2016. Powered By Jiajian Chan',
+        'meta' => '© PHP面试网 2016. Powered By cicada chirp',
     ],
 
     'license' => 'Powered By Jiajian Chan.<br/>This article is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.',
