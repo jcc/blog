@@ -70,7 +70,7 @@ return [
     'Contact Me'           => '联系我',
     'About Me'             => '关于我',
     'Tags'                 => '所有标签',
-    'Tag Meta'             => '标签下所有文章和讨论',
+    'Tag Meta'             => '标签相关的文章和讨论',
     'Tags Meta'            => '所有文章和讨论的标签',
     'For Articles'         => '文章',
     'For Discussions'      => '讨论',

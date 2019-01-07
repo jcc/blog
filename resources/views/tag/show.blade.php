@@ -15,7 +15,7 @@
                     <ul class="list-group list-group-flush">
                         @forelse($articles as $article)
                             <li class="list-group-item">
-                                <span class="badge">{{ $article->comments->count() }}</span>
+                                <span class="navbar-unread">{{ $article->comments->count() }}</span>
                                 <a href="{{ url($article->slug) }}">{{ $article->title }}</a>
                             </li>
                         @empty
