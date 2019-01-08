@@ -43,10 +43,10 @@ return [
     'destroy_tag' => '删除标签',
 
     // Category
-    'list_category' => '分类列表',
-    'create_category' => '创建分类',
-    'update_category' => '更新分类',
-    'destroy_category' => '删除分类',
+    'list_category' => '专题列表',
+    'create_category' => '创建专题',
+    'update_category' => '更新专题',
+    'destroy_category' => '删除专题',
 
     // Link
     'list_link' => '友链列表',

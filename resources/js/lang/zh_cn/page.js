@@ -7,7 +7,7 @@ export default {
   discussions: '讨论列表',
   files: '文件列表',
   tags: '标签列表',
-  categories: '分类列表',
+  categories: '专题列表',
   links: '友链列表',
   systems: '系统设置',
   user_num: '用户数',
