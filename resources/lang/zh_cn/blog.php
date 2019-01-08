@@ -26,7 +26,7 @@ return [
     'Edit Profile'=> '编辑资料',
     'Create Discussion' => '创建新的讨论',
     'Edit Discussion'  => '修改讨论',
-    'Discuss Problem'  => '问题讨论',
+    'Discuss Problem'  => '发帖讨论',
     'Discuss Subtitle' => '欢迎，提出各种问题',
     'Submit Problem'   => '提出问题',
     'Edit Problem'     => '编辑问题',
