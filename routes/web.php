@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
 // Link
 Route::get('link', 'LinkController@index');
 
+// Home & About
+Route::get('/tags', 'HomeController@donate');
+
 // Category
 Route::group(['prefix' => 'category'], function () {
     Route::get('{category}', 'CategoryController@show');

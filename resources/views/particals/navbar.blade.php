@@ -13,6 +13,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ lang('Articles') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
+                <li><a href="{{ url('tags') }}">标签云</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

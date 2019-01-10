@@ -34,4 +34,14 @@ class HomeController extends Controller
 
         return view('search', compact('articles'));
     }
+
+    /**
+     * Display the tags page.
+     *
+     * @return mixed
+     */
+    public function tags()
+    {
+        return view('tags');
+    }
 }

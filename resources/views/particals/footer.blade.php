@@ -26,6 +26,10 @@
                 <div class="links">
                     <a href="{{ url('link') }}">{{ lang('Links') }}</a>
                 </div>
+                <div class="sponsors">
+                    <div class="title">CDN 支持</div>
+                    <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img width="150" src="https://pigjian.com/storage/logo/upyun-white.png"/></a>
+                </div>
             </div>
         </div>
     </div>
