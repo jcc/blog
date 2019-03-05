@@ -14,9 +14,9 @@ class CreateDiscussionsTable extends Migration
     public function up()
     {
         Schema::create('discussions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('last_user_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('last_user_id');
             $table->string('title');
             // $table->json('content');
             $table->text('content');
