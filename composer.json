@@ -13,7 +13,7 @@
         "jcc/laravel-vote": "dev-master",
         "jellybool/flysystem-upyun": "dev-master",
         "jellybool/translug": "~2.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/passport": "^7.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",

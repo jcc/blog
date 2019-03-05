@@ -1,5 +1,6 @@
-const { mix } = require('laravel-mix');
+const mix = require('laravel-mix');
 const path = require('path');
+const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ let config = {
       path.resolve(__dirname, "resources")
     ]
   },
+  plugins: [
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+  ]
 }
 
 if (!process.argv.includes('--hot')) {

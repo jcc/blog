@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -7,6 +6,7 @@
 
 require('./bootstrap')
 
+import Vue from 'vue'
 import httpPlugin from 'plugins/http/index'
 import VueRouter from 'vue-router'
 import store from './vuex/store.js'
@@ -48,20 +48,11 @@ const i18n = new VueI18n({
     messages: locales
 })
 
-Vue.component(
-    'vue-table-pagination',
-    require('dashboard/components/TablePagination.vue')
-)
+Vue.component('vue-table-pagination', require('dashboard/components/TablePagination.vue').default)
 
-Vue.component(
-    'vue-table',
-    require('dashboard/components/Table.vue')
-)
+Vue.component('vue-table', require('dashboard/components/Table.vue').default)
 
-Vue.component(
-    'vue-form',
-    require('dashboard/components/Form.vue')
-)
+Vue.component('vue-form', require('dashboard/components/Form.vue').default)
 
 new Vue({
     router,

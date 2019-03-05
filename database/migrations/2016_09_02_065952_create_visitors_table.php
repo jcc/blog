@@ -14,8 +14,8 @@ class CreateVisitorsTable extends Migration
     public function up()
     {
         Schema::create('visitors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('article_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('article_id');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
             $table->string('ip', 32);
             $table->string('country')->nullable();
