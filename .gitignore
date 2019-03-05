@@ -12,3 +12,6 @@ Homestead.yaml
 npm-debug.log
 .phpstorm.meta.php
 _ide_helper.php
+/storage/oauth-private.key
+/storage/oauth-public.key
+/package-lock.json
