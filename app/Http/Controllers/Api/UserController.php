@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Scopes\StatusScope;
 use App\User;
+use Illuminate\Support\Str;
 use Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -61,7 +62,7 @@ class UserController extends ApiController
     {
         $data = array_merge($request->all(), [
             'password' => bcrypt($request->get('password')),
-            'confirm_code' => str_random(64),
+            'confirm_code' => Str::random(64),
         ]);
 
         \DB::transaction(function () use ($request, $data) {

@@ -6,6 +6,7 @@ use App\Scopes\DraftScope;
 use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -124,7 +125,7 @@ class Article extends Model
         $this->attributes['title'] = $value;
 
         if (!config('services.youdao.appKey') || !config('services.youdao.appSecret')) {
-            $this->setUniqueSlug($value, str_random(5));
+            $this->setUniqueSlug($value, Str::random(5));
         } else {
             $this->setUniqueSlug(translug($value), '');
         }
@@ -138,7 +139,7 @@ class Article extends Model
      */
     public function setUniqueSlug($value, $extra)
     {
-        $slug = str_slug($value.'-'.$extra);
+        $slug = Str::slug($value.'-'.$extra);
 
         if (static::whereSlug($slug)->exists()) {
             $this->setUniqueSlug($slug, (int) $extra + 1);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
+use Illuminate\Support\Str;
 
 class UploadController extends ApiController
 {
@@ -45,7 +46,7 @@ class UploadController extends ApiController
                     ? $request->get('name').'.'.explode('/', $file->getClientMimeType())[1]
                     : $file->getClientOriginalName();
 
-        $path = str_finish($request->get('folder'), '/');
+        $path = Str::finish($request->get('folder'), '/');
 
         if ($this->manager->checkFile($path.$fileName)) {
             return $this->response->withBadRequest('This File exists.');
