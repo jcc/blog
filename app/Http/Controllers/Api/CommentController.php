@@ -39,9 +39,14 @@ class CommentController extends ApiController
      */
     public function store(CommentRequest $request)
     {
-        $data = array_merge($request->all(), [
-            'user_id' => Auth::user()->id,
-        ]);
+
+		$data = $request->all();
+		if ($data['commentable_type'] === 'articles') {
+			$article = \App\Article::find($data['commentable_id']);
+			if (!auth()->user()->can('comment',$article)) return response()->json([],403);
+		}
+
+        $data['user_id'] = Auth::user()->id;
 
         $mention = new Mention();
         $data['content'] = $mention->parse($data['content']);
