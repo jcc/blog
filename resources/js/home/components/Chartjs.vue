@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Chart from '../../../../node_modules/chart.js/src/chart'
+import Chart from 'chart.js/src/chart'
 
 const types = ['line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut']
 
