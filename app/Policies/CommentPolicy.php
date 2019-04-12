@@ -4,12 +4,9 @@ namespace App\Policies;
 
 use App\User;
 use App\Comment;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CommentPolicy
+class CommentPolicy extends Policy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the user can delete the comment.
      *
@@ -19,6 +16,6 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        return $user->is_admin || $comment->user_id === $user->id;
+        return $comment->user_id === $user->id;
     }
 }

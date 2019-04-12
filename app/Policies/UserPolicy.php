@@ -3,12 +3,9 @@
 namespace App\Policies;
 
 use App\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class UserPolicy extends Policy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the current user can update the user.
      *
@@ -30,6 +27,6 @@ class UserPolicy
      */
     public function delete(User $currentUser, User $user)
     {
-        return $currentUser->is_admin;
+        return false;
     }
 }

@@ -15,18 +15,11 @@ class VisitorController extends ApiController
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $vistors = Visitor::query()->when($keyword, function ($query) use ($keyword) {
-            $query->where('ip', 'like', "%{$keyword}%")
-                ->orWhereHas('article', function ($query) use ($keyword) {
-                    $query->where('title', 'like', "%{$keyword}%");
-                });
-        })
-        ->orderBy('created_at', 'desc')->paginate(10);
+        $vistors = Visitor::filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($vistors);
     }

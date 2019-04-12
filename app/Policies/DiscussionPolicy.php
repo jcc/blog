@@ -6,10 +6,8 @@ use App\User;
 use App\Discussion;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class DiscussionPolicy
+class DiscussionPolicy extends Policy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the user can update the discussion.
      *
@@ -19,7 +17,7 @@ class DiscussionPolicy
      */
     public function update(User $user, Discussion $discussion)
     {
-        return $user->is_admin || $user->id === $discussion->user_id;
+        return $user->id === $discussion->user_id;
     }
 
     /**
@@ -31,6 +29,6 @@ class DiscussionPolicy
      */
     public function delete(User $user, Discussion $discussion)
     {
-        return $user->is_admin;
+        return false;
     }
 }

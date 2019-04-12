@@ -12,16 +12,13 @@ class LinkController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $links = Link::checkAuth()->when($keyword, function ($query) use ($keyword) {
-            $query->where('name', 'like', "%{$keyword}%");
-        })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $links = Link::checkAuth()->filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($links);
     }
@@ -68,6 +65,7 @@ class LinkController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

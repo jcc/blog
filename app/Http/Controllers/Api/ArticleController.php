@@ -12,18 +12,13 @@ class ArticleController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $articles = Article::checkAuth()
-            ->when($keyword, function ($query) use ($keyword) {
-                $query->where('title', 'like', "%{$keyword}%")
-                    ->orWhere('subtitle', 'like', "%{$keyword}%");
-            })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::checkAuth()->filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($articles);
     }
@@ -60,6 +55,7 @@ class ArticleController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

@@ -52,6 +52,7 @@ class Response
      * @param TransformerAbstract|null $transformer
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function withCreated($resource = null, TransformerAbstract $transformer = null)
     {
@@ -181,6 +182,7 @@ class Response
      * @param TransformerAbstract|null $transformer
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function item($item, TransformerAbstract $transformer = null)
     {
@@ -196,6 +198,7 @@ class Response
      * @param TransformerAbstract|null $transformer
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function collection($items, TransformerAbstract $transformer = null)
     {

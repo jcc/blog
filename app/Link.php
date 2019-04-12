@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Scopes\StatusScope;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Link extends Model
@@ -23,7 +22,10 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'link', 'image', 'status'
+        'name',
+        'link',
+        'image',
+        'status'
     ];
 
     /**

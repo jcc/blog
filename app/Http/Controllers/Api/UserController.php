@@ -14,16 +14,14 @@ class UserController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
         $users = User::withoutGlobalScope(StatusScope::class)
-            ->when($keyword, function ($query) use ($keyword) {
-                $query->where('name', 'like', "%{$keyword}%");
-            })
+            ->filter($request->all())
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
@@ -80,6 +78,7 @@ class UserController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

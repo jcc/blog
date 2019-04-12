@@ -11,18 +11,13 @@ class TagController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $tags = Tag::query()
-            ->when($keyword, function ($query) use ($keyword) {
-                $query->where('tag', 'like', "%{$keyword}%")
-                    ->orWhere('title', 'like', "%{$keyword}%");
-            })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $tags = Tag::filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($tags);
     }
@@ -31,6 +26,7 @@ class TagController extends ApiController
      * Show all of the tags.
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function getList()
     {
@@ -57,6 +53,7 @@ class TagController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

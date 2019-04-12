@@ -15,17 +15,13 @@ class CommentController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-        $commemts = Comment::query()->when($keyword, function ($query) use ($keyword) {
-            $query->whereHas('user', function ($query) use ($keyword) {
-                $query->where('name', 'like', "%{$keyword}%");
-            });
-        })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $commemts = Comment::filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($commemts);
     }
@@ -36,6 +32,7 @@ class CommentController extends ApiController
      * @param \App\Http\Requests\CommentRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function store(CommentRequest $request)
     {
@@ -46,7 +43,7 @@ class CommentController extends ApiController
 			if (!auth()->user()->can('comment',$article)) return response()->json([],403);
 		}
 
-        $data['user_id'] = Auth::user()->id;
+        $data['user_id'] = \Auth::user()->id;
 
         $mention = new Mention();
         $data['content'] = $mention->parse($data['content']);
@@ -62,16 +59,15 @@ class CommentController extends ApiController
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @param int $commentableId
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function show(Request $request, $commentableId)
     {
-        $commentableType = $request->get('commentable_type');
-        $comments = Comment::query()->where('commentable_id', $commentableId)
-            ->where('commentable_type', $commentableType)
-            ->get();
+        $comments = Comment::filter($request->all())->where('commentable_id', $commentableId)->get();
 
         return $this->response->collection($comments);
     }
@@ -82,6 +78,7 @@ class CommentController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {
@@ -92,15 +89,13 @@ class CommentController extends ApiController
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\CommentRequest $request
-     * @param int                               $id
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(CommentRequest $request, $id)
     {
-        $data = $request->all();
-
-        Comment::findOrFail($id)->update($data);
+        Comment::findOrFail($id)->update($request->all());
 
         return $this->response->withNoContent();
     }
@@ -111,6 +106,7 @@ class CommentController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy($id)
     {

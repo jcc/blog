@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Notifications\GotVote;
+use EloquentFilter\Filterable;
 use Jcc\LaravelVote\Vote;
 use App\Traits\FollowTrait;
 use App\Scopes\StatusScope;
@@ -14,7 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote, HasRoles;
+    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote, HasRoles, Filterable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -29,9 +30,23 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'is_admin', 'avatar', 'password', 'confirm_code',
-        'nickname', 'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
-        'github_id', 'github_name', 'github_url', 'website', 'description', 'status'
+        'name',
+        'email',
+        'is_admin',
+        'avatar',
+        'password',
+        'confirm_code',
+        'nickname',
+        'real_name',
+        'weibo_name',
+        'weibo_link',
+        'email_notify_enabled',
+        'github_id',
+        'github_name',
+        'github_url',
+        'website',
+        'description',
+        'status'
     ];
 
     /**
@@ -40,7 +55,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'confirm_code', 'updated_at', 'deleted_at'
+        'password',
+        'remember_token',
+        'confirm_code',
+        'updated_at',
+        'deleted_at'
     ];
 
     /**
@@ -75,6 +94,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
     }
 
+    /**
+     * Determine whether user is a super administrator.
+     *
+     * @return int
+     */
     public function isSuperAdmin()
     {
         return ($this->id == config('blog.super_admin')) ? 1 : 0;

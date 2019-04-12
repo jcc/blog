@@ -13,14 +13,11 @@ class RoleController extends ApiController
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $roles = Role::query()->when($keyword, function ($query) use ($keyword) {
-            $query->where('name', 'like', "%{$keyword}%");
-        })->orderBy('created_at', 'desc')->paginate($request->get('per_page', 10));
+        $roles = Role::filter($request->all())->orderBy('created_at', 'desc')->paginate($request->get('per_page', 10));
 
         return $this->response->collection($roles);
     }
@@ -47,6 +44,7 @@ class RoleController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {
