@@ -6,11 +6,12 @@ use App\Scopes\StatusScope;
 use App\Tools\Markdowner;
 use App\Traits\BelongsToUser;
 use App\Traits\HasComments;
+use App\Traits\HasTags;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Discussion extends Model
 {
-    use SoftDeletes, BelongsToUser, HasComments;
+    use SoftDeletes, BelongsToUser, HasComments, HasTags;
 
     /**
      * The attributes that should be mutated to dates.
