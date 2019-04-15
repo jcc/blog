@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends Model
@@ -22,13 +21,16 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'tag', 'title', 'subtitle', 'meta_description'
+        'tag',
+        'title',
+        'subtitle',
+        'meta_description'
     ];
 
     /**
      * Get all of the articles that are assigned this tag.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorpheByMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function articles()
     {
@@ -38,7 +40,7 @@ class Tag extends Model
     /**
      * Get all of the discussions that are assigned this tag.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorpheBymany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function discussions()
     {

@@ -21,6 +21,7 @@
         "league/html-to-markdown": "^4.8",
         "predis/predis": "^1.1",
         "spatie/laravel-permission": "^2.23",
+        "tucker-eric/eloquentfilter": "^1.4",
         "yzalis/identicon": "^1.2"
     },
     "require-dev": {

@@ -3,13 +3,13 @@
 namespace App;
 
 use App\Tools\Markdowner;
+use App\Traits\BelongsToUser;
 use Jcc\LaravelVote\CanBeVoted;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use SoftDeletes, CanBeVoted;
+    use SoftDeletes, CanBeVoted, BelongsToUser;
 
     protected $vote = User::class;
 
@@ -19,7 +19,10 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'commentable_id', 'commentable_type', 'content'
+        'user_id',
+        'commentable_id',
+        'commentable_type',
+        'content'
     ];
 
     /**
@@ -28,16 +31,6 @@ class Comment extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-
-    /**
-     * Get the user for the discussion comment.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     /**
      * Get all of the owning commentable models.
@@ -57,7 +50,7 @@ class Comment extends Model
     public function setContentAttribute($value)
     {
         $data = [
-            'raw'  => $value,
+            'raw' => $value,
             'html' => (new Markdowner)->convertMarkdownToHtml($value)
         ];
 

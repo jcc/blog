@@ -11,18 +11,13 @@ class DiscussionController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $discussions = Discussion::checkAuth()->when($keyword, function ($query) use ($keyword) {
-            $query->where('title', 'like', "%{$keyword}%")
-                    ->orWhereHas('user', function ($query) use ($keyword) {
-                        $query->where('name', 'like', "%{$keyword}%");
-                    });
-        })->orderBy('created_at', 'desc')->paginate(10);
+        $discussions = Discussion::checkAuth()->filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($discussions);
     }
@@ -62,9 +57,7 @@ class DiscussionController extends ApiController
      */
     public function status($id, Request $request)
     {
-        $input = $request->all();
-
-        Discussion::checkAuth()->findOrFail($id)->update($input);
+        Discussion::checkAuth()->findOrFail($id)->update($request->all());
 
         return $this->response->withNoContent();
     }
@@ -75,6 +68,7 @@ class DiscussionController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

@@ -11,16 +11,13 @@ class CategoryController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('keyword');
-
-        $categories = Category::query()->when($keyword, function ($query) use ($keyword) {
-            $query->where('name', 'like', "%{$keyword}%");
-        })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::filter($request->all())->orderBy('created_at', 'desc')->paginate(10);
 
         return $this->response->collection($categories);
     }
@@ -29,6 +26,7 @@ class CategoryController extends ApiController
      * Show all of the categories.
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function getList()
     {
@@ -81,6 +79,7 @@ class CategoryController extends ApiController
      * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function edit($id)
     {

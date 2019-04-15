@@ -4,13 +4,15 @@ namespace App;
 
 use App\Scopes\DraftScope;
 use App\Tools\Markdowner;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToUser;
+use App\Traits\HasComments;
+use App\Traits\HasTags;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Article extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, BelongsToUser, HasComments, HasTags;
 
     /**
      * The attributes that should be mutated to dates.
@@ -54,16 +56,6 @@ class Article extends Model
     }
 
     /**
-     * Get the user for the blog article.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
      * Get the category for the blog article.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -71,26 +63,6 @@ class Article extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * Get the tags for the blog article.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\morphToMany
-     */
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    /**
-     * Get the comments for the discussion.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\morphMany
-     */
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /**

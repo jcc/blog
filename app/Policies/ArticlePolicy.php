@@ -4,12 +4,9 @@ namespace App\Policies;
 
 use App\User;
 use App\Article;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ArticlePolicy
+class ArticlePolicy extends Policy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the user can comment to this article.
      *

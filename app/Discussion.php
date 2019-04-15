@@ -4,12 +4,14 @@ namespace App;
 
 use App\Scopes\StatusScope;
 use App\Tools\Markdowner;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToUser;
+use App\Traits\HasComments;
+use App\Traits\HasTags;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Discussion extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, BelongsToUser, HasComments, HasTags;
 
     /**
      * The attributes that should be mutated to dates.
@@ -41,36 +43,6 @@ class Discussion extends Model
         parent::boot();
 
         static::addGlobalScope(new StatusScope());
-    }
-
-    /**
-     * Get the user for the discussion.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the comments for the discussion.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    /**
-     * Get the tags for the discussion.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     /**
