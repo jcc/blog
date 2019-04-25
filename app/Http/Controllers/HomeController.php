@@ -29,6 +29,7 @@ class HomeController extends Controller
         $key = trim($request->get('q'));
 
         $articles = Article::query()->where('title', 'like', "%{$key}%")
+            ->orWhere('content', 'like', "%{$key}%")
             ->orderBy('published_at', 'desc')
             ->get();
 
