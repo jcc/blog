@@ -76,10 +76,10 @@ export default {
         })
     },
     onSubmit() {
-      if (!this.link.image) {
+      /*if (!this.link.image) {
         toastr.error('The image is required!')
         return
-      }
+      }*/
 
       let url = 'link' + (this.link.id ? '/' + this.link.id : '')
       let method = this.link.id ? 'patch' : 'post'
