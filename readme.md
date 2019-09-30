@@ -53,9 +53,9 @@ Here is [documents](https://manual.pigjian.com/)
 
 ## Preview
 
-![New Blog](https://pig-storage.b0.upaiyun.com/cover/2018/09/07/d2T4cAjTagf5L1rXH1FjLsFkJVffsPIGPkHEl2A5.jpg)
+![New Blog](https://cdn.pigjian.com/cover/2018/09/07/d2T4cAjTagf5L1rXH1FjLsFkJVffsPIGPkHEl2A5.jpg)
 
-![New Blog](https://pig-storage.b0.upaiyun.com/cover/2018/09/07/4b7ExtB6NHZVh8n5KnW2673Ej6gwtLm1SUAubtpa.jpg)
+![New Blog](https://cdn.pigjian.com/cover/2018/09/07/4b7ExtB6NHZVh8n5KnW2673Ej6gwtLm1SUAubtpa.jpg)
 
 ## Install
 
