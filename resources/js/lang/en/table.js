@@ -26,5 +26,6 @@ export default {
   click_num: 'Clicks Num',
   ip: 'IP',
   new_folder: 'New Folder',
+  vote_count: 'Votes',
   upload: 'Uplaod'
 }

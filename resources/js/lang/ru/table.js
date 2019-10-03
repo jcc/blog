@@ -26,5 +26,6 @@ export default {
   click_num: 'Кол-во кликов',
   ip: 'IP',
   new_folder: 'Новая папка',
+  vote_count: 'Votes',
   upload: 'Загрузка'
 }

@@ -26,5 +26,6 @@ export default {
   click_num: '点击次数',
   ip: 'IP',
   new_folder: '创建文件夹',
+  vote_count: 'Votes',
   upload: '上传图片'
 }
