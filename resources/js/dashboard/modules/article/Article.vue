@@ -26,6 +26,9 @@ export default {
           trans: 'table.subtitle',
           sortField: 'subtitle',
         }, {
+          name: 'comment_count',
+          trans: 'table.comment_count'
+        }, {
           name: 'published_at',
           trans: 'table.published_at',
           titleClass: 'width-10-percent',
