@@ -23,7 +23,7 @@
     "jquery": "^3.3",
     "laravel-mix": "^4.0.7",
     "lodash": "^4.17.5",
-    "marked": "^0.3.17",
+    "marked": "^0.7.0",
     "path-to-regexp": "^1.7.0",
     "popper.js": "^1.13.0",
     "resolve-url-loader": "^2.3.1",
