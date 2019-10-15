@@ -24,7 +24,7 @@ export default {
   enabled: '是否启用',
   article_title: '文章标题',
   click_num: '点击次数',
-  comment_count: 'Comments',
+  comment_count: '评论数',
   ip: 'IP',
   new_folder: '创建文件夹',
   upload: '上传图片'
