@@ -24,7 +24,7 @@ export default {
   enabled: 'Включено',
   article_title: 'Заголовок статьи',
   click_num: 'Кол-во кликов',
-  comment_count: 'Comments',
+  comment_count: 'Комментарии',
   ip: 'IP',
   new_folder: 'Новая папка',
   upload: 'Загрузка'
