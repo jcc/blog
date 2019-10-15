@@ -28,6 +28,7 @@ class ArticleTransformer extends TransformerAbstract
             'visitors'          => $article->view_count,
             'published_at'      => $article->published_at->diffForHumans(),
             'published_time'    => $article->published_at->toDateTimeString(),
+            'comment_count'     => $article->comments->count(),
         ];
     }
 
