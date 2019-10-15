@@ -3,10 +3,15 @@
     <div class="row comment">
       <div class="col-md-8 offset-md-2">
         <h5>{{ title }}</h5>
+        <div :class="nullClass" v-if="comments.length == this.commentsCount" class="heading">
+          <a href="javascript:;" @click="commentLoad()">
+            <i   class="fas fa-plus">&nbsp;&nbsp;&nbsp;&nbsp; load more comments</i>
+          </a>
+        </div>        
       </div>
       <div :class="contentWrapperClass">
         <div :class="nullClass" v-if="comments.length == 0">{{ nullText }}</div>
-        <div class="media" v-for="(comment, index) in comments" v-else>
+        <div class="media" v-for="(comment, index) in comments" v-else  >
           <div class="media-left mr-3">
             <a :href="'/user/' + comment.username">
               <img class="media-object rounded-circle" :src="comment.avatar">
@@ -120,6 +125,7 @@ export default {
   data() {
     return {
       comments: [],
+      commentsCount:1,
       content: '',
       isSubmiting: false,
       strategies: [{
@@ -142,7 +148,8 @@ export default {
     var url = 'commentable/' + this.commentableId + '/comment'
     this.$http.get(url, {
       params: {
-        commentable_type: this.commentableType
+        commentable_type: this.commentableType,
+        commentsCount:this.commentsCount
       }
     }).then((response) => {
       response.data.data.forEach((data) => {
@@ -197,6 +204,32 @@ export default {
           toastr.success('You delete your comment success!')
         })
     },
+    commentLoad() {
+      var url = 'commentable/' + this.commentableId + '/comment'
+      this.$http.get(url, {
+        params: {
+          commentable_type: this.commentableType,
+          commentsCount:this.commentsCount+1
+        }
+      }).then((response) => {
+        response.data.data.forEach((data) => {
+          data.content_html = this.parse(data.content_raw)
+          return data
+        })
+        this.comments = response.data.data
+        this.commentsCount +=1
+        
+      }).then((response)=>{
+        console.log(this.commentsCount)
+      })
+
+      toastr.options = toastrConfig
+
+      if (this.canComment) {
+        this.contentUploader()
+      }
+    },
+
     parse(html) {
       marked.setOptions({
         highlight: (code) => {
