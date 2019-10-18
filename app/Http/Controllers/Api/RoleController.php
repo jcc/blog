@@ -17,7 +17,7 @@ class RoleController extends ApiController
      */
     public function index(Request $request)
     {
-        $roles = Role::filter($request->all())->orderBy('created_at', 'desc')->paginate($request->get('per_page', 10));
+        $roles = Role::orderBy('created_at', 'desc')->paginate($request->get('per_page', 10));
 
         return $this->response->collection($roles);
     }

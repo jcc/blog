@@ -21,16 +21,18 @@
     @endcomponent
 
     <div class="article container">
+    <div class="row text-center">
+            <div class="col-md-8 offset-md-2">
+            <img alt="{{ $article->slug }}" src="{{ $article->page_image }}"  style="borde-radius:50px">
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-md-8 offset-md-2">
 
             <parse content="{{ $article->content['raw'] }}"></parse>
 
             @if($article->is_original)
-                <div class="publishing alert alert-dismissible alert-info">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {!! config('blog.license') !!}
-                </div>
                 @endif
                 @if(config('blog.social_share.article_share'))
                 <div class="footing">
