@@ -15,9 +15,9 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'admin',
-                'email' => 'admin@pigjian.com',
-                'password' => Hash::make('admin'),
+                'name' => config('blog.admin_name'),
+                'email' => config('blog.admin_email'),
+                'password' => Hash::make(config('blog.admin_password')),
                 'status' => true,
                 'is_admin' => true,
                 'confirm_code' => str_random(64),
