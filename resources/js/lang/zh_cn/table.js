@@ -27,5 +27,6 @@ export default {
   comment_count: '评论数',
   ip: 'IP',
   new_folder: '创建文件夹',
+  vote_count: '投票数',
   upload: '上传图片'
 }

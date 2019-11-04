@@ -23,6 +23,9 @@ export default {
           name: 'commentable',
           trans: 'table.comment_title'
         }, {
+          name: 'vote_count',
+          trans: 'table.vote_count'
+        }, {
           name: 'created_at',
           trans: 'table.created_at'
         }, {

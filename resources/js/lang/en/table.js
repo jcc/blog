@@ -27,5 +27,6 @@ export default {
   comment_count: 'Comments',
   ip: 'IP',
   new_folder: 'New Folder',
+  vote_count: 'Votes',
   upload: 'Uplaod'
 }

@@ -27,5 +27,6 @@ export default {
   comment_count: 'Комментарии',
   ip: 'IP',
   new_folder: 'Новая папка',
+  vote_count: 'Голосов',
   upload: 'Загрузка'
 }
