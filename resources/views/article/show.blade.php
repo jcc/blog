@@ -43,7 +43,14 @@
                         {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }}
                         initialized></div>
                 </div>
-                @endif
+            @endif
+
+            @if ($article->number_in_series) 
+                <div class="col-12 px-0 py-4">
+                    <h4>Read The Next Article In This Series</h4>
+                    <h5><a href="{{$article->nextArticle()->slug}}" style="color:#9CAEBF;">{{$article->nextArticle()->title}}</a></h5>
+                </div>
+            @endif
             </div>
         </div>
     </div>
