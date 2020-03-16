@@ -112,7 +112,7 @@ $factory->define(App\Visitor::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Series::class, function (Faker $faker) {
+$factory->define(App\Series::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence,
 	    'description' => $faker->sentence.". ".$faker->sentence.". ".$faker->sentence
