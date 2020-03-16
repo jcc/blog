@@ -39,6 +39,8 @@ class Article extends Model
         'is_draft',
         'is_original',
         'published_at',
+		'series_id',
+        'number_in_series',
     ];
 
     protected $casts = [
@@ -152,4 +154,55 @@ class Article extends Model
         }
         return $query;
     }
+
+    /**
+     * isPartOfSeries
+     *
+     * @author Daydevelops
+     *
+     * @param none
+     * @return bool
+     */
+	public function isPartOfSeries() {
+		return !! $this->series_id;
+    }
+    
+
+    /**
+     * nextArticle - returns the next article in the same series, or null if it doesn't exist
+     *
+     * @author Daydevelops
+     *
+     * @param none
+     * @return \App\Article
+     */
+    public function nextArticle() {
+		if ($this->isPartOfSeries()) {
+			return Article::where([
+				'series_id'=>$this->series_id,
+				'number_in_series'=>$this->number_in_series + 1
+			])->first();
+		} else {
+			return null;
+		}
+    }
+    
+    /**
+     * previousArticle - returns the previous article in the same series, or null if it doesn't exist
+     *
+     * @author Daydevelops
+     *
+     * @param none
+     * @return \App\Article
+     */
+	public function previousArticle() {
+		if ($this->isPartOfSeries()) {
+			return Article::where([
+				'series_id'=>$this->series_id,
+				'number_in_series'=>$this->number_in_series - 1
+			])->first();
+		} else {
+			return null;
+		}
+	}
 }
