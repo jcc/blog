@@ -45,10 +45,10 @@
                 </div>
             @endif
 
-            @if ($article->number_in_series) 
+            @if ($next_article) 
                 <div class="col-12 px-0 py-4">
                     <h4>Read The Next Article In This Series</h4>
-                    <h5><a href="{{$article->nextArticle()->slug}}" style="color:#9CAEBF;">{{$article->nextArticle()->title}}</a></h5>
+                    <h5><a href="{{$next_article->slug}}" style="color:#9CAEBF;">{{$next_article->title}}</a></h5>
                 </div>
             @endif
             </div>

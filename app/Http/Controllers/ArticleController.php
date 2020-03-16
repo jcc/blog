@@ -37,6 +37,8 @@ class ArticleController extends Controller
 
         $article->increment('view_count');
 
+        $next_article = $article->nextArticle();
+
         $ip = $request->getClientIp();
 
         if ($ip == '::1') {
@@ -45,6 +47,6 @@ class ArticleController extends Controller
 
         Visitor::log($article->id, $ip);
 
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article','next_article'));
     }
 }
