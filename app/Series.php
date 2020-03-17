@@ -58,4 +58,12 @@ class Series extends Model
             'number_in_series' => null
         ]);
     }
+
+    public function scopeCheckAuth($query)
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $query->withoutGlobalScope(DraftScope::class);
+        }
+        return $query;
+    }
 }
