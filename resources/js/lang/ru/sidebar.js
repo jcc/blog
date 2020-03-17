@@ -2,6 +2,7 @@ export default {
   dashboard: 'Дашборд',
   user: 'Пользователи',
   article: 'Статьи',
+  series: 'Серии',
   discussion: 'Обсуждения',
   comment: 'Комментарии',
   tag: 'Теги',

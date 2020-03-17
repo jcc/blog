@@ -2,6 +2,7 @@ export default {
   users: 'Users',
   visitors: 'Visitors',
   articles: 'Articles',
+  series: 'Series',
   roles: 'Roles',
   comments: 'Comments',
   discussions: 'Discussions',

@@ -41,6 +41,8 @@ export default {
   website: 'Website',
   create_article: 'Create Article',
   edit_article: 'Edit Article',
+  create_series: 'Create Series',
+  edit_series: 'Edit Series',
   create_discussion: 'Create Discussion',
   edit_discussion: 'Edit Discussion',
   edit_comment: 'Edit Comment',
@@ -70,6 +72,7 @@ export default {
   select_guard_name: 'Select Guard Name',
   set_permissions: 'Set Permissions',
   save: 'Save',
-  submit: 'Submit'
-
+  submit: 'Submit',
+  delete: 'Delete',
+  none: 'None'
 }

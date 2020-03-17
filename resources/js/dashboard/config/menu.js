@@ -12,7 +12,7 @@ export default [{
     icon: 'fas fa-book',
     uri: { name: 'dashboard.article' }
   }, {
-    label: 'Series',
+    label: 'sidebar.series',
     permission: 'LIST_SERIES',
     icon: 'fab fa-buffer',
     uri: { name: 'dashboard.series' }

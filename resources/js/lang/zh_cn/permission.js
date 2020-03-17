@@ -1,6 +1,7 @@
 export default {
   user: '用户模块',
   article: '文章模块',
+  series: '系列权限',
   discussion: '讨论模块',
   comment: '评论模块',
   file: '文件模块',

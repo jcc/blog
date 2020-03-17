@@ -5,13 +5,13 @@
 				<form @submit.prevent="updateInfo">
 					<div class="form-group" id="info-form-wrap">
 						<div class="row">
-							<label for="name" class="col-sm-2 col-form-label">Name</label>
+							<label for="name" class="col-sm-2 col-form-label">{{ $t('form.title') }}</label>
 							<div class="col-sm-10">
 								<input type="text" id="series-name" name="name" class="form-control">
 							</div>
 						</div>
 						<div class="row">
-							<label for="description" class="col-sm-2 col-form-label">Description</label>
+							<label for="description" class="col-sm-2 col-form-label">{{ $t('form.description') }}</label>
 							<div class="col-sm-10">
 								<textarea id="series-desc" name="description" class="form-control" rows='2'>
 								</textarea>
@@ -19,7 +19,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3 offset-6 text-right">
-								<button type="submit" class="btn btn-success form-control d-inline">Update</button>
+								<button type="submit" class="btn btn-success form-control d-inline">{{ $t('form.edit') }}</button>
 							</div>
 						</div>
 					</div>
@@ -27,7 +27,7 @@
 		</div>
 		<br><hr><br>
 		<div>
-			<h3 class='text-center'>Articles:</h3>
+			<h3 class='text-center'>{{ $t('page.articles') }}:</h3>
 			<div id='articles-list'>
 				<draggable v-model="articles" @start="drag=true" @end="drag=false">
 					<div class='row article-wrap' v-for="art in articles" :key="art.id">
@@ -35,7 +35,7 @@
 							<span class="article">{{art.title}}</span>
 						</div>
 						<div class='col-2 text-right'>
-							<button @click="deleteArticle(art.id)" class='btn btn-danger d-inline'>Remove</button>
+							<button @click="deleteArticle(art.id)" class='btn btn-danger d-inline'>{{ $t('form.delete') }}</button>
 						</div>
 					</div>
 				</draggable>
@@ -44,17 +44,17 @@
 				<div class='row'>
 					<div class='col-10'>
 						<select id='new-art-select' class="form-control form-control-lg">
-							<option class='add-art-option' value="0">None</option>
+							<option class='add-art-option' value="0">{{ $t('form.none') }}</option>
 							<option v-for="art in articles_available" :key="art.id" :id='"option-"+art.id' class="add-art-option" :value="art.id" v-text="art.title"></option>
 						</select>
 					</div>
 					<div class='col-2'>
-						<button @click="addArticle()" class='btn btn-primary'>Add</button>
+						<button @click="addArticle()" class='btn btn-primary'>{{ $t('form.create') }}</button>
 					</div>
 				</div>
 			</div>
 			<div class='text-center'>
-				<button class='btn btn-success d-inline' @click="updateSeries">Update Articles</button>
+				<button class='btn btn-success d-inline' @click="updateSeries">{{ $t('form.submit') }}</button>
 			</div>
 		</div>
 	</div>

@@ -2,13 +2,13 @@
 	<form @submit.prevent="onSubmit">
 		<div class="form-group">
 			<div class="row">
-				<label for="name" class="col-sm-2 col-form-label">Name</label>
+				<label for="name" class="col-sm-2 col-form-label">{{ $t('form.title') }}</label>
 				<div class="col-sm-10">
 					<input type="text" id="name" name="name" v-model="name" class="form-control">
 				</div>
 			</div>
 			<div class="row">
-				<label for="description" class="col-sm-2 col-form-label">Description</label>
+				<label for="description" class="col-sm-2 col-form-label">{{ $t('form.description') }}</label>
 				<div class="col-sm-10">
 					<textarea id="description" name="description" v-model="desc" class="form-control" rows='2'>
 					</textarea>
@@ -16,7 +16,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
-					<button type="submit" class="btn btn-success form-control">Add</button>
+					<button type="submit" class="btn btn-success form-control">{{$t('form.create')}}</button>
 				</div>
 			</div>
 		</div>
