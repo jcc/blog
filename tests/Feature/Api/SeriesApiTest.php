@@ -118,5 +118,16 @@ class SeriesApiTest extends TestCase
 		$this->json('delete','api/series/'.$series->id);
 		$this->assertDatabaseMissing('series',['name'=>$series->name]);
 		$this->assertEquals(null,$art1->fresh()->series_id);
-	}
+    }
+    
+    /** @test */
+    public function a_non_admin_cannot_access_the_series_api() {
+        auth()->user()->update(['is_admin'=>0]);
+        $this->be(factory("App\User")->create());
+
+		$this->json('delete','api/series/1')->assertStatus(404);
+        $this->json('patch','api/series/order/1')->assertStatus(404);
+        $this->post('/api/series/new')->assertStatus(404);
+        $this->get('/api/series')->assertStatus(404);
+    }
 }
