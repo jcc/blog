@@ -3,6 +3,7 @@
 return [
     'Articles'    => 'Статьи',
     'Article'     => 'Статья',
+    'Series'      => 'Серии', 
     'Discussions' => 'Обсуждения',
     'Discussion'  => 'Обсуждение',
     'Follow'      => 'Следить',

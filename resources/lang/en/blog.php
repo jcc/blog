@@ -3,6 +3,7 @@
 return [
     'Articles'    => 'Articles',
     'Article'     => 'Article',
+    'Series'      => 'Series',  
     'Discussions' => 'Discussions',
     'Discussion'  => 'Discussion',
     'Follow'      => 'Follow',

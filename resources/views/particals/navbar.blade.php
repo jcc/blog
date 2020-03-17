@@ -12,6 +12,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ lang('Articles') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('series') }}">{{ lang('Series') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('discussion') }}">{{ lang('Discussions') }}</a></li>
             </ul>
 

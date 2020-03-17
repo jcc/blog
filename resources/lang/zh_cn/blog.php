@@ -3,6 +3,7 @@
 return [
     'Articles'    => '文章',
     'Article'    => '文章',
+    'Series'     => '系列',
     'Discussions' => '讨论',
     'Discussion' => '讨论',
     'Follow'      => '关注',
