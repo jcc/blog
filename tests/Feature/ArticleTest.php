@@ -30,7 +30,7 @@ class ArticleTest extends TestCase
             'number_in_series' => 2
         ]);
         $this->get($art1->slug)->assertSee($art2->title);
-        $this->get($art1->slug)->assertSee("Read The Next Article In This Series");
-        $this->get($art2->slug)->assertDontSee("Read The Next Article In This Series"); // there is no next article
+        $this->get($art1->slug)->assertSee("Next Article");
+        $this->get($art2->slug)->assertDontSee("Next Article"); // there is no next article
     }
 }

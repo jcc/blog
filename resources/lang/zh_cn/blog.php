@@ -100,4 +100,5 @@ return [
     'Be Banned Comment'    => '评论已被禁止!',
     'Likes'                => '...',
     'Dislikes'             => '...',
+    'Next Article'         => '下一篇'
 ];

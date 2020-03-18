@@ -47,7 +47,7 @@
 
             @if ($next_article) 
                 <div class="col-12 px-0 py-4">
-                    <h4>Read The Next Article In This Series</h4>
+                    <h4>{{lang('Next Article')}}</h4>
                     <h5><a href="{{$next_article->slug}}" style="color:#9CAEBF;">{{$next_article->title}}</a></h5>
                 </div>
             @endif
