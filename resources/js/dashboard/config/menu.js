@@ -12,6 +12,11 @@ export default [{
     icon: 'fas fa-book',
     uri: { name: 'dashboard.article' }
   }, {
+    label: 'sidebar.series',
+    permission: 'LIST_SERIES',
+    icon: 'fab fa-buffer',
+    uri: { name: 'dashboard.series' }
+  }, {
     label: 'sidebar.discussion',
     permission: 'LIST_DISCUSSION',
     icon: 'fas fa-question-circle',

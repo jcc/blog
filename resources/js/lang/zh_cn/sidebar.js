@@ -2,6 +2,7 @@ export default {
   dashboard: '面板',
   user: '用户管理',
   article: '文章管理',
+  series: '系列',
   discussion: '讨论管理',
   comment: '评论管理',
   tag: '标签管理',

@@ -3,6 +3,7 @@
 return [
     'Articles'    => 'Articles',
     'Article'     => 'Article',
+    'Series'      => 'Series',  
     'Discussions' => 'Discussions',
     'Discussion'  => 'Discussion',
     'Follow'      => 'Follow',
@@ -99,4 +100,5 @@ return [
     'Be Banned Comment'    => 'Comment was banned!',
     'Likes'                => 'upvoted your comment on',
     'Dislikes'             => 'downvoted your comment on',
+    'Next Article'         => 'Next Article'
 ];

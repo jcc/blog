@@ -41,6 +41,8 @@ export default {
   website: 'Сайт',
   create_article: 'Создать статью',
   edit_article: 'Редактировать статью',
+  create_series: 'Создать серию',
+  edit_series: 'Редактировать серию',
   create_discussion: 'Создать обсуждение',
   edit_discussion: 'Редактировать обсуждение',
   edit_comment: 'Редактировать комментарий',
@@ -70,6 +72,8 @@ export default {
   select_guard_name: 'Выберите «Защитное имя»',
   set_permissions: 'Установить разрешения',
   save: 'Сохранить',
-  submit: 'Отправить'
+  submit: 'Отправить',
+  delete: 'удалять',
+  none: 'Никто'
 
 }

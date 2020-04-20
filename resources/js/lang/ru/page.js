@@ -2,6 +2,7 @@ export default {
   users: 'Пользователей',
   visitors: 'Посетителей',
   articles: 'Статей',
+  series: 'Серии',
   roles: 'Роли',
   comments: 'Комментариев',
   discussions: 'Обсуждений',

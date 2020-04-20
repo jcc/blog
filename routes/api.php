@@ -21,6 +21,14 @@ Route::group([
     Route::patch('article/{id}', 'ArticleController@update')->name('api.article.update')->middleware(['permission:update_article']);
     Route::delete('article/{id}', 'ArticleController@destroy')->name('api.article.destroy')->middleware(['permission:destroy_article']);
 
+	// Series
+	Route::get('series', 'SeriesController@index')->name('api.series.index')->middleware(['permission:list_series']);
+	Route::post('series/new', 'SeriesController@store')->name('api.series.new')->middleware(['permission:create_series']);
+	Route::get('series/edit/{series}', 'SeriesController@edit')->name('api.series.edit')->middleware(['permission:list_series']);
+	Route::patch('series/order/{series}', 'SeriesController@updateOrder')->middleware(['permission:update_series']);
+	Route::patch('series/{series}', 'SeriesController@update')->name('api.series.update')->middleware(['permission:update_series']);
+	Route::delete('series/{series}', 'SeriesController@destroy')->name('api.series.update')->middleware(['permission:update_series']);
+
     // Category
     Route::get('category', 'CategoryController@index')->middleware(['permission:list_category']);
     Route::post('category', 'CategoryController@store')->middleware(['permission:create_category']);

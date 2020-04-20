@@ -19,6 +19,12 @@ return [
     'update_article' => '更新文章',
     'destroy_article' => '删除文章',
 
+    // Series
+    'list_series' => '清单系列',
+    'create_series' => '创建系列',
+    'update_series' => '更新系列',
+    'destroy_series' => '删除系列',
+
     // Discussion
     'list_discussion' => '讨论列表',
     'create_discussion' => '创建讨论',

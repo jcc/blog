@@ -19,6 +19,12 @@ return [
     'update_article' => 'Обновить статью',
     'destroy_article' => 'Удалить статью',
 
+    // Series
+    'list_series' => 'Список серий',
+    'create_series' => 'Создать серию',
+    'update_series' => 'Обновление серии',
+    'destroy_series' => 'Удалить серию',
+
     // Discussion
     'list_discussion' => 'Список обсуждений',
     'create_discussion' => 'Создать дискуссию',

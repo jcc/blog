@@ -19,6 +19,12 @@ return [
     'update_article' => 'Update Article',
     'destroy_article' => 'Delete Article',
 
+    // Series
+    'list_series' => 'List Series',
+    'create_series' => 'Create Series',
+    'update_series' => 'Update Series',
+    'destroy_series' => 'Delete Series',
+
     // Discussion
     'list_discussion' => 'List Discussions',
     'create_discussion' => 'Create Discussion',

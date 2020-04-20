@@ -1,6 +1,7 @@
 export default {
   user: 'User Permissions',
   article: 'Article Permissions',
+  series: 'Series Permissions',
   discussion: 'Discussion Permissions',
   comment: 'Comment Permissions',
   file: 'File Permissions',

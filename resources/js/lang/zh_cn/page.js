@@ -2,6 +2,7 @@ export default {
   users: '用户列表',
   visitors: '访问列表',
   articles: '文章列表',
+  series: '系列',
   roles: '角色列表',
   comments: '评论列表',
   discussions: '讨论列表',
