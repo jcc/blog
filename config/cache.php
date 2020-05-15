@@ -13,7 +13,8 @@ return [
     | using this caching library. This connection is used when another is
     | not explicitly specified when executing a given caching function.
     |
-    | Supported: "apc", "array", "database", "file", "memcached", "redis"
+    | Supported: "apc", "array", "database", "file",
+    |            "memcached", "redis", "dynamodb"
     |
     */
 
@@ -59,7 +60,7 @@ return [
                 env('MEMCACHED_PASSWORD'),
             ],
             'options' => [
-                // Memcached::OPT_CONNECT_TIMEOUT  => 2000,
+                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
             ],
             'servers' => [
                 [
@@ -81,6 +82,7 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+            'endpoint' => env('DYNAMODB_ENDPOINT'),
         ],
 
     ],
