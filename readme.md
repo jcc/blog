@@ -39,11 +39,11 @@ Here is [documents](https://manual.pigjian.com/)
 - Roles & Permissions
 - and more...
 
-[PJ Blog](https://github.com/jcc/blog) Laravel 5.*
+[PJ Blog](https://github.com/jcc/blog) Laravel 7.*
 
 ## Server Requirements
 
-- PHP >= 7.1.0
+- PHP >= 7.2.5
 - Node >= 6.x
 - OpenSSL PHP Extension
 - PDO PHP Extension
