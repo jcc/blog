@@ -57,7 +57,7 @@ export default {
         return
       }
 
-      this.$http.put('comment/' + this.$route.params.id, this.comment)
+      this.$http.patch('comment/' + this.$route.params.id, this.comment)
         .then((response) => {
           toastr.success('You updated the comment success!')
 

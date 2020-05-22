@@ -59,7 +59,7 @@ class BaseManager
 
     /**
      * Get all the subfolders by folder.
-     * 
+     *
      * @param  string $folder
      * @return array
      */
@@ -75,7 +75,7 @@ class BaseManager
 
     /**
      * Get all the files by the folder.
-     * 
+     *
      * @param  string $folder
      * @return array
      */
@@ -247,7 +247,7 @@ class BaseManager
                 'filename' => $hashName,
                 'original_name' => $file->getClientOriginalName(),
                 'mime' => $mime,
-                'size' => human_filesize($file->getClientSize()),
+                'size' => human_filesize($file->getMaxFilesize()),
                 'real_path' => $realPath,
                 'relative_url' => "storage/$realPath",
                 'url' => asset("storage/$realPath"),
@@ -256,7 +256,7 @@ class BaseManager
 
     /**
      * Determine whether the file exists
-     * 
+     *
      * @param  string $path
      * @return boolean
      */
