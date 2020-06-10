@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('subtitle');
             // $table->json('content');
-            $table->text('content');
+            $table->longText('content');
             $table->string('page_image')->nullable();
             $table->string('meta_description')->nullable();
             $table->boolean('is_original')->default(false);
