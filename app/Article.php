@@ -66,16 +66,6 @@ class Article extends Model
     }
 
     /**
-     * Get the config for the configuration.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\morphMany
-     */
-    public function config()
-    {
-        return $this->morphMany(Configuration::class, 'configuration');
-    }
-
-    /**
      * Get the created at attribute.
      *
      * @param $value
@@ -84,7 +74,7 @@ class Article extends Model
      */
     public function getCreatedAtAttribute($value)
     {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();
+        return \Carbon\Carbon::createFromDate($value)->diffForHumans();
     }
 
     /**

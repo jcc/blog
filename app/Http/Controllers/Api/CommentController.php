@@ -33,14 +33,15 @@ class CommentController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\CommentRequest $request
+     * @param CommentRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function store(CommentRequest $request)
     {
-
 		$data = $request->all();
+
 		if ($data['commentable_type'] === 'articles') {
 			$article = \App\Article::find($data['commentable_id']);
 			if (!auth()->user()->can('comment',$article)) return response()->json([],403);
@@ -50,6 +51,7 @@ class CommentController extends ApiController
 
         $mention = new Mention();
         $data['content'] = $mention->parse($data['content']);
+
         $comment = Comment::create($data);
         foreach ($mention->users as $user) {
             $user->notify(new MentionedUser($comment));
