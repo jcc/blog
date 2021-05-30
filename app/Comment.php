@@ -4,12 +4,12 @@ namespace App;
 
 use App\Tools\Markdowner;
 use App\Traits\BelongsToUser;
-use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jcc\LaravelVote\Traits\Votable;
 
 class Comment extends Model
 {
-    use SoftDeletes, CanBeVoted, BelongsToUser;
+    use SoftDeletes, Votable, BelongsToUser;
 
     protected $vote = User::class;
 
