@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\GotVote;
 use EloquentFilter\Filterable;
+use Jcc\LaravelVote\Traits\Voter;
 use Jcc\LaravelVote\Vote;
 use App\Traits\FollowTrait;
 use App\Scopes\StatusScope;
@@ -15,7 +16,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote, HasRoles, Filterable;
+    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Voter, HasRoles, Filterable;
 
     /**
      * The attributes that should be mutated to dates.

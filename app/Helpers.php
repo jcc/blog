@@ -67,3 +67,17 @@ if(!function_exists('lang')) {
         return trans('blog.'.$text, $parameters);
     }
 }
+
+if(!function_exists('snake_case')) {
+    /**
+     * String to snake case.
+     *
+     * @param string $str
+     * @param string $delimiter
+     * @return string
+     */
+    function snake_case($str, $delimiter)
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', "$1{$delimiter}$2", $str));
+    }
+}
