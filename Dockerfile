@@ -21,9 +21,6 @@ RUN docker-php-ext-install xml
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x |  bash -
 RUN apt-get install -y nodejs
 
-# RUN addgroup --system --gid 1001 blog && \
-#     adduser blog --system --uid 1001 --ingroup blog
-
 # install composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
@@ -31,9 +28,9 @@ RUN composer install -vvv
 RUN npm install
 RUN composer update
 RUN npm run dev
-COPY .env.example .env
-RUN php artisan blog:install
 
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0"]
+COPY entrypoint.sh /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
 
 EXPOSE 8000
