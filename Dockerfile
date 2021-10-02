@@ -24,6 +24,7 @@ RUN apt-get install -y nodejs
 # install composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+# install app
 RUN composer install -vvv
 RUN npm install
 RUN composer update
