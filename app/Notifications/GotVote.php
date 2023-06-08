@@ -12,7 +12,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 class GotVote extends Notification implements ShouldQueue
 {
     use Queueable;
-    
+
     protected $vote_type;
     protected $user;
     protected $comment;

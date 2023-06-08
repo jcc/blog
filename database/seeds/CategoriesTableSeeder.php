@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Category;
 use Illuminate\Database\Seeder;
 

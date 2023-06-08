@@ -243,6 +243,9 @@ export default {
             })
           }
         })
+        .catch(({ response }) => {
+          toastr.error(response.data.message)
+        })
     },
     goPreviousPage() {
       if (this.currentPage > 1) {

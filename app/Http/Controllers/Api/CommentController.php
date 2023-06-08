@@ -20,12 +20,11 @@ class CommentController extends ApiController
     public function index(Request $request)
     {
         $keyword = $request->get('keyword');
-        $commemts = Comment::query()->when($keyword, function ($query) use ($keyword) {
+        $commemts = Comment::when($keyword, function ($query) use ($keyword) {
             $query->whereHas('user', function ($query) use ($keyword) {
                 $query->where('name', 'like', "%{$keyword}%");
             });
-        })
-            ->orderBy('created_at', 'desc')->paginate(10);
+        })->paginate(10);
 
         return $this->response->collection($commemts);
     }

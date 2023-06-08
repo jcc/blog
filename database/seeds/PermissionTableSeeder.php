@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -80,7 +82,7 @@ class PermissionTableSeeder extends Seeder
         ];
 
         foreach ($permissions as $key => $permission) {
-            $permissions[$key]['guard_name'] = 'web';
+            $permissions[$key]['guard_name'] = 'api';
             $permissions[$key]['created_at'] = $now;
             $permissions[$key]['updated_at'] = $now;
         }

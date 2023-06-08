@@ -7,7 +7,7 @@
           <a href="javascript:;" @click="commentLoad()">
             <i   class="fas fa-plus">&nbsp;&nbsp;&nbsp;&nbsp; load more comments</i>
           </a>
-        </div>        
+        </div>
       </div>
       <div :class="contentWrapperClass">
         <div :class="nullClass" v-if="comments.length == 0">{{ nullText }}</div>
@@ -125,7 +125,7 @@ export default {
   data() {
     return {
       comments: [],
-      commentsCount:1,
+      commentsCount:10,
       content: '',
       isSubmiting: false,
       strategies: [{
@@ -209,7 +209,7 @@ export default {
       this.$http.get(url, {
         params: {
           commentable_type: this.commentableType,
-          commentsCount:this.commentsCount+1
+          commentsCount:this.commentsCount+10
         }
       }).then((response) => {
         response.data.data.forEach((data) => {
@@ -217,8 +217,8 @@ export default {
           return data
         })
         this.comments = response.data.data
-        this.commentsCount +=1
-        
+        this.commentsCount += 10
+
       }).then((response)=>{
         console.log(this.commentsCount)
       })
